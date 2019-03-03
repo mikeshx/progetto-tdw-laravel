@@ -18,13 +18,13 @@ namespace Symfony\Component\HttpFoundation;
  */
 class HeaderBag implements \IteratorAggregate, \Countable
 {
-    protected $headers = [];
-    protected $cacheControl = [];
+    protected $headers = array();
+    protected $cacheControl = array();
 
     /**
      * @param array $headers An array of HTTP headers
      */
-    public function __construct(array $headers = [])
+    public function __construct(array $headers = array())
     {
         foreach ($headers as $key => $values) {
             $this->set($key, $values);
@@ -46,7 +46,7 @@ class HeaderBag implements \IteratorAggregate, \Countable
         $max = max(array_map('strlen', array_keys($headers))) + 1;
         $content = '';
         foreach ($headers as $name => $values) {
-            $name = ucwords($name, '-');
+            $name = implode('-', array_map('ucfirst', explode('-', $name)));
             foreach ($values as $value) {
                 $content .= sprintf("%-{$max}s %s\r\n", $name.':', $value);
             }
@@ -80,9 +80,9 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @param array $headers An array of HTTP headers
      */
-    public function replace(array $headers = [])
+    public function replace(array $headers = array())
     {
-        $this->headers = [];
+        $this->headers = array();
         $this->add($headers);
     }
 
@@ -101,11 +101,11 @@ class HeaderBag implements \IteratorAggregate, \Countable
     /**
      * Returns a header value by name.
      *
-     * @param string      $key     The header name
-     * @param string|null $default The default value
-     * @param bool        $first   Whether to return the first value or all header values
+     * @param string $key     The header name
+     * @param mixed  $default The default value
+     * @param bool   $first   Whether to return the first value or all header values
      *
-     * @return string|string[]|null The first header value or default value if $first is true, an array of values otherwise
+     * @return string|array The first header value if $first is true, an array of values otherwise
      */
     public function get($key, $default = null, $first = true)
     {
@@ -114,14 +114,14 @@ class HeaderBag implements \IteratorAggregate, \Countable
 
         if (!array_key_exists($key, $headers)) {
             if (null === $default) {
-                return $first ? null : [];
+                return $first ? null : array();
             }
 
-            return $first ? $default : [$default];
+            return $first ? $default : array($default);
         }
 
         if ($first) {
-            return \count($headers[$key]) ? $headers[$key][0] : $default;
+            return count($headers[$key]) ? $headers[$key][0] : $default;
         }
 
         return $headers[$key];
@@ -130,32 +130,24 @@ class HeaderBag implements \IteratorAggregate, \Countable
     /**
      * Sets a header by name.
      *
-     * @param string          $key     The key
-     * @param string|string[] $values  The value or an array of values
-     * @param bool            $replace Whether to replace the actual value or not (true by default)
+     * @param string       $key     The key
+     * @param string|array $values  The value or an array of values
+     * @param bool         $replace Whether to replace the actual value or not (true by default)
      */
     public function set($key, $values, $replace = true)
     {
         $key = str_replace('_', '-', strtolower($key));
 
-        if (\is_array($values)) {
-            $values = array_values($values);
+        $values = array_values((array) $values);
 
-            if (true === $replace || !isset($this->headers[$key])) {
-                $this->headers[$key] = $values;
-            } else {
-                $this->headers[$key] = array_merge($this->headers[$key], $values);
-            }
+        if (true === $replace || !isset($this->headers[$key])) {
+            $this->headers[$key] = $values;
         } else {
-            if (true === $replace || !isset($this->headers[$key])) {
-                $this->headers[$key] = [$values];
-            } else {
-                $this->headers[$key][] = $values;
-            }
+            $this->headers[$key] = array_merge($this->headers[$key], $values);
         }
 
         if ('cache-control' === $key) {
-            $this->cacheControl = $this->parseCacheControl(implode(', ', $this->headers[$key]));
+            $this->cacheControl = $this->parseCacheControl($values[0]);
         }
     }
 
@@ -181,7 +173,7 @@ class HeaderBag implements \IteratorAggregate, \Countable
      */
     public function contains($key, $value)
     {
-        return \in_array($value, $this->get($key, null, false));
+        return in_array($value, $this->get($key, null, false));
     }
 
     /**
@@ -196,7 +188,7 @@ class HeaderBag implements \IteratorAggregate, \Countable
         unset($this->headers[$key]);
 
         if ('cache-control' === $key) {
-            $this->cacheControl = [];
+            $this->cacheControl = array();
         }
     }
 
@@ -206,7 +198,7 @@ class HeaderBag implements \IteratorAggregate, \Countable
      * @param string    $key     The parameter key
      * @param \DateTime $default The default value
      *
-     * @return \DateTime|null The parsed DateTime or the default value if the header does not exist
+     * @return null|\DateTime The parsed DateTime or the default value if the header does not exist
      *
      * @throws \RuntimeException When the HTTP header is not parseable
      */
@@ -289,14 +281,26 @@ class HeaderBag implements \IteratorAggregate, \Countable
      */
     public function count()
     {
-        return \count($this->headers);
+        return count($this->headers);
     }
 
     protected function getCacheControlHeader()
     {
+        $parts = array();
         ksort($this->cacheControl);
+        foreach ($this->cacheControl as $key => $value) {
+            if (true === $value) {
+                $parts[] = $key;
+            } else {
+                if (preg_match('#[^a-zA-Z0-9._-]#', $value)) {
+                    $value = '"'.$value.'"';
+                }
 
-        return HeaderUtils::toString($this->cacheControl, ',');
+                $parts[] = "$key=$value";
+            }
+        }
+
+        return implode(', ', $parts);
     }
 
     /**
@@ -308,8 +312,12 @@ class HeaderBag implements \IteratorAggregate, \Countable
      */
     protected function parseCacheControl($header)
     {
-        $parts = HeaderUtils::split($header, ',=');
+        $cacheControl = array();
+        preg_match_all('#([a-zA-Z][a-zA-Z_-]*)\s*(?:=(?:"([^"]*)"|([^ \t",;]*)))?#', $header, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
+            $cacheControl[strtolower($match[1])] = isset($match[3]) ? $match[3] : (isset($match[2]) ? $match[2] : true);
+        }
 
-        return HeaderUtils::combine($parts);
+        return $cacheControl;
     }
 }

@@ -34,7 +34,7 @@ class Question
      * @param string $question The question to ask to the user
      * @param mixed  $default  The default answer to return if the user enters nothing
      */
-    public function __construct(string $question, $default = null)
+    public function __construct($question, $default = null)
     {
         $this->question = $question;
         $this->default = $default;
@@ -117,7 +117,7 @@ class Question
     /**
      * Gets values for the autocompleter.
      *
-     * @return iterable|null
+     * @return null|array|\Traversable
      */
     public function getAutocompleterValues()
     {
@@ -127,7 +127,7 @@ class Question
     /**
      * Sets values for the autocompleter.
      *
-     * @param iterable|null $values
+     * @param null|array|\Traversable $values
      *
      * @return $this
      *
@@ -136,12 +136,14 @@ class Question
      */
     public function setAutocompleterValues($values)
     {
-        if (\is_array($values)) {
+        if (is_array($values)) {
             $values = $this->isAssoc($values) ? array_merge(array_keys($values), array_values($values)) : array_values($values);
         }
 
-        if (null !== $values && !\is_array($values) && !$values instanceof \Traversable) {
-            throw new InvalidArgumentException('Autocompleter values can be either an array, "null" or a "Traversable" object.');
+        if (null !== $values && !is_array($values)) {
+            if (!$values instanceof \Traversable || !$values instanceof \Countable) {
+                throw new InvalidArgumentException('Autocompleter values can be either an array, `null` or an object implementing both `Countable` and `Traversable` interfaces.');
+            }
         }
 
         if ($this->hidden) {
@@ -156,7 +158,7 @@ class Question
     /**
      * Sets a validator for the question.
      *
-     * @param callable|null $validator
+     * @param null|callable $validator
      *
      * @return $this
      */
@@ -170,7 +172,7 @@ class Question
     /**
      * Gets the validator for the question.
      *
-     * @return callable|null
+     * @return null|callable
      */
     public function getValidator()
     {
@@ -182,7 +184,7 @@ class Question
      *
      * Null means an unlimited number of attempts.
      *
-     * @param int|null $attempts
+     * @param null|int $attempts
      *
      * @return $this
      *
@@ -204,7 +206,7 @@ class Question
      *
      * Null means an unlimited number of attempts.
      *
-     * @return int|null
+     * @return null|int
      */
     public function getMaxAttempts()
     {
@@ -241,6 +243,6 @@ class Question
 
     protected function isAssoc($array)
     {
-        return (bool) \count(array_filter(array_keys($array), 'is_string'));
+        return (bool) count(array_filter(array_keys($array), 'is_string'));
     }
 }

@@ -43,14 +43,12 @@ class SqlServerConnector extends Connector implements ConnectorInterface
         // First we will create the basic DSN setup as well as the port if it is in
         // in the configuration options. This will give us the basic DSN we will
         // need to establish the PDO connections and return them back for use.
-        if ($this->prefersOdbc($config)) {
-            return $this->getOdbcDsn($config);
-        }
-
-        if (in_array('sqlsrv', $this->getAvailableDrivers())) {
-            return $this->getSqlSrvDsn($config);
-        } else {
+        if (in_array('dblib', $this->getAvailableDrivers())) {
             return $this->getDblibDsn($config);
+        } elseif ($this->prefersOdbc($config)) {
+            return $this->getOdbcDsn($config);
+        } else {
+            return $this->getSqlSrvDsn($config);
         }
     }
 
@@ -77,7 +75,7 @@ class SqlServerConnector extends Connector implements ConnectorInterface
         return $this->buildConnectString('dblib', array_merge([
             'host' => $this->buildHostString($config, ':'),
             'dbname' => $config['database'],
-        ], Arr::only($config, ['appname', 'charset', 'version'])));
+        ], Arr::only($config, ['appname', 'charset'])));
     }
 
     /**
@@ -134,10 +132,6 @@ class SqlServerConnector extends Connector implements ConnectorInterface
 
         if (isset($config['transaction_isolation'])) {
             $arguments['TransactionIsolation'] = $config['transaction_isolation'];
-        }
-
-        if (isset($config['multi_subnet_failover'])) {
-            $arguments['MultiSubnetFailover'] = $config['multi_subnet_failover'];
         }
 
         return $this->buildConnectString('sqlsrv', $arguments);

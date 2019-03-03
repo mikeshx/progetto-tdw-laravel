@@ -20,13 +20,15 @@ class ParameterBag implements \IteratorAggregate, \Countable
 {
     /**
      * Parameter storage.
+     *
+     * @var array
      */
     protected $parameters;
 
     /**
      * @param array $parameters An array of parameters
      */
-    public function __construct(array $parameters = [])
+    public function __construct(array $parameters = array())
     {
         $this->parameters = $parameters;
     }
@@ -56,7 +58,7 @@ class ParameterBag implements \IteratorAggregate, \Countable
      *
      * @param array $parameters An array of parameters
      */
-    public function replace(array $parameters = [])
+    public function replace(array $parameters = array())
     {
         $this->parameters = $parameters;
     }
@@ -66,7 +68,7 @@ class ParameterBag implements \IteratorAggregate, \Countable
      *
      * @param array $parameters An array of parameters
      */
-    public function add(array $parameters = [])
+    public function add(array $parameters = array())
     {
         $this->parameters = array_replace($this->parameters, $parameters);
     }
@@ -154,7 +156,7 @@ class ParameterBag implements \IteratorAggregate, \Countable
     public function getDigits($key, $default = '')
     {
         // we need to remove - and + because they're allowed in the filter
-        return str_replace(['-', '+'], '', $this->filter($key, $default, FILTER_SANITIZE_NUMBER_INT));
+        return str_replace(array('-', '+'), '', $this->filter($key, $default, FILTER_SANITIZE_NUMBER_INT));
     }
 
     /**
@@ -174,7 +176,7 @@ class ParameterBag implements \IteratorAggregate, \Countable
      * Returns the parameter value converted to boolean.
      *
      * @param string $key     The parameter key
-     * @param bool   $default The default value if the parameter key does not exist
+     * @param mixed  $default The default value if the parameter key does not exist
      *
      * @return bool The filtered value
      */
@@ -195,17 +197,17 @@ class ParameterBag implements \IteratorAggregate, \Countable
      *
      * @return mixed
      */
-    public function filter($key, $default = null, $filter = FILTER_DEFAULT, $options = [])
+    public function filter($key, $default = null, $filter = FILTER_DEFAULT, $options = array())
     {
         $value = $this->get($key, $default);
 
         // Always turn $options into an array - this allows filter_var option shortcuts.
-        if (!\is_array($options) && $options) {
-            $options = ['flags' => $options];
+        if (!is_array($options) && $options) {
+            $options = array('flags' => $options);
         }
 
         // Add a convenience check for arrays.
-        if (\is_array($value) && !isset($options['flags'])) {
+        if (is_array($value) && !isset($options['flags'])) {
             $options['flags'] = FILTER_REQUIRE_ARRAY;
         }
 
@@ -229,6 +231,6 @@ class ParameterBag implements \IteratorAggregate, \Countable
      */
     public function count()
     {
-        return \count($this->parameters);
+        return count($this->parameters);
     }
 }

@@ -2,10 +2,7 @@
 
 namespace Illuminate\Queue\Jobs;
 
-use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\InteractsWithTime;
-use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Queue\ManuallyFailedException;
 
 abstract class Job
 {
@@ -59,13 +56,6 @@ abstract class Job
     protected $queue;
 
     /**
-     * Get the job identifier.
-     *
-     * @return string
-     */
-    abstract public function getJobId();
-
-    /**
      * Get the raw body of the job.
      *
      * @return string
@@ -81,7 +71,7 @@ abstract class Job
     {
         $payload = $this->payload();
 
-        [$class, $method] = JobName::parse($payload['job']);
+        list($class, $method) = JobName::parse($payload['job']);
 
         ($this->instance = $this->resolve($class))->{$method}($this, $payload['data']);
     }
@@ -158,44 +148,18 @@ abstract class Job
     }
 
     /**
-     * Delete the job, call the "failed" method, and raise the failed job event.
+     * Process an exception that caused the job to fail.
      *
-     * @param  \Throwable|null $e
+     * @param  \Exception  $e
      * @return void
      */
-    public function fail($e = null)
+    public function failed($e)
     {
         $this->markAsFailed();
 
-        if ($this->isDeleted()) {
-            return;
-        }
-
-        try {
-            // If the job has failed, we will delete it, call the "failed" method and then call
-            // an event indicating the job has failed so it can be logged if needed. This is
-            // to allow every developer to better keep monitor of their failed queue jobs.
-            $this->delete();
-
-            $this->failed($e);
-        } finally {
-            $this->resolve(Dispatcher::class)->dispatch(new JobFailed(
-                $this->connectionName, $this, $e ?: new ManuallyFailedException
-            ));
-        }
-    }
-
-    /**
-     * Process an exception that caused the job to fail.
-     *
-     * @param  \Throwable|null $e
-     * @return void
-     */
-    protected function failed($e)
-    {
         $payload = $this->payload();
 
-        [$class, $method] = JobName::parse($payload['job']);
+        list($class, $method) = JobName::parse($payload['job']);
 
         if (method_exists($this->instance = $this->resolve($class), 'failed')) {
             $this->instance->failed($payload['data'], $e);

@@ -3,7 +3,6 @@
 namespace Illuminate\Support;
 
 use Illuminate\Console\Application as Artisan;
-use Illuminate\Contracts\Support\DeferrableProvider;
 
 abstract class ServiceProvider
 {
@@ -16,8 +15,6 @@ abstract class ServiceProvider
 
     /**
      * Indicates if loading of the provider is deferred.
-     *
-     * @deprecated Implement the \Illuminate\Contracts\Support\DeferrableProvider interface instead. Will be removed in Laravel 5.9.
      *
      * @var bool
      */
@@ -46,16 +43,6 @@ abstract class ServiceProvider
     public function __construct($app)
     {
         $this->app = $app;
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 
     /**
@@ -88,18 +75,14 @@ abstract class ServiceProvider
     /**
      * Register a view file namespace.
      *
-     * @param  string|array  $path
+     * @param  string  $path
      * @param  string  $namespace
      * @return void
      */
     protected function loadViewsFrom($path, $namespace)
     {
-        if (is_array($this->app->config['view']['paths'])) {
-            foreach ($this->app->config['view']['paths'] as $viewPath) {
-                if (is_dir($appPath = $viewPath.'/vendor/'.$namespace)) {
-                    $this->app['view']->addNamespace($namespace, $appPath);
-                }
-            }
+        if (is_dir($appPath = $this->app->resourcePath().'/views/vendor/'.$namespace)) {
+            $this->app['view']->addNamespace($namespace, $appPath);
         }
 
         $this->app['view']->addNamespace($namespace, $path);
@@ -147,19 +130,17 @@ abstract class ServiceProvider
      * Register paths to be published by the publish command.
      *
      * @param  array  $paths
-     * @param  mixed  $groups
+     * @param  string  $group
      * @return void
      */
-    protected function publishes(array $paths, $groups = null)
+    protected function publishes(array $paths, $group = null)
     {
         $this->ensurePublishArrayInitialized($class = static::class);
 
         static::$publishes[$class] = array_merge(static::$publishes[$class], $paths);
 
-        if (! is_null($groups)) {
-            foreach ((array) $groups as $group) {
-                $this->addPublishGroup($group, $paths);
-            }
+        if ($group) {
+            $this->addPublishGroup($group, $paths);
         }
     }
 
@@ -310,6 +291,6 @@ abstract class ServiceProvider
      */
     public function isDeferred()
     {
-        return $this->defer || $this instanceof DeferrableProvider;
+        return $this->defer;
     }
 }

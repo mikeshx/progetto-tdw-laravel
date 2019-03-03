@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * This file is part of PHPUnit.
  *
@@ -20,19 +20,24 @@ use SebastianBergmann\Comparator\ComparisonFailure;
  */
 class ExpectationFailedException extends AssertionFailedError
 {
-    /**
-     * @var ComparisonFailure
-     */
     protected $comparisonFailure;
 
-    public function __construct(string $message, ComparisonFailure $comparisonFailure = null, \Exception $previous = null)
+    /**
+     * @param string                 $message
+     * @param ComparisonFailure|null $comparisonFailure
+     * @param \Exception|null        $previous
+     */
+    public function __construct($message, ComparisonFailure $comparisonFailure = null, \Exception $previous = null)
     {
         $this->comparisonFailure = $comparisonFailure;
 
         parent::__construct($message, 0, $previous);
     }
 
-    public function getComparisonFailure(): ?ComparisonFailure
+    /**
+     * @return null|ComparisonFailure
+     */
+    public function getComparisonFailure()
     {
         return $this->comparisonFailure;
     }

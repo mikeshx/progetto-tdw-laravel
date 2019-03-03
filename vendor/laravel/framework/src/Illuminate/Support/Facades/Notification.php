@@ -7,11 +7,6 @@ use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Testing\Fakes\NotificationFake;
 
 /**
- * @method static void send(\Illuminate\Support\Collection|array|mixed $notifiables, $notification)
- * @method static void sendNow(\Illuminate\Support\Collection|array|mixed $notifiables, $notification)
- * @method static mixed channel(string|null $name = null)
- * @method static \Illuminate\Notifications\ChannelManager locale(string|null $locale)
- *
  * @see \Illuminate\Notifications\ChannelManager
  */
 class Notification extends Facade
@@ -19,13 +14,11 @@ class Notification extends Facade
     /**
      * Replace the bound instance with a fake.
      *
-     * @return \Illuminate\Support\Testing\Fakes\NotificationFake
+     * @return void
      */
     public static function fake()
     {
-        static::swap($fake = new NotificationFake);
-
-        return $fake;
+        static::swap(new NotificationFake);
     }
 
     /**

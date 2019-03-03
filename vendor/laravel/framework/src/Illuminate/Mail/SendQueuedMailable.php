@@ -10,7 +10,7 @@ class SendQueuedMailable
     /**
      * The mailable message instance.
      *
-     * @var \Illuminate\Contracts\Mail\Mailable
+     * @var Mailable
      */
     public $mailable;
 
@@ -60,19 +60,6 @@ class SendQueuedMailable
     public function displayName()
     {
         return get_class($this->mailable);
-    }
-
-    /**
-     * Call the failed method on the mailable instance.
-     *
-     * @param  \Exception  $e
-     * @return void
-     */
-    public function failed($e)
-    {
-        if (method_exists($this->mailable, 'failed')) {
-            $this->mailable->failed($e);
-        }
     }
 
     /**

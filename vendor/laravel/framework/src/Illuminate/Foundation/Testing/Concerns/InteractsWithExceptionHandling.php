@@ -13,7 +13,7 @@ trait InteractsWithExceptionHandling
     /**
      * The original exception handler.
      *
-     * @var \Illuminate\Contracts\Debug\ExceptionHandler|null
+     * @var ExceptionHandler|null
      */
     protected $originalExceptionHandler;
 
@@ -71,7 +71,7 @@ trait InteractsWithExceptionHandling
             /**
              * Create a new class instance.
              *
-             * @param  \Illuminate\Contracts\Debug\ExceptionHandler  $originalHandler
+             * @param \Illuminate\Contracts\Debug\ExceptionHandler
              * @param  array  $except
              * @return void
              */
@@ -90,17 +90,6 @@ trait InteractsWithExceptionHandling
             public function report(Exception $e)
             {
                 //
-            }
-
-            /**
-             * Determine if the exception should be reported.
-             *
-             * @param  \Exception  $e
-             * @return bool
-             */
-            public function shouldReport(Exception $e)
-            {
-                return false;
             }
 
             /**
@@ -132,7 +121,7 @@ trait InteractsWithExceptionHandling
             /**
              * Render the exception for the console.
              *
-             * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+             * @param  \Symfony\Component\Console\Output\OutputInterface
              * @param  \Exception  $e
              * @return void
              */
