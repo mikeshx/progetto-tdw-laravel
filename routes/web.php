@@ -72,7 +72,7 @@ Route::post('removeProduct', 'Publics\\CartController@removeProduct');
 
 
 /* Administration Routes */
-Route::middleware(['auth'])->group(function () { // check for auth
+Route::middleware(['auth'])->group(function () { // check for autherization
     Route::get('admin', 'Admin\\DashboardController@index');
     Route::get('{locale}/admin', 'Admin\\DashboardController@index')
             ->where('locale', implode('|', Config::get('app.locales')));
@@ -165,13 +165,13 @@ Route::get('password/reset/{token}', [
     'uses' => 'Auth\ResetPasswordController@showResetForm'
 ]);
 
-// registration routes
-Route::get('/register', [
+/* Registration Routes. We dont need it
+Route::get('register', [
     'as' => 'register',
     'uses' => 'Auth\RegisterController@showRegistrationForm'
-
 ]);
 Route::post('register', [
     'as' => '',
     'uses' => 'Auth\RegisterController@register'
 ]);
+*/
