@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Mar 06, 2019 alle 11:49
--- Versione del server: 10.1.34-MariaDB
--- Versione PHP: 7.2.8
+-- Host: localhost
+-- Generation Time: Mar 13, 2019 at 02:05 PM
+-- Server version: 10.3.12-MariaDB
+-- PHP Version: 7.2.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,19 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `carousel`
+-- Table structure for table `carousel`
 --
 
 CREATE TABLE `carousel` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `carousel_translations`
+-- Table structure for table `carousel_translations`
 --
 
 CREATE TABLE `carousel_translations` (
@@ -50,7 +50,7 @@ CREATE TABLE `carousel_translations` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -61,7 +61,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `parent`, `position`, `url`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `categories` (`id`, `parent`, `position`, `url`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `categories_translations`
+-- Table structure for table `categories_translations`
 --
 
 CREATE TABLE `categories_translations` (
@@ -81,7 +81,7 @@ CREATE TABLE `categories_translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `categories_translations`
+-- Dumping data for table `categories_translations`
 --
 
 INSERT INTO `categories_translations` (`id`, `for_id`, `name`, `locale`) VALUES
@@ -91,133 +91,84 @@ INSERT INTO `categories_translations` (`id`, `for_id`, `name`, `locale`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `company_descriptions`
---
-
-CREATE TABLE `company_descriptions` (
-  `id` int(11) NOT NULL,
-  `text` varchar(3600) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `contacts`
---
-
-CREATE TABLE `contacts` (
-  `id` int(11) NOT NULL,
-  `phone_number` int(11) NOT NULL,
-  `address` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `coupon`
+-- Table structure for table `coupon`
 --
 
 CREATE TABLE `coupon` (
-  `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `value` int(11) NOT NULL,
-  `all_products` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_coupon` int(11) NOT NULL,
+  `id_prodotto` int(11) NOT NULL,
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `expeditions`
---
-
-CREATE TABLE `expeditions` (
-  `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `date` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `fast_orders`
+-- Table structure for table `fast_orders`
 --
 
 CREATE TABLE `fast_orders` (
   `id` int(11) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `names` varchar(100) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` tinyint(4) NOT NULL DEFAULT '0'
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `favorites`
+-- Table structure for table `img_prodotto`
 --
 
-CREATE TABLE `favorites` (
-  `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `img_product`
---
-
-CREATE TABLE `img_product` (
+CREATE TABLE `img_prodotto` (
   `id_img_prodotto` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
+  `id_prodotto` int(11) NOT NULL,
   `directory` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `img_user`
+-- Table structure for table `img_utente`
 --
 
-CREATE TABLE `img_user` (
-  `id_img_user` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+CREATE TABLE `img_utente` (
+  `id_img_utente` int(11) NOT NULL,
+  `id_utente` int(11) NOT NULL,
   `directory` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `newsletters`
+-- Table structure for table `newsletter`
 --
 
-CREATE TABLE `newsletters` (
-  `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `text` varchar(3600) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `newsletter` (
+  `id_newsletter` int(11) NOT NULL,
+  `id_utente` int(11) NOT NULL,
+  `content` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(30) NOT NULL,
   `products` varchar(255) NOT NULL COMMENT 'serialized array',
-  `status` tinyint(4) NOT NULL DEFAULT '0'
+  `status` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `orders_clients`
+-- Table structure for table `orders_clients`
 --
 
 CREATE TABLE `orders_clients` (
@@ -236,40 +187,39 @@ CREATE TABLE `orders_clients` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `producers`
+-- Table structure for table `preferiti`
 --
 
-CREATE TABLE `producers` (
-  `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `brewery` varchar(600) NOT NULL,
-  `address` varchar(600) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `preferiti` (
+  `id_preferiti` int(11) NOT NULL,
+  `id_prodotto` int(11) NOT NULL,
+  `id_utente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `folder` int(10) UNSIGNED NOT NULL COMMENT 'product_id is name of folder',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `category_id` int(10) UNSIGNED NOT NULL COMMENT 'category id',
-  `quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `quantity` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `url` varchar(255) NOT NULL,
   `link_to` varchar(255) DEFAULT NULL,
   `order_position` int(10) UNSIGNED NOT NULL,
-  `procurements` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `procurements` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `tags` varchar(255) NOT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT '0'
+  `hidden` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `category_id`, `quantity`, `url`, `link_to`, `order_position`, `procurements`, `tags`, `hidden`) VALUES
@@ -278,7 +228,7 @@ INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `ca
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `products_translations`
+-- Table structure for table `products_translations`
 --
 
 CREATE TABLE `products_translations` (
@@ -291,7 +241,7 @@ CREATE TABLE `products_translations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `products_translations`
+-- Dumping data for table `products_translations`
 --
 
 INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `price`, `locale`) VALUES
@@ -301,68 +251,42 @@ INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `pri
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `refunds`
+-- Table structure for table `recapiti`
 --
 
-CREATE TABLE `refunds` (
-  `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `approved` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `recapiti` (
+  `nome` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `reviews`
+-- Table structure for table `rimborsi`
 --
 
-CREATE TABLE `reviews` (
-  `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `text` varchar(1200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `rimborsi` (
+  `id_rimborso` int(11) NOT NULL,
+  `id_prodotto` int(11) NOT NULL,
+  `id_utente` int(11) NOT NULL,
+  `approvato` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `social_contacts`
---
-
-CREATE TABLE `social_contacts` (
-  `id` int(11) NOT NULL,
-  `social_link` varchar(600) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `support_request`
---
-
-CREATE TABLE `support_request` (
-  `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `text` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE `tag` (
-  `id` int(11) NOT NULL,
+  `id_tag` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `tag_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -370,415 +294,198 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `remember_token` varchar(255) DEFAULT NULL
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `remember_token` varchar(255) DEFAULT NULL,
+  `isAdmin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`) VALUES
-(1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'AnngQeu6oJRkxuAb7AWQoFN1YynleRrYePP8WMjUgYkDgLE7EanPmNjPXM8i'),
-(2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `user_address`
---
-
-CREATE TABLE `user_address` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `address` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
+(1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'brDBgCEFcZ3BDzAall8LxmHOV41HX4H4ZzC4KTnHIJ6qR5Z7z5ECKIfUWeoC', 0),
+(2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 0),
+(3, 'ff', 'fff@f.f', '$2y$10$CD/daBpKDfFqQILzzxkpxeIXDvHe0xtJnpVIr67uHMpSf3LLNrCxK', '2019-03-13 13:04:30', '2019-03-13 13:04:30', NULL, NULL);
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `carousel`
+-- Indexes for table `carousel`
 --
 ALTER TABLE `carousel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `carousel_translations`
+-- Indexes for table `carousel_translations`
 --
 ALTER TABLE `carousel_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `url` (`url`);
 
 --
--- Indici per le tabelle `categories_translations`
+-- Indexes for table `categories_translations`
 --
 ALTER TABLE `categories_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `company_descriptions`
---
-ALTER TABLE `company_descriptions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `contacts`
---
-ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `coupon`
---
-ALTER TABLE `coupon`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`);
-
---
--- Indici per le tabelle `expeditions`
---
-ALTER TABLE `expeditions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indici per le tabelle `fast_orders`
+-- Indexes for table `fast_orders`
 --
 ALTER TABLE `fast_orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `favorites`
+-- Indexes for table `img_utente`
 --
-ALTER TABLE `favorites`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`),
-  ADD KEY `id_user` (`id_user`);
+ALTER TABLE `img_utente`
+  ADD PRIMARY KEY (`id_img_utente`);
 
 --
--- Indici per le tabelle `img_product`
---
-ALTER TABLE `img_product`
-  ADD KEY `id_product` (`id_product`);
-
---
--- Indici per le tabelle `img_user`
---
-ALTER TABLE `img_user`
-  ADD PRIMARY KEY (`id_img_user`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indici per le tabelle `newsletters`
---
-ALTER TABLE `newsletters`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `order_id` (`order_id`);
 
 --
--- Indici per le tabelle `orders_clients`
+-- Indexes for table `orders_clients`
 --
 ALTER TABLE `orders_clients`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `producers`
+-- Indexes for table `preferiti`
 --
-ALTER TABLE `producers`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`);
+ALTER TABLE `preferiti`
+  ADD PRIMARY KEY (`id_preferiti`);
 
 --
--- Indici per le tabelle `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `products_translations`
+-- Indexes for table `products_translations`
 --
 ALTER TABLE `products_translations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `refunds`
+-- Indexes for table `rimborsi`
 --
-ALTER TABLE `refunds`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`),
-  ADD KEY `id_user` (`id_user`);
+ALTER TABLE `rimborsi`
+  ADD PRIMARY KEY (`id_rimborso`);
 
 --
--- Indici per le tabelle `reviews`
---
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indici per le tabelle `social_contacts`
---
-ALTER TABLE `social_contacts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `support_request`
---
-ALTER TABLE `support_request`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `tag`
+-- Indexes for table `tag`
 --
 ALTER TABLE `tag`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`);
+  ADD PRIMARY KEY (`id_tag`);
 
 --
--- Indici per le tabelle `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `user_address`
---
-ALTER TABLE `user_address`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `carousel`
+-- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `carousel_translations`
+-- AUTO_INCREMENT for table `carousel_translations`
 --
 ALTER TABLE `carousel_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT per la tabella `categories_translations`
+-- AUTO_INCREMENT for table `categories_translations`
 --
 ALTER TABLE `categories_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT per la tabella `company_descriptions`
---
-ALTER TABLE `company_descriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `contacts`
---
-ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `coupon`
---
-ALTER TABLE `coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `expeditions`
---
-ALTER TABLE `expeditions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `fast_orders`
+-- AUTO_INCREMENT for table `fast_orders`
 --
 ALTER TABLE `fast_orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `favorites`
+-- AUTO_INCREMENT for table `img_utente`
 --
-ALTER TABLE `favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `img_utente`
+  MODIFY `id_img_utente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `img_user`
---
-ALTER TABLE `img_user`
-  MODIFY `id_img_user` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `newsletters`
---
-ALTER TABLE `newsletters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `orders_clients`
+-- AUTO_INCREMENT for table `orders_clients`
 --
 ALTER TABLE `orders_clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `producers`
+-- AUTO_INCREMENT for table `preferiti`
 --
-ALTER TABLE `producers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `preferiti`
+  MODIFY `id_preferiti` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT per la tabella `products_translations`
+-- AUTO_INCREMENT for table `products_translations`
 --
 ALTER TABLE `products_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT per la tabella `refunds`
+-- AUTO_INCREMENT for table `rimborsi`
 --
-ALTER TABLE `refunds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `rimborsi`
+  MODIFY `id_rimborso` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `reviews`
---
-ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `social_contacts`
---
-ALTER TABLE `social_contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `support_request`
---
-ALTER TABLE `support_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `tag`
+-- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tag` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT per la tabella `user_address`
---
-ALTER TABLE `user_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Limiti per le tabelle scaricate
---
-
---
--- Limiti per la tabella `coupon`
---
-ALTER TABLE `coupon`
-  ADD CONSTRAINT `coupon_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
-
---
--- Limiti per la tabella `expeditions`
---
-ALTER TABLE `expeditions`
-  ADD CONSTRAINT `expeditions_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `expeditions_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Limiti per la tabella `favorites`
---
-ALTER TABLE `favorites`
-  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Limiti per la tabella `img_product`
---
-ALTER TABLE `img_product`
-  ADD CONSTRAINT `img_product_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
-
---
--- Limiti per la tabella `img_user`
---
-ALTER TABLE `img_user`
-  ADD CONSTRAINT `img_user_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Limiti per la tabella `producers`
---
-ALTER TABLE `producers`
-  ADD CONSTRAINT `producers_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
-
---
--- Limiti per la tabella `refunds`
---
-ALTER TABLE `refunds`
-  ADD CONSTRAINT `refunds_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `refunds_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Limiti per la tabella `reviews`
---
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Limiti per la tabella `tag`
---
-ALTER TABLE `tag`
-  ADD CONSTRAINT `tag_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
-
---
--- Limiti per la tabella `user_address`
---
-ALTER TABLE `user_address`
-  ADD CONSTRAINT `user_address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

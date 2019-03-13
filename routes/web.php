@@ -32,17 +32,6 @@ Route::get('category/{category}', 'Publics\\ProductsController@index')->where('c
 Route::get('{locale}/category/{category}', 'Publics\\ProductsController@index')
         ->where('locale', implode('|', Config::get('app.locales')))->where('category', '(.*)');
 
-
-// checkout please
-Route::get('checkout', 'Publics\\CheckoutController@index');
-Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
-        ->where('locale', implode('|', Config::get('app.locales')));
-
-// checkout post req
-Route::post('checkout', 'Publics\\CheckoutController@setOrder');
-Route::post('{locale}/checkout', 'Publics\\CheckoutController@setOrder')
-        ->where('locale', implode('|', Config::get('app.locales')));
-
 // open contacts
 Route::get('contacts', 'Publics\\ContactsController@index');
 Route::get('{locale}/contacts', 'Publics\\ContactsController@index')
@@ -58,6 +47,19 @@ Route::post('fast-order', 'Publics\\CheckoutController@setFastOrder');
 Route::post('{locale}/fast-order', 'Publics\\CheckoutController@setFastOrder')
         ->where('locale', implode('|', Config::get('app.locales')));
 
+
+/* Logged user routes */
+Route::middleware(['auth'])->group(function () {
+// checkout please
+Route::get('checkout', 'Publics\\CheckoutController@index');
+Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
+                ->where('locale', implode('|', Config::get('app.locales')));
+
+// checkout post req
+Route::post('checkout', 'Publics\\CheckoutController@setOrder');
+Route::post('{locale}/checkout', 'Publics\\CheckoutController@setOrder')
+                ->where('locale', implode('|', Config::get('app.locales')));
+
 // add product to cart from add button (ajax)
 Route::post('addProduct', 'Publics\\CartController@addProduct');
 // get products and cart html
@@ -68,8 +70,8 @@ Route::post('removeProductQuantity', 'Publics\\CartController@removeProductQuant
 Route::post('getProductsForCheckoutPage', 'Publics\\CartController@getProductsForCheckoutPage');
 // remove product from cart
 Route::post('removeProduct', 'Publics\\CartController@removeProduct');
-
-
+});
+/* end logged user routes */
 
 /* Administration Routes */
 Route::middleware(['Admin'])->group(function () { // check for admin auth
@@ -165,7 +167,6 @@ Route::get('password/reset/{token}', [
     'uses' => 'Auth\ResetPasswordController@showResetForm'
 ]);
 
-/* Registration Routes. We dont need it
 Route::get('register', [
     'as' => 'register',
     'uses' => 'Auth\RegisterController@showRegistrationForm'
@@ -174,4 +175,3 @@ Route::post('register', [
     'as' => '',
     'uses' => 'Auth\RegisterController@register'
 ]);
-*/
