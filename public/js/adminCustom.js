@@ -124,3 +124,8 @@ function updateUser() {
         document.getElementById("formManageUsers").submit();
     }
 }
+
+
+function updateExpedition() {
+    document.getElementById("formManageExpeditions").submit();
+}
