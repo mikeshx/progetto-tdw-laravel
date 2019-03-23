@@ -52,7 +52,7 @@ class ExpeditionsController extends Controller
         if (isset($request->userId) && (int) $request->userId > 0) {
             $expeditionModel = new ExpeditionsModel();
             $expeditionModel->deleteExpedition($request->userId);
-            return redirect(lang_url('admin/users'))->with(['msg' => Lang::get('admin_pages.expedition_is_deleted'), 'result' => true]);
+            return redirect(lang_url('admin/expeditions'))->with(['msg' => Lang::get('admin_pages.expedition_is_deleted'), 'result' => true]);
         } else {
             abort(404);
         }
