@@ -134,7 +134,7 @@ CREATE TABLE `expeditions` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
-  `date` int(11) NOT NULL
+  `date` timestamp NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

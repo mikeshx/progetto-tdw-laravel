@@ -112,5 +112,17 @@ return [
     'viewed_mark' => 'Mark as viewed',
     'are_u_sure_mark_fOrd' => 'Are you sure want to mark as viewed?',
     'fast_order_marked' => 'The fast order is marked',
-    'category_name_taken' => 'The name of this category is taken'
+    'category_name_taken' => 'The name of this category is taken',
+
+    'expeditions' => 'Expeditions',
+    'add_expeditions' => 'Add Expeditions',
+    'date_expeditions' => 'Date',
+    'expeditions_settings' => 'Expeditions Settings',
+    'expedition_edit' => 'Expedition Edit',
+    'are_u_sure_delete_e' => 'Are you sure want to delete this expedition?',
+    'expedition_is_deleted' => 'Expedition delete!',
+    'expedition_is_updated' => 'Expedition is updated',
+    'expedition_is_added' => 'Expedition is added',
+    'user_id' => 'User id',
+    'product_id' => 'Product id'
 ];

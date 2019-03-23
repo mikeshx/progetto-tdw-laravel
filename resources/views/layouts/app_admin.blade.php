@@ -67,6 +67,12 @@
                                         <p>{{__('admin_pages.users')}}</p>
                                     </a> 
                                 </li>
+                                <li>
+                                    <a href="{{ lang_url('admin/expeditions') }}" class="btn waves-effect waves-light">
+                                        <i class="material-icons">shopping_basket</i>
+                                        <p>{{__('admin_pages.expeditions')}}</p>
+                                    </a>
+                                </li>
                                 <li class="bottom">
                                     <a href="https://github.com/kirilkirkov/Shopping-Cart-Solution-Laravel" target="_blank" class="btn waves-effect waves-light">
                                         <i class="material-icons">code</i>

@@ -136,6 +136,12 @@ Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::post('admin/removeGalleryImage', 'Admin\\PublishController@removeGalleryImage');
 //////////////
     Route::post('admin/changeOrderStatus', 'Admin\\OrdersController@changeStatus');
+////////////// Expedition
+    Route::get('admin/expeditions', 'Admin\\ExpeditionsController@index');
+    Route::get('admin/delete/expedition/{userId}', 'Admin\\ExpeditionsController@deleteExpedition')->where('locale', implode('|', Config::get('app.locales')));
+    Route::get('{locale}/admin/delete/expedition/{userId}', 'Admin\\ExpeditionsController@deleteExpedition');
+    Route::post('admin/expeditions', 'Admin\\ExpeditionsController@setExpedition')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/admin/expeditions', 'Admin\\ExpeditionsController@setExpedition');
 });
 
 // Authentication Routes...
