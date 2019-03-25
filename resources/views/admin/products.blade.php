@@ -5,7 +5,7 @@
     @php 
     if(!$products->isEmpty()) {
     @endphp
-    @foreach ($products as $product) 
+    @foreach ($products as  $product)
     <div class="col-md-4 col-lg-3"> 
         <div class="card card-cascade narrower hm-zoom"> 
             <div class="view overlay hm-white-slight">

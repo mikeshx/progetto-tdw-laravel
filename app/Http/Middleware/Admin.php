@@ -15,6 +15,7 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
+    
      public function handle($request, Closure $next)
      {
         if(Auth::check() && Auth::user()->isAdmin == 1){
@@ -22,5 +23,5 @@ class Admin
         }
 
         return redirect('/login')->with('error','You have not admin access');
-    }
+     }
 }
