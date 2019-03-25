@@ -56,6 +56,12 @@
                                     </a> 
                                 </li>
                                 <li>
+                                    <a href="{{ lang_url('admin/expeditions') }}" class="btn waves-effect waves-light">
+                                        <i class="material-icons">E</i>
+                                        <p>{{__('admin_pages.expeditions')}}</p>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{ lang_url('admin/carousel') }}" class="btn waves-effect waves-light">
                                         <i class="material-icons">view_carousel</i>
                                         <p>{{__('admin_pages.carousel')}}</p>
@@ -68,9 +74,9 @@
                                     </a> 
                                 </li>
                                 <li>
-                                    <a href="{{ lang_url('admin/expeditions') }}" class="btn waves-effect waves-light">
-                                        <i class="material-icons">shopping_basket</i>
-                                        <p>{{__('admin_pages.expeditions')}}</p>
+                                    <a href="{{ lang_url('admin/producers') }}" class="btn waves-effect waves-light">
+                                        <i class="material-icons">P</i>
+                                        <p>{{__('admin_pages.producer_page')}}</p>
                                     </a>
                                 </li>
                                 <li class="bottom">

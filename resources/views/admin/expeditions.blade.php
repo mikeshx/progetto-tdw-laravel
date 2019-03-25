@@ -7,9 +7,11 @@
                 <thead class="blue-grey lighten-4">
                 <tr>
                     <th>#</th>
-                    <th>{{__('admin_pages.user_name')}}</th>
-                    <th>{{__('admin_pages.product_name')}}</th>
+                    <th>{{__('admin_pages.order_number')}}</th>
                     <th>{{__('admin_pages.date_expeditions')}}</th>
+                    <th>{{__('admin_pages.city')}}</th>
+                    <th>{{__('admin_pages.address')}}</th>
+                    <th>{{__('admin_pages.post_code')}}</th>
                     <th class="text-right">
                         <button class="btn btn-sm btn-secondary waves-effect waves-light" data-toggle="modal" data-target="#modalAddEditExpeditions">
                             {{__('admin_pages.add_expeditions')}}
@@ -21,11 +23,12 @@
                 @foreach ($expeditions as $expedition)
                     <tr>
                         <th scope="row">{{$expedition->id}}</th>
-                        <td>{{$expedition->name}}</td>
-                        <td>{{$expedition->translate}}</td>
+                        <td>{{$expedition->order_id}}</td>
                         <td>{{$expedition->date}}</td>
+                        <td>{{$expedition->city}}</td>
+                        <td>{{$expedition->address}}</td>
+                        <td>{{$expedition->post_code}}</td>
                         <td class="text-right">
-                            <a href="?edit={{$expedition->id}}" class="btn btn-sm btn-secondary waves-effect waves-light">{{__('admin_pages.expedition_edit')}}</a>
                             <a href="{{lang_url('admin/delete/expedition/'.$expedition->id)}}" class="btn btn-sm btn-secondary waves-effect waves-light confirm" data-my-message="{{__('admin_pages.are_u_sure_delete_e')}}">{{__('admin_pages.delete_user')}}</a>
                         </td>
                     </tr>
@@ -48,14 +51,9 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="edit" value="{{isset($_GET['edit']) ? $_GET['edit'] : 0 }}">
                         <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" name="id_user" value="{{$expeditionInfo != null? $expeditionInfo->id_user : ''}}" id="defaultForm-name" class="form-control">
-                            <label for="defaultForm-name">{{__('admin_pages.user_id')}}</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" name="id_product" value="{{$expeditionInfo != null? $expeditionInfo->id_product : ''}}" id="defaultForm-product" class="form-control">
-                            <label for="defaultForm-name">{{__('admin_pages.product_id')}}</label>
+                            <i class="fa prefix grey-text"></i>
+                            <input type="text" name="id_order" value="{{$expeditionInfo != null? $expeditionInfo->id_order : ''}}" id="defaultForm-name" class="form-control">
+                            <label for="defaultForm-name">{{__('admin_pages.order_number')}}</label>
                         </div>
                     </form>
                 </div>

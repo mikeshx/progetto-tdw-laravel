@@ -4,32 +4,23 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Config;
 
 class ExpeditionsModel extends Model
 {
     private $defaultLang;
 
-    public function __construct()
-    {
-        $this->defaultLang = Config::get('app.defaultLocale');
-    }
-
     public function getExpeditions()
     {
-        $expeditions  = DB::table('expeditions')->select(DB::raw('expeditions.id, users.name, products_translations.name as translate, expeditions.date'))
-            ->join('users', 'users.id', '=', 'expeditions.id_user')
-            ->join('products', 'expeditions.id_product', '=', 'products.id')
-            ->join('products_translations', 'products.id', '=', 'products_translations.for_id')
-            ->where('products_translations.locale', $this->defaultLang)
+        $expeditions  = DB::table('expeditions')->select(DB::raw('expeditions.id as id, expeditions.date, orders_clients.address, orders_clients.city, orders.order_id, orders_clients.post_code'))
+            ->join('orders', 'expeditions.id_order', '=', 'orders.id')
+            ->join('orders_clients', 'orders.id', '=', 'orders_clients.for_order')
             ->paginate(10);
         return $expeditions;
     }
 
     public function setExpedition($post){
         DB::table('expeditions')->insert([
-            'id_user' => trim($post['id_user']),
-            'id_product' => trim($post['id_product']),
+            'id_order' => trim($post['id_order']),
             'date' => date('Y-m-d H:i:s', time())
         ]);
     }
@@ -44,8 +35,7 @@ class ExpeditionsModel extends Model
 
         $this->id = $post['edit'];
         $update = [
-            'id_user' => trim($post['id_user']),
-            'id_product' => trim($post['id_product']),
+            'id_order' => trim($post['id_order']),
             'date' => date('Y-m-d H:i:s', time())
         ];
 

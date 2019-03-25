@@ -124,5 +124,16 @@ return [
     'expedition_is_updated' => 'Expedition is updated',
     'expedition_is_added' => 'Expedition is added',
     'user_id' => 'User id',
-    'product_id' => 'Product id'
+    'product_id' => 'Product id',
+    'address_expeditions' => 'Address',
+    'order_number' => 'Order Number',
+    'producer_page' => 'Producer',
+    'producer_is_updated' => 'Producer is updated',
+    'producer_is_added' => 'Producer is added',
+    'producer_is_deleted' => 'Producer delete!',
+    'producer_brewery' => 'Brewery',
+    'add_producer' => 'Add producer',
+    'product_number' => 'Product number',
+    'edit_producer' => 'Edit producer',
+    'are_u_sure_delete_p' => 'Are you sure want to delete this producer?'
 ];

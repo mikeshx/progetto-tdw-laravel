@@ -129,3 +129,7 @@ function updateUser() {
 function updateExpedition() {
     document.getElementById("formManageExpeditions").submit();
 }
+
+function updateProducer() {
+    document.getElementById("formManageProducers").submit();
+}

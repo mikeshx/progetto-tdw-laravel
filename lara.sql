@@ -132,8 +132,7 @@ CREATE TABLE `coupon` (
 
 CREATE TABLE `expeditions` (
   `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
+  `id_order` int(11) NOT NULL,
   `date` timestamp NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -243,7 +242,7 @@ CREATE TABLE `producers` (
   `id` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `brewery` varchar(600) NOT NULL,
-  `address` varchar(600) NOT NULL
+  `link` varchar(600) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -449,8 +448,8 @@ ALTER TABLE `coupon`
 --
 ALTER TABLE `expeditions`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_order` (`id_order`);
+
 
 --
 -- Indici per le tabelle `fast_orders`
@@ -727,8 +726,8 @@ ALTER TABLE `coupon`
 -- Limiti per la tabella `expeditions`
 --
 ALTER TABLE `expeditions`
-  ADD CONSTRAINT `expeditions_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `expeditions_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `expeditions_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`);
+
 
 --
 -- Limiti per la tabella `favorites`
