@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\CouponsModel;
 use Illuminate\Http\Request;
 use Lang;
 use App\Http\Controllers\Controller;
@@ -19,5 +20,14 @@ class CouponsController extends Controller
             'currentLocale' => app()->getLocale(),
             'products' => $products
         ]);
+    }
+
+    public function addCoupon(Request $request)
+    {
+        $couponsModel = new CouponsModel();
+
+        $result = $couponsModel->addCoupon($request->all());
+
+        return redirect(lang_url('admin/coupons'));
     }
 }

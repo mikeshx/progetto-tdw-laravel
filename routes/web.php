@@ -77,7 +77,8 @@ Route::post('removeProduct', 'Publics\\CartController@removeProduct');
 Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::get('admin', 'Admin\\DashboardController@index');
 
-    Route::get('coupons', 'Admin\\CouponsController@index');
+    Route::get('admin/coupons', 'Admin\\CouponsController@index');
+    Route::post('admin/coupon.add', 'Admin\\CouponsController@addCoupon');
 
     Route::get('{locale}/admin', 'Admin\\DashboardController@index')
             ->where('locale', implode('|', Config::get('app.locales')));

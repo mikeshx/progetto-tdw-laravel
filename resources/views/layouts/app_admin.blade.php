@@ -79,12 +79,13 @@
                                         <p>{{__('admin_pages.producer_page')}}</p>
                                     </a>
                                 </li>
-                                <li class="bottom">
-                                    <a href="https://github.com/kirilkirkov/Shopping-Cart-Solution-Laravel" target="_blank" class="btn waves-effect waves-light">
-                                        <i class="material-icons">code</i>
-                                        <p>GET SOURCE</p>
-                                    </a> 
+                                <li>
+                                    <a href="{{ lang_url('admin/coupons') }}" class="btn waves-effect waves-light">
+                                        <i class="material-icons">C</i>
+                                        <p>Coupons</p>
+                                    </a>
                                 </li>
+
                             </ul>
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10 col-sm-offset-3 col-md-offset-3 col-lg-offset-2 right-side">

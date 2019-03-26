@@ -6,7 +6,7 @@
     <link href="{{ asset('css/bootstrap-tagsinput.css') }}" rel="stylesheet" />
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="coupon.add" method="POST" >
                 {{ csrf_field() }}
                 <input type="hidden" name="folder" value="{{isset($product['product']->folder) ? $product['product']->folder : '0'}}">
                 <div class="card">
@@ -19,20 +19,30 @@
                         <hr>
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="quantity" value="" id="publishForm-quantity" class="form-control">
+                            <input type="text" name="value" value="" id="publishForm-quantity" class="form-control">
                             <label for="publishForm-quantity">Discount Value</label>
                         </div>
 
                         <div class="md-form">
                             <label class="alone">Product</label>
                             <div class="element-label-text bordered-div">
-                                <select class="selectpicker" name="category_id" data-style="btn-secondary">
-                                    <option value="all">All</option>
+                                <select class="selectpicker" name="id_product" data-style="btn-secondary">
+                                    <option value="000">Empty </option>
                                     @foreach ($products as $product)
                                         <option value="{{$product->id}}">{{$product->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
+
+                            </br>
+
+                            <div class="md-form">
+                                <label class="alone">Apply all </label>
+                                <div class="element-label-text bordered-div">
+                                    <input type="checkbox" name="all_products" class="switch-me" data-on-color="secondary" name="hidden">
+                                </div>
+                            </div>
+
                         </div>
                         <div class="clones"></div>
                         <hr>

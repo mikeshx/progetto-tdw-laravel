@@ -23,7 +23,9 @@ class CartController extends Controller
     public function addProduct(Request $request)
     {
         if (!$request->ajax()) {
+            abort(404);        if (!$request->ajax()) {
             abort(404);
+        }
         }
         $post = $request->all();
         $quantity = (int) $post['quantity'];
