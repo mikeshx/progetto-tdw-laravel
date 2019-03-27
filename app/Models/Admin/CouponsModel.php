@@ -19,12 +19,44 @@ class CouponsModel extends Model
         $this->defaultLang = Config::get('app.defaultLocale');
     }
 
+    // Generate a new coupon
     public function addCoupon($post){
-        DB::table('coupon')->insert([
-            'id_product' => trim($post['id_product']),
-            'value' => trim($post['value']),
-            'all_products' => trim($post['all_products'])
-        ]);
+
+        $isValid = $this->validateCoupon($post);
+
+        // La porcata
+        if (!isset($post['all_products'])) {
+            $products_text = "off";
+        }
+
+        if ($isValid['result'] == false) {
+            return;
+        } else {
+            DB::table('coupon')->insert([
+                'id_product' => trim($post['id_product']),
+                'value' => trim($post['value']),
+                'all_products' => $products_text
+            ]);
+        }
+    }
+
+    // Check if the fields are valid
+    private function validateCoupon($post) {
+
+        $errors = [];
+        $isValid = true;
+
+        // Check the value
+        if (!is_numeric($post['value'])) {
+            $errors[] = "The value field must contain only numbers";
+            $isValid = false;
+        }
+
+        return [
+            'result' => $isValid,
+            'msg' => $errors
+        ];
+
     }
 
 }

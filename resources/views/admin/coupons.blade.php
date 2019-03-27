@@ -39,7 +39,7 @@
                             <div class="md-form">
                                 <label class="alone">Apply all </label>
                                 <div class="element-label-text bordered-div">
-                                    <input type="checkbox" name="all_products" class="switch-me" data-on-color="secondary" name="hidden">
+                                    <input type="checkbox" name="all_products" value="off" class="switch-me" data-on-color="secondary" name="hidden">
                                 </div>
                             </div>
 

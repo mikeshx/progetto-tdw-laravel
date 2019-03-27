@@ -25,9 +25,9 @@ class CouponsController extends Controller
     public function addCoupon(Request $request)
     {
         $couponsModel = new CouponsModel();
-
         $result = $couponsModel->addCoupon($request->all());
 
-        return redirect(lang_url('admin/coupons'));
+        return redirect()->back()->with('success', 'coupon generated correctly');
     }
+
 }
