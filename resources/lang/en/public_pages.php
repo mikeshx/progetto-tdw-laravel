@@ -67,5 +67,7 @@ return [
     'no_products' => 'There are not products',
     'title_order' => 'Sort by',
     'order_date_asc' => 'Sort By Date - Ascending',
-    'order_date_desc' => 'Sort By Date - Descending'
+    'order_date_desc' => 'Sort By Date - Descending',
+    'logout' => 'Logout',
+    'my_orders' => 'My orders'
 ];

@@ -67,5 +67,7 @@ return [
     'no_products' => 'Няма продукти по избраните критерии',
     'title_order' => 'Подреди по',
     'order_date_asc' => 'Подреди по дата - Възходящ',
-    'order_date_desc' => 'Подреди по дата - Низходящ'
+    'order_date_desc' => 'Подреди по дата - Низходящ',
+    'logout' => 'Logout',
+    'my_orders' => 'My orders'
 ];
