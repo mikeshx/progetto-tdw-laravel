@@ -108,9 +108,6 @@
                             <li><a href="{{ lang_url('products') }}">{{__('public_pages.products')}}</a></li>
                             <li><a href="{{ lang_url('checkout') }}">{{__('public_pages.checkout')}}</a></li>
                             <li><a href="{{ lang_url('contacts') }}">{{__('public_pages.contacts')}}</a></li>
-                            @if(Auth::user())
-                            <li><a href="{{ lang_url('my_orders') }}">{{__('public_pages.my_orders')}}</a></li>
-                            @endif
                         </ul>
                         <div class="nav navbar-nav navbar-right">
                             <div class="dropdown">
@@ -129,8 +126,8 @@
                             @if(Auth::user())
                                 <div class="nav navbar-nav navbar-right">
                                     <div class="dropdown">
-                                        <a href="{{ lang_url('logout') }}">
-                                            <button class="btn btn-lang dropdown-toggle" type="button">{{__('public_pages.logout')}}</button>
+                                        <a href="{{ lang_url('my_account') }}">
+                                            <button class="btn btn-lang dropdown-toggle" type="button">{{__('public_pages.my_account')}}</button>
                                         </a>
                                     </div>
                                 </div>
@@ -212,7 +209,7 @@
                 <li><a href="{{ lang_url('checkout') }}">{{__('public_pages.checkout')}}</a></li>
                 <li><a href="{{ lang_url('contacts') }}">{{__('public_pages.contacts')}}</a></li>
                 @if(Auth::user())
-                    <li><a href="{{ lang_url('my_orders') }}">{{__('public_pages.my_orders')}}</a></li>
+                    <li><a href="{{ lang_url('my_account') }}">{{__('public_pages.my_account')}}</a></li>
                     <li><a href="{{ lang_url('logout') }}">{{__('public_pages.logout')}}</a></li>
                 @else
                     <li><a href="{{ lang_url('login') }}">{{__('public_pages.login')}}</a></li>

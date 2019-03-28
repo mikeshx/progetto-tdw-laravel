@@ -46,6 +46,11 @@ Route::post('{locale}/contacts', 'Publics\\ContactsController@sendMessage')
 Route::post('fast-order', 'Publics\\CheckoutController@setFastOrder');
 Route::post('{locale}/fast-order', 'Publics\\CheckoutController@setFastOrder')
         ->where('locale', implode('|', Config::get('app.locales')));
+		
+//my_account
+Route::get('my_account', 'Publics\\myaccountController@index');
+//my_orders
+Route::get('my_orders', 'Publics\\myordersController@index');
 
 
 /* Logged user routes */

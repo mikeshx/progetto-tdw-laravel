@@ -23,6 +23,10 @@ header .navbar-custom .navbar-nav li { float: initial; }
 header .navbar-custom .navbar-right .dropdown { margin-top: -41px; margin-right: -2px; }
 header .navbar-custom .navbar-right .dropdown li {display: block; text-transform: uppercase;}
 header .navbar-custom .navbar-right .dropdown .btn-lang {color:#ffffff; background-color:transparent; border: 1px solid #ffffff; text-transform: uppercase;}
+header .navbar-custom .navbar-right-button{ margin-top: -41px; margin-right: -2px; }
+header .navbar-custom .navbar-right-button .dropdown { margin-top: -41px; margin-right: -2px;  }
+header .navbar-custom .navbar-right-button .dropdown li {display: block; text-transform: uppercase;}
+header .navbar-custom .navbar-right-button .dropdown .btn-lang {color:#ffffff; background-color:transparent; border: 1px solid #ffffff; text-transform: uppercase;}
 header .navbar-custom .nav li { display:inline-block;}
 header .navbar-custom .navbar-brand {color:#fff;}
 header .navbar-custom .show-right-menu {color:#fff; font-size:16px;}
@@ -172,6 +176,14 @@ footer .copy-rights {background-color: #202020; color: #ffffff; padding: 10px 0;
 .checkout-page .box-type span {text-transform: uppercase; font-weight: bold}
 .checkout-page .box-type.active, .checkout-page .box-type:hover {border:2px solid #323232; }
 .checkout-page #errors {display: none;}
+
+.myaccount-page .options-types {margin-bottom: 30px;}
+.myaccount-page .radios {display: none;}
+.myaccount-page .box-type { text-align: center;  padding: 10px; background-color: #f8f8f8; border:2px solid #e0e0e0; width:230px; height: 90px; cursor: pointer; }
+.myaccount-page .box-type img {margin: 0 auto; margin-bottom: 5px; height: 40px; }
+.myaccount-page .box-type span {text-transform: uppercase; font-weight: bold; color: black; }
+.myaccount-page .box-type a {text-transform: uppercase; font-weight: bold; color: black; }
+.myaccount-page .box-type.active, .myaccount .box-type:hover {border:2px solid #323232; }
 
 .products-for-checkout ul {margin: 0; padding: 0; list-style: none; padding-bottom: 10px; margin-bottom: 10px;}
 .products-for-checkout ul li { margin-bottom: 10px; padding-bottom: 10px; border-bottom:1px solid #f3f3f3;  position: relative;}
