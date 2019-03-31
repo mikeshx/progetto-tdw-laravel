@@ -198,6 +198,16 @@ footer .copy-rights {background-color: #202020; color: #ffffff; padding: 10px 0;
 .products-for-checkout .controls .form-control { border:1px solid #cccccc; height:auto; padding:6px 12px; text-align: center;}
 .products-for-checkout .final-total {margin-bottom: 20px; text-align: right; font-size:16px; color: #404040; font-weight: bold; }
 
+.orders-page .tr-more {background-color: #f2f2f2; display: none;}
+.orders-page .fa-chevron-up {display: none;}
+.orders-page .tr-more ul li { margin-bottom: 15px; }
+.orders-page .tr-more .product { margin-bottom: 10px; padding-bottom: 10px; border-bottom:1px solid #e3dede;}
+.orders-page .tr-more .product a {color:#333333;}
+.orders-page .tr-more .product img {float:left; width:100px; margin-right: 5px;}
+.orders-page .tr-more .product .name {display: block; font-size:12px; margin-bottom: 10px;}
+.orders-page .tr-more .product .quantity {font-size: 16px;}
+.orders-page .fast-orders h2 {text-transform: uppercase; font-size:20px;}
+
 .alert{text-align: center;}
 .alert.alert-danger {background-color: #f55a4e;    border-radius: 3px;    box-shadow: 0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2);    color: #ffffff; border-color: transparent;}
 .alert.alert-success {background-color: #323232;    border-radius: 3px;    box-shadow: 0 12px 20px -10px rgba(69, 69, 69, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(69, 69, 69, 0.2);    color: #ffffff; border-color: transparent;}

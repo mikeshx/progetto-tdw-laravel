@@ -267,3 +267,18 @@ if ($('.product-preview').length > 0) {
         $('[data-slide-to="' + nextSlideI + '"]').addClass('active');
     });
 }
+
+/* Show more my orders*/
+$('.show-more').click(function () {
+    var tr_id = $(this).data('show-tr');
+    $('table').find('[data-tr="' + tr_id + '"]').toggle(function () {
+        if ($('[data-tr="' + tr_id + '"]').is(':visible')) {
+            $('.orders-page .fa-chevron-up').show();
+            $('.orders-page .fa-chevron-down').hide();
+        } else {
+            $('.orders-page .fa-chevron-up').hide();
+            $('.orders-page .fa-chevron-down').show();
+        }
+    });
+
+});
