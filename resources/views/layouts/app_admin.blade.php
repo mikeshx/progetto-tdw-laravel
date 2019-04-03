@@ -156,11 +156,6 @@
                                     {{__('admin_pages.categories')}}
                                 </a>
                             </li>
-                            <li class="in-right">
-                                <a href="https://github.com/kirilkirkov" target="_blank">
-                                    Github <i class="fa fa-github" aria-hidden="true"></i> :: Kiril Kirkov
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>

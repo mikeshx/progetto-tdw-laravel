@@ -24,10 +24,9 @@ class CouponsModel extends Model
 
         $isValid = $this->validateCoupon($post);
 
-        // La porcata
         if (!isset($post['all_products'])) {
             $products_text = "off";
-        }
+        } else $products_text = "on";
 
         if ($isValid['result'] == false) {
             return;

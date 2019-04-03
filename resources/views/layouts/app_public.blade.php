@@ -39,7 +39,7 @@
                             <img src="{{ asset('img/phone.png') }}" alt="{{ $head_title }}">
                             <div class="right">
                                 <p>{{__('public_pages.phone_order')}}</p>
-                                <span>0888 888 888</span>
+                                <span>testing</span>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -155,9 +155,8 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-3">
                             <ul>
-                                <li class="header">GMMB Solutions</li>
+                                <li class="header">test</li>
                                 <li><a href="">About us</a></li>
-                                <li><a href="">Firm info</a></li>
                             </ul>
                         </div>
                     </div>
@@ -167,10 +166,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6">
-                            Copyright 2017 yourfarma.eu
+
                         </div>
                         <div class="col-sm-6">
-                            При възникване на спор, свързан с покупка онлайн, можете да ползвате сайта ОРС
+
                         </div>
                     </div>
                 </div>
@@ -183,7 +182,7 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="phone-user">{{__('public_pages.phone')}}</label>
-                        <input type="text" name="fast_phone" class="form-control" placeholder="0888 888 888" id="phone-user">
+                        <input type="text" name="fast_phone" class="form-control" placeholder="000" id="phone-user">
                         <span class="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
                     </div>
                     <div class="form-group">

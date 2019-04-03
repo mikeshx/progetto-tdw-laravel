@@ -69,5 +69,6 @@ return [
     'order_date_asc' => 'Sort By Date - Ascending',
     'order_date_desc' => 'Sort By Date - Descending',
     'logout' => 'Logout',
-    'my_orders' => 'My orders'
+    'my_orders' => 'My orders',
+    'my_account' => 'My account'
 ];
