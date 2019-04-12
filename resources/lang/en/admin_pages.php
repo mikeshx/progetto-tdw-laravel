@@ -135,5 +135,7 @@ return [
     'add_producer' => 'Add producer',
     'product_number' => 'Product number',
     'edit_producer' => 'Edit producer',
-    'are_u_sure_delete_p' => 'Are you sure want to delete this producer?'
+    'are_u_sure_delete_p' => 'Are you sure want to delete this producer?',
+    'apply_all_cannot_be_used_with_a_product' => 'Apply all cannot be used with a product',
+    'enter_a_valid_numeric_value' => 'Enter a valid numeric value'
 ];
