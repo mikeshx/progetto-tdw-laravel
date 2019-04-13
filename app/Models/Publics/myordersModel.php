@@ -18,4 +18,14 @@ class myordersModel extends Model
         return $products;
     }
 
+    public function getExpedition($id)
+    {
+        $expedition = DB::table('expeditions')
+        ->select(DB::raw('date as data'))
+        ->where('id_order', '=', $id)
+        ->paginate(1);
+
+        return $expedition;
+    }
+
 }

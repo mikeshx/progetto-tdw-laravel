@@ -19,10 +19,12 @@ class myordersController extends Controller
         $currentid = Auth::user()->id;
         $myordersModel = new myordersModel();
         $orders = $myordersModel->getOrders($currentid);
+        $expedtion = $myordersModel->getExpedition($currentid);
         return view('publics.my_orders',[
             'head_title' => Lang::get('seo.title_myOrders'),
             'orders' => $orders,
             'head_description' => Lang::get('soe.descr_myOrders'),
+            'expedition' => $expedtion,
             'controller' => $this
         ]);
     }

@@ -93,6 +93,11 @@
                                                     @php
                                                         }
                                                     @endphp
+                                                    @foreach ($expedition as $exp)
+                                                        <li>
+                                                            <b>{{ __('public_pages.expedition_date') }}</b> <span>{{ $exp->data }}</span>
+                                                        </li>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </td>
