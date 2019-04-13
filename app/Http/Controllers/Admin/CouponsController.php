@@ -30,4 +30,8 @@ class CouponsController extends Controller
         return redirect()->back()->with(['msg' => $result['msg'], 'result' => $result['result']]);
     }
 
+    public function testCoupon() {
+        return;
+    }
+
 }

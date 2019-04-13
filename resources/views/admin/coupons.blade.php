@@ -20,7 +20,13 @@
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
                             <input type="text" name="value" value="" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Discount Value</label>
+                            <label for="publishForm-quantity">Discount Value: </label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                            <input type="text" name="expire_date" value="" id="publishForm-quantity" class="form-control">
+                            <label for="publishForm-quantity">Valid for: (days)</label>
                         </div>
 
                         <div class="md-form">

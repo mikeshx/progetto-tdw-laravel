@@ -12,6 +12,10 @@
  */
 
 /* Public Routes */
+
+// apply coupon
+Route::get('coupon.apply', 'Admin\\CouponsController@testCoupon');
+
 // home page
 Route::get('/', 'Publics\\HomeController@index');
 Route::get('{locale}', 'Publics\\HomeController@index')

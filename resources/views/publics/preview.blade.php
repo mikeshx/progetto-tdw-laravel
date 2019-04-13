@@ -96,6 +96,19 @@
                     @endphp
                     <div class="clearfix"></div>
                 </div>
+
+                <div class="buy">
+                    <div class="quantity">
+                        <span>{{__('public_pages.enter_coupon')}}</span>
+                        <input type="text" class="field" name="enter_coupon">
+                    </div>
+
+                    <a href="/coupon.apply" data-product-id="{{$product->id}}" class="buy-now to-cart">
+                        {{__('public_pages.apply_coupon')}}
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+
             </div>
         </div>
         <div class="row">

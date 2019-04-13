@@ -5,14 +5,15 @@ namespace App\Models\Admin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Validation\Rule;
+use Carbon\Carbon;
 use Config;
 use Lang;
+use function Sodium\add;
 
 class CouponsModel extends Model
 {
 
     private $defaultLang;
-
 
     public function __construct()
     {
@@ -22,8 +23,11 @@ class CouponsModel extends Model
     // Generate a new coupon
     public function addCoupon($post){
 
-        $couponText = $this->generateCouponString();
+        // Get the current date and add the post value to it
+        $current_date = Carbon::now();
+        $expire_date = $current_date->addDay($post['expire_date']);
 
+        $couponText = $this->generateCouponString();
         $isValid = $this->validateCoupon($post);
 
         if (!isset($post['all_products'])) {
@@ -37,15 +41,15 @@ class CouponsModel extends Model
                 'id_product' => trim($post['id_product']),
                 'value' => trim($post['value']),
                 'all_products' => $products_text,
-                'coupon_string' => $couponText
+                'coupon_string' => $couponText,
+                'expire_date' => $expire_date
+
             ]);
             $isValid['msg'] = Lang::get('admin_pages.coupon_added');
         }
 
         return $isValid;
     }
-
-    // TODO: visualize errors on the page
 
     // Check if the fields are valid
     private function validateCoupon($post) {
@@ -56,6 +60,13 @@ class CouponsModel extends Model
         if (!is_numeric($post['value'])) {
             $errors[] = Lang::get('admin_pages.enter_a_valid_numeric_value');
         }
+
+        // Check the expire_time value
+        if (!is_numeric($post['expire_date'])) {
+            $errors[] = Lang::get('admin_pages.enter_a_valid_numeric_value');
+        }
+
+
 
         // If we have selected a product, apply all can't be on
         if (isset($post['all_products'])) {
@@ -87,4 +98,18 @@ class CouponsModel extends Model
         return $res;
     }
 
+    /* Get a coupon from the db */
+    public function getProductInfo($couponString)
+    {
+        $product = DB::table('products')
+            ->where('coupon_string', $couponString)
+            ->first();
+
+        return $product;
+    }
+
+    /* Check if a coupon is valid by comparing the date */
+    private function checkDate($oldDate) {
+
+    }
 }
