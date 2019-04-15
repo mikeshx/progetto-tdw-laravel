@@ -71,6 +71,6 @@ return [
     'logout' => 'Logout',
     'my_orders' => 'My orders',
     'my_account' => 'My account',
-    'enter_coupon' => 'Enter coupon',
+    'enter_coupon' => 'Enter coupon (if you have any)',
     'apply_coupon' => 'Apply'
 ];

@@ -48,6 +48,7 @@
                         <div class="form-group col-sm-12">
                             <textarea class="form-control" placeholder="{{__('public_pages.notes')}}" name="notes" rows="3"></textarea>
                         </div>
+
                     </div>
                     @php
                     $sum = $sum_total = 0;
@@ -95,6 +96,7 @@
                             </li>
                             @endforeach
                         </ul>
+
                         <div class="final-total">{{__('public_pages.sum_for_pay')}} {{$sum_total}}</div>
                     </div>
                     <a href="javascript:void(0);" onclick="completeOrder()" class="green-btn">{{__('public_pages.complete_order')}}</a>
@@ -105,6 +107,18 @@
                     @php 
                     }
                     @endphp
+                </form>
+                </br>
+                <form action = "coupon.apply" method="POST">
+                    {{ csrf_field() }}
+                    <div class="form-group col-sm-5">
+                        <input class="form-control" name="coupon_string" value="" type="text" placeholder="{{__('public_pages.enter_coupon')}}">
+                    </div>
+
+                    <div class="form-group col-sm-3">
+                        <button class="form-control green-btn">Apply</button>
+                    </div>
+
                 </form>
             </div>
         </div>

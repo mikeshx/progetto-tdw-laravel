@@ -97,17 +97,20 @@
                     <div class="clearfix"></div>
                 </div>
 
+                <form action= "coupon.apply" method="POST">
+                    {{ csrf_field() }}
                 <div class="buy">
                     <div class="quantity">
                         <span>{{__('public_pages.enter_coupon')}}</span>
-                        <input type="text" class="field" name="enter_coupon">
+                        <input type="text" class="field" name="coupon_string" >
                     </div>
 
-                    <a href="/coupon.apply" data-product-id="{{$product->id}}" class="buy-now to-cart">
-                        {{__('public_pages.apply_coupon')}}
-                    </a>
+                    <div class="text-right">
+                        <button class="buy-now to-cart">Apply</button>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
+                </form>
 
             </div>
         </div>
