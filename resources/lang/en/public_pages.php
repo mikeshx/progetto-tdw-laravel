@@ -72,5 +72,8 @@ return [
     'my_orders' => 'My orders',
     'my_account' => 'My account',
     'enter_coupon' => 'Enter coupon (if you have any)',
-    'apply_coupon' => 'Apply'
+    'apply_coupon' => 'Apply',
+    'producers' => 'Producers',
+    'no_producers' => 'Unknown',
+    'no_orders' => 'No order placed'
 ];

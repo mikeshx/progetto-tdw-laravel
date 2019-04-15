@@ -121,6 +121,16 @@
                     {{$product->description}}
                 </div>
             </div>
+            <div class="col-xs-12">
+                <h3>{{__('public_pages.producers')}}</h3>
+                <div class="details">
+                     @forelse($producers as $producer)
+                        <a href="{{$producer->link}}">{{$producer->brewery}}</a>
+                     @empty
+                        <p>{{__('public_pages.no_producers')}}</p>
+                     @endforelse
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -125,4 +125,12 @@ class ProductsModel extends Model
                         ->pluck('name')->toArray();
     }
 
+    public function getProducers($id)
+    {
+        return DB::table('producers')
+            ->select(DB::raw('producers.*'))
+            ->where('id_product', '=', $id)
+            ->get()->toArray();
+    }
+
 }

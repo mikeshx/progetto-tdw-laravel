@@ -49,6 +49,7 @@ class ProductsController extends Controller
     {
         $productsModel = new ProductsModel();
         $product = $productsModel->getProduct($request->id);
+        $producers = $productsModel->getProducers($request->id);
         if ($product == null) {
             abort(404);
         }
@@ -75,6 +76,7 @@ class ProductsController extends Controller
             'cartProducts' => $this->products,
             'head_title' => mb_strlen($product->name) > 70 ? str_limit($product->name, 70) : $product->name,
             'head_description' => mb_strlen($product->description) > 160 ? str_limit($product->description, 160) : $product->description,
+            'producers' => $producers,
             'gallery' => $gallery
         ]);
     }

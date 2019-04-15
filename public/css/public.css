@@ -85,6 +85,7 @@ header .navbar-custom.navbar-fixed-top .navbar-right .dropdown .btn-lang {color:
 .product-preview .buy .field:hover { border:2px solid #323232;}
 .product-preview .buy .buy-now {float: right; margin-top: 10px; background-color: #323232; border:2px solid #454545; color:#ffffff; padding: 15px 50px; text-transform: uppercase; font-weight: bold;}
 .product-preview .details {border:1px solid #e8e8e8; padding: 15px;}
+.product-preview .details a {color: #202020; font-size:14px; position: relative;}
 .product-preview .gallery {padding-top: 20px;}
 .product-preview .carousel-control.right, .product-preview .carousel-control.left {background-image: none;}
 .product-preview .carousel-control i {font-size: 48px;  position: absolute; top: 50%;}

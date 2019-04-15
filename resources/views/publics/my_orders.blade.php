@@ -20,7 +20,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($orders as $order)
+                                @forelse ($orders as $order)
                                     <tr>
                                         <td>{{ $order->order_id }}</td>
                                         <td>{{ $order->time_created }}</td>
@@ -102,7 +102,11 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <td>
+                                        <p>{{ __('public_pages.no_orders') }}</p>
+                                    </td>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div>
