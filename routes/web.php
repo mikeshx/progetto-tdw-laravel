@@ -51,12 +51,6 @@ Route::post('fast-order', 'Publics\\CheckoutController@setFastOrder');
 Route::post('{locale}/fast-order', 'Publics\\CheckoutController@setFastOrder')
         ->where('locale', implode('|', Config::get('app.locales')));
 		
-//my_account
-Route::get('my_account', 'Publics\\myaccountController@index');
-//my_orders
-Route::get('my_orders', 'Publics\\myordersController@index');
-
-
 /* Logged user routes */
 Route::middleware(['auth'])->group(function () {
 // checkout please
@@ -79,6 +73,13 @@ Route::post('removeProductQuantity', 'Publics\\CartController@removeProductQuant
 Route::post('getProductsForCheckoutPage', 'Publics\\CartController@getProductsForCheckoutPage');
 // remove product from cart
 Route::post('removeProduct', 'Publics\\CartController@removeProduct');
+
+//my_account
+Route::get('my_account', 'Publics\\myaccountController@index');
+//my_orders
+Route::get('my_orders', 'Publics\\myordersController@index');
+//support
+Route::get('support', 'Publics\\SupportController@index');
 });
 /* end logged user routes */
 

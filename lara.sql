@@ -343,11 +343,23 @@ CREATE TABLE `social_contacts` (
 CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `text` int(11) NOT NULL
+  `obj` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
+--
+-- Struttura della tabella `support_message`
+--
+
+CREATE TABLE `support_message` (
+  `id` int(11) NOT NULL,
+  `id_ticket` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `text` text NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 --
 -- Struttura della tabella `tag`
 --
@@ -543,6 +555,12 @@ ALTER TABLE `social_contacts`
 --
 ALTER TABLE `support_request`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Indici per le tabelle `support_message`
+--
+ALTER TABLE `support_request`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `tag`
@@ -693,6 +711,12 @@ ALTER TABLE `social_contacts`
 --
 ALTER TABLE `support_request`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+--
+-- AUTO_INCREMENT per la tabella `support_request`
+--
+ALTER TABLE `support_message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `tag`
@@ -721,6 +745,14 @@ ALTER TABLE `user_address`
 --
 ALTER TABLE `coupon`
   ADD CONSTRAINT `coupon_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
+  
+--
+-- Limiti per la tabella `support_message`
+--
+ALTER TABLE `support_message`
+  ADD CONSTRAINT `support_message_ibfk_1` FOREIGN KEY (`id_ticket`) REFERENCES `support_request` (`id`),
+  ADD CONSTRAINT `support_message_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+  
 
 --
 -- Limiti per la tabella `expeditions`

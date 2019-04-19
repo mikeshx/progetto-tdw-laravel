@@ -17,6 +17,14 @@
                         </a>
                     </div>
                     <div class="options-types">
+                        <a href="{{ lang_url('support') }}">
+                            <div class="box-type active" data-radio-val="cash_on_delivery">
+                                <img src="{{ asset('img/cash_on_deliv.png') }}" alt="econt" class="img-responsive">
+                                <span>{{__('public_pages.support_page')}}</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="options-types">
                         <a href="{{ lang_url('logout') }}">
                             <div class="box-type active" data-radio-val="cash_on_delivery">
                                  <img src="{{ asset('img/cash_on_deliv.png') }}" alt="econt" class="img-responsive">

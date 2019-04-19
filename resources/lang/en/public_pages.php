@@ -75,5 +75,12 @@ return [
     'apply_coupon' => 'Apply',
     'producers' => 'Producers',
     'no_producers' => 'Unknown',
-    'no_orders' => 'No order placed'
+    'no_orders' => 'No order placed',
+    'support_page' => 'Support Page',
+    'id_ticket' => '# Ticket',
+    'obj' => 'Object',
+    'no_ticket' => 'No request',
+    'new_ticket' => 'New Ticket',
+    'message' => 'Message',
+    'send' => 'Send Ticket'
 ];
