@@ -356,7 +356,7 @@ CREATE TABLE `support_message` (
   `id` int(11) NOT NULL,
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `text` text NOT NULL,
+  `text` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -553,7 +553,7 @@ ALTER TABLE `social_contacts`
 --
 -- Indici per le tabelle `support_request`
 --
-ALTER TABLE `support_request`
+ALTER TABLE `support_message`
   ADD PRIMARY KEY (`id`);
   
 --
