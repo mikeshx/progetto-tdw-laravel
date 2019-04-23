@@ -10,9 +10,9 @@ class SupportModel extends Model
     //
     public function getSupportRequest($id)
     {
-        $req  = DB::table('support_request')->select(DB::raw('support_request.id as ticket_number, support_request.obj ad obj'))
+        $req  = DB::table('support_request')->select(DB::raw('support_request.id as ticket_number, support_request.obj as obj, support_request.time as time'))
             ->where('support_request.id_user', '=', $id)
-            ->paginate(10);
+            ->paginate(40);
         return $req;
     }
 
@@ -25,10 +25,29 @@ class SupportModel extends Model
     }
 
     public function setTicket($post, $id){
-        DB::table('support_message')->insert([
+        $time = date('Y-m-d H:i:s', time());
+        DB::table('support_request')->insert([
             'id_user' => $id,
             'obj' => trim($post['obj']),
+            'time' => $time
         ]);
+
+        $ticket  = DB::table('support_request')
+            ->select(DB::raw('support_request.id as cod_ticket'))
+            ->where('support_request.obj', '=', trim($post['obj']))
+            ->where('id_user','=', $id)
+            ->where('time', '=', $time)
+            ->get();
+
+        foreach($ticket as $cod)
+        {
+            DB::table('support_message')->insert([
+                'id_ticket' => $cod->cod_ticket,
+                'id_user' => $id,
+                'text' => trim($post['message']),
+                'time'=> $time,
+            ]);
+        }
     }
 
     public function getOneTicket($id)

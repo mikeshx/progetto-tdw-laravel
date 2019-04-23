@@ -282,3 +282,8 @@ $('.show-more').click(function () {
     });
 
 });
+
+/* Function Add Ticket*/
+function AddTicket() {
+    document.getElementById("formManageTicket").submit();
+}

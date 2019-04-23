@@ -214,6 +214,14 @@ footer .copy-rights {background-color: #202020; color: #ffffff; padding: 10px 0;
 .alert.alert-success {background-color: #323232;    border-radius: 3px;    box-shadow: 0 12px 20px -10px rgba(69, 69, 69, 0.28), 0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(69, 69, 69, 0.2);    color: #ffffff; border-color: transparent;}
 .alert-top {position: absolute; width:250px; top:10px; left:50%; margin-left: -125px;}
 
+.btn-close {color: #f2f2f2; font-weight:bold; border:2px solid #333333; background-color: #333333; border-radius: 4px;}
+.btn-close:focus {color: #f2f2f2;}
+.btn-close:hover {color:#999999;}
+.btn-save {color: #f2f2f2; font-weight:bold; border:2px solid #333333; background-color: #333333; border-radius: 4px;}
+.btn-save:focus {color: #f2f2f2;}
+.btn-save:hover {color:#999999;}
+div.btn-allign {margin-left: 3px; margin-bottom: 3px;}
+
 .product .buy-now, 
 .product .buy-now:hover, 
 .product-preview .buy .buy-now, 
