@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 18, 2019 alle 16:24
+-- Creato il: Apr 23, 2019 alle 10:43
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.0
 
@@ -121,8 +121,26 @@ CREATE TABLE `coupon` (
   `id` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `value` int(11) NOT NULL,
-  `all_products` tinyint(1) NOT NULL
+  `all_products` varchar(3) NOT NULL,
+  `coupon_string` varchar(10) NOT NULL,
+  `expire_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `coupon`
+--
+
+INSERT INTO `coupon` (`id`, `id_product`, `value`, `all_products`, `coupon_string`, `expire_date`) VALUES
+(2, 0, 12, 'on', '', '0000-00-00 00:00:00'),
+(3, 0, 56, 'on', '', '0000-00-00 00:00:00'),
+(4, 0, 23, 'on', '', '0000-00-00 00:00:00'),
+(5, 0, 9999, 'on', '', '0000-00-00 00:00:00'),
+(6, 0, 12, 'off', '', '0000-00-00 00:00:00'),
+(7, 0, 121, 'on', '3XWBC146AO', '0000-00-00 00:00:00'),
+(8, 0, 23, 'off', 'JQCZ939ROW', '0000-00-00 00:00:00'),
+(9, 0, 56, 'off', '5VFNRHRMQA', '0000-00-00 00:00:00'),
+(10, 0, 12, 'on', '3H3SK940WO', '2019-04-14 09:37:29'),
+(11, 0, 23, 'on', '3WD7MAHTEP', '2019-04-17 14:17:43');
 
 -- --------------------------------------------------------
 
@@ -133,7 +151,7 @@ CREATE TABLE `coupon` (
 CREATE TABLE `expeditions` (
   `id` int(11) NOT NULL,
   `id_order` int(11) NOT NULL,
-  `date` timestamp NULL
+  `date` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -337,18 +355,6 @@ CREATE TABLE `social_contacts` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `support_request`
---
-
-CREATE TABLE `support_request` (
-  `id` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `obj` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `support_message`
 --
 
@@ -360,6 +366,19 @@ CREATE TABLE `support_message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+
+--
+-- Struttura della tabella `support_request`
+--
+
+CREATE TABLE `support_request` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `obj` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
 --
 -- Struttura della tabella `tag`
 --
@@ -462,7 +481,6 @@ ALTER TABLE `expeditions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_order` (`id_order`);
 
-
 --
 -- Indici per le tabelle `fast_orders`
 --
@@ -551,13 +569,15 @@ ALTER TABLE `social_contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `support_request`
+-- Indici per le tabelle `support_message`
 --
 ALTER TABLE `support_message`
-  ADD PRIMARY KEY (`id`);
-  
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `support_message_ibfk_1` (`id_ticket`),
+  ADD KEY `support_message_ibfk_2` (`id_user`);
+
 --
--- Indici per le tabelle `support_message`
+-- Indici per le tabelle `support_request`
 --
 ALTER TABLE `support_request`
   ADD PRIMARY KEY (`id`);
@@ -626,7 +646,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT per la tabella `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `expeditions`
@@ -707,15 +727,15 @@ ALTER TABLE `social_contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT per la tabella `support_message`
+--
+ALTER TABLE `support_message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT per la tabella `support_request`
 --
 ALTER TABLE `support_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-  
---
--- AUTO_INCREMENT per la tabella `support_request`
---
-ALTER TABLE `support_message`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -741,25 +761,10 @@ ALTER TABLE `user_address`
 --
 
 --
--- Limiti per la tabella `coupon`
---
-ALTER TABLE `coupon`
-  ADD CONSTRAINT `coupon_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
-  
---
--- Limiti per la tabella `support_message`
---
-ALTER TABLE `support_message`
-  ADD CONSTRAINT `support_message_ibfk_1` FOREIGN KEY (`id_ticket`) REFERENCES `support_request` (`id`),
-  ADD CONSTRAINT `support_message_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-  
-
---
 -- Limiti per la tabella `expeditions`
 --
 ALTER TABLE `expeditions`
   ADD CONSTRAINT `expeditions_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`);
-
 
 --
 -- Limiti per la tabella `favorites`
@@ -799,6 +804,13 @@ ALTER TABLE `refunds`
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Limiti per la tabella `support_message`
+--
+ALTER TABLE `support_message`
+  ADD CONSTRAINT `support_message_ibfk_1` FOREIGN KEY (`id_ticket`) REFERENCES `support_request` (`id`),
+  ADD CONSTRAINT `support_message_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
 -- Limiti per la tabella `tag`
