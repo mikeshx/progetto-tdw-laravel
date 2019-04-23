@@ -97,7 +97,14 @@
                             @endforeach
                         </ul>
 
-                        <div class="final-total">{{__('public_pages.sum_for_pay')}} {{$sum_total}}</div>
+                        <div class="final-total">{{__('public_pages.sum_for_pay')}}
+                            @if(session()->has('discount_value'))
+                                {{$sum_total - session('discount_value')}}
+                            @else
+                                {{ $sum_total }}
+                            @endif
+
+                        </div>
                     </div>
                     <a href="javascript:void(0);" onclick="completeOrder()" class="green-btn">{{__('public_pages.complete_order')}}</a>
                     @php

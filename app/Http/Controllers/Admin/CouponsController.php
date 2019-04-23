@@ -34,9 +34,12 @@ class CouponsController extends Controller
     public function testCoupon(Request $request) {
         $couponsModel = new CouponsModel();
 
-        $result = $couponsModel->getCouponInfo()($request);
+        $result = $couponsModel->getCouponInfo($request);
 
         // Return the product value only if we have a valid entry in the db
+
+        echo $result->value;
+
         if ($result != false) {
             return redirect()->back()->with(['discount_value' => $result->value]);
         }

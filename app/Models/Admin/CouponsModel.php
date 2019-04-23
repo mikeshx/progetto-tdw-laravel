@@ -109,7 +109,7 @@ class CouponsModel extends Model
             } else {
                return $coupon;
             }
-        }
+        } else return false;
     }
 
     /* Check if a coupon is valid by comparing the date */
