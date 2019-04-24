@@ -34,6 +34,15 @@ class SupportController extends Controller
         ]);
     }
 
+    public function setTicket(Request $request){
+        $currentid = Auth::user()->id;
+        $supportModel = new SupportModel();
+        $supportModel->setTicket($request->all(), $currentid);
+        $msg = Lang::get('public_pages.ticket_is_added');
+
+        return redirect(lang_url('support'))->with(['msg' => $msg, 'result' => true]);
+    }
+
 
 
 }

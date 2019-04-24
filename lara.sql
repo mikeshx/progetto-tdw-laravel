@@ -362,7 +362,8 @@ CREATE TABLE `support_message` (
   `id` int(11) NOT NULL,
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `text` text NOT NULL
+  `text` text NOT NULL,
+  `time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -374,7 +375,8 @@ CREATE TABLE `support_message` (
 CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `obj` varchar(150) NOT NULL
+  `obj` varchar(150) NOT NULL,
+  `time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

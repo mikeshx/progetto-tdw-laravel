@@ -12,8 +12,9 @@
                                 <tr>
                                     <th>{{__('public_pages.id_ticket')}}</th>
                                     <th>{{__('public_pages.obj')}}</th>
+                                    <th>{{__('public_pages.requested_date')}}</th>
                                     <th class="text-right">
-                                        <button class="btn btn-sm btn-secondary waves-effect waves-light" data-toggle="modal" data-target="#modalNewTicket">
+                                        <button class="btn btn-sm btn-save waves-effect waves-light" data-toggle="modal" data-target="#modalNewTicket">
                                             {{__('public_pages.new_ticket')}}
                                         </button>
                                     </th>
@@ -24,6 +25,7 @@
                                     <tr>
                                         <td>{{ $req->ticket_number }}</td>
                                         <td>{{ $req->obj }}</td>
+                                        <td>{{ $req->time }}</td>
                                     </tr>
                                 @empty
                                     <td>
@@ -48,7 +50,7 @@
                     <h4 class="modal-title" id="myModalLabel">{{__('public_pages.new_ticket')}}</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="" id="formManageExpeditions">
+                    <form method="POST" action="" id="formManageTicket">
                         {{ csrf_field() }}
                         <input type="hidden" name="edit" value="{{isset($_GET['edit']) ? $_GET['edit'] : 0 }}">
                         <div class="md-form">
@@ -63,8 +65,9 @@
                         </div>
                     </form>
                 </div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin_pages.close')}}</button>
-                    <button type="button" class="btn btn-secondary" onclick="updateExpedition()">{{__('public_pages.send')}}</button>
+                <div class="btn-allign">
+                    <button type="button" class="btn btn-close" data-dismiss="modal">{{__('admin_pages.close')}}</button>
+                    <button type="button" class="btn btn-save" onclick="AddTicket()">{{__('public_pages.send')}}</button>
                 </div>
             </div>
         </div>

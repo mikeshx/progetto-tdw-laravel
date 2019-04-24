@@ -81,6 +81,8 @@ Route::get('my_account', 'Publics\\myaccountController@index');
 Route::get('my_orders', 'Publics\\myordersController@index');
 //support
 Route::get('support', 'Publics\\SupportController@index');
+Route::post('support', 'Publics\\SupportController@setTicket')->where('locale', implode('|', Config::get('app.locales')));
+Route::post('{locale}/publics/support', 'Publics\\SupportController@setTicket');
 });
 /* end logged user routes */
 

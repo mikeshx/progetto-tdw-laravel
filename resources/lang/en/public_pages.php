@@ -83,5 +83,7 @@ return [
     'no_ticket' => 'No request',
     'new_ticket' => 'New Ticket',
     'message' => 'Message',
-    'send' => 'Send Ticket'
+    'send' => 'Send Ticket',
+    'ticket_is_added' => 'Ticket Added',
+    'requested_date' => 'Requested date'
 ];
