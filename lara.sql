@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 23, 2019 alle 10:43
+-- Creato il: Apr 24, 2019 alle 11:02
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.0
 
@@ -119,9 +119,7 @@ CREATE TABLE `contacts` (
 
 CREATE TABLE `coupon` (
   `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `value` int(11) NOT NULL,
-  `all_products` varchar(3) NOT NULL,
+  `percentage_value` int(11) NOT NULL,
   `coupon_string` varchar(10) NOT NULL,
   `expire_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -130,17 +128,18 @@ CREATE TABLE `coupon` (
 -- Dump dei dati per la tabella `coupon`
 --
 
-INSERT INTO `coupon` (`id`, `id_product`, `value`, `all_products`, `coupon_string`, `expire_date`) VALUES
-(2, 0, 12, 'on', '', '0000-00-00 00:00:00'),
-(3, 0, 56, 'on', '', '0000-00-00 00:00:00'),
-(4, 0, 23, 'on', '', '0000-00-00 00:00:00'),
-(5, 0, 9999, 'on', '', '0000-00-00 00:00:00'),
-(6, 0, 12, 'off', '', '0000-00-00 00:00:00'),
-(7, 0, 121, 'on', '3XWBC146AO', '0000-00-00 00:00:00'),
-(8, 0, 23, 'off', 'JQCZ939ROW', '0000-00-00 00:00:00'),
-(9, 0, 56, 'off', '5VFNRHRMQA', '0000-00-00 00:00:00'),
-(10, 0, 12, 'on', '3H3SK940WO', '2019-04-14 09:37:29'),
-(11, 0, 23, 'on', '3WD7MAHTEP', '2019-04-17 14:17:43');
+INSERT INTO `coupon` (`id`, `percentage_value`, `coupon_string`, `expire_date`) VALUES
+(2, 12, '', '0000-00-00 00:00:00'),
+(3, 56, '', '0000-00-00 00:00:00'),
+(4, 23, '', '0000-00-00 00:00:00'),
+(5, 9999, '', '0000-00-00 00:00:00'),
+(6, 12, '', '0000-00-00 00:00:00'),
+(7, 121, '3XWBC146AO', '0000-00-00 00:00:00'),
+(8, 23, 'JQCZ939ROW', '0000-00-00 00:00:00'),
+(9, 56, '5VFNRHRMQA', '0000-00-00 00:00:00'),
+(10, 12, '3H3SK940WO', '2019-04-14 09:37:29'),
+(11, 23, '3WD7MAHTEP', '2019-04-17 14:17:43'),
+(12, 12, 'LXR8Q9T6DJ', '2019-05-06 08:07:26');
 
 -- --------------------------------------------------------
 
@@ -362,8 +361,7 @@ CREATE TABLE `support_message` (
   `id` int(11) NOT NULL,
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `text` text NOT NULL,
-  `time` timestamp NULL DEFAULT NULL
+  `text` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -375,8 +373,7 @@ CREATE TABLE `support_message` (
 CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `obj` varchar(150) NOT NULL,
-  `time` timestamp NULL DEFAULT NULL
+  `obj` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -413,7 +410,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
-(1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'AnngQeu6oJRkxuAb7AWQoFN1YynleRrYePP8WMjUgYkDgLE7EanPmNjPXM8i', 0),
+(1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 0);
 
 -- --------------------------------------------------------
@@ -473,8 +470,7 @@ ALTER TABLE `contacts`
 -- Indici per le tabelle `coupon`
 --
 ALTER TABLE `coupon`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_product`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `expeditions`
@@ -648,7 +644,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT per la tabella `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `expeditions`
