@@ -19,35 +19,17 @@
                         <hr>
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="value" value="" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Discount Value: </label>
+                            <input type="text" name="percentage_value" value="" id="publishForm-quantity" class="form-control">
+                            <label for="publishForm-quantity">Discount Percentage Value (1-100): </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
                             <input type="text" name="expire_date" value="" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Valid for: (days)</label>
+                            <label for="publishForm-quantity">Validity (in days): </label>
                         </div>
 
-                        <div class="md-form">
-                            <label class="alone">Product</label>
-                            <div class="element-label-text bordered-div">
-                                <select class="selectpicker" name="id_product" data-style="btn-secondary">
-                                    <option value="000">Empty </option>
-                                    @foreach ($products as $product)
-                                        <option value="{{$product->id}}">{{$product->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            </br>
-
-                            <div class="md-form">
-                                <label class="alone">Apply all </label>
-                                <div class="element-label-text bordered-div">
-                                    <input type="checkbox" name="all_products" value="off" class="switch-me" data-on-color="secondary" name="hidden">
-                                </div>
-                            </div>
+                        </br>
 
                         </div>
                         <div class="clones"></div>

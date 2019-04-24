@@ -29,17 +29,11 @@ class CouponsModel extends Model
         $couponText = $this->generateCouponString();
         $isValid = $this->validateCoupon($post);
 
-        if (!isset($post['all_products'])) {
-            $products_text = "off";
-        } else $products_text = "on";
-
         if ($isValid['result'] == false) {
             return $isValid;
         } else {
             DB::table('coupon')->insert([
-                'id_product' => trim($post['id_product']),
-                'value' => trim($post['value']),
-                'all_products' => $products_text,
+                'percentage_value' => $post['percentage_value'],
                 'coupon_string' => $couponText,
                 'expire_date' => $expire_date
             ]);
@@ -55,20 +49,18 @@ class CouponsModel extends Model
         $errors = [];
 
         // Check the value
-        if (!is_numeric($post['value'])) {
+        if (!is_numeric($post['percentage_value'])) {
             $errors[] = Lang::get('admin_pages.enter_a_valid_numeric_value');
+        }
+
+        // Check if percentage_value is  a number in the range 1-100
+        if ( !(1 <= $post['percentage_value']) && ($post['percentage_value']) <= 100) {
+            $errors[] = Lang::get('admin_pages.enter_value_in_range');
         }
 
         // Check the expire_time value
         if (!is_numeric($post['expire_date'])) {
             $errors[] = Lang::get('admin_pages.enter_a_valid_numeric_value');
-        }
-
-        // If we have selected a product, apply all can't be on
-        if (isset($post['all_products'])) {
-            if ($post['id_product'] != 0) {
-                $errors[] = Lang::get('admin_pages.apply_all_cannot_be_used_with_a_product');
-            }
         }
 
         $isValid = false;

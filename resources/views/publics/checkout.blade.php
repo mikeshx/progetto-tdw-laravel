@@ -96,15 +96,22 @@
                             </li>
                             @endforeach
                         </ul>
+                        @if(session()->has('discount_value'))
+                            @php
+                            $percentage_value = (session('discount_value') / 100) * $sum_total
+                            @endphp
+                            <p>Coupon applied, discount value: - {{session('discount_value')}}%</p>
+                            <div class="final-total">{{__('public_pages.sum_for_pay_discount')}}
 
-                        <div class="final-total">{{__('public_pages.sum_for_pay')}}
-                            @if(session()->has('discount_value'))
-                                {{$sum_total - session('discount_value')}}
-                            @else
+                                {{$sum_total - $percentage_value }}
+
+                            </div>
+                        @else
+                            <div class="final-total">{{__('public_pages.sum_for_pay')}}
                                 {{ $sum_total }}
-                            @endif
+                            </div>
+                        @endif
 
-                        </div>
                     </div>
                     <a href="javascript:void(0);" onclick="completeOrder()" class="green-btn">{{__('public_pages.complete_order')}}</a>
                     @php

@@ -37,11 +37,13 @@ class CouponsController extends Controller
         $result = $couponsModel->getCouponInfo($request);
 
         // Return the product value only if we have a valid entry in the db
-
-        echo $result->value;
-
         if ($result != false) {
-            return redirect()->back()->with(['discount_value' => $result->value]);
+
+            // Delete the old session variable to avoid using multiple coupons
+            session()->pull('discount_value', $result->percentage_value);
+
+            // Set the new variable with the discount
+            return redirect()->back()->with(session()->put('discount_value', $result->percentage_value));
         }
     }
 

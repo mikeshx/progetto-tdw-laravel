@@ -97,21 +97,6 @@
                     <div class="clearfix"></div>
                 </div>
 
-                <form action= "coupon.apply" method="POST">
-                    {{ csrf_field() }}
-                <div class="buy">
-                    <div class="quantity">
-                        <span>{{__('public_pages.enter_coupon')}}</span>
-                        <input type="text" class="field" name="coupon_string" >
-                    </div>
-
-                    <div class="text-right">
-                        <button class="buy-now to-cart">Apply</button>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                </form>
-
             </div>
         </div>
         <div class="row">

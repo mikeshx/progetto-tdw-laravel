@@ -17,6 +17,7 @@
 Route::post('coupon.apply', 'Admin\\CouponsController@testCoupon');
 
 // home page
+Route::get('/home', 'Publics\\HomeController@index');
 Route::get('/', 'Publics\\HomeController@index');
 Route::get('{locale}', 'Publics\\HomeController@index')
         ->where('locale', implode('|', Config::get('app.locales')));
