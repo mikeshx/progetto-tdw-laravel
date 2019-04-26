@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 24, 2019 alle 11:02
+-- Creato il: Apr 26, 2019 alle 12:33
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.0
 
@@ -230,6 +230,17 @@ CREATE TABLE `orders` (
   `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dump dei dati per la tabella `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_id`, `time_created`, `type`, `products`, `status`) VALUES
+(1, 1, '2019-04-26 08:25:47', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"3\";}}', 0),
+(2, 2, '2019-04-26 08:33:06', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"5\";}}', 0),
+(12, 3, '2019-04-26 10:29:08', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:2:\"16\";}}', 0),
+(13, 4, '2019-04-26 10:30:40', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"1\";}}', 0),
+(14, 5, '2019-04-26 10:32:07', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"2\";}}', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -246,8 +257,20 @@ CREATE TABLE `orders_clients` (
   `address` text NOT NULL,
   `city` varchar(20) NOT NULL,
   `post_code` varchar(10) NOT NULL,
-  `notes` text NOT NULL
+  `notes` text NOT NULL,
+  `total_price` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `orders_clients`
+--
+
+INSERT INTO `orders_clients` (`id`, `for_order`, `first_name`, `last_name`, `email`, `phone`, `address`, `city`, `post_code`, `notes`, `total_price`) VALUES
+(1, 1, 'asd', 'adasdasd', 'asdasd', 'asdasd', 'asdasdasd', 'asdasdas', 'asdasda', 'dsadad', 0),
+(2, 2, 'asdasd', 'asdasdas', 'dasdasd', 'asdasdsad', 'asdasdas', 'asdsada', 'asdasdasd', 'asdsadad', 0),
+(3, 12, 'asdasd', 'asdasd', 'asdasdas', 'dasdas', 'dasdasd', 'asdas', 'dasdasd', 'asdasdsa', 512),
+(4, 13, 'asdooooo', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 32),
+(5, 14, 'asdad', 'asdasd', 'asdasdas', 'dasdasd', 'asdasd', 'adasdas', 'dasdas', 'sdasdad', 56);
 
 -- --------------------------------------------------------
 
@@ -680,13 +703,13 @@ ALTER TABLE `newsletters`
 -- AUTO_INCREMENT per la tabella `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT per la tabella `orders_clients`
 --
 ALTER TABLE `orders_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `producers`

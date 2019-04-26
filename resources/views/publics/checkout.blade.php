@@ -106,10 +106,16 @@
                                 {{$sum_total - $percentage_value }}
 
                             </div>
+
+                            <input type="hidden" name="total_price" value="{{$sum_total - $percentage_value}}">
+
                         @else
                             <div class="final-total">{{__('public_pages.sum_for_pay')}}
                                 {{ $sum_total }}
                             </div>
+
+                            <input type="hidden" name="total_price" value="{{$sum_total}}">
+
                         @endif
 
                     </div>
@@ -121,6 +127,7 @@
                     @php 
                     }
                     @endphp
+
                 </form>
                 </br>
                 <form action = "coupon.apply" method="POST">

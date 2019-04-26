@@ -66,6 +66,11 @@
                                         <li>
                                             <b>{{ __('admin_pages.notes') }}</b> <span>{{ $order->notes }}</span>
                                         </li>
+
+                                        <li>
+                                            <b>{{ __('admin_pages.price_to_pay') }}</b> <span>{{ $order->total_price }}</span>
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
