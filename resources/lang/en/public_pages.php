@@ -85,5 +85,9 @@ return [
     'message' => 'Message',
     'send' => 'Send Ticket',
     'ticket_is_added' => 'Ticket Added',
-    'requested_date' => 'Requested date'
+    'requested_date' => 'Requested date',
+    'ticket_number'=> 'Ticket Number:',
+    'ticket_title' => 'Ticket Name: ',
+    'user' => 'User Name',
+    'reply'=> 'Reply'
 ];

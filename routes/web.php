@@ -83,6 +83,10 @@ Route::get('my_orders', 'Publics\\myordersController@index');
 Route::get('support', 'Publics\\SupportController@index');
 Route::post('support', 'Publics\\SupportController@setTicket')->where('locale', implode('|', Config::get('app.locales')));
 Route::post('{locale}/publics/support', 'Publics\\SupportController@setTicket');
+
+Route::get('support_message/{id_ticket}', 'Publics\\SupportController@indexTicketMessagePage');
+Route::post('support_message/{id_ticket}', 'Publics\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
+Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage');
 });
 /* end logged user routes */
 
