@@ -85,5 +85,6 @@ return [
     'message' => 'Message',
     'send' => 'Send Ticket',
     'ticket_is_added' => 'Ticket Added',
-    'requested_date' => 'Requested date'
+    'requested_date' => 'Requested date',
+    'leave_comment' => 'Leave a comment'
 ];

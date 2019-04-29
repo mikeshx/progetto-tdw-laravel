@@ -116,6 +116,12 @@
                      @endforelse
                 </div>
             </div>
+
+            <div class="col-xs-12">
+                <h3>{{__('public_pages.leave_comment')}}</h3>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
+
         </div>
     </div>
 </div>
