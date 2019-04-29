@@ -34,6 +34,37 @@ class SupportController extends Controller
         ]);
     }
 
+    public function indexTicketMessagePage($ticket_number)
+    {
+        $supportModel = new SupportModel();
+        $ticket = $supportModel->getSupportRequestNumber($ticket_number);
+        $ticket_message = $supportModel->getTicketMessage($ticket_number);
+        $currentid = Auth::user()->id;
+        $id_user = $supportModel->getIdUser($ticket_number);
+
+        foreach ($id_user as $id)
+        {
+            if($currentid == $id->id_user || Auth::user()->isAdmin()){
+                return view('publics.support_message', [
+                    'ticket' => $ticket,
+                    'ticket_number'=> $ticket_number,
+                    'ticket_message' => $ticket_message,
+                    'head_title' => Lang::get('seo.title_support'),
+                    'head_description' => Lang::get('seo.descr_support')
+                ]);
+            } else abort(404);
+        }
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $currentid = Auth::user()->id;
+        $supportModel = new SupportModel();
+        $supportModel->newMessage($request->all(), $currentid);
+
+        return back();
+    }
+
     public function setTicket(Request $request){
         $currentid = Auth::user()->id;
         $supportModel = new SupportModel();
@@ -42,7 +73,5 @@ class SupportController extends Controller
 
         return redirect(lang_url('support'))->with(['msg' => $msg, 'result' => true]);
     }
-
-
 
 }

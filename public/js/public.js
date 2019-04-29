@@ -287,3 +287,7 @@ $('.show-more').click(function () {
 function AddTicket() {
     document.getElementById("formManageTicket").submit();
 }
+/* Function Send message ticket*/
+function SendMessage(){
+    document.getElementById("formSendMessage").submit();
+}

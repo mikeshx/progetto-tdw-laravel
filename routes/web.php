@@ -58,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get('checkout', 'Publics\\CheckoutController@index');
 Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
                 ->where('locale', implode('|', Config::get('app.locales')));
+// add favorite
+    Route::get('addFavorite/{id}', ['as' => 'addFavorite', 'uses' => 'Publics\\FavoritesController@addFavorite']);
 
 // checkout post req
 Route::post('checkout', 'Publics\\CheckoutController@setOrder');
@@ -83,6 +85,10 @@ Route::get('my_orders', 'Publics\\myordersController@index');
 Route::get('support', 'Publics\\SupportController@index');
 Route::post('support', 'Publics\\SupportController@setTicket')->where('locale', implode('|', Config::get('app.locales')));
 Route::post('{locale}/publics/support', 'Publics\\SupportController@setTicket');
+
+Route::get('support_message/{id_ticket}', 'Publics\\SupportController@indexTicketMessagePage');
+Route::post('support_message/{id_ticket}', 'Publics\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
+Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage');
 });
 /* end logged user routes */
 

@@ -24,7 +24,7 @@
                                 @forelse ($ticket as $req)
                                     <tr>
                                         <td>{{ $req->ticket_number }}</td>
-                                        <td>{{ $req->obj }}</td>
+                                        <td> <a href="support_message/{{ $req->ticket_number }}" class="waves-effect waves-light btn green">{{ $req->obj }}</a></td>
                                         <td>{{ $req->time }}</td>
                                     </tr>
                                 @empty
