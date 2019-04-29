@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Publics\ProductsModel;
 use Lang;
+use Auth;
+use App\Models\Publics\ReviewModel;
 
 class ProductsController extends Controller
 {
@@ -47,6 +49,7 @@ class ProductsController extends Controller
 
     public function productPreview(Request $request)
     {
+        $enableComments = false;
         $productsModel = new ProductsModel();
         $product = $productsModel->getProduct($request->id);
         $producers = $productsModel->getProducers($request->id);
@@ -71,14 +74,39 @@ class ProductsController extends Controller
             }
         }
 
+        // Check if the user can add a review
+        if ($this->checkReview($request->id) == true) {
+            $enableComments = true;
+        }
+
         return view('publics.preview', [
             'product' => $product,
             'cartProducts' => $this->products,
             'head_title' => mb_strlen($product->name) > 70 ? str_limit($product->name, 70) : $product->name,
             'head_description' => mb_strlen($product->description) > 160 ? str_limit($product->description, 160) : $product->description,
             'producers' => $producers,
-            'gallery' => $gallery
+            'gallery' => $gallery,
+            'enable_comments' => $enableComments
         ]);
+    }
+
+    /* Check if a certain user can add a review to a product */
+    public function checkReview($product_id) {
+
+        $userID = Auth::user()->id;
+        $reviewModel = new ReviewModel();
+        $results = $reviewModel->getOrders($userID);
+
+        foreach ($results as $result ) {
+            foreach(unserialize($result->products) as $product) {
+
+                if ($product['id'] == $product_id) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
 }

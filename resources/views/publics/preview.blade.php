@@ -117,10 +117,14 @@
                 </div>
             </div>
 
-            <div class="col-xs-12">
-                <h3>{{__('public_pages.leave_comment')}}</h3>
+            @php
+                if($enable_comments == true) {
+                                 echo '<div class="col-xs-12">
+                <h3>Leave a comment</h3>
                 <textarea class="form-control" rows="5" id="comment"></textarea>
-            </div>
+                </div>';
+                }
+            @endphp
 
         </div>
     </div>
