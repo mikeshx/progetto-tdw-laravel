@@ -89,6 +89,10 @@ return [
     'ticket_number'=> 'Ticket Number:',
     'ticket_title' => 'Ticket Name: ',
     'user' => 'User Name',
-    'reply'=> 'Reply',
-    'leave_comment' => 'Leave a comment'
+    'reply' => 'Reply',
+    'leave_comment' => 'Leave a comment',
+    'status' => 'Status',
+    'new' => 'New',
+    'processing' => 'Under Processing',
+    'close' => 'Closed'
 ];

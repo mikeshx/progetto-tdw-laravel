@@ -6,7 +6,6 @@
 -- Creato il: Apr 26, 2019 alle 12:33
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.0
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -384,7 +383,8 @@ CREATE TABLE `support_message` (
   `id` int(11) NOT NULL,
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `text` text NOT NULL
+  `text` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -396,7 +396,9 @@ CREATE TABLE `support_message` (
 CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `obj` varchar(150) NOT NULL
+  `obj` varchar(150) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
