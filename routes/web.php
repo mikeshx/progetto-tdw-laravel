@@ -171,6 +171,14 @@ Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::get('{locale}/admin/delete/producers/{userId}', 'Admin\\ProducersController@deleteProducer');
     Route::post('admin/producers', 'Admin\\ProducersController@setProducer')->where('locale', implode('|', Config::get('app.locales')));
     Route::post('{locale}/admin/producers', 'Admin\\ProducersController@setProducer');
+////////////// Support
+    Route::get('admin/support', 'Admin\\SupportController@index')->where('locale', implode('|', Config::get('app.locales')));
+    Route::get('{locale}/admin/support', 'Admin\\SupportController@index');
+    Route::post('admin/changeOrderStatus', 'Admin\\SupportController@changeStatus');
+
+    Route::get('admin/support_message/{id_ticket}', 'Admin\\SupportController@indexTicketMessagePage');
+    Route::post('admin/support_message/{id_ticket}', 'Admin\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/admin/support', 'Admin\\SupportController@sendMessage');
 });
 
 // Authentication Routes...

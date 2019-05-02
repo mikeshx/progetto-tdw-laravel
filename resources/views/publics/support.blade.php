@@ -83,7 +83,7 @@
     <script>
         @php
             if (isset($_GET['edit']))
-    {
+            {
         @endphp
         $(document).ready(function(){
             $('#modalNewTicket').modal('show');
@@ -92,7 +92,7 @@
             window.location.href = "{{ lang_url('publics/support') }}";
         });
         @php
-            }
+        }
         @endphp
     </script>
 @endsection

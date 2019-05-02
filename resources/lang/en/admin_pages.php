@@ -139,5 +139,12 @@ return [
     'apply_all_cannot_be_used_with_a_product' => 'Apply all cannot be used with a product',
     'enter_a_valid_numeric_value' => 'Enter a valid numeric value',
     'enter_value_in_range' => 'Enter a valid integer in the range 1-100',
-    'price_to_pay' => 'Total price'
+    'price_to_pay' => 'Total price',
+    'obj' => ' Object',
+    'time' => 'Creation Time',
+    'new' => 'New',
+    'processing' => 'Under Processing',
+    'support' => 'Support',
+    'open_ticket' => 'View ticket',
+    'option_ticket' => 'Option'
 ];
