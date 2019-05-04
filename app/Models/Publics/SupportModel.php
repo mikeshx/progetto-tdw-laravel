@@ -18,7 +18,7 @@ class SupportModel extends Model
 
     public function getSupportRequestNumber($number_ticket)
     {
-        $req = DB::table('support_request')->select(DB::raw('support_request.id as ticket_number, support_request.obj as obj, support_request.time as time'))
+        $req = DB::table('support_request')->select(DB::raw('support_request.id as ticket_number, support_request.obj as obj, support_request.time as time, support_request.status'))
             ->where('support_request.id', '=', $number_ticket)
             ->get();
         return $req;
@@ -54,7 +54,7 @@ class SupportModel extends Model
 
     public function setTicket($post, $id){
         $time = date('Y-m-d H:i:s', time());
-        $status = "New";
+        $status = 0;
         DB::table('support_request')->insert([
             'id_user' => $id,
             'obj' => trim($post['obj']),
