@@ -25,20 +25,13 @@ class FavoritesController extends Controller
     {
         $favoritesModel = new FavoritesModel();
 
-        $result = $favoritesModel->addFavorite($id);
+        $added = $favoritesModel->addFavorite($id);
 
-        return redirect()->back()->with(['msg' => $result['msg'], 'result' => $result['result']]);
+        if ($added) return redirect(lang_url('/'))->with(['msg' => Lang::get('public_pages.favorite_is_added'), 'result' => true]);
+        else return redirect(lang_url('/'))->with(['msg' => Lang::get('public_pages.favorite_is_deleted'), 'result' => true]);
     }
 
-    public function deleteFavorite(Request $request)
-    {
-        if (isset($request->number) && (int) $request->number > 0) {
-            $favoriteModel = new FavoritesModel();
-            $favoriteModel->deleteProduct($request->number);
-            return redirect(lang_url('publics/favorites'))->with(['msg' => Lang::get('publics_pages.favorite_is_deleted'), 'result' => true]);
-        } else {
-            abort(404);
-        }
-    }
+
+
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models\Publics;
 
+use Illuminate\Support\Facades\Lang;
 use http\Env\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -22,33 +23,29 @@ class FavoritesModel extends Model
 
     public function addFavorite($id_product)
 
-    {    $found = DB::table('favorites')-> where('id_user', auth()->user()->id)
+    {   $added = 0;
+        $found = DB::table('favorites')-> where('id_user', auth()->user()->id)
           ->where('id_product', $id_product);
         if ($found->first() == null ) {
 
            $result = DB::table('favorites')->insert([
                'id_user' => auth()->user()->id,
-               'id_product' => $id_product
+               'id_product' => $id_product,
 
            ]);
 
-            
+           $added = 1;
+
         }
        else {
            $result = DB::table('favorites')->where('id_user', auth()->user()->id)
                ->where('id_product', $id_product)
                ->delete();
        }
+        if ($result)
+        return $added;
+    }
 
-        return $result;
-    }
-    public function deleteFavorite($product_id)
-    {
-        $result = Favorite::where('id_user', auth()->user()->id)
-            ->where('id_product', $product_id)
-            ->delete();
-        return $result;
-    }
     public function getFavorites()
     {
         $result = Favorite::where('id_user', auth()->user()->id)
