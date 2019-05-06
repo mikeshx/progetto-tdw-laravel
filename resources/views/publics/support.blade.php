@@ -13,6 +13,7 @@
                                     <th>{{__('public_pages.id_ticket')}}</th>
                                     <th>{{__('public_pages.obj')}}</th>
                                     <th>{{__('public_pages.requested_date')}}</th>
+                                    <th>{{__('public_pages.status')}}</th>
                                     <th class="text-right">
                                         <button class="btn btn-sm btn-save waves-effect waves-light" data-toggle="modal" data-target="#modalNewTicket">
                                             {{__('public_pages.new_ticket')}}
@@ -26,6 +27,13 @@
                                         <td>{{ $req->ticket_number }}</td>
                                         <td> <a href="support_message/{{ $req->ticket_number }}" class="waves-effect waves-light btn green">{{ $req->obj }}</a></td>
                                         <td>{{ $req->time }}</td>
+                                        @if( $req->status  == 0)
+                                            <td>{{__('public_pages.new')}}</td>
+                                            @elseif( $req->status  == 1)
+                                            <td>{{__('public_pages.processing')}}</td>
+                                            @else
+                                            <td>{{__('public_pages.close')}}</td>
+                                        @endif
                                     </tr>
                                 @empty
                                     <td>
@@ -75,7 +83,7 @@
     <script>
         @php
             if (isset($_GET['edit']))
-    {
+            {
         @endphp
         $(document).ready(function(){
             $('#modalNewTicket').modal('show');
@@ -84,7 +92,7 @@
             window.location.href = "{{ lang_url('publics/support') }}";
         });
         @php
-            }
+        }
         @endphp
     </script>
 @endsection

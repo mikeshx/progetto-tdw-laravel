@@ -63,6 +63,8 @@ return [
     'sum_for_pay' => 'Sum for pay: ',
     'sum_for_pay_discount' => 'Discounted sum for pay: ',
     'order_accepted' => 'You order is accepted. Wait for us to call you.',
+    'favorite_is_added' => 'Favorite added.',
+    'favorite_is_deleted' => 'Favorite deleted.',
     'productsReq' => 'No added products',
     'categories' => 'Categories',
     'no_products' => 'There are not products',
@@ -89,6 +91,10 @@ return [
     'ticket_number'=> 'Ticket Number:',
     'ticket_title' => 'Ticket Name: ',
     'user' => 'User Name',
-    'reply'=> 'Reply',
-    'leave_comment' => 'Leave a comment'
+    'reply' => 'Reply',
+    'leave_comment' => 'Leave a comment',
+    'status' => 'Status',
+    'new' => 'New',
+    'processing' => 'Under Processing',
+    'close' => 'Closed'
 ];

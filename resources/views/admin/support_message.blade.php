@@ -1,4 +1,4 @@
-@extends('layouts.app_public')
+@extends('layouts.app_admin')
 @section('content')
     <div class="myaccount-page">
         <div class="container">
@@ -33,7 +33,6 @@
                                                 </th>
                                             </tr>
                                         @endforeach
-                                           @if($tick->status != 2)
                                             <tr>
                                                 <th>
                                                     <p></p>
@@ -44,18 +43,16 @@
                                                             {{ csrf_field() }}
                                                             <div class="md-form">
                                                                 <i class="fa prefix grey-text"></i>
-                                                                <label for="defaultForm-name">{{__('public_pages.reply')}}</label>
                                                                 <input type="hidden" value="{{ $ticket_number }}" name="n_ticket" />
                                                                 <textarea  class="form-control" placeholder="{{__('public_pages.message')}}" name="message" rows="3"></textarea>
                                                             </div>
                                                         </form>
                                                     </div>
                                                     <div class="btn-allign">
-                                                        <button type="button" class="btn btn-save" onclick="SendMessage()">{{__('public_pages.reply')}}</button>
+                                                        <button type="button" class="btn btn-secondary" onclick="SendMessageAdmin()">{{__('public_pages.reply')}}</button>
                                                     </div>
                                                 </th>
                                             </tr>
-                                           @endif
                                         </tbody>
                                     </table>
                                 </div>

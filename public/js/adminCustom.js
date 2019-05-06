@@ -133,3 +133,8 @@ function updateExpedition() {
 function updateProducer() {
     document.getElementById("formManageProducers").submit();
 }
+
+/* Function Send message ticket*/
+function SendMessageAdmin(){
+    document.getElementById("formSendMessage").submit();
+}
