@@ -13,6 +13,9 @@
 
 /* Public Routes */
 
+// review routes
+Route::post('review.submit', 'Publics\\ReviewsController@submitReview');
+
 // apply coupon
 Route::post('coupon.apply', 'Admin\\CouponsController@testCoupon');
 

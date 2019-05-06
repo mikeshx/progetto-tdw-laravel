@@ -93,6 +93,12 @@ class ProductsController extends Controller
     /* Check if a certain user can add a review to a product */
     public function checkReview($product_id) {
 
+        // If we are a guest, return false (we can't post reviews)
+        if(Auth::guest())
+        {
+            return false;
+        }
+
         $userID = Auth::user()->id;
         $reviewModel = new ReviewModel();
         $results = $reviewModel->getOrders($userID);

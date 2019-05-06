@@ -117,14 +117,22 @@
                 </div>
             </div>
 
-            @php
-                if($enable_comments == true) {
-                                 echo '<div class="col-xs-12">
-                <h3>Leave a comment</h3>
-                <textarea class="form-control" rows="5" id="comment"></textarea>
-                </div>';
-                }
-            @endphp
+            @if ($enable_comments == true)
+                <form action = "review.submit" method="POST">
+                    {{ csrf_field() }}
+
+                    <input id="prodId" name="prodId" type="hidden" value="{{$product->id}}">
+                    <div class="col-xs-12">
+                    <h3>Leave a review</h3>
+                    <textarea class="form-control" name="review_text" rows="5" id="comment"></textarea>
+                    </div>
+
+                    <div class="form-group col-sm-3">
+                        <button class="form-control green-btn">Apply</button>
+                    </div>
+
+                </form>
+            @endif
 
         </div>
     </div>
