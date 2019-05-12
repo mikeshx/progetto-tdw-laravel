@@ -51,7 +51,7 @@ class ReviewsController extends Controller
 
     // Get every review for a specified product
     public function getProductReviews(Request $request) {
-        
+
     }
 
 }
