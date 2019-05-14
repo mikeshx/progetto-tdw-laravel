@@ -22,6 +22,7 @@
     <![endif]-->
 </head>
 <body>
+
 <!-- Fake page loading -->
 <div id="fakeLoader"></div>
 
@@ -71,12 +72,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul id="menu-primary" class="nav navbar-nav">
-                    <li>
+                    <li class="active">
 								<span>
 									<a href="{{ lang_url('home') }}">Home</a>
 								</span>
                     </li>
-                    <li class="active">
+                    <li>
 								<span>
 									<a href="{{ lang_url('products') }}">Shop</a>
 								</span>
@@ -114,91 +115,58 @@
         </div>
     </div>
 
-    <!-- Hero -->
-    <div id="hero" class="single-page section" style="background-image: url('images/copertina_4.jpg')">
+    @yield('content')
 
-        <!-- Content -->
-        <div class="container">
-            <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
-                <div class="col-md-10 col-md-offset-1">
-                    <h1>A very warm welcome to our</h1>
-                    <h2>Beer shop</h2>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Section -->
-    <div class="container-fluid dark section no-padding">
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <ul class="horz-menu">
-                        <li class="active"><span><a href="#">All</a></span></li>
-                        <li><span><a href="#">Latest</a></span></li>
-                        <li><span><a href="#">My Favorites</a></span></li>
-                        <li><span><a href="#">Categories</a></span></li>
-                        <li><span><a href="#">Sale</a></span></li>
+                <div class="col-sm-2">
+                    <h6>Useful</h6>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="our-story.html">Our story</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h6>Help</h6>
+                    <ul>
+                        <li><a href="#">Customer service</a></li>
+                        <li><a href="#">Find our beer</a></li>
+                        <li><a href="#">Recent orders</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Terms &amp; Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h6>Shop</h6>
+                    <ul>
+                        <li><a href="#">Pale ale</a></li>
+                        <li><a href="#">Golden ale</a></li>
+                        <li><a href="#">Dark ale</a></li>
+                        <li><a href="#">IPA</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 col-sm-push-1">
+                    <h6>Our information</h6>
+                    <p><i class="fa fa-map-marker"></i> 94 River Road, London, United Kingdom</p>
+                    <p><i class="fa fa-envelope-o"></i> sales@craftbeer-nation.com</p>
+                    <p><i class="fa fa-phone"></i> (0)203 123 4567</p>
+                    <ul class="social">
+                        <li><a href="#" class="fa fa-instagram"></a></li>
+                        <li><a href="#" class="fa fa-facebook-square"></a></li>
+                        <li><a href="#" class="fa fa-twitter-square"></a></li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
-
-
-@yield('content')
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-2">
-                <h6>Useful</h6>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="our-story.html">Our story</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="#">Login</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-2">
-                <h6>Help</h6>
-                <ul>
-                    <li><a href="#">Customer service</a></li>
-                    <li><a href="#">Find our beer</a></li>
-                    <li><a href="#">Recent orders</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Terms &amp; Privacy</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-2">
-                <h6>Shop</h6>
-                <ul>
-                    <li><a href="#">Pale ale</a></li>
-                    <li><a href="#">Golden ale</a></li>
-                    <li><a href="#">Dark ale</a></li>
-                    <li><a href="#">IPA</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-5 col-sm-push-1">
-                <h6>Our information</h6>
-                <p><i class="fa fa-map-marker"></i> 94 River Road, London, United Kingdom</p>
-                <p><i class="fa fa-envelope-o"></i> sales@craftbeer-nation.com</p>
-                <p><i class="fa fa-phone"></i> (0)203 123 4567</p>
-                <ul class="social">
-                    <li><a href="#" class="fa fa-instagram"></a></li>
-                    <li><a href="#" class="fa fa-facebook-square"></a></li>
-                    <li><a href="#" class="fa fa-twitter-square"></a></li>
-                </ul>
+            <div class="copyright">
+                <p>2017 &copy; Craft Beer Nation  /  <a href="http://www.klevermedia.co.uk">Web design by Klever media</a></p>
             </div>
         </div>
-        <div class="copyright">
-            <p>2017 &copy; Craft Beer Nation  /  <a href="http://www.klevermedia.co.uk">Web design by Klever media</a></p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 </div>
 
