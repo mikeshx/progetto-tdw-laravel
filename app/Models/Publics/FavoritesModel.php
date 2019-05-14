@@ -48,7 +48,11 @@ class FavoritesModel extends Model
 
     public function getFavorites()
     {
-        $result = Favorite::where('id_user', auth()->user()->id)
+        $result = DB::table('favorites')
+            ->join('products_translations', 'products_translations.for_id', '=', 'favorites.id_product')
+            ->join('products', 'products_translations.for_id', '=', 'products.id')
+            ->where('locale', '=', app()->getLocale())
+            -> where('id_user', auth()->user()->id)
 
             ->get();
         return $result;

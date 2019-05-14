@@ -11,11 +11,13 @@ use Lang;
 class FavoritesController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
         $favoriteModel = new FavoritesModel();
-        $favorites = $favoriteModel->getFavorite($request);
-        return view('publics.favorite', [
+        $favorites = $favoriteModel->getFavorites();
+        return view('publics.my_favorites', [
+            'head_description' => Lang::get('soe.descr_myOrders'),
+            'head_title' => Lang::get('seo.title_myOrders'),
             'page_title_lang' => Lang::get('publics_pages.favorites'),
             'favorites' => $favorites
         ]);

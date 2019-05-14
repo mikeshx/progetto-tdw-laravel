@@ -96,5 +96,7 @@ return [
     'status' => 'Status',
     'new' => 'New',
     'processing' => 'Under Processing',
-    'close' => 'Closed'
+    'close' => 'Closed',
+    'product_name' => 'Product',
+    'favorites' => 'Favorites'
 ];
