@@ -63,6 +63,7 @@ Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
                 ->where('locale', implode('|', Config::get('app.locales')));
 // add favorite
     Route::get('addFavorite/{id}', ['as' => 'addFavorite', 'uses' => 'Publics\\FavoritesController@addFavorite']);
+    Route::get('my_favorites', 'Publics\\FavoritesController@index');
 
 // checkout post req
 Route::post('checkout', 'Publics\\CheckoutController@setOrder');
