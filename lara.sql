@@ -11,7 +11,6 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -33,6 +32,16 @@ CREATE TABLE `carousel` (
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Struttura della tabella `carousel_info`
+--
+
+CREATE TABLE `carousel_info` (
+  `id` int(11) NOT NULL,
+  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `link` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +55,22 @@ CREATE TABLE `carousel_translations` (
   `locale` varchar(5) NOT NULL,
   `title1` varchar(150) NOT NULL,
   `title2` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `carousel_translations_info`
+--
+
+CREATE TABLE `carousel_translations_info` (
+  `id` int(11) NOT NULL,
+  `for_id` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `locale` varchar(5) NOT NULL,
+  `title1` varchar(150) NOT NULL,
+  `title2` varchar(150) NOT NULL,
+  `text` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -438,7 +463,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
 (1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1),
-(2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 0);
+(2, 'Admin', 'admin@admin.admin', 'admin', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 1),
+(3, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 0);
 
 -- --------------------------------------------------------
 
@@ -461,11 +487,23 @@ CREATE TABLE `user_address` (
 --
 ALTER TABLE `carousel`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Indici per le tabelle `carousel_info`
+--
+ALTER TABLE `carousel_info`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `carousel_translations`
 --
 ALTER TABLE `carousel_translations`
+  ADD PRIMARY KEY (`id`);
+  
+--
+-- Indici per le tabelle `carousel_translations_info`
+--
+ALTER TABLE `carousel_translations_info`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -636,11 +674,23 @@ ALTER TABLE `user_address`
 --
 ALTER TABLE `carousel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+--
+-- AUTO_INCREMENT per la tabella `carousel_info`
+--
+ALTER TABLE `carousel_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel_translations`
 --
 ALTER TABLE `carousel_translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+--
+-- AUTO_INCREMENT per la tabella `carousel_translations_info`
+--
+ALTER TABLE `carousel_translations_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

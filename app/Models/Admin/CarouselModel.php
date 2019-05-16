@@ -86,4 +86,72 @@ class CarouselModel extends Model
         });
     }
 
+
+    // Info carousel
+    public function getSlidersInfo()
+    {
+        $sliders = DB::table('carousel_info')
+            ->select(DB::raw('carousel_info.*, carousel_translations_info.image, carousel_translations_info.locale'))
+            ->where('locale', $this->defaultLang)
+            ->orderBy('position', 'asc')
+            ->join('carousel_translations_info', 'carousel_info.id', '=', 'carousel_translations_info.for_id')
+            ->paginate(3);
+        return $sliders;
+    }
+
+    public function setNewSliderInfo($post)
+    {
+        $this->post = $post;
+        $this->filesUploadInfo();
+        if (isset($this->post['img']) && !empty($this->post['img'])) {
+            DB::transaction(function () {
+                $id = DB::table('carousel_info')->insertGetId([
+                    'position' => $this->post['position'] == null ? 1 : $this->post['position'],
+                    'link' => $this->post['link'] == null ? '' : trim($this->post['link'])
+                ]);
+                $i = 0;
+                foreach ($this->post['translation_order'] as $translate) {
+                    DB::table('carousel_translations_info')->insert([
+                        'for_id' => $id,
+                        'image' => isset($this->post['img'][$i]) ? $this->post['img'][$i] : '',
+                        'locale' => $translate,
+                        'title1' => $this->post['title1'],
+                        'title2' => $this->post['title2'],
+                        'text' => $this->post['text']
+                    ]);
+                    $i++;
+                }
+            });
+            return [
+                'msg' => Lang::get('admin_pages.carousel_is_added'),
+                'result' => true
+            ];
+        } else {
+            return [
+                'msg' => Lang::get('admin_pages.no_selected_image'),
+                'result' => false
+            ];
+        }
+    }
+
+    private function filesUploadInfo()
+    {
+        foreach ($this->post['translation_order'] as $translate) {
+            if (isset($this->post['image_' . $translate])) {
+                $this->post['img'][] = str_replace('public/', '', Storage::putFile('public/carousel_info', $this->post['image_' . $translate][0]));
+            } else {
+                $this->post['img'][] = '';
+            }
+        }
+    }
+
+    public function deleteSliderInfo($id)
+    {
+        $this->id = $id;
+        DB::transaction(function () {
+            DB::table('carousel_info')->where('id', $this->id)->delete();
+            DB::table('carousel_translations_info')->where('for_id', $this->id)->delete();
+        });
+    }
+
 }

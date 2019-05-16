@@ -148,5 +148,8 @@ return [
     'open_ticket' => 'View ticket',
     'option_ticket' => 'Option',
     'title1' => 'Title 1',
-    'title2' => 'Title 2'
+    'title2' => 'Title 2',
+    'carousel_info' => 'Carousel Info',
+    'text' => 'Text',
+    'carousel_info' => 'Carousel Info'
 ];
