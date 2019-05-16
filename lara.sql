@@ -43,7 +43,9 @@ CREATE TABLE `carousel_translations` (
   `id` int(11) NOT NULL,
   `for_id` int(10) UNSIGNED NOT NULL,
   `image` varchar(255) NOT NULL,
-  `locale` varchar(5) NOT NULL
+  `locale` varchar(5) NOT NULL,
+  `title1` varchar(150) NOT NULL,
+  `title2` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

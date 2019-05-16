@@ -146,5 +146,7 @@ return [
     'processing' => 'Under Processing',
     'support' => 'Support',
     'open_ticket' => 'View ticket',
-    'option_ticket' => 'Option'
+    'option_ticket' => 'Option',
+    'title1' => 'Title 1',
+    'title2' => 'Title 2'
 ];

@@ -47,7 +47,9 @@ class CarouselModel extends Model
                     DB::table('carousel_translations')->insert([
                         'for_id' => $id,
                         'image' => isset($this->post['img'][$i]) ? $this->post['img'][$i] : '',
-                        'locale' => $translate
+                        'locale' => $translate,
+                        'title1' => $this->post['title1'],
+                        'title2' => $this->post['title2']
                     ]);
                     $i++;
                 }

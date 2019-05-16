@@ -59,6 +59,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="md-form">
+                            <label class="alone">{{__('admin_pages.title1')}}</label>
+                            <div class="element-label-text">
+                                <input type="text" value="" name="title1"  class="form-control">
+                            </div>
+                        </div>
+                        <div class="md-form">
+                            <label class="alone">{{__('admin_pages.title2')}}</label>
+                            <div class="element-label-text">
+                                <input type="text" value="" name="title2"  class="form-control">
+                            </div>
+                        </div>
                     </div>
                     @endforeach
                     <div class="md-form">

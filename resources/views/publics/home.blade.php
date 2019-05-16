@@ -26,10 +26,10 @@
                 <div class="container">
                     <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
                         <div class="col-md-10 col-md-offset-1">
-                            <h1>Over one hundred flavours of</h1>
-                            <h2>Specially <br />crafted beer</h2>
+                            <h1>{{$slide->title1}}</h1>
+                            <h2>{{$slide->title2}}</h2>
                             <a href="{{$slide->link}}" class="btn btn-default">
-                                <span>Explore</span>
+                                <span>{{__('home_new.explore')}}</span>
                             </a>
                         </div>
                     </div>
@@ -45,34 +45,34 @@
             <div class="col-sm-6 matchHeight scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatex="-75">
                 <section class="alignMiddle padding-80 mobile-center">
                     <header>
-                        <h1>How we create our</h1>
-                        <h2>Master brew</h2>
+                        <h1>{{__('home_new.how_create')}}</h1>
+                        <h2>{{__('home_new.how_create2')}}</h2>
                     </header>
-                    <p>Dusting of cinnamon. Orange zest flavors become more pronounced as the beer warms, pulling through toward the finish. Man, this beer is all over the place. Quite dry in the finish, with a lingering yeasty character, touch of toasty sweetness and a bitey feel on the palate.</p>
-                    <a href="#" class="btn btn-default"><span>Show me more</span></a>
+                    <p>{{__('home_new.how_create_text')}}</p>
+                    <a href="#" class="btn btn-default"><span>{{__('home_new.show_more')}}</span></a>
                 </section>
             </div>
-            <div class="col-sm-6 matchHeight" style="background-image: url(http://placehold.it/750x485);">
+            <div class="col-sm-6 matchHeight" style="background-image: url(../public/img/block-bg.jpg);">
                 <div class="row">
                     <div class="col-xs-6 icon-grid">
-                        <img src="images/Hops.svg" class="svg" alt="Quality Ingredients" />
-                        <h4>Quality Ingredients</h4>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <img src="../public/img/Hops.svg" class="svg" alt="Quality Ingredients" />
+                        <h4>{{__('home_new.Quality')}}</h4>
+                        <p>{{__('home_new.Quality_text')}}</p>
                     </div>
                     <div class="col-xs-6 icon-grid">
-                        <img src="images/Sun.svg" class="svg" alt="Natural sunshine" />
-                        <h4>Natural sunshine</h4>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <img src="../public/img/Sun.svg" class="svg" alt="Natural sunshine" />
+                        <h4>{{__('home_new.Natural')}}</h4>
+                        <p>{{__('home_new.Natural_text')}}</p>
                     </div>
                     <div class="col-xs-6 icon-grid">
-                        <img src="images/Barrel.svg" class="svg" alt="Fermentation" />
-                        <h4>Fermentation</h4>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <img src="../public/img/Barrel.svg" class="svg" alt="Fermentation" />
+                        <h4>{{__('home_new.Fermentation')}}</h4>
+                        <p>{{__('home_new.Fermentation_text')}}</p>
                     </div>
                     <div class="col-xs-6 icon-grid">
-                        <img src="images/BottleCrate.svg" class="svg" alt="Unrivalled taste" />
-                        <h4>Unrivalled taste</h4>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <img src="../public/img/BottleCrate.svg" class="svg" alt="Unrivalled taste" />
+                        <h4>{{__('home_new.Unrivalled')}}</h4>
+                        <p>{{__('home_new.Unrivalled_text')}}</p>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
     </div>
 
     <!-- Section -->
-    <div class="container-fluid light section" style="background-image: url(http://placehold.it/950x640);">
+    <div class="container-fluid light section" style="background-image: url(../public/img/block-bg-2.jpg);">
         <div id="carousel-1" class="carousel slide carousel-fade bs-carousel" data-ride="carousel">
 
             <div class="carousel-inner" role="listbox">
@@ -140,7 +140,7 @@
     </div>
 
     <!-- Section -->
-    <div class="container-fluid dark section" style="background-image: url(http://placehold.it/880x650);">
+    <div class="container-fluid dark section" style="background-image: url(../public/img/block-bg-3.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 matchHeight scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatex="-75">
@@ -210,39 +210,4 @@
         </div>
     </div>
 
-    <!-- Section -->
-    <div class="container-fluid super-dark section">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="images/Can.svg" class="svg" alt="" />
-                        <span>207</span>
-                        Flavours
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="images/Sign.svg" class="svg" alt="" />
-                        <span class="one">396</span>
-                        Outlets
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="images/Badge.svg" class="svg" alt="" />
-                        <span>60</span>
-                        Years brewing
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="images/BarrelSide.svg" class="svg" alt="" />
-                        <span>21</span>
-                        Days til ready
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
