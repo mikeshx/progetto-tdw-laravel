@@ -161,8 +161,8 @@ Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::post('admin/carousel_info', 'Admin\\CarouselController@setSliderInfo')->where('locale', implode('|', Config::get('app.locales')));
     Route::post('{locale}/admin/carousel_info', 'Admin\\CarouselController@setSliderInfo');
 ////////////////
-    Route::get('admin/delete/slider/{id}', 'Admin\\CarouselController@deleteSliderInfo')->where('locale', implode('|', Config::get('app.locales')));
-    Route::get('{locale}/admin/delete/slider/{id}', 'Admin\\CarouselController@deleteSliderInfo');
+    Route::get('admin/delete/sliderInfo/{id}', 'Admin\\CarouselController@deleteSliderInfo')->where('locale', implode('|', Config::get('app.locales')));
+    Route::get('{locale}/admin/delete/sliderInfo/{id}', 'Admin\\CarouselController@deleteSliderInfo');
 ////////////////
     Route::get('admin/orders', 'Admin\\OrdersController@index')->where('locale', implode('|', Config::get('app.locales')));
     Route::get('{locale}/admin/orders', 'Admin\\OrdersController@index');

@@ -7,21 +7,15 @@
 
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            @php
-                $i=0;
-            @endphp
             @foreach($carousel as $slide)
-                <li data-target="#hero" data-slide-to="{{$i}}" class="{{ $i == 0 ? 'active' : ''}}"></li>
-            @php
-                 $i++;
-            @endphp
+                <li data-target="#hero" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
             @endforeach
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             @foreach($carousel as $slide)
-            <div class="item active" style="background-image: url({{asset('../storage/app/public/'.$slide->image)}})">
+            <div class="item {{ $loop->first ? ' active' : '' }}" style="background-image: url({{asset('../storage/app/public/'.$slide->image)}})">
                 <!-- Content -->
                 <div class="container">
                     <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
@@ -83,50 +77,37 @@
     <div class="container-fluid light section" style="background-image: url(../public/img/block-bg-2.jpg);">
         <div id="carousel-1" class="carousel slide carousel-fade bs-carousel" data-ride="carousel">
 
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @foreach($carouselInfo as $slide)
+                    <li data-target="#carousel-1" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
+
             <div class="carousel-inner" role="listbox">
 
+            @foreach($carouselInfo as $slide)
                 <!-- Slide 1 -->
-                <div class="item active">
+                <div class="item {{ $loop->first ? 'active' : '' }}">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6 matchHeight">
-                                <img src="http://placehold.it/555x355" alt="About our Brewery" class="alignMiddle" />
+                                <img src="{{asset('../storage/app/public/'.$slide->image)}}" alt="About our Brewery" class="alignMiddle" />
                             </div>
                             <div class="col-sm-5 col-sm-push-1 matchHeight">
                                 <section class="alignMiddle mobile-center">
                                     <header>
-                                        <h1>About our</h1>
-                                        <h2>Brewery</h2>
+                                        <h1>{{$slide->title1}}</h1>
+                                        <h2>{{$slide->title2}}</h2>
                                     </header>
-                                    <p>The 12-ounce bottle pours a pitch-black, topped with a creamy tan-colored head that leaves a healthy ringed lace as it settles, with a bit of stick on the glass.</p>
-                                    <p>A touch of hop bitterness provides some citric edge and melds with the acridness of the brew for a perceived sourness. Smoky characters emerge as the beer warms, as do subtle drops of caramel.</p>
-                                    <a href="#" class="btn btn-default"><span>Learn more</span></a>
+                                    <p>{{$slide->text}}</p>
+                                    <a href="{{$slide->link}}" class="btn btn-default"><span>{{__('home_new.learn')}}</span></a>
                                 </section>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Slide 2 -->
-                <div class="item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6 matchHeight">
-                                <img src="http://placehold.it/555x355" alt="About our Brewery" class="alignMiddle" />
-                            </div>
-                            <div class="col-sm-5 col-sm-push-1 matchHeight">
-                                <section class="alignMiddle mobile-center">
-                                    <header>
-                                        <h1>Made to share with</h1>
-                                        <h2>Friends</h2>
-                                    </header>
-                                    <p>A blend of lambic beers brewed at 3 Fonteinen, with an addition of 30% whole fresh raspberries from the fabled Payottenland and 5% sour cherries. This unfiltered beer will enjoy a spontaneous refermentation in the bottle. No artificial colors or flavor enhancers are added. Lambic is brewed only from 60% barley malt, 40% unmalted wheat, hops and water.</p>
-                                    <a href="#" class="btn btn-default"><span>Learn more</span></a>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            @endforeach
 
             </div>
 
@@ -160,7 +141,7 @@
                         <div class="product item">
                             <a href="{{ lang_url($mostSelledProduct->url) }}">
                                 <span>Buy it</span>
-                                <img src="{{asset('storage/'.$mostSelledProduct->image)}}" alt="{{$mostSelledProduct->name}}">
+                                <img src="{{asset('../storage/app/public/'.$mostSelledProduct->image)}}" alt="{{$mostSelledProduct->name}}">
                             </a>
                             <h3>{{$mostSelledProduct->name}}</h3>
                             <h4>&dollar;{{$mostSelledProduct->price}}</h4>

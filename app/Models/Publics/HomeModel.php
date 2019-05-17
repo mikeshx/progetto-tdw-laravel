@@ -18,4 +18,14 @@ class HomeModel extends Model
         return $sliders;
     }
 
+    public function getCarouselSlidersInfo()
+    {
+        $sliders = DB::table('carousel_info')
+            ->where('locale', '=', app()->getLocale())
+            ->orderBy('position', 'asc')
+            ->join('carousel_translations_info', 'carousel_translations_info.for_id', '=', 'carousel_info.id')
+            ->get();
+        return $sliders;
+    }
+
 }

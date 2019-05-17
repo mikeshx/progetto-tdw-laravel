@@ -21,7 +21,7 @@
                 <a href="{{$slider->link}}" target="_blank">{{$slider->link}}</a>
             </span>
                     <span class="position z-depth-2">{{$slider->position}}</span>
-                    <a href="{{lang_url('admin/delete/slider/'.$slider->id)}}" class="btn btn-sm btn-secondary waves-effect waves-light confirm delete" data-my-message="{{__('admin_pages.are_u_sure_delete_s')}}">
+                    <a href="{{lang_url('admin/delete/sliderInfo/'.$slider->id)}}" class="btn btn-sm btn-secondary waves-effect waves-light confirm delete" data-my-message="{{__('admin_pages.are_u_sure_delete_s')}}">
                         <i class="fa fa-trash mt-0"></i>
                     </a>
                 </div>
