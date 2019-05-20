@@ -36,17 +36,31 @@
                 <div class="row">
                     <div class="col-sm-4 hidden-xs">
                         <ul class="social">
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-facebook-square"></a></li>
-                            <li><a href="#" class="fa fa-twitter-square"></a></li>
+                            @foreach($social as $soc)
+                                @if($soc->tipo == "instagram")
+                                    <li><a href="{{ $soc->social_link }}" class="fa fa-instagram"></a></li>
+                                @elseif($soc->tipo == "facebook")
+                                    <li><a href="{{ $soc->social_link }}" class="fa fa-facebook-square"></a></li>
+                                @elseif($soc->tipo == "twitter")
+                                    <li><a href="{{ $soc->social_link }}" class="fa fa-twitter-square"></a></li>
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-sm-8">
-                        <div class="finder">
-                            <a href="#">
-                                <span class="fa fa-map-marker"></span> Find our beer
-                            </a>
-                        </div>
+                        @if(!Auth::user())
+                            <div class="finder">
+                                <a href="{{ lang_url('login') }}">
+                                    <span class="fa"></span> {{__('home_new.login')}}
+                                </a>
+                            </div>
+                        @else
+                            <div class="finder">
+                                <a href="{{ lang_url('my_account') }}">
+                                    <span class="fa"></span> {{__('home_new.my_account')}}
+                                </a>
+                            </div>
+                        @endif
                         <div class="cart">
                             <a href="cart.html">
                                 <span class="fa fa-shopping-cart"></span> Empty

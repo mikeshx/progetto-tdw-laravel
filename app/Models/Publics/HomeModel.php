@@ -28,4 +28,10 @@ class HomeModel extends Model
         return $sliders;
     }
 
+    public function getSocial()
+    {
+        $social = DB::table('social_contacts')
+            ->get();
+        return $social;
+    }
 }

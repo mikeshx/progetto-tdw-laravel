@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publics;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Publics\ProductsModel;
+use App\Models\Publics\HomeModel;
 use Lang;
 use Auth;
 use App\Models\Publics\ReviewModel;
@@ -15,8 +16,10 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $productsModel = new ProductsModel();
+        $homeModel = new HomeModel();
         $products = $productsModel->getProducts($request);
         $categores = $productsModel->getCategories();
+        $social = $homeModel->getSocial();
         if ($request->category != null) {
             $categoryName = $productsModel->getCategoryName($request->category);
         }
@@ -39,6 +42,7 @@ class ProductsController extends Controller
         $tree = buildTree($categores);
         return view('publics.products', [
             'products' => $products,
+            'social' => $social,
             'cartProducts' => $this->products,
             'categories' => $tree,
             'selectedCategory' => $request->category,
@@ -51,8 +55,10 @@ class ProductsController extends Controller
     {
         $enableComments = false;
         $productsModel = new ProductsModel();
+        $homeModel = new HomeModel();
         $product = $productsModel->getProduct($request->id);
         $producers = $productsModel->getProducers($request->id);
+        $social = $homeModel->getSocial();
         if ($product == null) {
             abort(404);
         }
@@ -81,6 +87,7 @@ class ProductsController extends Controller
 
         return view('publics.preview', [
             'product' => $product,
+            'social' => $social,
             'cartProducts' => $this->products,
             'head_title' => mb_strlen($product->name) > 70 ? str_limit($product->name, 70) : $product->name,
             'head_description' => mb_strlen($product->description) > 160 ? str_limit($product->description, 160) : $product->description,

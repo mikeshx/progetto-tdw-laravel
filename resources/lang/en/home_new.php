@@ -15,5 +15,8 @@ return [
     'Fermentation_text' => 'Claritas est etiam processus dynamicus, qui sequitur mutationem.',
     'Unrivalled' => 'Unrivalled taste',
     'Unrivalled_text' => 'Claritas est etiam processus dynamicus, qui sequitur mutationem.',
-    'learn' => 'Learn more'
+    'learn' => 'Learn more',
+    'login' => 'Login / Sing Up',
+    'logout' => 'Logout',
+    'my_account' => 'My Account'
 ];

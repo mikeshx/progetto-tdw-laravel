@@ -19,12 +19,14 @@ class HomeController extends Controller
         $mostSelledProducts = $productsModel->getMostSelledProducts();
         $carousel = $homeModel->getCarouselSliders();
         $carouselInfo = $homeModel->getCarouselSlidersInfo();
+        $social = $homeModel->getSocial();
         return view('publics.home', [
             'promoProducts' => $promoProducts,
             'mostSelledProducts' => $mostSelledProducts,
             'carousel' => $carousel,
             'carouselInfo' => $carouselInfo,
             'cartProducts' => $this->products,
+            'social' => $social,
             'head_title' => Lang::get('seo.title_home'),
             'head_description' => Lang::get('seo.descr_home')
         ]);

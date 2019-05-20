@@ -397,8 +397,18 @@ CREATE TABLE `reviews` (
 
 CREATE TABLE `social_contacts` (
   `id` int(11) NOT NULL,
+  `tipo` varchar(30) NOT NULL,
   `social_link` varchar(600) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `social_contacts`
+--
+
+INSERT INTO `social_contacts` (`id`, `tipo`, `social:link`) VALUES
+(1, 'facebook', 'https://www.facebook.com/'),
+(2, 'instagram', 'https://www.instagram.com/'),
+(3, 'twitter', 'https://www.twitter.com/');
 
 -- --------------------------------------------------------
 
@@ -463,7 +473,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
 (1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1),
-(2, 'Admin', 'admin@admin.admin', 'admin', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 1),
+(2, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 1),
 (3, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 0);
 
 -- --------------------------------------------------------
@@ -899,6 +909,35 @@ ALTER TABLE `tag`
 ALTER TABLE `user_address`
   ADD CONSTRAINT `user_address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
+
+--
+-- Dump dei dati per la tabella `carousel`
+--
+
+INSERT INTO `carousel` (`id`, `position`, `link`) VALUES
+(1, 1, '');
+
+--
+-- Dump dei dati per la tabella `carousel_info`
+--
+INSERT INTO `carousel_info` (`id`, `position`, `link`) VALUES
+(1, 1, ''),
+(2, 2, '');
+
+--
+-- Dump dei dati per la tabella `carousel_translations`
+--
+
+INSERT INTO `carousel_translations` (`id`, `for_id`, `image`, `locale`, `title1`, `title2`) VALUES
+(1, 1, 'carousel/36wQ3i2JyUIbLbrywQlGVwt3sBpE4CK4wNuCZtmy.jpeg', 'en', 'Over one hundred flavours of', 'Specially Crafted Beer');
+
+--
+-- Dump dei dati per la tabella `carousel_translations_info`
+--
+
+INSERT INTO `carousel_translations_info` (`id`, `for_id`, `image`, `locale`, `title1`, `title2`, `text`) VALUES
+(1, 1, 'carousel_info/Sf96Rg1AhreuaDJEvYB2KFHy3ubhPtwDxXVQra5H.jpeg', 'en', 'Titolo1', 'titolo2', 'Testo'),
+(2, 2, 'carousel_info/xfl0tjCLnbt8BpUYYbbEfY5ZTCP1KsgsaJWGHTWB.jpeg', 'en', 'Titolo1', 'Titolo2', 'Testo');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
