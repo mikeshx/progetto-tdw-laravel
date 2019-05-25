@@ -6,6 +6,7 @@
 -- Creato il: Apr 26, 2019 alle 12:33
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.0
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -405,7 +406,7 @@ CREATE TABLE `social_contacts` (
 -- Dump dei dati per la tabella `social_contacts`
 --
 
-INSERT INTO `social_contacts` (`id`, `tipo`, `social:link`) VALUES
+INSERT INTO `social_contacts` (`id`, `tipo`, `social_link`) VALUES
 (1, 'facebook', 'https://www.facebook.com/'),
 (2, 'instagram', 'https://www.instagram.com/'),
 (3, 'twitter', 'https://www.twitter.com/');
