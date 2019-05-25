@@ -100,6 +100,10 @@ Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage'
 Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::get('admin', 'Admin\\DashboardController@index');
 
+    // Contacts routes
+    Route::post('admin/contacts.add', 'Admin\\ContactsController@addContacts');
+    Route::get('admin/contacts', 'Admin\\ContactsController@index');
+
     Route::get('admin/coupons', 'Admin\\CouponsController@index');
     Route::post('admin/coupon.add', 'Admin\\CouponsController@addCoupon');
 
