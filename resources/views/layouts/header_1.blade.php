@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,6 +61,19 @@
                                 </a>
                             </div>
                         @endif
+                            <div class="finder">
+                                <div class="dropdown">
+                                    <button class="btn-lang" type="button" data-toggle="dropdown">
+                                        {{ app()->getLocale() }}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @foreach(Config::get('app.locales') as $locale)
+                                            <li><a href="{{url(getSameUrlInOtherLang($locale))}}">{{$locale}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
                         <div class="cart">
                             <a href="cart.html">
                                 <span class="fa fa-shopping-cart"></span> Empty
