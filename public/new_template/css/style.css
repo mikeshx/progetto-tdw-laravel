@@ -35,6 +35,14 @@
 
 **/
 
+/** CSS AGGIUNTO HEADER **/
+.heading .finder .dropdown li { display: block; text-transform: uppercase;}
+.heading .finder .dropdown a:hover { background: #917f53; text-decoration: underline; color: #cbb27c; }
+.heading .finder .dropdown-menu { background: #cbb27c; border: 0px solid #000; border-radius: 0px; }
+.heading .finder .dropdown .btn-lang {color:#ffffff; background-color:transparent; border: none; text-transform: uppercase; font-family: 'Catamaran', sans-serif; font-size: 14px; font-weight: 600; }
+.heading .finder .dropdown .btn-lang:hover{color: #cbb27c; text-decoration: none;    text-decoration: none; }
+/** FINE CSS AGGIUNTO **/
+
 /**  Body  **/
 
 ::-moz-selection {
