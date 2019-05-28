@@ -37,15 +37,6 @@
                 <div class="row">
                     <div class="col-sm-4 hidden-xs">
                         <ul class="social">
-                        @foreach($social as $soc)
-                            @if($soc->tipo == "instagram")
-                            <li><a href="{{ $soc->social_link }}" class="fa fa-instagram"></a></li>
-                            @elseif($soc->tipo == "facebook")
-                            <li><a href="{{ $soc->social_link }}" class="fa fa-facebook-square"></a></li>
-                            @elseif($soc->tipo == "twitter")
-                            <li><a href="{{ $soc->social_link }}" class="fa fa-twitter-square"></a></li>
-                            @endif
-                        @endforeach
                         </ul>
                     </div>
                     <div class="col-sm-8">

@@ -13,32 +13,45 @@
                     <div class="card-body">
                         <div class="form-header btn-secondary">
                             <h3>
-                                Add a new coupon
+                                Add company informations
                             </h3>
                         </div>
                         <hr>
+
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="facebook" value="" id="publishForm-quantity" class="form-control">
+                            <input type="text" name="facebook_desc" value="" id="publishForm-quantity" class="form-control">
+                            <label for="publishForm-quantity">Facebook description: </label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                            <input type="text" name="facebook_link" value="" id="publishForm-quantity" class="form-control">
                             <label for="publishForm-quantity">Facebook: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="instagram" value="" id="publishForm-quantity" class="form-control">
+                            <input type="text" name="instagram_desc" value="" id="publishForm-quantity" class="form-control">
+                            <label for="publishForm-quantity">Instagram description:: </label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                            <input type="text" name="instagram_link" value="" id="publishForm-quantity" class="form-control">
                             <label for="publishForm-quantity">Instagram: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="twitter" value="" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Twitter: </label>
+                            <input type="text" name="twitter_desc" value="" id="publishForm-quantity" class="form-control">
+                            <label for="publishForm-quantity">Twitter description: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="google_plus" value="" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Google Plus: </label>
+                            <input type="text" name="twitter_link" value="" id="publishForm-quantity" class="form-control">
+                            <label for="publishForm-quantity">Twitter: </label>
                         </div>
 
                         <div class="md-form">
