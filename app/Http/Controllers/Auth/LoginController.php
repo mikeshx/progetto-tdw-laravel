@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\Publics\HomeModel;
+use Lang;
 
 class LoginController extends Controller
 {
@@ -35,5 +37,16 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
+
+
+        return view('auth.login', [
+            'social' => $social
+        ]);
     }
 }

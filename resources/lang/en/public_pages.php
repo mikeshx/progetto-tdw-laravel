@@ -98,5 +98,7 @@ return [
     'processing' => 'Under Processing',
     'close' => 'Closed',
     'product_name' => 'Product',
-    'favorites' => 'Favorites'
+    'favorites' => 'Favorites',
+    'continue_to' => 'Continue to',
+    'go_to_registration' => 'if you are not registered go to the registration page'
 ];
