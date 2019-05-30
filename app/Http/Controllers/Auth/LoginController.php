@@ -46,7 +46,8 @@ class LoginController extends Controller
 
 
         return view('auth.login', [
-            'social' => $social
+            'social' => $social,
+            'head_title' => Lang::get('seo.title_login')
         ]);
     }
 }

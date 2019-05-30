@@ -100,5 +100,7 @@ return [
     'product_name' => 'Product',
     'favorites' => 'Favorites',
     'continue_to' => 'Continue to',
-    'go_to_registration' => 'if you are not registered go to the registration page'
+    'go_to_registration' => 'if you are not registered go to the registration page',
+    'register' => 'Sign up',
+    'forgot' => 'Lost your password?'
 ];

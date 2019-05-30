@@ -15,5 +15,8 @@ return [
     'title_myAccount' => 'My account',
     'descr_myAccount' => 'My account page',
     'title_support' => 'Support',
-    'descr_support' => 'Support page'
+    'descr_support' => 'Support page',
+    'title_login' => 'Login',
+    'title_sign_up' => 'Sign up',
+    'title_reset' => "Reset password"
 ];

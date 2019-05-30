@@ -30,11 +30,14 @@
                                     </span>
                                 @endif
                             </div>
+
+                            <a href="{{ lang_url('register') }}" class="btn btn-grey"><span>{{__('public_pages.register')}}</span></a>
+
                             <button type="submit" class="btn btn-primary">
                                 {{__('public_pages.login')}}
                             </button>
 
-                            <a href="#" class="lost-pass">Lost your password?</a>
+                            <a href="{{ lang_url('password/reset') }}" class="lost-pass">{{__('public_pages.forgot')}}</a>
                         </form>
                     </div>
                 </div>

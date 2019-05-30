@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Publics\HomeModel;
+use Lang;
 
 class RegisterController extends Controller
 {
@@ -67,6 +69,18 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'isAdmin' => 0
+        ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
+
+
+        return view('auth.register', [
+            'social' => $social,
+            'head_title' => Lang::get('seo.title_login')
         ]);
     }
 }
