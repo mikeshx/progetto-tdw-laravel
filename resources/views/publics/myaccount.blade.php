@@ -1,36 +1,39 @@
-@extends('layouts.app_public')
+@extends('layouts.header_3')
 
 @section('content')
-    <div class="myaccount-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="section-title">
-                        <h2>{{__('public_pages.my_account')}}</h2>
+    <!-- Section -->
+    <div class="container-fluid dark section no-padding">
+        <div class="row">
+            <div class="col-sm-6 matchHeight scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatex="-75">
+                <section class="alignMiddle padding-80 mobile-center">
+                    <header>
+                        <h1>{{__('public_pages.my_account')}}</h1>
+                        <h2></h2>
+                    </header>
+                    <p>{{__('public_pages.my_account_desc')}}</p>
+                </section>
+            </div>
+            <div class="col-sm-6 matchHeight" style="background-image: url(../public/img/block-bg-3.jpg);">
+                <div class="row">
+                    <div class="col-xs-6 icon-grid">
+                        <img src="{{ asset('img/box.png') }}" class="svg" alt=""/>
+                        <h4><a href="{{ lang_url('my_orders') }}">{{__('public_pages.my_orders')}}</a></h4>
+                        <p>{{__('public_pages.my_orders_desc')}}</p>
                     </div>
-                    <div class="options-types">
-                        <a href="{{ lang_url('my_orders') }}">
-                             <div class="box-type active" data-radio-val="cash_on_delivery">
-                                 <img src="{{ asset('img/cash_on_deliv.png') }}" alt="econt" class="img-responsive">
-                                 <span>{{__('public_pages.my_orders')}}</span>
-                            </div>
-                        </a>
+                    <div class="col-xs-6 icon-grid">
+                        <img src="{{ asset('img/support.png') }}" class="svg" alt=""/>
+                        <h4><a href="{{ lang_url('support') }}">{{__('public_pages.support')}}</a></h4>
+                        <p>{{__('public_pages.support_desc')}}</p>
                     </div>
-                    <div class="options-types">
-                        <a href="{{ lang_url('support') }}">
-                            <div class="box-type active" data-radio-val="cash_on_delivery">
-                                <img src="{{ asset('img/cash_on_deliv.png') }}" alt="econt" class="img-responsive">
-                                <span>{{__('public_pages.support_page')}}</span>
-                            </div>
-                        </a>
+                    <div class="col-xs-6 icon-grid">
+                        <img src="{{ asset('img/logout.png') }}" class="svg" alt=""/>
+                        <h4><a href="{{ lang_url('logout') }}">{{__('public_pages.logout')}}</a></h4>
+                        <p></p>
                     </div>
-                    <div class="options-types">
-                        <a href="{{ lang_url('logout') }}">
-                            <div class="box-type active" data-radio-val="cash_on_delivery">
-                                 <img src="{{ asset('img/cash_on_deliv.png') }}" alt="econt" class="img-responsive">
-                                <span>{{__('public_pages.logout')}}</span>
-                             </div>
-                        </a>
+                    <div class="col-xs-6 icon-grid">
+                        <img src="" class="svg" alt=""/>
+                        <h4><a href=""></a></h4>
+                        <p></p>
                     </div>
                 </div>
             </div>

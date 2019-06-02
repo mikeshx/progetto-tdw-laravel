@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Lang;
 use App\Models\Publics\myordersModel;
 use App\Models\Publics\ProductsModel;
+use App\Models\Publics\HomeModel;
 use Auth;
 
 class myordersController extends Controller
@@ -18,11 +19,14 @@ class myordersController extends Controller
     {
         $currentid = Auth::user()->id;
         $myordersModel = new myordersModel();
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
         $orders = $myordersModel->getOrders($currentid);
         $expedtion = $myordersModel->getExpedition($currentid);
         return view('publics.my_orders',[
             'head_title' => Lang::get('seo.title_myOrders'),
             'orders' => $orders,
+            'social' => $social,
             'head_description' => Lang::get('soe.descr_myOrders'),
             'expedition' => $expedtion,
             'controller' => $this

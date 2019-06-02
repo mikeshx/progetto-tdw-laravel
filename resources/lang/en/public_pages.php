@@ -102,5 +102,10 @@ return [
     'continue_to' => 'Continue to',
     'go_to_registration' => 'if you are not registered go to the registration page',
     'register' => 'Sign up',
-    'forgot' => 'Lost your password?'
+    'forgot' => 'Lost your password?',
+    'welcome_to' => 'Welcome to',
+    'my_orders_desc' => 'Access to your orders',
+    'support_desc' => 'Access to support',
+    'support' => 'Support page',
+    'my_account_desc' => 'Page dedicated to your account. Here you can check your orders, contact support.'
 ];
