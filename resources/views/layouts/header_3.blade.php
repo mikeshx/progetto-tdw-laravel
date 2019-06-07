@@ -150,7 +150,7 @@
             <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
                 <div class="col-md-10 col-md-offset-1">
                     <h1>{{__('public_pages.welcome_to')}}</h1>
-                    <h2>{{__('public_pages.my_account')}}</h2>
+                    <h2>{{__($head_description)}}</h2>
                 </div>
             </div>
         </div>

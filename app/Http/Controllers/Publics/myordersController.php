@@ -27,7 +27,7 @@ class myordersController extends Controller
             'head_title' => Lang::get('seo.title_myOrders'),
             'orders' => $orders,
             'social' => $social,
-            'head_description' => Lang::get('soe.descr_myOrders'),
+            'head_description' => Lang::get('seo.descr_myOrders'),
             'expedition' => $expedtion,
             'controller' => $this
         ]);

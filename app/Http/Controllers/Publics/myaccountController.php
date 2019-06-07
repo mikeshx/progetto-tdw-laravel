@@ -17,7 +17,7 @@ class myaccountController extends Controller
         return view('publics.myaccount',[
             'head_title' => Lang::get('seo.title_myAccount'),
             'social' => $social,
-            'head_description' => Lang::get('soe.descr_myAccount')
+            'head_description' => Lang::get('seo.descr_myAccount')
         ]);
     }
 }
