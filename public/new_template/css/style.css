@@ -41,6 +41,25 @@
 .heading .finder .dropdown-menu { background: #cbb27c; border: 0px solid #000; border-radius: 0px; }
 .heading .finder .dropdown .btn-lang {color:#ffffff; background-color:transparent; border: none; text-transform: uppercase; font-family: 'Catamaran', sans-serif; font-size: 14px; font-weight: 600; }
 .heading .finder .dropdown .btn-lang:hover{color: #cbb27c; text-decoration: none;    text-decoration: none; }
+
+/** CSS ORDERS PAGE **/
+.orders-page .tr-more {background-color: #cbb27c; display: none;}
+.orders-page .fa-chevron-up {display: none;}
+.orders-page .tr-more ul li { margin-bottom: 15px; }
+.orders-page .tr-more .product { margin-bottom: 10px; padding-bottom: 10px; border-bottom:1px solid #e3dede;}
+.orders-page .tr-more .product a {color:#333333;}
+.orders-page .tr-more .product img {float:left; width:100px; margin-right: 5px;}
+.orders-page .tr-more .product .name {display: block; font-size:12px; margin-bottom: 10px;}
+.orders-page .tr-more .product .quantity {font-size: 16px;}
+
+/** CSS SUPPORT PAGE **/
+.orders-page .btn-n  {position: relative; bottom: 8px; right: 20px; }
+.modal-content .btn-cn {position: relative; left: 20px }
+.orders-page .my-ord{background-color: #1b1d1e; color:#ffffff; font-family: 'Catamaran', sans-serif; font-size: 16px; font-weight: 600; text-transform:uppercase;}
+
+/** CSS SUPPORT MESSAGE PAGE **/
+
+
 /** FINE CSS AGGIUNTO **/
 
 /**  Body  **/

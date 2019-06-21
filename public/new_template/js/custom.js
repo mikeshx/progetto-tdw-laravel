@@ -399,3 +399,28 @@ jQuery(function ($) {
 	}
 
 });
+
+
+//My Orders
+$('.show-more-ele').click(function () {
+	var tr_id = $(this).data('show-tr');
+	$('table').find('[data-tr="' + tr_id + '"]').toggle(function () {
+		if ($('[data-tr="' + tr_id + '"]').is(':visible')) {
+			$('.orders-page .fa-chevron-up').show();
+			$('.orders-page .fa-chevron-down').hide();
+		} else {
+			$('.orders-page .fa-chevron-up').hide();
+			$('.orders-page .fa-chevron-down').show();
+		}
+	});
+
+});
+
+/* Function Add Ticket*/
+function AddTicket() {
+	document.getElementById("formManageTicket").submit();
+}
+/* Function Send message ticket*/
+function SendMessage(){
+	document.getElementById("formSendMessage").submit();
+}

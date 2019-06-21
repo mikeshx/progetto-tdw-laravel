@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publics;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Publics\SupportModel;
+use App\Models\Publics\HomeModel;
 use Auth;
 use Lang;
 
@@ -16,6 +17,8 @@ class SupportController extends Controller
         $ticketInfo = null;
         $currentid = Auth::user()->id;
         $supportModel = new SupportModel();
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
         $ticket = $supportModel->getSupportRequest($currentid);
 
         $edit = $request->input('edit');
@@ -29,6 +32,7 @@ class SupportController extends Controller
         return view('publics.support', [
             'ticket' => $ticket,
             'ticketInfo' => $ticketInfo,
+            'social' => $social,
             'head_title' => Lang::get('seo.title_support'),
             'head_description' => Lang::get('seo.descr_support')
         ]);
@@ -39,6 +43,8 @@ class SupportController extends Controller
         $supportModel = new SupportModel();
         $ticket = $supportModel->getSupportRequestNumber($ticket_number);
         $ticket_message = $supportModel->getTicketMessage($ticket_number);
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
         $currentid = Auth::user()->id;
         $id_user = $supportModel->getIdUser($ticket_number);
 
@@ -49,6 +55,7 @@ class SupportController extends Controller
                     'ticket' => $ticket,
                     'ticket_number'=> $ticket_number,
                     'ticket_message' => $ticket_message,
+                    'social' => $social,
                     'head_title' => Lang::get('seo.title_support'),
                     'head_description' => Lang::get('seo.descr_support')
                 ]);

@@ -1,69 +1,69 @@
-@extends('layouts.app_public')
+@extends('layouts.header_3')
 @section('content')
-    <div class="myaccount-page">
+    <!-- Section -->
+    <div class="container-fluid dark section no-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="section-title">
-                        @foreach($ticket as $tick)
-                            <h2>#{{ $ticket_number }} <br>{{__('public_pages.ticket_title')}}{{ $tick->obj }}</h2>
-                        @endforeach
-                    </div>
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="orders-page">
-                            <div class="card card-cascade narrower">
-                                <div class="table-responsive-xs">
-                                    <table class="table">
-                                        <thead class="blue-grey lighten-4">
-                                        <tr>
-                                            <th>{{__('public_pages.user')}}</th>
-                                            <th>{{__('public_pages.message')}}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($ticket_message as $message)
-                                            <tr>
-                                                <th>
-                                                    <p>{{ $message->name }}</p>
-                                                    <br><br>
-                                                    <p>{{ $message->time }}</p>
-                                                </th>
-                                                <th>
-                                                    <p>{{ $message->text }}</p>
-                                                </th>
-                                            </tr>
-                                        @endforeach
-                                           @if($tick->status != 2)
-                                            <tr>
-                                                <th>
-                                                    <p></p>
-                                                </th>
-                                                <th>
-                                                    <div class="modal-body">
-                                                        <form method="POST" action="" id="formSendMessage">
-                                                            {{ csrf_field() }}
-                                                            <div class="md-form">
-                                                                <i class="fa prefix grey-text"></i>
-                                                                <label for="defaultForm-name">{{__('public_pages.reply')}}</label>
-                                                                <input type="hidden" value="{{ $ticket_number }}" name="n_ticket" />
-                                                                <textarea  class="form-control" placeholder="{{__('public_pages.message')}}" name="message" rows="3"></textarea>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="btn-allign">
-                                                        <button type="button" class="btn btn-save" onclick="SendMessage()">{{__('public_pages.reply')}}</button>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                           @endif
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-12">
+                    @foreach($ticket as $tick)
+                        <p class="author center-menu"><a href="../support">#{{ $ticket_number }}</a> / {{ $tick->obj }}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Section -->
+    <div class="container-fluid section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 id="comments">{{__('public_pages.message')}}</h3>
+                </div>
+                <div class="col-sm-12 user-comments">
+                    @foreach($ticket_message as $message)
+                    <div class="row scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatey="75">
+                        <div class="col-sm-1">
+                            <img src="http://placehold.it/72x72" alt="Craft ale HTML template" /> <!--- Settare le immagini utente -->
+                        </div>
+                        <div class="col-sm-11">
+                            <h5>{{ $message->name }}</h5>
+                            <p>{{ $message->text }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if($tick->status != 2)
+    <!-- Section -->
+    <div class="container-fluid light section no-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 dark matchHeight">
+                    <section class="alignMiddle padding-80-0 mobile-center">
+                        <header>
+                            <h1>{{__('public_pages.leave')}}</h1>
+                            <h2>{{__('public_pages.message2')}}</h2>
+                        </header>
+                        <p></p>
+                    </section>
+                    <div class="grey-background" style="background-color: #101112; background-size: cover;"></div>
+                </div>
+                <div class="col-sm-5 col-sm-push-1 matchHeight">
+                    <section class="alignMiddle padding-80-0">
+                        <form class=" scrollme animateme" data-when="enter" data-from="1" data-to="0" data-opacity="0" data-scale="1.1" method="POST" id="formSendMessage">
+                            {{ csrf_field() }}
+                            <input type="hidden" value="{{ $ticket_number }}" name="n_ticket" />
+                            <textarea name="message" placeholder="{{__('public_pages.message2')}}" rows="5"></textarea>
+                            <input type="submit" value="{{__('public_pages.reply')}}" class="btn btn-default" onclick="SendMessage()">
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 @endsection

@@ -84,7 +84,9 @@ return [
     'obj' => 'Object',
     'no_ticket' => 'No request',
     'new_ticket' => 'New Ticket',
-    'message' => 'Message',
+    'message' => 'Messages',
+    'message2' => 'Message',
+    'leave' => 'Leave a',
     'send' => 'Send Ticket',
     'ticket_is_added' => 'Ticket Added',
     'requested_date' => 'Requested date',
@@ -107,5 +109,6 @@ return [
     'my_orders_desc' => 'Access to your orders',
     'support_desc' => 'Access to support',
     'support' => 'Support page',
-    'my_account_desc' => 'Page dedicated to your account. Here you can check your orders, contact support.'
+    'my_account_desc' => 'Page dedicated to your account. Here you can check your orders, contact support.',
+    'open_ticket' => 'Open'
 ];

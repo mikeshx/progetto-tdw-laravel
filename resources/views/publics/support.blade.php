@@ -1,49 +1,46 @@
-@extends('layouts.app_public')
+@extends('layouts.header_3')
 @section('content')
     <link href="{{ asset('css/bootstrap-select.min.css') }}" rel="stylesheet" />
-    <div class="container">
+    <div class="container-fluid section no-padding">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12">
                 <div class="orders-page">
-                    <div class="card card-cascade narrower">
-                        <div class="table-responsive-xs">
-                            <table class="table">
-                                <thead class="blue-grey lighten-4">
-                                <tr>
-                                    <th>{{__('public_pages.id_ticket')}}</th>
-                                    <th>{{__('public_pages.obj')}}</th>
-                                    <th>{{__('public_pages.requested_date')}}</th>
-                                    <th>{{__('public_pages.status')}}</th>
-                                    <th class="text-right">
-                                        <button class="btn btn-sm btn-save waves-effect waves-light" data-toggle="modal" data-target="#modalNewTicket">
-                                            {{__('public_pages.new_ticket')}}
-                                        </button>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @forelse ($ticket as $req)
-                                    <tr>
-                                        <td>{{ $req->ticket_number }}</td>
-                                        <td> <a href="support_message/{{ $req->ticket_number }}" class="waves-effect waves-light btn green">{{ $req->obj }}</a></td>
-                                        <td>{{ $req->time }}</td>
-                                        @if( $req->status  == 0)
-                                            <td>{{__('public_pages.new')}}</td>
-                                            @elseif( $req->status  == 1)
-                                            <td>{{__('public_pages.processing')}}</td>
-                                            @else
-                                            <td>{{__('public_pages.close')}}</td>
-                                        @endif
-                                    </tr>
-                                @empty
-                                    <td>
-                                        <p>{{ __('public_pages.no_ticket') }}</p>
-                                    </td>
-                                @endforelse
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <table class="table">
+                        <thead class="my-ord">
+                        <tr>
+                            <th><span class="title">{{__('public_pages.id_ticket')}}</span></th>
+                            <th><span class="title">{{__('public_pages.obj')}}</span></th>
+                            <th><span class="title">{{__('public_pages.requested_date')}}</span></th>
+                            <th><span class="title">{{__('public_pages.status')}}</span></th>
+                            <th class="text-right">
+                                <button class="btn btn-default btn-n" data-toggle="modal" data-target="#modalNewTicket">
+                                    {{__('public_pages.new_ticket')}}
+                                </button>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse ($ticket as $req)
+                            <tr>
+                                <td><h2>{{ $req->ticket_number }}</h2></td>
+                                <td><h2>{{ $req->obj }}</h2></td>
+                                <td><h2>{{ $req->time }}</h2></td>
+                                @if( $req->status  == 0)
+                                    <td><h2>{{__('public_pages.new')}}</h2></td>
+                                @elseif( $req->status  == 1)
+                                    <td><h2>{{__('public_pages.processing')}}</h2></td>
+                                @else
+                                    <td><h2>{{__('public_pages.close')}}</h2></td>
+                                @endif
+                                <td> <a href="support_message/{{ $req->ticket_number }}" class="btn btn-default">{{__('public_pages.open_ticket')}}</a></td>
+                            </tr>
+                        @empty
+                            <td>
+                                <p><h2>{{ __('public_pages.no_ticket') }}</h2></p>
+                            </td>
+                        @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -73,9 +70,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="btn-allign">
-                    <button type="button" class="btn btn-close" data-dismiss="modal">{{__('admin_pages.close')}}</button>
-                    <button type="button" class="btn btn-save" onclick="AddTicket()">{{__('public_pages.send')}}</button>
+                <div class="">
+                    <button type="button" class="btn btn-default btn-cn" data-dismiss="modal">{{__('admin_pages.close')}}</button>
+                    <button type="button" class="btn btn-default btn-cn" onclick="AddTicket()">{{__('public_pages.send')}}</button>
                 </div>
             </div>
         </div>
