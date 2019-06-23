@@ -35,17 +35,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4 hidden-xs">
-                        <ul class="social">
-                            @foreach($social as $soc)
-                                @if($soc->tipo == "instagram")
-                                    <li><a href="{{ $soc->social_link }}" class="fa fa-instagram"></a></li>
-                                @elseif($soc->tipo == "facebook")
-                                    <li><a href="{{ $soc->social_link }}" class="fa fa-facebook-square"></a></li>
-                                @elseif($soc->tipo == "twitter")
-                                    <li><a href="{{ $soc->social_link }}" class="fa fa-twitter-square"></a></li>
-                                @endif
-                            @endforeach
-                        </ul>
                     </div>
                     <div class="col-sm-8">
                         @if(!Auth::user())
@@ -125,7 +114,7 @@
                     </li>
                     <li>
 								<span>
-									<a href="contact.html">Contact</a>
+									<a href="/contacts">Contact</a>
 								</span>
                     </li>
                     <li class="dropdown">
@@ -154,23 +143,6 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- Section -->
-    <div class="container-fluid dark section no-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ul class="horz-menu">
-                        <li class="active"><span><a href="#">All</a></span></li>
-                        <li><span><a href="#">Latest</a></span></li>
-                        <li><span><a href="#">My Favorites</a></span></li>
-                        <li><span><a href="#">Categories</a></span></li>
-                        <li><span><a href="#">Sale</a></span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
 
 

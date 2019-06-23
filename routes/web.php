@@ -13,6 +13,9 @@
 
 /* Public Routes */
 
+// contacts routes (public)
+Route::post('/contacts', 'Admin\\ContactsController@index');
+
 // review routes
 Route::post('review.submit', 'Publics\\ReviewsController@submitReview');
 

@@ -3,6 +3,23 @@
 <!-- Dynamic content of the website-->
 @section('content')
 
+    <!-- Section -->
+    <div class="container-fluid dark section no-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="horz-menu">
+                        <li class="active"><span><a href="#">All</a></span></li>
+                        <li><span><a href="#">Latest</a></span></li>
+                        <li><span><a href="#">My Favorites</a></span></li>
+                        <li><span><a href="#">Categories</a></span></li>
+                        <li><span><a href="#">Sale</a></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Products Section -->
     <div class="container-fluid light section no-padding">
         <div class="row">

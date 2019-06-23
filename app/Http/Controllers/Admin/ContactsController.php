@@ -13,14 +13,27 @@ class ContactsController extends Controller
 {
 
     public function index() {
-        return view('admin.contacts', [
-            'page_title_lang' => Lang::get('admin_pages.dashboard')
-        ]);
+
+        $contactsModel = new ContactsModel();
+
+        // We get everytime the id = 1 because that's the only one we need
+        $result = $contactsModel->getContacts(1);
+
+        // If the is nothing in the database
+        if ($result == null) {
+            return view('admin.contacts', [
+                'page_title_lang' => Lang::get('admin_pages.dashboard')
+            ]);
+        } else {
+            return view('admin.contacts', [
+                'page_title_lang' => Lang::get('admin_pages.dashboard'),
+                'contacts' => $result
+            ]);
+        }
     }
 
     public function addContacts(Request $request) {
         $contactsModel = new ContactsModel();
         $result = $contactsModel->addContacts($request->all());
     }
-
 }
