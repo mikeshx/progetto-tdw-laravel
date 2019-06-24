@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 23, 2019 alle 11:51
--- Versione del server: 10.1.37-MariaDB
--- Versione PHP: 7.3.0
+-- Creato il: Giu 24, 2019 alle 21:59
+-- Versione del server: 10.1.38-MariaDB
+-- Versione PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `lara`
 --
+CREATE DATABASE IF NOT EXISTS `lara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `lara`;
 
 -- --------------------------------------------------------
 
@@ -121,17 +123,6 @@ INSERT INTO `categories_translations` (`id`, `for_id`, `name`, `locale`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `company_descriptions`
---
-
-CREATE TABLE `company_descriptions` (
-  `id` int(11) NOT NULL,
-  `text` varchar(3600) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `contacts`
 --
 
@@ -162,34 +153,6 @@ CREATE TABLE `coupon` (
   `coupon_string` varchar(10) NOT NULL,
   `expire_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dump dei dati per la tabella `coupon`
---
-
-INSERT INTO `coupon` (`id`, `percentage_value`, `coupon_string`, `expire_date`) VALUES
-(2, 12, '', '0000-00-00 00:00:00'),
-(3, 56, '', '0000-00-00 00:00:00'),
-(4, 23, '', '0000-00-00 00:00:00'),
-(5, 9999, '', '0000-00-00 00:00:00'),
-(6, 12, '', '0000-00-00 00:00:00'),
-(7, 121, '3XWBC146AO', '0000-00-00 00:00:00'),
-(8, 23, 'JQCZ939ROW', '0000-00-00 00:00:00'),
-(9, 56, '5VFNRHRMQA', '0000-00-00 00:00:00'),
-(10, 12, '3H3SK940WO', '2019-04-14 09:37:29'),
-(11, 23, '3WD7MAHTEP', '2019-04-17 14:17:43'),
-(12, 12, 'LXR8Q9T6DJ', '2019-05-06 08:07:26'),
-(2, 12, '', '0000-00-00 00:00:00'),
-(3, 56, '', '0000-00-00 00:00:00'),
-(4, 23, '', '0000-00-00 00:00:00'),
-(5, 9999, '', '0000-00-00 00:00:00'),
-(6, 12, '', '0000-00-00 00:00:00'),
-(7, 121, '3XWBC146AO', '0000-00-00 00:00:00'),
-(8, 23, 'JQCZ939ROW', '0000-00-00 00:00:00'),
-(9, 56, '5VFNRHRMQA', '0000-00-00 00:00:00'),
-(10, 12, '3H3SK940WO', '2019-04-14 09:37:29'),
-(11, 23, '3WD7MAHTEP', '2019-04-17 14:17:43'),
-(12, 12, 'LXR8Q9T6DJ', '2019-05-06 08:07:26');
 
 -- --------------------------------------------------------
 
@@ -280,22 +243,6 @@ CREATE TABLE `orders` (
   `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dump dei dati per la tabella `orders`
---
-
-INSERT INTO `orders` (`id`, `order_id`, `time_created`, `type`, `products`, `status`) VALUES
-(1, 1, '2019-04-26 08:25:47', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"3\";}}', 0),
-(2, 2, '2019-04-26 08:33:06', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"5\";}}', 0),
-(12, 3, '2019-04-26 10:29:08', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:2:\"16\";}}', 0),
-(13, 4, '2019-04-26 10:30:40', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"1\";}}', 0),
-(14, 5, '2019-04-26 10:32:07', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"2\";}}', 0),
-(1, 1, '2019-04-26 08:25:47', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"3\";}}', 0),
-(2, 2, '2019-04-26 08:33:06', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"5\";}}', 0),
-(12, 3, '2019-04-26 10:29:08', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:2:\"16\";}}', 0),
-(13, 4, '2019-04-26 10:30:40', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"1\";}}', 0),
-(14, 5, '2019-04-26 10:32:07', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:1:\"1\";s:8:\"quantity\";s:1:\"2\";}}', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -315,22 +262,6 @@ CREATE TABLE `orders_clients` (
   `notes` text NOT NULL,
   `total_price` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dump dei dati per la tabella `orders_clients`
---
-
-INSERT INTO `orders_clients` (`id`, `for_order`, `first_name`, `last_name`, `email`, `phone`, `address`, `city`, `post_code`, `notes`, `total_price`) VALUES
-(1, 1, 'asd', 'adasdasd', 'asdasd', 'asdasd', 'asdasdasd', 'asdasdas', 'asdasda', 'dsadad', 0),
-(2, 2, 'asdasd', 'asdasdas', 'dasdasd', 'asdasdsad', 'asdasdas', 'asdsada', 'asdasdasd', 'asdsadad', 0),
-(3, 12, 'asdasd', 'asdasd', 'asdasdas', 'dasdas', 'dasdasd', 'asdas', 'dasdasd', 'asdasdsa', 512),
-(4, 13, 'asdooooo', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 32),
-(5, 14, 'asdad', 'asdasd', 'asdasdas', 'dasdasd', 'asdasd', 'adasdas', 'dasdas', 'sdasdad', 56),
-(1, 1, 'asd', 'adasdasd', 'asdasd', 'asdasd', 'asdasdasd', 'asdasdas', 'asdasda', 'dsadad', 0),
-(2, 2, 'asdasd', 'asdasdas', 'dasdasd', 'asdasdsad', 'asdasdas', 'asdsada', 'asdasdasd', 'asdsadad', 0),
-(3, 12, 'asdasd', 'asdasd', 'asdasdas', 'dasdas', 'dasdasd', 'asdas', 'dasdasd', 'asdasdsa', 512),
-(4, 13, 'asdooooo', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 32),
-(5, 14, 'asdad', 'asdasd', 'asdasdas', 'dasdasd', 'asdasd', 'adasdas', 'dasdas', 'sdasdad', 56);
 
 -- --------------------------------------------------------
 
@@ -367,14 +298,6 @@ CREATE TABLE `products` (
   `hidden` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dump dei dati per la tabella `products`
---
-
-INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `category_id`, `quantity`, `url`, `link_to`, `order_position`, `procurements`, `tags`, `hidden`) VALUES
-(1, 'images/tC7CtdU1qvXZz5k3OMlMf7Hj1WhOrLNJvNHmXl3T.png', 1547726874, '2019-01-17 12:07:55', '2019-01-17 11:10:05', 1, 1, 'adsadasda-1', NULL, 1, 0, 'lol', 0),
-(1, 'images/tC7CtdU1qvXZz5k3OMlMf7Hj1WhOrLNJvNHmXl3T.png', 1547726874, '2019-01-17 12:07:55', '2019-01-17 11:10:05', 1, 1, 'adsadasda-1', NULL, 1, 0, 'lol', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -389,16 +312,6 @@ CREATE TABLE `products_translations` (
   `price` varchar(20) NOT NULL,
   `locale` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dump dei dati per la tabella `products_translations`
---
-
-INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `price`, `locale`) VALUES
-(1, 1, '', '', '', 'bg'),
-(2, 1, 'adsadasda', 'asdadasd', '32', 'en'),
-(1, 1, '', '', '', 'bg'),
-(2, 1, 'adsadasda', 'asdadasd', '32', 'en');
 
 -- --------------------------------------------------------
 
@@ -448,6 +361,33 @@ CREATE TABLE `social_contacts` (
 
 INSERT INTO `social_contacts` (`id`, `instagram_desc`, `instagram_link`, `facebook_desc`, `facebook_link`, `twitter_desc`, `twitter_link`) VALUES
 (1, 'a', 'a', 'a', 'a', 'a', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `story_carousel`
+--
+
+CREATE TABLE `story_carousel` (
+  `id` int(11) NOT NULL,
+  `postion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `story_carousel_translations`
+--
+
+CREATE TABLE `story_carousel_translations` (
+  `id` int(11) NOT NULL,
+  `for_id` int(11) NOT NULL,
+  `locale` varchar(5) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `title1` varchar(30) NOT NULL,
+  `title2` varchar(30) NOT NULL,
+  `text` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -511,12 +451,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
-(1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1),
-(2, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 1),
-(3, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 0),
-(1, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2017-09-14 03:06:28', '2017-09-14 03:06:28', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1),
-(2, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 1),
-(3, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-01-17 12:24:20', '2019-01-17 12:24:20', 'Ha3ltU8e8tcchdCSw1jjH7mcMQd7ceGLYegFiD5M2fI0TWA8OydOVbtk2T2S', 0);
+(1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1),
+(2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
+(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1);
 
 -- --------------------------------------------------------
 
@@ -578,14 +515,170 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `coupon`
+--
+ALTER TABLE `coupon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `expeditions`
+--
+ALTER TABLE `expeditions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `fast_orders`
+--
+ALTER TABLE `fast_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `favorites`
+--
+ALTER TABLE `favorites`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `img_product`
+--
+ALTER TABLE `img_product`
+  ADD PRIMARY KEY (`id_img_prodotto`);
+
+--
+-- Indici per le tabelle `img_user`
+--
+ALTER TABLE `img_user`
+  ADD PRIMARY KEY (`id_img_user`);
+
+--
+-- Indici per le tabelle `newsletters`
+--
+ALTER TABLE `newsletters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `orders_clients`
+--
+ALTER TABLE `orders_clients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `producers`
+--
+ALTER TABLE `producers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `products_translations`
+--
+ALTER TABLE `products_translations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `refunds`
+--
+ALTER TABLE `refunds`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `social_contacts`
 --
 ALTER TABLE `social_contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `story_carousel`
+--
+ALTER TABLE `story_carousel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `story_carousel_translations`
+--
+ALTER TABLE `story_carousel_translations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `support_message`
+--
+ALTER TABLE `support_message`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `support_request`
+--
+ALTER TABLE `support_request`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
+
+--
+-- AUTO_INCREMENT per la tabella `carousel`
+--
+ALTER TABLE `carousel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT per la tabella `carousel_info`
+--
+ALTER TABLE `carousel_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `carousel_translations`
+--
+ALTER TABLE `carousel_translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT per la tabella `carousel_translations_info`
+--
+ALTER TABLE `carousel_translations_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT per la tabella `categories_translations`
+--
+ALTER TABLE `categories_translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `contacts`
@@ -594,10 +687,130 @@ ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT per la tabella `coupon`
+--
+ALTER TABLE `coupon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `expeditions`
+--
+ALTER TABLE `expeditions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `fast_orders`
+--
+ALTER TABLE `fast_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `favorites`
+--
+ALTER TABLE `favorites`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `img_product`
+--
+ALTER TABLE `img_product`
+  MODIFY `id_img_prodotto` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `img_user`
+--
+ALTER TABLE `img_user`
+  MODIFY `id_img_user` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `newsletters`
+--
+ALTER TABLE `newsletters`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `orders_clients`
+--
+ALTER TABLE `orders_clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `producers`
+--
+ALTER TABLE `producers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `products_translations`
+--
+ALTER TABLE `products_translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `refunds`
+--
+ALTER TABLE `refunds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT per la tabella `social_contacts`
 --
 ALTER TABLE `social_contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT per la tabella `story_carousel`
+--
+ALTER TABLE `story_carousel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `story_carousel_translations`
+--
+ALTER TABLE `story_carousel_translations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `support_message`
+--
+ALTER TABLE `support_message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `support_request`
+--
+ALTER TABLE `support_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
