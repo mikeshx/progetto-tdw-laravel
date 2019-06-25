@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 24, 2019 alle 21:59
+-- Creato il: Giu 25, 2019 alle 13:46
 -- Versione del server: 10.1.38-MariaDB
 -- Versione PHP: 7.3.3
 
@@ -365,12 +365,27 @@ INSERT INTO `social_contacts` (`id`, `instagram_desc`, `instagram_link`, `facebo
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `story`
+--
+
+CREATE TABLE `story` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `text` varchar(500) NOT NULL,
+  `locale` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `story_carousel`
 --
 
 CREATE TABLE `story_carousel` (
   `id` int(11) NOT NULL,
-  `postion` int(11) NOT NULL
+  `link` varchar(100) NOT NULL,
+  `position` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -605,6 +620,12 @@ ALTER TABLE `social_contacts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `story`
+--
+ALTER TABLE `story`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `story_carousel`
 --
 ALTER TABLE `story_carousel`
@@ -648,7 +669,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT per la tabella `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel_info`
@@ -660,7 +681,7 @@ ALTER TABLE `carousel_info`
 -- AUTO_INCREMENT per la tabella `carousel_translations`
 --
 ALTER TABLE `carousel_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel_translations_info`
@@ -774,6 +795,12 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT per la tabella `social_contacts`
 --
 ALTER TABLE `social_contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT per la tabella `story`
+--
+ALTER TABLE `story`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

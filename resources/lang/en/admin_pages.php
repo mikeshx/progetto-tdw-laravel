@@ -151,5 +151,16 @@ return [
     'title2' => 'Title 2',
     'carousel_info' => 'Carousel Info',
     'text' => 'Text',
-    'carousel_info' => 'Carousel Info'
+    'carousel_info' => 'Carousel Info',
+    'story' => 'Our Story',
+    'slider' => 'Set Slider',
+    'important_date' => 'Important Date',
+    'date' => 'Date',
+    'title' => 'Title',
+    'add_date' => 'Add Date',
+    'empty' => 'Empty',
+    'add_new_date' => 'Add New Date',
+    'lang' => 'Lang',
+    'are_u_sure_delete_date' => ' Are you sure to delete this date?',
+    'date_is_deleted' => 'Date is deleted'
 ];

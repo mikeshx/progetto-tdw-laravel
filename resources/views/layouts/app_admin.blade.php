@@ -97,15 +97,18 @@
                                         <p>{{__('admin_pages.support')}}</p>
                                     </a>
                                 </li>
-
                                 <li>
                                     <a href="{{ lang_url('admin/contacts') }}" class="btn waves-effect waves-light">
                                         <i class="material-icons">CT</i>
                                         <p>{{__('admin_pages.contacts')}}</p>
                                     </a>
                                 </li>
-
-
+                                <li>
+                                    <a href="{{ lang_url('admin/story') }}" class="btn waves-effect waves-light">
+                                        <i class="material-icons">OS</i>
+                                        <p>{{__('admin_pages.story')}}</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10 col-sm-offset-3 col-md-offset-3 col-lg-offset-2 right-side">

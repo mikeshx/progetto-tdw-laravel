@@ -200,6 +200,17 @@ Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::get('admin/support_message/{id_ticket}', 'Admin\\SupportController@indexTicketMessagePage');
     Route::post('admin/support_message/{id_ticket}', 'Admin\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
     Route::post('{locale}/admin/support', 'Admin\\SupportController@sendMessage');
+////////////// Story
+    Route::get('admin/story', 'Admin\\StoryController@index')->where('locale', implode('|', Config::get('app.locales')));
+    Route::get('{locale}/admin/Story', 'Admin\\StoryController@index');
+    Route::post('admin/story', 'Admin\\StoryController@setSlider')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/admin/story', 'Admin\\StoryController@setSlider');
+    Route::get('admin/delete/story/{id}', 'Admin\\StoryController@deleteSlider')->where('locale', implode('|', Config::get('app.locales')));
+    Route::get('{locale}/admin/delete/story/{id}', 'Admin\\StoryController@deleteSlider');
+    Route::post('admin/story', 'Admin\\StoryController@setImportantDate')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/admin/story', 'Admin\\StoryController@setImportantDate');
+    Route::get('admin/delete/story/{id}', 'Admin\\StoryController@deleteDate')->where('locale', implode('|', Config::get('app.locales')));
+    Route::get('{locale}/admin/delete/story/{id}', 'Admin\\StoryController@deleteDate');
 });
 
 // Authentication Routes...
