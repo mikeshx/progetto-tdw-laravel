@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-sm-5 col-sm-push-1 matchHeight">
                     <section class="alignMiddle padding-80-0">
-                        <form action="https://formspree.io/your@email.com"
+                        <form action="https://formspree.io/mikesh07mail@gmail.com"
                               method="POST"  class=" scrollme animateme" data-when="enter" data-from="1" data-to="0" data-opacity="0" data-scale="1.1">
                             <input type="text" name="name" placeholder="Name">
                             <input type="email" name="_replyto" placeholder="Email">
@@ -90,4 +90,5 @@
             </div>
         </div>
     </div>
+
 @endsection

@@ -122,7 +122,7 @@
                     </li>
                     <li>
 								<span>
-									<a href="contact.html">Contact</a>
+									<a href="/contacts">Contact</a>
 								</span>
                     </li>
                     <li class="dropdown">

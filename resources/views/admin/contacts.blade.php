@@ -57,7 +57,7 @@
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
                             <input type="text" name="position" value="{{$contacts->position}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Address (coordinates): </label>
+                            <label for="publishForm-quantity">Google maps api link: </label>
                         </div>
 
                         <div class="md-form">

@@ -224,5 +224,12 @@
 <script src="{{ asset('new_template/js/owl.autoplay.js')}}"></script>
 <script src="https://use.fontawesome.com/4dfd2d448a.js"></script>
 <script src="{{ asset('new_template/js/custom.js')}}"></script>
+
+@isset($contacts)
+    <script src="{{$contacts->position}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmap3/6.1.0/gmap3.min.js"></script>
+    <script src="https://use.fontawesome.com/4dfd2d448a.js"></script>
+@endisset
+
 </body>
 </html>
