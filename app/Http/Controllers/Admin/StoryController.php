@@ -16,10 +16,12 @@ class StoryController extends Controller
         $carouselModel = new StoryModel();
         $sliders = $carouselModel->getSliders();
         $story = $carouselModel->getStory();
+        $storyInfo = $carouselModel->getInfo();
         return view('admin.story', [
             'page_title_lang' => Lang::get('admin_pages.story'),
             'locales' => Config::get('app.locales'),
             'currentLocale' => app()->getLocale(),
+            'story_info' => $storyInfo,
             'story' => $story,
             'sliders' => $sliders
         ]);
@@ -59,8 +61,12 @@ class StoryController extends Controller
         } else {
             abort(404);
         }
+    }
 
-
+    public function updateInfo(Request $request){
+        $Model = new StoryModel();
+        $Model->updateInfo($request->all());
+        return redirect(lang_url('admin/story'))->with(['msg' => Lang::get('admin_pages.update_ok'), 'result' => true]);
     }
 
 }

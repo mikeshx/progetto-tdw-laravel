@@ -198,6 +198,43 @@
         </div>
     </div>
 
+    <div class="fast-orders">
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>{{__('admin_pages.info_story')}}</h2>
+
+                <form id="infoStoryAdd" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="md-form">
+                        <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                        <input type="text" name="flavours" value="{{ $story_info->flavours }}" id="publishForm-quantity" class="form-control">
+                        <label for="publishForm-quantity">{{__('admin_pages.flavours')}} </label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                        <input type="text" name="outlets" value="{{ $story_info->outlets }}" id="publishForm-quantity" class="form-control">
+                        <label for="publishForm-quantity">{{__('admin_pages.outlets')}} </label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                        <input type="text" name="years" value="{{ $story_info->years }}" id="publishForm-quantity" class="form-control">
+                        <label for="publishForm-quantity">{{__('admin_pages.years')}} </label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                        <input type="text" name="day" value="{{ $story_info->day }}" id="publishForm-quantity" class="form-control">
+                        <label for="publishForm-quantity">{{__('admin_pages.day')}} </label>
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button class="btn btn-default" onclick="document.getElementById('infoStoryAdd').submit();">{{__('admin_pages.save')}} </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         $('.upload-btn').change(function () {
             $(this).next('.file-name').show().append($(this).val());

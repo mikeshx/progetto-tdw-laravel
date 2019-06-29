@@ -110,6 +110,25 @@ class StoryModel extends Model
 
     }
 
+    public function getInfo(){
+        $sliders = DB::table('story_info')
+            ->select(DB::raw('story_info.*'))
+            ->first();
+        return $sliders;
+    }
+
+    public function updateInfo($post){
+
+        $update = [
+            'flavours' => trim($post['flavours']),
+            'outlets' => trim($post['outlets']),
+            'years' => trim($post['years']),
+            'day' => trim($post['day'])
+        ];
+
+        DB::table('story_info')->where('id', 1)->update($update);
+    }
+
     public function deleteDate($id)
     {
         $this->id = $id;

@@ -162,5 +162,13 @@ return [
     'add_new_date' => 'Add New Date',
     'lang' => 'Lang',
     'are_u_sure_delete_date' => ' Are you sure to delete this date?',
-    'date_is_deleted' => 'Date is deleted'
+    'date_is_deleted' => 'Date is deleted',
+    'contacts' => 'Contacts',
+    'is_added' => 'Added',
+    'info_story' => 'Info Story',
+    'flavours' => 'Flavours:',
+    'outlets' => 'Outlets:',
+    'years' => 'Years;',
+    'day' => 'Day:',
+    'update_ok' => 'Updated'
 ];

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 25, 2019 alle 13:46
+-- Creato il: Giu 29, 2019 alle 15:46
 -- Versione del server: 10.1.38-MariaDB
--- Versione PHP: 7.3.3
+-- Versione PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -273,7 +273,8 @@ CREATE TABLE `producers` (
   `id` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `brewery` varchar(600) NOT NULL,
-  `link` varchar(600) NOT NULL
+  `link` varchar(600) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -298,6 +299,13 @@ CREATE TABLE `products` (
   `hidden` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dump dei dati per la tabella `products`
+--
+
+INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `category_id`, `quantity`, `url`, `link_to`, `order_position`, `procurements`, `tags`, `hidden`) VALUES
+(1, 'images/r6PlNR3FLk3pwe3LyjFnBJ9ZJ5VdNMJJYkcTNY9f.jpeg', 1561800926, '2019-06-29 09:35:27', NULL, 1, 5, 'Birra-1', 'Birra1', 1, 0, 'Birra', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -312,6 +320,13 @@ CREATE TABLE `products_translations` (
   `price` varchar(20) NOT NULL,
   `locale` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `products_translations`
+--
+
+INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `price`, `locale`) VALUES
+(1, 1, 'Birra 1', 'sad', '1', 'en');
 
 -- --------------------------------------------------------
 
@@ -407,6 +422,27 @@ CREATE TABLE `story_carousel_translations` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `story_info`
+--
+
+CREATE TABLE `story_info` (
+  `id` int(11) NOT NULL,
+  `flavours` int(11) NOT NULL,
+  `outlets` int(11) NOT NULL,
+  `years` int(11) NOT NULL,
+  `day` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `story_info`
+--
+
+INSERT INTO `story_info` (`id`, `flavours`, `outlets`, `years`, `day`) VALUES
+(1, 206, 140, 60, 21);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `support_message`
 --
 
@@ -466,7 +502,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
-(1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1),
+(1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', '9kpFR6ZRBHzGkD2JxXRWhcdx1Kem8g7Vj48gt7siVXM7Z5gFjhp8CKToCWhU', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
 (3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1);
 
@@ -638,6 +674,12 @@ ALTER TABLE `story_carousel_translations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `story_info`
+--
+ALTER TABLE `story_info`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `support_message`
 --
 ALTER TABLE `support_message`
@@ -771,13 +813,13 @@ ALTER TABLE `producers`
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `products_translations`
 --
 ALTER TABLE `products_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `refunds`
@@ -814,6 +856,12 @@ ALTER TABLE `story_carousel`
 --
 ALTER TABLE `story_carousel_translations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `story_info`
+--
+ALTER TABLE `story_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT per la tabella `support_message`

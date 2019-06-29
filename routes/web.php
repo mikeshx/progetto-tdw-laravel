@@ -96,6 +96,10 @@ Route::post('{locale}/publics/support', 'Publics\\SupportController@setTicket');
 Route::get('support_message/{id_ticket}', 'Publics\\SupportController@indexTicketMessagePage');
 Route::post('support_message/{id_ticket}', 'Publics\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
 Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage');
+
+//Story
+
+
 });
 /* end logged user routes */
 
@@ -211,6 +215,8 @@ Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::post('{locale}/admin/story', 'Admin\\StoryController@setImportantDate');
     Route::get('admin/delete/story/{id}', 'Admin\\StoryController@deleteDate')->where('locale', implode('|', Config::get('app.locales')));
     Route::get('{locale}/admin/delete/story/{id}', 'Admin\\StoryController@deleteDate');
+    Route::post('admin/story', 'Admin\\StoryController@updateInfo')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/admin/story', 'Admin\\StoryController@updateInfo');
 });
 
 // Authentication Routes...
