@@ -19,5 +19,7 @@ return [
     'title_login' => 'Login',
     'title_sign_up' => 'Sign up',
     'title_reset' => "Reset password",
-    'title_account' => "My Account"
+    'title_account' => "My Account",
+    'title_story' => 'Our story',
+    'descr_story' => 'Our Story'
 ];

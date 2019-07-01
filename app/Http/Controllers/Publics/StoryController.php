@@ -15,12 +15,14 @@ class StoryController extends Controller
         $social = $homeModel->getSocial();
         $producers = $storyModel->getProducers();
         $slider = $storyModel->getCarouselSliders();
+        $year = $storyModel->getYears();
         $story = $storyModel->getStory();
         $info = $storyModel->getInfo();
 
-        return view('publics.home', [
+        return view('publics.story', [
             'social' => $social,
             'producers' => $producers,
+            'years' => $year,
             'slider' => $slider,
             'story' => $story,
             'info' => $info,

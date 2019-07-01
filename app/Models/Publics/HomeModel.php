@@ -28,6 +28,13 @@ class HomeModel extends Model
         return $sliders;
     }
 
+    public function getInfo(){
+        $sliders = DB::table('story_info')
+            ->select(DB::raw('story_info.*'))
+            ->first();
+        return $sliders;
+    }
+
     public function getSocial()
     {
         $social = DB::table('social_contacts')

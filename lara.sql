@@ -273,8 +273,7 @@ CREATE TABLE `producers` (
   `id` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `brewery` varchar(600) NOT NULL,
-  `link` varchar(600) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `link` varchar(600) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

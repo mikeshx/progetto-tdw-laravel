@@ -128,7 +128,7 @@
                                     <td>{{ $s->title }}</td>
                                     <td>{{ $s->locale }}</td>
                                     <td>
-                                        <a href="{{lang_url('admin/delete/story/'.$s->id)}}" class="btn btn-sm btn-secondary waves-effect waves-light confirm delete" data-my-message="{{__('admin_pages.are_u_sure_delete_date')}}">
+                                        <a href="{{lang_url('admin/delete/storyDate/'.$s->id)}}" class="btn btn-sm btn-secondary waves-effect waves-light confirm delete" data-my-message="{{__('admin_pages.are_u_sure_delete_date')}}">
                                             <i class="fa fa-trash mt-0"></i>
                                         </a>
                                     </td>
@@ -156,7 +156,7 @@
                     <h4 class="modal-title" id="myModalLabel">{{__('admin_pages.add_new_date')}}</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" id="formAddDate" action="" enctype="multipart/form-data">
+                    <form method="POST" action="story/setDate" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="md-form available-translations">
                             <span>{{__('admin_pages.choose_locale')}}</span>
@@ -188,11 +188,11 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin_pages.close')}}</button>
+                            <button type="submit" class="btn btn-secondary" >{{__('admin_pages.add')}}</button>
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin_pages.close')}}</button>
-                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('formAddDate').submit();">{{__('admin_pages.add')}}</button>
                 </div>
             </div>
         </div>
@@ -203,7 +203,7 @@
             <div class="col-sm-8">
                 <h2>{{__('admin_pages.info_story')}}</h2>
 
-                <form id="infoStoryAdd" method="POST" enctype="multipart/form-data">
+                <form action="story/update" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="md-form">
                         <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
@@ -225,11 +225,11 @@
                         <input type="text" name="day" value="{{ $story_info->day }}" id="publishForm-quantity" class="form-control">
                         <label for="publishForm-quantity">{{__('admin_pages.day')}} </label>
                     </div>
-                </form>
 
-                <div class="modal-footer">
-                    <button class="btn btn-default" onclick="document.getElementById('infoStoryAdd').submit();">{{__('admin_pages.save')}} </button>
-                </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" type="submit">{{__('admin_pages.save')}} </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -110,5 +110,11 @@ return [
     'support_desc' => 'Access to support',
     'support' => 'Support page',
     'my_account_desc' => 'Page dedicated to your account. Here you can check your orders, contact support.',
-    'open_ticket' => 'Open'
+    'open_ticket' => 'Open',
+    'flavours' => 'Flavours',
+    'outlets' => 'Outlets',
+    'years_brewing' => 'Years brewing',
+    'days_ready' => 'Days til ready',
+    'producers' => 'Producers',
+    'specially' => 'Specially selected'
 ];

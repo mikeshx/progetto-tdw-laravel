@@ -119,7 +119,7 @@
                     </li>
                     <li>
 								<span>
-									<a href="our-story.html">Our story</a>
+									<a href="{{ lang_url('story') }}">Our story</a>
 								</span>
                     </li>
                     <li>

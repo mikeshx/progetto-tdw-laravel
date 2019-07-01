@@ -191,4 +191,41 @@
         </div>
     </div>
 
+    <!-- Section -->
+    <div class="container-fluid super-dark section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="../public/new_template/images/Can.svg" class="svg" alt="" />
+                        <span>{{ $info->flavours }}</span>
+                        {{__('public_pages.flavours')}}
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="../public/new_template/images/Sign.svg" class="svg" alt="" />
+                        <span class="one">{{ $info->outlets }}</span>
+                        {{__('public_pages.outlets')}}
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="../public/new_template/images/Badge.svg" class="svg" alt="" />
+                        <span>{{ $info->years }}</span>
+                        {{__('public_pages.years_brewing')}}
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="../public/new_template/images/BarrelSide.svg" class="svg" alt="" />
+                        <span>{{ $info->day }}</span>
+                        {{__('public_pages.days_ready')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>v>
+    </div>
+
 @endsection

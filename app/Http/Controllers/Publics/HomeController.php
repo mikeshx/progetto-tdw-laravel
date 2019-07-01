@@ -18,6 +18,7 @@ class HomeController extends Controller
         $promoProducts = $productsModel->getProductsWithTag('promo');
         $mostSelledProducts = $productsModel->getMostSelledProducts();
         $carousel = $homeModel->getCarouselSliders();
+        $info = $homeModel->getInfo();
         $carouselInfo = $homeModel->getCarouselSlidersInfo();
         $social = $homeModel->getSocial();
         return view('publics.home', [
@@ -26,6 +27,7 @@ class HomeController extends Controller
             'carousel' => $carousel,
             'carouselInfo' => $carouselInfo,
             'cartProducts' => $this->products,
+            'info' => $info,
             'social' => $social,
             'head_title' => Lang::get('seo.title_home'),
             'head_description' => Lang::get('seo.descr_home')
