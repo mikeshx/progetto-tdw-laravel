@@ -21,5 +21,7 @@ return [
     'title_reset' => "Reset password",
     'title_account' => "My Account",
     'title_story' => 'Our story',
-    'descr_story' => 'Our Story'
+    'descr_story' => 'Our Story',
+    'descr_cart' => 'Cart',
+    'title_cart' => 'Cart'
 ];

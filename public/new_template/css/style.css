@@ -59,6 +59,17 @@
 
 /** CSS SUPPORT MESSAGE PAGE **/
 
+/** CSS BUY MODAL **/
+
+#modalBuyBtn .modal-content {border-radius: 0;}
+#modalBuyBtn .modal-header {border-bottom: 0;}
+#modalBuyBtn .modal-body {padding-top: 0;}
+#modalBuyBtn h4 { margin: 0 auto; margin-bottom: 20px; width:80%; text-align: center; text-transform: uppercase; color:#333333; font-size:24px; font-weight: 700;}
+#modalBuyBtn .go-buy {background-color: #cbb27c; border:1px solid #cbb27c; color:#fff; padding:15px 60px; font-size: 18px; font-weight:700; text-transform: uppercase; display: block; width:80%; text-align: center; margin: 0 auto;}
+#modalBuyBtn .go-buy:hover {text-decoration: none; background-color: #917f53; }
+#modalBuyBtn .continue-shopping {text-align: center;}
+#modalBuyBtn .continue-shopping a {color:#666666;  font-size:16px; text-transform: uppercase;}
+#modalBuyBtn .continue-shopping a:hover {color: #917f53; text-decoration: none; }
 
 /** FINE CSS AGGIUNTO **/
 

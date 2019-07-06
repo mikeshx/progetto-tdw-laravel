@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publics;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Publics\CheckoutModel;
+use App\Models\Publics\HomeModel;
 use Lang;
 use App\Cart;
 
@@ -13,10 +14,25 @@ class CheckoutController extends Controller
 
     public function index()
     {
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
         return view('publics.checkout', [
             'cartProducts' => $this->products,
             'head_title' => Lang::get('seo.title_checkout'),
-            'head_description' => Lang::get('soe.descr_checkout')
+            'social' => $social,
+            'head_description' => Lang::get('seo.descr_checkout')
+        ]);
+    }
+
+    public function indexCart()
+    {
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
+        return view('publics.cart', [
+            'cartProducts' => $this->products,
+            'head_title' => Lang::get('seo.title_checkout'),
+            'social' => $social,
+            'head_description' => Lang::get('seo.descr_cart')
         ]);
     }
 

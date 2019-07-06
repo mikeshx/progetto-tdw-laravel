@@ -28,10 +28,10 @@ return [
     'category_name' => 'Category:',
     'in_stock' => 'in stock',
     'out_of_stock' => 'out of stock',
-    'quantity' => 'Quantity:',
+    'quantity' => 'Quantity',
     'details' => 'Details',
     'success_add_to_cart' => 'Successfully added item in the cart',
-    'go_buy' => 'Continue to checkout',
+    'go_buy' => 'Continue to cart',
     'continue_shopping' => 'Continue shopping',
     'all_products' => 'Products',
     'client_email' => 'Your email',
@@ -116,5 +116,9 @@ return [
     'years_brewing' => 'Years brewing',
     'days_ready' => 'Days til ready',
     'producers' => 'Producers',
-    'specially' => 'Specially selected'
+    'specially' => 'Specially selected',
+    'continue_to_checkout' => 'Continue to checkout',
+    'product' => 'Product',
+    'delete' => 'Delete',
+    'total' => 'Total'
 ];

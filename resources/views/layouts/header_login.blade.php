@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>Craft Beer Nation - Craft Beer HTML Template</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link href="{{ asset('new_template/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -74,8 +75,8 @@
                             </div>
                         </div>
                         <div class="cart">
-                            <a href="cart.html">
-                                <span class="fa fa-shopping-cart"></span> Empty
+                            <a href="{{ lang_url('cart') }}">
+                                <span class="fa fa-shopping-cart"></span> {{!empty($cartProducts) ? count($cartProducts): 0}}
                             </a>
                         </div>
                     </div>
@@ -211,6 +212,41 @@
 
 </div>
 
+<!-- Modal After buy now button -->
+<div class="modal fade" id="modalBuyBtn" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h4>{{__('public_pages.success_add_to_cart')}}</h4>
+                <a href="{{lang_url('cart')}}" class="go-buy">{{__('public_pages.go_buy')}}</a>
+                <hr>
+                <div class="continue-shopping">
+                    <a href="javascript:void(0);" data-dismiss="modal">
+                        {{__('public_pages.continue_shopping')}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var urls = {
+        addProduct: "{{ url('addProduct') }}",
+        removeProductQuantity: "{{ url('removeProductQuantity') }}",
+        getProducts: "{{ url('getGartProducts') }}",
+        getProductsForCheckoutPage: "{{ url('getProductsForCheckoutPage') }}",
+        removeProduct: "{{url('removeProduct')}}"
+    };
+    var variables = {
+        addressReq: "{{__('public_pages.address_field_req')}}",
+        phoneReq: "{{__('public_pages.phone_field_req')}}",
+        productsReq: "{{__('public_pages.productsReq')}}"
+    };
+</script>
+
 <script src="{{ asset('new_template/js/jquery-2.2.4.min.js')}}"></script>
 <script src="{{ asset('new_template/js/jquery-ui.min.js')}}"></script>
 <script src="{{ asset('new_template/js/bootstrap.min.js')}}"></script>
@@ -225,5 +261,6 @@
 <script src="{{ asset('new_template/js/owl.autoplay.js')}}"></script>
 <script src="https://use.fontawesome.com/4dfd2d448a.js"></script>
 <script src="{{ asset('new_template/js/custom.js')}}"></script>
+<script src="{{ asset('js/public.js') }}"></script>
 </body>
 </html>

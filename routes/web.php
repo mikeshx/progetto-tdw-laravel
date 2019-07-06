@@ -60,6 +60,11 @@ Route::post('{locale}/contacts', 'Publics\\ContactsController@sendMessage')
 Route::post('fast-order', 'Publics\\CheckoutController@setFastOrder');
 Route::post('{locale}/fast-order', 'Publics\\CheckoutController@setFastOrder')
         ->where('locale', implode('|', Config::get('app.locales')));
+
+// cart
+Route::get('cart', 'Publics\\CheckoutController@indexCart');
+Route::get('{locale}/cart', 'Publics\\CheckoutController@indexCart')
+    ->where('locale', implode('|', Config::get('app.locales')));
 		
 /* Logged user routes */
 Route::middleware(['auth'])->group(function () {
@@ -99,6 +104,8 @@ Route::post('{locale}/publics/support', 'Publics\\SupportController@setTicket');
 Route::get('support_message/{id_ticket}', 'Publics\\SupportController@indexTicketMessagePage');
 Route::post('support_message/{id_ticket}', 'Publics\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
 Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage');
+
+
 
 
 });
