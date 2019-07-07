@@ -61,10 +61,22 @@ Route::post('fast-order', 'Publics\\CheckoutController@setFastOrder');
 Route::post('{locale}/fast-order', 'Publics\\CheckoutController@setFastOrder')
         ->where('locale', implode('|', Config::get('app.locales')));
 
+// add product to cart from add button (ajax)
+Route::post('addProduct', 'Publics\\CartController@addProduct');
+// get products and cart html
+Route::post('getGartProducts', 'Publics\\CartController@renderCartProductsWithHtml');
+// get products and cart html
+Route::post('removeProductQuantity', 'Publics\\CartController@removeProductQuantity');
+// get products and cart html for checkout page
+Route::post('getProductsForCheckoutPage', 'Publics\\CartController@getProductsForCheckoutPage');
+// remove product from cart
+Route::post('removeProduct', 'Publics\\CartController@removeProduct');
+
 // cart
 Route::get('cart', 'Publics\\CheckoutController@indexCart');
 Route::get('{locale}/cart', 'Publics\\CheckoutController@indexCart')
     ->where('locale', implode('|', Config::get('app.locales')));
+
 		
 /* Logged user routes */
 Route::middleware(['auth'])->group(function () {
@@ -80,17 +92,6 @@ Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
 Route::post('checkout', 'Publics\\CheckoutController@setOrder');
 Route::post('{locale}/checkout', 'Publics\\CheckoutController@setOrder')
                 ->where('locale', implode('|', Config::get('app.locales')));
-
-// add product to cart from add button (ajax)
-Route::post('addProduct', 'Publics\\CartController@addProduct');
-// get products and cart html
-Route::post('getGartProducts', 'Publics\\CartController@renderCartProductsWithHtml');
-// get products and cart html
-Route::post('removeProductQuantity', 'Publics\\CartController@removeProductQuantity');
-// get products and cart html for checkout page
-Route::post('getProductsForCheckoutPage', 'Publics\\CartController@getProductsForCheckoutPage');
-// remove product from cart
-Route::post('removeProduct', 'Publics\\CartController@removeProduct');
 
 //my_account
 Route::get('my_account', 'Publics\\myaccountController@index');

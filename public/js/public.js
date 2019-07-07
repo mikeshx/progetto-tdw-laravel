@@ -152,6 +152,29 @@ function addProduct(id) {
         renderCheckoutCartProducts();
     });
 }
+
+/*
+ * Add product with ajax to cart
+ */
+function addProductCart(id) {
+    var quantity = 1;
+    var el_qa = $('[name="quantity"]');
+    if (el_qa.length) {
+        quantity = el_qa.val();
+    }
+    $.ajax({
+        type: 'POST',
+        url: urls.addProduct,
+        headers: {
+            'X-CSRF-TOKEN': csrf
+        },
+
+        data: {id: id, quantity: quantity}
+    }).done(function (data) {
+        renderCartProducts();
+        renderCheckoutCartProductsCart();
+    });
+}
 /*
  * Render cart products
  */
@@ -190,6 +213,29 @@ function renderCheckoutCartProducts() {
         });
     }
 }
+
+/*
+ * Render products for checkout page
+ */
+function renderCheckoutCartProductsCart() {
+    var products_container = $('.products-for-checkout');
+    var current_height = products_container.height();
+    if (products_container.length) {
+        products_container.height(current_height);
+        products_container.empty();
+        // check only if we are in that page :)
+        $.ajax({
+            type: 'POST',
+            url: urls.getProductsForCheckoutPage,
+            headers: {
+                'X-CSRF-TOKEN': csrf
+            }
+        }).done(function (data) {
+            products_container.empty().append(data).height('auto');
+        });
+        window.location.reload();
+    }
+}
 /*
  * Remove product quantity from cart
  */
@@ -203,9 +249,10 @@ function removeQuantity(id) {
         data: {id: id}
     }).done(function (data) {
         renderCartProducts();
-        renderCheckoutCartProducts();
+        renderCheckoutCartProductsCart();
     });
 }
+
 /*
  * Complete order from checkout page - submit btn
  */

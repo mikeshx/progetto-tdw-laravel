@@ -38,13 +38,11 @@
                 <div class="row">
                     <div class="col-sm-4 hidden-xs">
                         <ul class="social">
-                            <ul class="social">
-                                @foreach($social as $soc)
-                                    <li><a href="{{ $soc->instagram_link }}" class="fa fa-instagram"></a></li>
-                                    <li><a href="{{ $soc->facebook_link }}" class="fa fa-facebook-square"></a></li>
-                                    <li><a href="{{ $soc->twitter_link }}" class="fa fa-twitter-square"></a></li>
-                                @endforeach
-                            </ul>
+                            @foreach($social as $soc)
+                                <li><a href="{{ $soc->instagram_link }}" class="fa fa-instagram"></a></li>
+                                <li><a href="{{ $soc->facebook_link }}" class="fa fa-facebook-square"></a></li>
+                                <li><a href="{{ $soc->twitter_link }}" class="fa fa-twitter-square"></a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-sm-8">
@@ -98,12 +96,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul id="menu-primary" class="nav navbar-nav">
-                    <li>
+                    <li class="{{ request()->is('home') ? 'active' : '' }}">
 								<span>
 									<a href="{{ lang_url('home') }}">Home</a>
 								</span>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('products') ? 'active' : '' }}">
 								<span>
 									<a href="{{ lang_url('products') }}">Shop</a>
 								</span>
@@ -118,14 +116,14 @@
                             <li><a href="our-beer.html">The Drunk Indian</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('story') ? 'active' : '' }}">
 								<span>
 									<a href="{{ lang_url('story') }}">Our story</a>
 								</span>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('contacts') ? 'active' : '' }}">
 								<span>
-									<a href="/contacts">Contact</a>
+									<a href="{{ lang_url('contacts') }}">Contact</a>
 								</span>
                     </li>
                     <li class="dropdown">

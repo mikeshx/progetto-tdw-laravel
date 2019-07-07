@@ -53,7 +53,7 @@
                             <div class="quantity alignMiddle">
                                 <i class="fa fa-chevron-down" onclick="removeQuantity({{$cartProduct->id}})" ></i>
                                 <input name="quantity[]" value="{{$cartProduct->num_added}}" type="text">
-                                <i class="fa fa-chevron-up" onclick="addProduct({{$cartProduct->id}})" ></i>
+                                <i class="fa fa-chevron-up" onclick="addProductCart({{$cartProduct->id}})" ></i>
                             </div>
                         </div>
                         <div class="col-sm-2 matchHeight">
