@@ -17,7 +17,8 @@ class ProductsModel extends Model
         $search = $request->input('find');
         $order = $this->orderValidate($request);
         $products = DB::table('products')
-                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price'))
+                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price,
+                products_translations.ml, products_translations.alchool, products_translations.quickdescription'))
                 ->orderBy($order['column'], $order['type'])
                 ->where('hidden', '=', 0)
                 ->where('locale', '=', app()->getLocale())
@@ -56,7 +57,8 @@ class ProductsModel extends Model
     public function getProduct($id)
     {
         $product = DB::table('products')
-                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price'
+                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price,
+                products_translations.ml, products_translations.alchool, products_translations.quickdescription'
                                 . ', (SELECT name FROM categories_translations WHERE for_id = products.category_id AND locale= "' . app()->getLocale() . '") as category_name'
                                 . ', (SELECT for_id FROM categories_translations WHERE for_id = products.category_id AND locale= "' . app()->getLocale() . '") as category_id'
                                 . ', (SELECT url FROM categories WHERE id = products.category_id) as category_url'))
@@ -70,7 +72,8 @@ class ProductsModel extends Model
     public function getProductsWithTag($tag)
     {
         $products = DB::table('products')
-                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price'))
+                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price,
+                products_translations.ml, products_translations.alchool, products_translations.quickdescription'))
                 ->where('tags', 'LIKE', '%'.$tag.'%')
                 ->where('hidden', '=', 0)
                 ->where('locale', '=', app()->getLocale())
@@ -83,7 +86,8 @@ class ProductsModel extends Model
     public function getMostSelledProducts()
     {
         $products = DB::table('products')
-                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price'))
+                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price,
+                products_translations.ml, products_translations.alchool, products_translations.quickdescription'))
                 ->where('hidden', '=', 0)
                 ->where('locale', '=', app()->getLocale())
                 ->join('products_translations', 'products_translations.for_id', '=', 'products.id')
@@ -96,7 +100,8 @@ class ProductsModel extends Model
     public function getProductsWithIds($ids)
     {
         $products = DB::table('products')
-                        ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price'))
+                        ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price,
+                        products_translations.ml, products_translations.alchool, products_translations.quickdescription'))
                         ->where('hidden', '=', 0)
                         ->whereIn('products.id', $ids)
                         ->where('locale', '=', app()->getLocale())

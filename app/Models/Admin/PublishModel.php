@@ -49,6 +49,9 @@ class PublishModel extends Model
                         'name' => htmlspecialchars(trim($this->post['name'][$i])),
                         'description' => htmlspecialchars(trim($this->post['description'][$i])),
                         'price' => htmlspecialchars(trim($this->post['price'][$i])),
+                        'ml' => htmlspecialchars(trim($this->post['ml'][$i])),
+                        'alchool' => htmlspecialchars(trim($this->post['alchool'][$i])),
+                        'quickdescription' => htmlspecialchars(trim($this->post['quickdescription'][$i])),
                         'locale' => $translate
                     ]);
                     $i++;
@@ -167,6 +170,9 @@ class PublishModel extends Model
                                 'name' => htmlspecialchars(trim($this->post['name'][$i])),
                                 'description' => htmlspecialchars(trim($this->post['description'][$i])),
                                 'price' => htmlspecialchars(trim($this->post['price'][$i])),
+                                'ml' => htmlspecialchars(trim($this->post['ml'][$i])),
+                                'alchool' => htmlspecialchars(trim($this->post['alchool'][$i])),
+                                'quickdescription' => htmlspecialchars(trim($this->post['quickdescription'][$i])),
                     ]);
                     $i++;
                 }
