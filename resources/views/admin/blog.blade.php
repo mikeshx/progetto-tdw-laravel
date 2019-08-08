@@ -6,40 +6,42 @@
     <link href="{{ asset('css/bootstrap-tagsinput.css') }}" rel="stylesheet" />
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form action="coupon.add" method="POST" >
+            <form action="post.add" method="POST" >
                 {{ csrf_field() }}
-                <input type="hidden" name="folder" value="{{isset($product['product']->folder) ? $product['product']->folder : '0'}}">
                 <div class="card">
                     <div class="card-body">
                         <div class="form-header btn-secondary">
-                            <h3>
-                                Add a new coupon
-                            </h3>
-                        </div>
-                        <hr>
-                        <div class="md-form">
-                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="percentage_value" value="" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Discount Percentage Value (1-100): </label>
-                        </div>
-
-                        <div class="md-form">
-                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="expire_date" value="" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Validity (in days): </label>
-                        </div>
-
-                        </br>
-
-                        </div>
-                        <div class="clones"></div>
-                        <hr>
-                        <div class="text-right">
-                            <button class="btn btn-secondary waves-effect waves-light">Generate</button>
-                        </div>
+                                 <h3>
+                            Add a new post
+                        </h3>
                     </div>
-            </form>
-        </div>
+                    <hr>
+                    <div class="md-form">
+                        <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                        <input type="text" name="title" value="" id="publishForm-quantity" class="form-control">
+                        <label for="publishForm-quantity">Title: </label>
+                    </div>
+
+                        <div class="md-form">
+                            <br><br>
+                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                            <textarea class="form-control" name="post" rows="20" id="comment"></textarea>
+                            <label for="publishForm-quantity">Post: </label>
+                        </div>
+
+
+
+                    </br>
+
+                    </div>
+                    <div class="clones"></div>
+                    <hr>
+                    <div class="text-right">
+                        <button class="btn btn-secondary waves-effect waves-light">Add new post</button>
+                    </div>
+                </div>
+        </form>
+    </div>
     </div>
     <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-switch.min.js') }}" type="text/javascript"></script>

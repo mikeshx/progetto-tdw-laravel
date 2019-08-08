@@ -170,5 +170,6 @@ return [
     'outlets' => 'Outlets:',
     'years' => 'Years;',
     'day' => 'Day:',
-    'update_ok' => 'Updated'
+    'update_ok' => 'Updated',
+    'blog' => 'New Blog Post'
 ];

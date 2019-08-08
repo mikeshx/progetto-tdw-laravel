@@ -57,6 +57,7 @@
                             <input type="text" name="producer_brewery" value="{{$producerInfo != null? $producerInfo->brewery : ''}}" id="defaultForm-name" class="form-control">
                             <label for="defaultForm-name">{{__('admin_pages.producer_brewery')}}</label>
                         </div>
+                    </form>
                         <div class="md-form">
                             <i class="fa prefix grey-text"></i>
                             <input type="text" name="producer_link" value="{{$producerInfo != null? $producerInfo->link : ''}}" id="defaultForm-name" class="form-control">

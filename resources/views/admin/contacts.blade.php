@@ -87,7 +87,6 @@
                         <button class="btn btn-secondary waves-effect waves-light">Add</button>
                     </div>
                 </div>
-        </div>
         </form>
     </div>
     </div>

@@ -116,6 +116,9 @@ Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage'
 Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::get('admin', 'Admin\\DashboardController@index');
 
+    // Blog routes
+    Route::get('admin/blog', 'Admin\\BlogController@index');
+
     // Contacts routes
     Route::post('admin/contacts.add', 'Admin\\ContactsController@addContacts');
     Route::get('admin/contacts', 'Admin\\ContactsController@index');
