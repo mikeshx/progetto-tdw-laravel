@@ -51,7 +51,7 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function productPreview(Request $request)
+    public function product_single(Request $request)
     {
         $enableComments = false;
         $productsModel = new ProductsModel();
@@ -85,7 +85,7 @@ class ProductsController extends Controller
             $enableComments = true;
         }
 
-        return view('publics.preview', [
+        return view('publics.product_single', [
             'product' => $product,
             'social' => $social,
             'cartProducts' => $this->products,

@@ -35,7 +35,12 @@
                         <div class="md-form">
                             <i class="fa fa-pencil prefix grey-text"></i>
                             <textarea name="description[]" type="text" id="productDescr-{{$locale}}" class="md-textarea">{{ $lKey != false ? $product['translations'][$lKey]->description : '' }}</textarea>
-                            <label for="productDescr-{{$locale}}">{{__('admin_pages.product_description')}}({{$locale}})</label>
+                            <label for="productDescr-{{$locale}}">{{__('Full Description')}}({{$locale}})</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-pencil prefix grey-text"></i>
+                            <textarea name="quickdescription[]" type="text" id="productDescr-{{$locale}}" class="md-textarea">{{ $lKey != false ? $product['translations'][$lKey]->quickdescription : '' }}</textarea>
+                            <label for="productDescr-{{$locale}}">{{__('Quick Description')}}({{$locale}})</label>
                         </div>
                         <div class="md-form">
                             <i class="fa fa-eur prefix grey-text"></i>
@@ -50,6 +55,16 @@
                         <label for="publishForm-quantity">{{__('admin_pages.quantity')}}</label>
                     </div>
                     <div class="md-form">
+                        <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                        <input type="text" name="ml[]" value="{{ $lKey !== false ? $product['translations'][$lKey]-ml : '' }}" id="publishForm-ml-{{$locale}}" class="form-control">
+                        <label for="publishForm-ml-{{$locale}}">{{__('Format in ML')}}({{$locale}})</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                        <input type="text" name="alchool[]" value="{{ $lKey !== false ? $product['translations'][$lKey]-alchool : '' }}" id="publishForm-alchool-{{$locale}}" class="form-control">
+                        <label for="publishForm-alchool-{{$locale}}">{{__('% Alchool per volume ')}}({{$locale}})</label>
+                    </div>                    <div class="md-form">
+
                         <i class="fa fa-sort prefix grey-text"></i>
                         <input type="text" name="order_position" value="{{isset($product['product']->order_position) ? $product['product']->order_position : ''}}" id="publishForm-position" class="form-control">
                         <label for="publishForm-position">{{__('admin_pages.order_position')}}</label>

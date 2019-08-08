@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 29, 2019 alle 15:46
--- Versione del server: 10.1.38-MariaDB
--- Versione PHP: 7.3.2
+-- Creato il: Lug 22, 2019 alle 10:50
+-- Versione del server: 10.3.16-MariaDB
+-- Versione PHP: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `lara`
 --
-CREATE DATABASE IF NOT EXISTS `lara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `lara`;
 
 -- --------------------------------------------------------
 
@@ -32,7 +30,7 @@ USE `lara`;
 
 CREATE TABLE `carousel` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,7 +42,7 @@ CREATE TABLE `carousel` (
 
 CREATE TABLE `carousel_info` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -97,7 +95,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `parent`, `position`, `url`) VALUES
-(1, 0, 0, 'asdadasd');
+(2, 0, 0, 'Brown-Ale'),
+(3, 0, 0, 'Pale-ale'),
+(4, 0, 0, 'Stout'),
+(5, 0, 0, 'Wheat-beer');
 
 -- --------------------------------------------------------
 
@@ -117,8 +118,10 @@ CREATE TABLE `categories_translations` (
 --
 
 INSERT INTO `categories_translations` (`id`, `for_id`, `name`, `locale`) VALUES
-(1, 1, '', 'bg'),
-(2, 1, 'asdadasd', 'en');
+(3, 2, 'Brown Ale', 'en'),
+(4, 3, 'Pale ale', 'en'),
+(5, 4, 'Stout', 'en'),
+(6, 5, 'Wheat beer', 'en');
 
 -- --------------------------------------------------------
 
@@ -176,8 +179,8 @@ CREATE TABLE `fast_orders` (
   `id` int(11) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `names` varchar(100) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` tinyint(4) NOT NULL DEFAULT '0'
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -191,6 +194,13 @@ CREATE TABLE `favorites` (
   `id_product` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `favorites`
+--
+
+INSERT INTO `favorites` (`id`, `id_product`, `id_user`) VALUES
+(1, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -237,10 +247,10 @@ CREATE TABLE `newsletters` (
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(30) NOT NULL,
   `products` varchar(255) NOT NULL COMMENT 'serialized array',
-  `status` tinyint(4) NOT NULL DEFAULT '0'
+  `status` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -286,16 +296,16 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `folder` int(10) UNSIGNED NOT NULL COMMENT 'product_id is name of folder',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `category_id` int(10) UNSIGNED NOT NULL COMMENT 'category id',
-  `quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `quantity` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `url` varchar(255) NOT NULL,
   `link_to` varchar(255) DEFAULT NULL,
   `order_position` int(10) UNSIGNED NOT NULL,
-  `procurements` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `procurements` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `tags` varchar(255) NOT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT '0'
+  `hidden` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -303,7 +313,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `category_id`, `quantity`, `url`, `link_to`, `order_position`, `procurements`, `tags`, `hidden`) VALUES
-(1, 'images/r6PlNR3FLk3pwe3LyjFnBJ9ZJ5VdNMJJYkcTNY9f.jpeg', 1561800926, '2019-06-29 09:35:27', NULL, 1, 5, 'Birra-1', 'Birra1', 1, 0, 'Birra', 0);
+(1, 'images/r6PlNR3FLk3pwe3LyjFnBJ9ZJ5VdNMJJYkcTNY9f.jpeg', 1561800926, '2019-06-29 09:35:27', NULL, 1, 5, 'Birra-1', 'Birra1', 1, 0, 'Birra', 0),
+(11, '', 1563782387, '2019-07-22 07:59:47', NULL, 1, 10, 'birra-2', NULL, 0, 0, '', 0),
+(12, '', 1563782468, '2019-07-22 08:01:08', NULL, 1, 10, 'birra-12', NULL, 0, 0, '', 0),
+(13, '', 1563782521, '2019-07-22 08:02:01', NULL, 1, 10, 'birra-13', NULL, 0, 0, '', 0),
+(14, '', 1563782588, '2019-07-22 08:03:08', NULL, 1, 10, 'birra-14', NULL, 0, 0, '', 0),
+(15, '', 1563782603, '2019-07-22 08:03:23', NULL, 1, 10, 'birra-15', NULL, 0, 0, '', 0),
+(16, '', 1563782702, '2019-07-22 08:05:02', NULL, 1, 10, 'birra-16', NULL, 0, 0, '', 0),
+(17, '', 1563782750, '2019-07-22 08:05:50', NULL, 1, 55, 'birra-17', NULL, 0, 0, '', 0),
+(18, '', 1563782826, '2019-07-22 08:07:06', NULL, 1, 55, 'birra-18', NULL, 0, 0, '', 0),
+(19, '', 1563783935, '2019-07-22 08:25:35', NULL, 2, 10, 'Duff-Beer-19', NULL, 0, 0, '', 0),
+(20, '', 1563783974, '2019-07-22 08:26:14', NULL, 5, 51, 'Orzata-20', NULL, 0, 0, '', 0),
+(21, '', 1563784005, '2019-07-22 08:26:45', NULL, 4, 22, 'Espana-21', NULL, 0, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -317,6 +338,9 @@ CREATE TABLE `products_translations` (
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` varchar(20) NOT NULL,
+  `ml` varchar(20) NOT NULL,
+  `alchool` varchar(20) NOT NULL,
+  `quickdescription` text NOT NULL,
   `locale` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -324,8 +348,10 @@ CREATE TABLE `products_translations` (
 -- Dump dei dati per la tabella `products_translations`
 --
 
-INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `price`, `locale`) VALUES
-(1, 1, 'Birra 1', 'sad', '1', 'en');
+INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `price`, `ml`, `alchool`, `quickdescription`, `locale`) VALUES
+(10, 19, 'Duff Beer', 'Descrizione molto lunga', '4.5', '330', '4.5', 'Descrizione molto breve', 'en'),
+(11, 20, 'Orzata', 's è come il caffe d\' orzo', '3', '500', '2', 'orzo', 'en'),
+(12, 21, 'Espana', 'La birra spagnoleggiante', '5', '660', '6', 'spagna', 'en');
 
 -- --------------------------------------------------------
 
@@ -450,8 +476,15 @@ CREATE TABLE `support_message` (
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `text` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `support_message`
+--
+
+INSERT INTO `support_message` (`id`, `id_ticket`, `id_user`, `text`, `time`) VALUES
+(1, 1, 1, 'in una forte epistassi', '2019-07-20 10:36:17');
 
 -- --------------------------------------------------------
 
@@ -463,9 +496,16 @@ CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `obj` varchar(150) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `support_request`
+--
+
+INSERT INTO `support_request` (`id`, `id_user`, `obj`, `time`, `status`) VALUES
+(1, 1, 'ho perso il mio nome', '2019-07-20 10:36:17', 0);
 
 -- --------------------------------------------------------
 
@@ -490,10 +530,10 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `remember_token` varchar(255) DEFAULT NULL,
-  `isAdmin` tinyint(1) DEFAULT '0'
+  `isAdmin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -501,7 +541,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
-(1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', '9kpFR6ZRBHzGkD2JxXRWhcdx1Kem8g7Vj48gt7siVXM7Z5gFjhp8CKToCWhU', 1),
+(1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'rnRcPEiCHfrrSRE0TmhQsYQsimzwW5vkMT6apoCFLFcisLpZE5L6JiiicmGA', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
 (3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1);
 
@@ -734,13 +774,13 @@ ALTER TABLE `carousel_translations_info`
 -- AUTO_INCREMENT per la tabella `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `categories_translations`
 --
 ALTER TABLE `categories_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `contacts`
@@ -770,7 +810,7 @@ ALTER TABLE `fast_orders`
 -- AUTO_INCREMENT per la tabella `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `img_product`
@@ -812,13 +852,13 @@ ALTER TABLE `producers`
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT per la tabella `products_translations`
 --
 ALTER TABLE `products_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `refunds`
@@ -866,13 +906,13 @@ ALTER TABLE `story_info`
 -- AUTO_INCREMENT per la tabella `support_message`
 --
 ALTER TABLE `support_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `support_request`
 --
 ALTER TABLE `support_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `tag`

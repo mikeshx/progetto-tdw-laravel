@@ -32,8 +32,8 @@ Route::get('{locale}', 'Publics\\HomeController@index')
         ->where('locale', implode('|', Config::get('app.locales')));
 
 // open one product
-Route::get('{any}-{id}', 'Publics\\ProductsController@productPreview')->where('id', '[\d+]+')->where('any', '(.*)');
-Route::get('{locale}/{any}-{id}', 'Publics\\ProductsController@productPreview')
+Route::get('{any}-{id}', 'Publics\\ProductsController@product_single')->where('id', '[\d+]+')->where('any', '(.*)');
+Route::get('{locale}/{any}-{id}', 'Publics\\ProductsController@product_single')
         ->where('locale', implode('|', Config::get('app.locales')))->where('id', '[\d+]+')->where('any', '(.*)');
 
 // open all products

@@ -22,7 +22,8 @@ class ProductsModel extends Model
     {
         $search = $request->input('search');
         $products = DB::table('products')
-                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.price'))
+                ->select(DB::raw('products.*, products_translations.name, products_translations.description, products_translations.ml,
+                products_translations.alchool, products_translations.quickdescription, products_translations.price'))
                 ->where('products_translations.locale', $this->defaultLang)
                 ->when($search, function ($query) use ($search) {
                     return $query->where('products_translations.name', 'LIKE', "%$search%");
