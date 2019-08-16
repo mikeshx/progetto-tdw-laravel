@@ -120,5 +120,10 @@ return [
     'continue_to_checkout' => 'Continue to checkout',
     'product' => 'Product',
     'delete' => 'Delete',
-    'total' => 'Total'
+    'total' => 'Total',
+    'save' => 'Save',
+    'back' => 'Back',
+    'account' => 'Account',
+    'edit_profile' => 'Edit Profile',
+    'profile_desc' => 'Edit Your Profile!'
 ];

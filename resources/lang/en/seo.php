@@ -23,5 +23,7 @@ return [
     'title_story' => 'Our story',
     'descr_story' => 'Our Story',
     'descr_cart' => 'Cart',
-    'title_cart' => 'Cart'
+    'title_cart' => 'Cart',
+    'title_EditAccount' => 'Edit Account',
+    'descr_EditAccount' => 'Edit account page'
 ];

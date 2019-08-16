@@ -106,7 +106,9 @@ Route::get('support_message/{id_ticket}', 'Publics\\SupportController@indexTicke
 Route::post('support_message/{id_ticket}', 'Publics\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
 Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage');
 
-
+//Edit Account Info edit_account/insert
+Route::get('edit_account', 'Publics\\EditAccountController@index');
+Route::post('edit_account/insert', 'Publics\\EditAccountController@updateInfo');
 
 
 });

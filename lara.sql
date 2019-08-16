@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Lug 22, 2019 alle 10:50
--- Versione del server: 10.3.16-MariaDB
--- Versione PHP: 7.3.7
+-- Creato il: Ago 16, 2019 alle 12:27
+-- Versione del server: 10.1.38-MariaDB
+-- Versione PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `lara`
 --
+CREATE DATABASE IF NOT EXISTS `lara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `lara`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +32,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `carousel` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
+  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -42,7 +44,7 @@ CREATE TABLE `carousel` (
 
 CREATE TABLE `carousel_info` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
+  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -179,8 +181,8 @@ CREATE TABLE `fast_orders` (
   `id` int(11) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `names` varchar(100) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` tinyint(4) NOT NULL DEFAULT 0
+  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -247,10 +249,10 @@ CREATE TABLE `newsletters` (
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `type` varchar(30) NOT NULL,
   `products` varchar(255) NOT NULL COMMENT 'serialized array',
-  `status` tinyint(4) NOT NULL DEFAULT 0
+  `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -296,16 +298,16 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `folder` int(10) UNSIGNED NOT NULL COMMENT 'product_id is name of folder',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `category_id` int(10) UNSIGNED NOT NULL COMMENT 'category id',
-  `quantity` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `url` varchar(255) NOT NULL,
   `link_to` varchar(255) DEFAULT NULL,
   `order_position` int(10) UNSIGNED NOT NULL,
-  `procurements` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `procurements` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `tags` varchar(255) NOT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT 0
+  `hidden` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -476,7 +478,7 @@ CREATE TABLE `support_message` (
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `text` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp()
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -496,7 +498,7 @@ CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `obj` varchar(150) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -530,10 +532,10 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `remember_token` varchar(255) DEFAULT NULL,
-  `isAdmin` tinyint(1) DEFAULT 0
+  `isAdmin` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -554,8 +556,18 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_a
 CREATE TABLE `user_address` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `address` varchar(300) NOT NULL
+  `address` varchar(300) NOT NULL,
+  `city` varchar(35) NOT NULL,
+  `post_cod` varchar(10) NOT NULL,
+  `country` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `user_address`
+--
+
+INSERT INTO `user_address` (`id`, `user_id`, `address`, `city`, `post_cod`, `country`) VALUES
+(6, 1, 'tests', 'City', '0555', 'Country');
 
 --
 -- Indici per le tabelle scaricate
@@ -743,6 +755,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `user_address`
+--
+ALTER TABLE `user_address`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -882,7 +900,7 @@ ALTER TABLE `social_contacts`
 -- AUTO_INCREMENT per la tabella `story`
 --
 ALTER TABLE `story`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `story_carousel`
@@ -900,7 +918,7 @@ ALTER TABLE `story_carousel_translations`
 -- AUTO_INCREMENT per la tabella `story_info`
 --
 ALTER TABLE `story_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `support_message`
@@ -925,6 +943,12 @@ ALTER TABLE `tag`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT per la tabella `user_address`
+--
+ALTER TABLE `user_address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
