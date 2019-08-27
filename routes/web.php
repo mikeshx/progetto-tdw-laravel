@@ -109,7 +109,9 @@ Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage'
 //Edit Account Info edit_account/insert
 Route::get('edit_account', 'Publics\\EditAccountController@index');
 Route::post('edit_account/insert', 'Publics\\EditAccountController@updateInfo');
-
+//Edit Account Password
+Route::get('changePassword', 'Publics\\EditAccountController@indexPass');
+Route::post('changePassword','Publics\\EditAccountController@changePassword')->name('changePassword');
 
 });
 /* end logged user routes */

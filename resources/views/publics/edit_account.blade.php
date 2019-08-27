@@ -69,6 +69,9 @@
                     @endforelse
                         <div class="row">
                             <div class="col-sm-12 btn-wrap">
+                                <a href="{{ lang_url('changePassword') }}">Do you want to change your password?</a>
+                            </div>
+                            <div class="col-sm-12 btn-wrap">
                                 <a href="{{ lang_url('my_account') }}" class="btn btn-grey"><span>{{__('public_pages.back')}}</span></a> <button type="submit" class="btn btn-default" >{{__('public_pages.save')}}</button>
                             </div>
                         </div>

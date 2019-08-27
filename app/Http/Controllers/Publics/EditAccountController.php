@@ -8,9 +8,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Lang;
 use App\Models\Publics\EditAccountModel;
 use Illuminate\Support\Facades\Validator;
+use Auth;
+use Hash;
 
 class EditAccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $homeModel = new HomeModel();
         $editModel = new EditAccountModel();
@@ -26,6 +33,21 @@ class EditAccountController extends Controller
             'head_description' => Lang::get('seo.descr_EditAccount'),
             'userInfo' => $userInfo,
             'userAddress' => $userAddress
+        ]);
+    }
+
+    public function indexPass(){
+
+        //C:\xampp\htdocs\Ecommerce\resources\views\auth\passwords\changePassword.blade.php
+
+
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
+
+        return view('auth.passwords.changePassword', [
+            'head_title' => Lang::get('seo.title_EditPassword'),
+            'social' => $social,
+            'head_description' => Lang::get('seo.descr_EditPassword')
         ]);
     }
 
@@ -63,5 +85,25 @@ class EditAccountController extends Controller
         return Validator::make($data, [
             'email' => 'required|string|email|max:255|unique:users'
         ]);
+    }
+
+    public function changePassword(Request $request){
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            //Current password and new password are same
+            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+        }
+        $validatedData = $request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|string|min:6|confirmed',
+        ]);
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+        return redirect()->back()->with("success","Password changed successfully !");
     }
 }

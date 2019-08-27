@@ -25,5 +25,6 @@ return [
     'descr_cart' => 'Cart',
     'title_cart' => 'Cart',
     'title_EditAccount' => 'Edit Account',
-    'descr_EditAccount' => 'Edit account page'
+    'descr_EditAccount' => 'Edit account page',
+    'descr_EditPassword' => 'Change your password page'
 ];
