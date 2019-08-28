@@ -16,6 +16,16 @@ class BlogController extends Controller
         ]);
     }
 
+    // Add a blog post
+    public function addBlogPost(Request $request) {
+
+        $blogModel = new BlogModel();
+        $result = $blogModel->addBlogPost($request->all());
+
+        return redirect()->back()->with(['msg' => $result['msg'], 'result' => $result['result']]);
+
+    }
+
 
 
 }

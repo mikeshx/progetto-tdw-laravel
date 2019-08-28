@@ -18,14 +18,14 @@
                     <hr>
                     <div class="md-form">
                         <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                        <input type="text" name="title" value="" id="publishForm-quantity" class="form-control">
+                        <input type="text" name="post_title" value="" id="publishForm-quantity" class="form-control">
                         <label for="publishForm-quantity">Title: </label>
                     </div>
 
                         <div class="md-form">
                             <br><br>
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <textarea class="form-control" name="post" rows="20" id="comment"></textarea>
+                            <textarea class="form-control" name="post_content" rows="20" id="comment"></textarea>
                             <label for="publishForm-quantity">Post: </label>
                         </div>
 

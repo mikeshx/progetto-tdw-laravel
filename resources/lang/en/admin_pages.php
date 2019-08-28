@@ -171,5 +171,7 @@ return [
     'years' => 'Years;',
     'day' => 'Day:',
     'update_ok' => 'Updated',
-    'blog' => 'New Blog Post'
+    'blog' => 'New Blog Post',
+    'blog_post_added' => 'Blog post added correctly',
+    'blog_post_fail' => 'Error while adding the blog post'
 ];

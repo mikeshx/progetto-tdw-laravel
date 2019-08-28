@@ -122,6 +122,7 @@ Route::middleware(['Admin'])->group(function () { // check for admin auth
 
     // Blog routes
     Route::get('admin/blog', 'Admin\\BlogController@index');
+    Route::post('admin/post.add', 'Admin\\BlogController@addBlogPost');
 
     // Contacts routes
     Route::post('admin/contacts.add', 'Admin\\ContactsController@addContacts');
