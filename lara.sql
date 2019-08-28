@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Ago 16, 2019 alle 12:27
--- Versione del server: 10.1.38-MariaDB
--- Versione PHP: 7.3.3
+-- Host: localhost
+-- Creato il: Ago 28, 2019 alle 13:08
+-- Versione del server: 10.3.17-MariaDB
+-- Versione PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `lara`
 --
-CREATE DATABASE IF NOT EXISTS `lara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `lara`;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `blog`
+--
+
+CREATE TABLE `blog` (
+  `post_id` int(11) NOT NULL,
+  `post_title` varchar(255) NOT NULL,
+  `post_content` varchar(800) NOT NULL,
+  `post_user_id` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `blog`
+--
+
+INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`) VALUES
+(1, 'merda', 'asd', 'id'),
+(2, 'yoyo', 'yoyo', '3'),
+(3, 'asdasd', 'asdasd', '3'),
+(4, 'asd', 'asd', '3'),
+(5, 'asdasd', 'adasdasd', '3'),
+(6, 'asdasd', 'adasdasd', '3'),
+(7, 'asdasd', 'adasdasd', '3'),
+(8, 'asdad', 'asdasdasd', '3');
 
 -- --------------------------------------------------------
 
@@ -32,7 +57,7 @@ USE `lara`;
 
 CREATE TABLE `carousel` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,7 +69,7 @@ CREATE TABLE `carousel` (
 
 CREATE TABLE `carousel_info` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -159,6 +184,13 @@ CREATE TABLE `coupon` (
   `expire_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dump dei dati per la tabella `coupon`
+--
+
+INSERT INTO `coupon` (`id`, `percentage_value`, `coupon_string`, `expire_date`) VALUES
+(1, 67, 'A3FZ6Q1YYX', '2019-09-20 12:45:59');
+
 -- --------------------------------------------------------
 
 --
@@ -181,8 +213,8 @@ CREATE TABLE `fast_orders` (
   `id` int(11) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `names` varchar(100) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` tinyint(4) NOT NULL DEFAULT '0'
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -249,10 +281,10 @@ CREATE TABLE `newsletters` (
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(30) NOT NULL,
   `products` varchar(255) NOT NULL COMMENT 'serialized array',
-  `status` tinyint(4) NOT NULL DEFAULT '0'
+  `status` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -298,16 +330,16 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `folder` int(10) UNSIGNED NOT NULL COMMENT 'product_id is name of folder',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `category_id` int(10) UNSIGNED NOT NULL COMMENT 'category id',
-  `quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `quantity` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `url` varchar(255) NOT NULL,
   `link_to` varchar(255) DEFAULT NULL,
   `order_position` int(10) UNSIGNED NOT NULL,
-  `procurements` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `procurements` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `tags` varchar(255) NOT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT '0'
+  `hidden` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -478,7 +510,7 @@ CREATE TABLE `support_message` (
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `text` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -498,7 +530,7 @@ CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `obj` varchar(150) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -532,10 +564,10 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `remember_token` varchar(255) DEFAULT NULL,
-  `isAdmin` tinyint(1) DEFAULT '0'
+  `isAdmin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -572,6 +604,12 @@ INSERT INTO `user_address` (`id`, `user_id`, `address`, `city`, `post_cod`, `cou
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`post_id`);
 
 --
 -- Indici per le tabelle `carousel`
@@ -765,6 +803,12 @@ ALTER TABLE `user_address`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT per la tabella `carousel`
 --
 ALTER TABLE `carousel`
@@ -810,7 +854,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT per la tabella `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `expeditions`
