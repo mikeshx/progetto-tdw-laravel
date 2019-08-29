@@ -13,6 +13,9 @@
 
 /* Public Routes */
 
+// Blog public routes
+Route::get('/blog', 'Publics\\BlogController@index');
+
 // contacts routes (public)
 Route::post('/contacts', 'Admin\\ContactsController@index');
 
@@ -80,38 +83,39 @@ Route::get('{locale}/cart', 'Publics\\CheckoutController@indexCart')
 		
 /* Logged user routes */
 Route::middleware(['auth'])->group(function () {
-// checkout please
-Route::get('checkout', 'Publics\\CheckoutController@index');
-Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
+
+    // checkout please
+    Route::get('checkout', 'Publics\\CheckoutController@index');
+    Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
                 ->where('locale', implode('|', Config::get('app.locales')));
-// add favorite
+    // add favorite
     Route::get('addFavorite/{id}', ['as' => 'addFavorite', 'uses' => 'Publics\\FavoritesController@addFavorite']);
     Route::get('my_favorites', 'Publics\\FavoritesController@index');
 
-// checkout post req
-Route::post('checkout', 'Publics\\CheckoutController@setOrder');
-Route::post('{locale}/checkout', 'Publics\\CheckoutController@setOrder')
+    // checkout post req
+    Route::post('checkout', 'Publics\\CheckoutController@setOrder');
+    Route::post('{locale}/checkout', 'Publics\\CheckoutController@setOrder')
                 ->where('locale', implode('|', Config::get('app.locales')));
 
-//my_account
-Route::get('my_account', 'Publics\\myaccountController@index');
-//my_orders
-Route::get('my_orders', 'Publics\\myordersController@index');
-//support
-Route::get('support', 'Publics\\SupportController@index');
-Route::post('support', 'Publics\\SupportController@setTicket')->where('locale', implode('|', Config::get('app.locales')));
-Route::post('{locale}/publics/support', 'Publics\\SupportController@setTicket');
+    //my_account
+    Route::get('my_account', 'Publics\\myaccountController@index');
+    //my_orders
+    Route::get('my_orders', 'Publics\\myordersController@index');
+    //support
+    Route::get('support', 'Publics\\SupportController@index');
+    Route::post('support', 'Publics\\SupportController@setTicket')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/publics/support', 'Publics\\SupportController@setTicket');
 
-Route::get('support_message/{id_ticket}', 'Publics\\SupportController@indexTicketMessagePage');
-Route::post('support_message/{id_ticket}', 'Publics\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
-Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage');
+    Route::get('support_message/{id_ticket}', 'Publics\\SupportController@indexTicketMessagePage');
+    Route::post('support_message/{id_ticket}', 'Publics\\SupportController@sendMessage')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/publics/support', 'Publics\\SupportController@sendMessage');
 
-//Edit Account Info edit_account/insert
-Route::get('edit_account', 'Publics\\EditAccountController@index');
-Route::post('edit_account/insert', 'Publics\\EditAccountController@updateInfo');
-//Edit Account Password
-Route::get('changePassword', 'Publics\\EditAccountController@indexPass');
-Route::post('changePassword','Publics\\EditAccountController@changePassword')->name('changePassword');
+    //Edit Account Info edit_account/insert
+    Route::get('edit_account', 'Publics\\EditAccountController@index');
+    Route::post('edit_account/insert', 'Publics\\EditAccountController@updateInfo');
+    //Edit Account Password
+    Route::get('changePassword', 'Publics\\EditAccountController@indexPass');
+    Route::post('changePassword','Publics\\EditAccountController@changePassword')->name('changePassword');
 
 });
 /* end logged user routes */

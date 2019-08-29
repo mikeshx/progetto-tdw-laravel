@@ -20,6 +20,7 @@ class ProductsController extends Controller
         $products = $productsModel->getProducts($request);
         $categores = $productsModel->getCategories();
         $social = $homeModel->getSocial();
+
         if ($request->category != null) {
             $categoryName = $productsModel->getCategoryName($request->category);
         }

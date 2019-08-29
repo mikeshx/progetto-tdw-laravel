@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ago 28, 2019 alle 13:08
+-- Creato il: Ago 29, 2019 alle 13:12
 -- Versione del server: 10.3.17-MariaDB
 -- Versione PHP: 7.3.8
 
@@ -32,22 +32,26 @@ CREATE TABLE `blog` (
   `post_id` int(11) NOT NULL,
   `post_title` varchar(255) NOT NULL,
   `post_content` varchar(800) NOT NULL,
-  `post_user_id` varchar(60) NOT NULL
+  `post_user_id` varchar(60) NOT NULL,
+  `post_date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `blog`
 --
 
-INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`) VALUES
-(1, 'merda', 'asd', 'id'),
-(2, 'yoyo', 'yoyo', '3'),
-(3, 'asdasd', 'asdasd', '3'),
-(4, 'asd', 'asd', '3'),
-(5, 'asdasd', 'adasdasd', '3'),
-(6, 'asdasd', 'adasdasd', '3'),
-(7, 'asdasd', 'adasdasd', '3'),
-(8, 'asdad', 'asdasdasd', '3');
+INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`, `post_date`) VALUES
+(1, 'merda', 'asd', 'id', ''),
+(2, 'yoyo', 'yoyo', '3', ''),
+(3, 'asdasd', 'asdasd', '3', ''),
+(4, 'asd', 'asd', '3', ''),
+(5, 'asdasd', 'adasdasd', '3', ''),
+(6, 'asdasd', 'adasdasd', '3', ''),
+(7, 'asdasd', 'adasdasd', '3', ''),
+(8, 'asdad', 'asdasdasd', '3', ''),
+(9, 'yoyoyo', 'testing', '3', ''),
+(10, 'testing123', 'testing123', '3', '2019-08-29 11:52:53'),
+(11, 'yoyoyoyo', 'sfsdfsfsdf', '3', '2019-08-29');
 
 -- --------------------------------------------------------
 
@@ -806,7 +810,7 @@ ALTER TABLE `user_address`
 -- AUTO_INCREMENT per la tabella `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel`

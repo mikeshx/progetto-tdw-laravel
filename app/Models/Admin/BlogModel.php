@@ -24,10 +24,14 @@ class BlogModel extends Model
         // Get the user name
         $user = auth()->user();
 
+        // Get the current date
+        $ldate = date('Y-m-d');
+
         $result = DB::table('blog')->insert([
             'post_title' => $post['post_title'],
             'post_content' => $post['post_content'],
-            'post_user_id' => $user->getAuthIdentifier()
+            'post_user_id' => $user->getAuthIdentifier(),
+            'post_date' => $ldate
 
         ]);
 
@@ -39,7 +43,6 @@ class BlogModel extends Model
         }
 
         return $isValid;
-
 
     }
 }
