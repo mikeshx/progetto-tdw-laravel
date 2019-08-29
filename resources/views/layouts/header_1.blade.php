@@ -127,7 +127,7 @@
                     </li>
                     <li class="dropdown">
 								<span>
-									<a href="blog.html">Blog</a>
+									<a href="/blog">Blog</a>
 								</span>
                         <ul class="dropdown-menu">
                             <li><a href="blog-single.html">Single post</a></li>

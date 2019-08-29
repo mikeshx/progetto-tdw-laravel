@@ -13,6 +13,7 @@ class BlogModel extends Model
     {
 
         $posts = DB::table('blog')
+            ->orderBy('post_id', 'desc')
             ->select(DB::raw('blog.*'))
             ->paginate($paginateNumber);
 
