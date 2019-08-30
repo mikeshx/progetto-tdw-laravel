@@ -12,11 +12,22 @@
                     </header>
                     <hr class="space-40" />
                     <!-- Form start -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img src="http://placehold.it/72x72" class="centroImg" alt="Craft ale HTML template" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div class="col-sm-12 divCento">
+                            <button type="submit" class="btn btn-default centroBtn" data-toggle="modal" data-target="#modalAddImage">Change Image</button>
+                        </div>
+                    </div>
                     <form method="post" action="{{url('edit_account/insert')}}">
                         {{ csrf_field() }}
                         @foreach($userInfo as $info)
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-12 btn-wrap">
                                     <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
                                         <input type="text" name="email" value="{{$info->email}}" placeholder="{{$info->email}}">
                                         @if ($errors->has('email'))
@@ -81,4 +92,30 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal Change Image -->
+    <div class="modal fade" id="modalAddImage" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Update image</h4>
+                    <form action="{{url('insert_img')}}" method="POST">
+                        {{ csrf_field() }}
+                        <div class="upload-wrap">
+                            @foreach ($locales as $locale)
+                                <input type="hidden" name="translation[]" value="{{$locale}}">
+                                <input type="file" class="form-control-file" name="image_{{$locale}}[]" id="avatarFile" aria-describedby="fileHelp">
+                            @endforeach
+                        </div>
+                        <button type="submit"  class="btn btn-secondary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

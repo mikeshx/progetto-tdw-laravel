@@ -10,9 +10,11 @@ use App\Models\Publics\EditAccountModel;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use Hash;
+use Config;
 
 class EditAccountController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -25,11 +27,14 @@ class EditAccountController extends Controller
         $social = $homeModel->getSocial();
         $userInfo = $editModel->getUserInfo();
         $userAddress = $editModel->getAddress();
+        $userImg = $editModel->getImage();
 
 
         return view('publics.edit_account', [
             'head_title' => Lang::get('seo.title_EditAccount'),
             'social' => $social,
+            'img' => $userImg,
+            'locales' => Config::get('app.locales'),
             'head_description' => Lang::get('seo.descr_EditAccount'),
             'userInfo' => $userInfo,
             'userAddress' => $userAddress
@@ -106,4 +111,29 @@ class EditAccountController extends Controller
         $user->save();
         return redirect()->back()->with("success","Password changed successfully !");
     }
+
+    public function setImgUser(Request $request){
+        $editModel = new EditAccountModel();
+        $img  = $editModel->getImage();
+
+
+        $i=0;
+        foreach ($img as $s){
+            $i++;
+        }
+
+        if($i == 0){
+            $result = $editModel->setNewImage($request->all());
+            echo "<script>console.log('Debug Objects: PD' );</script>";
+        } else {
+            $result = $editModel->updateImage($request->all());
+        }
+
+        if($result == false){
+            abort(404);
+        }
+
+        //return redirect(lang_url('edit_account'));
+    }
+
 }

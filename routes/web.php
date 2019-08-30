@@ -117,6 +117,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('changePassword', 'Publics\\EditAccountController@indexPass');
     Route::post('changePassword','Publics\\EditAccountController@changePassword')->name('changePassword');
 
+    Route::post('insert_img', 'Publics\\EditAccountController@setImgUser')->where('locale', implode('|', Config::get('app.locales')));
+    Route::post('{locale}/insert_img', 'Publics\\EditAccountController@setImgUser');
+
 });
 /* end logged user routes */
 
