@@ -123,17 +123,14 @@ class EditAccountController extends Controller
         }
 
         if($i == 0){
-            $result = $editModel->setNewImage($request->all());
+            $editModel->setNewImage($request->all());
             echo "<script>console.log('Debug Objects: PD' );</script>";
         } else {
-            $result = $editModel->updateImage($request->all());
+            $editModel->updateImage($request->all());
         }
 
-        if($result == false){
-            abort(404);
-        }
 
-        //return redirect(lang_url('edit_account'));
+        return redirect(lang_url('edit_account'));
     }
 
 }
