@@ -27,11 +27,15 @@ class BlogModel extends Model
         // Get the current date
         $ldate = date('Y-m-d');
 
+        // Save the url by removing spaces from the post_title string
+        $post_url = str_replace(' ', '-', $post['post_title']);
+
         $result = DB::table('blog')->insert([
             'post_title' => $post['post_title'],
             'post_content' => $post['post_content'],
             'post_user_id' => $user->getAuthIdentifier(),
-            'post_date' => $ldate
+            'post_date' => $ldate,
+            'post_url' => $post_url
 
         ]);
 

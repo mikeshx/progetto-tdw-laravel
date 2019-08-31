@@ -25,16 +25,14 @@
 
                 @endphp
 
-                <a href="blog-single.html"></a>
+                <a href="{{'/blog/' . $post->post_url . '-' . $post->post_id}}"></a>
                 <div class="row">
                     <div class="col-sm-10 col-sm-push-1">
                         <header>
-                            <span class="date">21 December</span>
-                            <h2>Oktoberfest</h2>
+                            <span class="date">{{$post->post_date}}</span>
+                            <h2>{{$post->post_title}}</h2>
                         </header>
-                        <p>Brewed with licorice; a proprietary, hand-smoked malt; and almost a pound of East Kent Goldings hops per barrel.</p>
-                        <p>Opaque brown in color, with muddy brown edges and a cola-colored head that drops quickly to a ringed lace. Strong and dominating licorice aroma with an underlying robust molasses-ness and highly roasted malts. Thick-ish, deep blackstrap molasses character (sweet, tangy nectar), quite robust.</p>
-                        <p><a href="#" class="underline">Read more</a></p>
+                        {{$post->post_content}}
                     </div>
                 </div>
                 <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>

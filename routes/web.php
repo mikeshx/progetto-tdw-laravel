@@ -15,6 +15,8 @@
 
 // Blog public routes
 Route::get('/blog', 'Publics\\BlogController@index');
+Route::get('/blog/{any}-{id}', 'Publics\\BlogController@viewSinglePost')->where('id', '[\d+]+')->where('any', '(.*)');
+
 
 // contacts routes (public)
 Route::post('/contacts', 'Admin\\ContactsController@index');
