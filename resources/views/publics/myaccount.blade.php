@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Section -->
-    <div class="container-fluid dark section no-padding">
+    <div class="container-fluid white section no-padding">
         <div class="row">
             <div class="col-sm-6 matchHeight scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatex="-75">
                 <section class="alignMiddle padding-80 mobile-center">
@@ -13,7 +13,7 @@
                     <p>{{__('public_pages.my_account_desc')}}</p>
                 </section>
             </div>
-            <div class="col-sm-6 matchHeight" style="background-image: url(../public/img/block-bg-3.jpg);">
+            <div class="col-sm-6 matchHeight">
                 <div class="row">
                     <div class="col-xs-6 icon-grid">
                         <img src="{{ asset('img/box.png') }}" class="svg" alt=""/>
@@ -24,6 +24,11 @@
                         <img src="{{ asset('img/support.png') }}" class="svg" alt=""/>
                         <h4><a href="{{ lang_url('support') }}">{{__('public_pages.support')}}</a></h4>
                         <p>{{__('public_pages.support_desc')}}</p>
+                    </div>
+                    <div class="col-xs-6 icon-grid">
+                        <img src="{{ asset('img/user.png') }}" class="svg" alt=""/>
+                        <h4><a href="{{ lang_url('edit_account') }}">{{__('public_pages.edit_profile')}}</a></h4>
+                        <p>{{__('public_pages.profile_desc')}}</p>
                     </div>
                     <div class="col-xs-6 icon-grid">
                         <img src="{{ asset('img/logout.png') }}" class="svg" alt=""/>
