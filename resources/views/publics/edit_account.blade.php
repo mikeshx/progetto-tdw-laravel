@@ -12,15 +12,23 @@
                     </header>
                     <hr class="space-40" />
                     <!-- Form start -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <img src="http://placehold.it/72x72" class="centroImg" alt="Craft ale HTML template" />
+                    @forelse ($img as $imag)
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img src="{{asset('../storage/app/public/'.$imag->directory)}}" class="centroImg" alt="No IMG" />
+                            </div>
                         </div>
-                    </div>
+                    @empty
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img src="http://placehold.it/72x72" class="centroImg" alt="No IMG" />
+                            </div>
+                        </div>
+                    @endforelse
                     <div class="row">
                         <br>
                         <div class="col-sm-12 divCento">
-                            <button type="submit" class="btn btn-default centroBtn" data-toggle="modal" data-target="#modalAddImage">Change Image</button>
+                            <button  class="btn btn-default centroBtn" data-toggle="modal" data-target="#modalAddImage">Change Image</button>
                         </div>
                     </div>
                     <form method="post" action="{{url('edit_account/insert')}}">
@@ -103,13 +111,10 @@
                 </div>
                 <div class="modal-body">
                     <h4>Update image</h4>
-                    <form action="{{url('insert_img')}}" method="POST">
+                    <form  method="POST" action="{{url('insert_img')}}">
                         {{ csrf_field() }}
                         <div class="upload-wrap">
-                            @foreach ($locales as $locale)
-                                <input type="hidden" name="translation[]" value="{{$locale}}">
-                                <input type="file" class="form-control-file" name="image_{{$locale}}[]" id="avatarFile" aria-describedby="fileHelp">
-                            @endforeach
+                            <input type="file" class="form-control-file" name="image" id="image" aria-describedby="fileHelp">
                         </div>
                         <button type="submit"  class="btn btn-secondary">Update</button>
                     </form>
