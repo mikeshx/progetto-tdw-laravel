@@ -113,6 +113,7 @@ class EditAccountController extends Controller
     }
 
     public function setImgUser(Request $request){
+
         $editModel = new EditAccountModel();
         $img  = $editModel->getImage();
 
@@ -124,7 +125,6 @@ class EditAccountController extends Controller
 
         if($i == 0){
             $editModel->setNewImage($request->all());
-            echo "<script>console.log('Debug Objects: PD' );</script>";
         } else {
             $editModel->updateImage($request->all());
         }

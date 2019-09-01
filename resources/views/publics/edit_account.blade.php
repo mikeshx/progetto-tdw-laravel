@@ -111,12 +111,12 @@
                 </div>
                 <div class="modal-body">
                     <h4>Update image</h4>
-                    <form  method="POST" action="{{url('insert_img')}}">
+                    <form  method="POST" action="{{url('insert_img')}}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="upload-wrap">
-                            <input type="file" class="form-control-file" name="image" id="image" aria-describedby="fileHelp">
+                            <input type="file" class="form-control-file" name="image">
+                            <input type="submit" name="upload" class="btn btn-secondary" value="Upload"></td>
                         </div>
-                        <button type="submit"  class="btn btn-secondary">Update</button>
                     </form>
                 </div>
             </div>

@@ -4,7 +4,9 @@ namespace App\Models\Publics;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use Storage;
 use Config;
 use Auth;
@@ -108,10 +110,7 @@ class EditAccountModel extends Model
     {
         $this->post['img'] = '';
         if (isset($this->post['image'])) {
-
-            /* ERRORE NELLO STORAGE */
-            //$this->post['img'] = str_replace('public/', '', Storage::putFile('public/carousel_info', new File($this->post['image'])));
-            $this->post['img'] = str_replace('public/', '', Storage::putFile('public/carousel_info', $this->post['image']));
+            $this->post['img'] = str_replace('public/', '', Storage::putFile('public/img_user', $this->post['image']));
         }
 
     }
