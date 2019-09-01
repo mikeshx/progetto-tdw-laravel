@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <title>Craft Beer Nation - Craft Beer HTML Template</title>
+    <title>Beerify</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link href="{{ asset('new_template/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('new_template/css/fakeLoader.css')}}" rel="stylesheet">
@@ -110,11 +110,6 @@
 								<span>
 									<a href="our-beer.html">Our beer</a>
 								</span>
-                        <ul class="dropdown-menu">
-                            <li><a href="our-beer.html">Sugar Skull</a></li>
-                            <li><a href="our-beer.html">BraveHeart</a></li>
-                            <li><a href="our-beer.html">The Drunk Indian</a></li>
-                        </ul>
                     </li>
                     <li class="{{ request()->is('story') ? 'active' : '' }}">
 								<span>
@@ -130,9 +125,6 @@
 								<span>
 									<a href="blog.html">Blog</a>
 								</span>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog-single.html">Single post</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -164,11 +156,11 @@
             <div class="col-sm-2">
                 <h6>Useful</h6>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/products">Shop</a></li>
                     <li><a href="our-story.html">Our story</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/login">Login</a></li>
                 </ul>
             </div>
             <div class="col-sm-2">
@@ -203,7 +195,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>2017 &copy; Craft Beer Nation  /  <a href="http://www.klevermedia.co.uk">Web design by Klever media</a></p>
+            <p>2019 &copy; Unnamed Group @ univaq  /  <a href="http://www.klevermedia.co.uk">Web design by Klever media</a></p>
         </div>
     </div>
 </footer>
