@@ -33,7 +33,7 @@
                     <div class="col-xs-6 icon-grid">
                         <img src="{{ asset('img/logout.png') }}" class="svg" alt=""/>
                         <h4><a href="{{ lang_url('logout') }}">{{__('public_pages.logout')}}</a></h4>
-                        <p></p>
+                        <p>Logout!</p>
                     </div>
                     <div class="col-xs-6 icon-grid">
                         <img src="" class="svg" alt=""/>

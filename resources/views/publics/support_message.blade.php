@@ -24,7 +24,7 @@
                     @foreach($ticket_message as $message)
                     <div class="row scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatey="75">
                         <div class="col-sm-1">
-                            <img src="http://placehold.it/72x72" alt="Craft ale HTML template" /> <!--- Settare le immagini utente -->
+                            <img src="{{asset('../storage/app/public/'.$message->directory)}}" alt="No IMG" /> <!--- Settare le immagini utente -->
                         </div>
                         <div class="col-sm-11">
                             <h5>{{ $message->name }}</h5>

@@ -76,8 +76,7 @@
 #modalAddImage .modal-header {border-bottom: 0;}
 #modalAddImage .modal-body {padding-top: 0;}
 #modalAddImage h4 { margin: 0 auto; margin-bottom: 20px; width:80%; text-align: center; text-transform: uppercase; color:#333333; font-size:24px; font-weight: 700;}
-#modalAddImage .btn{background-color: #cbb27c; border:1px solid #cbb27c; color:#fff; padding:15px 60px; font-size: 18px; font-weight:700; text-transform: uppercase; display: block; width:80%; text-align: center; margin: 0 auto;}
-#modalAddImage .btn {text-decoration: none; background-color: #917f53; }
+
 
 .upload-wrap { position: relative; margin-left: -5px;}
 .upload-btn {  background-color: #cbb27c; border:1px solid #cbb27c; color:#fff; padding:15px 60px; font-size: 18px; font-weight:700; text-transform: uppercase; display: block; width:80%; text-align: center; margin: 0 auto;}
@@ -99,6 +98,10 @@
     position:relative;
 }
 
+/** CSS OPEN TICKET **/
+#modalNewTicket .modal-content {border-radius: 0;}
+#modalNewTicket .modal-header {border-bottom: 0;}
+#modalNewTicket .modal-body {padding-top: 0;}
 /** FINE CSS AGGIUNTO **/
 
 /**  Body  **/
