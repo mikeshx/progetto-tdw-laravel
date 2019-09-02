@@ -17,6 +17,9 @@
 Route::get('/blog', 'Publics\\BlogController@index');
 Route::get('/blog/{any}-{id}', 'Publics\\BlogController@viewSinglePost')->where('id', '[\d+]+')->where('any', '(.*)');
 
+// Route to edit the content of a blog post
+Route::get('edit_blog_post-{id}', 'Publics\\BlogController@editBlogPost')->where('id', '[\d+]+');
+
 
 // contacts routes (public)
 Route::post('/contacts', 'Admin\\ContactsController@index');
@@ -132,6 +135,7 @@ Route::middleware(['Admin'])->group(function () { // check for admin auth
     // Blog routes
     Route::get('admin/blog', 'Admin\\BlogController@index');
     Route::post('admin/post.add', 'Admin\\BlogController@addBlogPost');
+    Route::post('admin/post.update', 'Admin\\BlogController@updateBlogPost');
 
     // Contacts routes
     Route::post('admin/contacts.add', 'Admin\\ContactsController@addContacts');

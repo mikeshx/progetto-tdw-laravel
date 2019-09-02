@@ -26,6 +26,14 @@ class BlogController extends Controller
 
     }
 
+    // Update an existing blog post by its id
+    public function updateBlogPost(Request $request) {
+        $blogModel = new BlogModel();
+        $result = $blogModel->updateBlogPost($request->all());
+
+        return redirect()->back()->with(['msg' => $result['msg'], 'result' => $result['result']]);
+    }
+
 
 
 }

@@ -28,4 +28,5 @@ class BlogModel extends Model
             ->where ('post_id', $post_id)
             ->first();
     }
+
 }

@@ -5,7 +5,7 @@ namespace App\Models\Publics;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use Config;
 use Auth;
 use File;

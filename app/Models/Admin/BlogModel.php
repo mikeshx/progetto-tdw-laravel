@@ -43,10 +43,34 @@ class BlogModel extends Model
             $isValid['result'] = true;
             $isValid['msg'] = Lang::get('admin_pages.blog_post_added');
         } else {
+            $isValid['result'] = false;
             $isValid['msg'] = Lang::get('admin_pages.blog_post_fail');
         }
 
         return $isValid;
 
+    }
+
+    // Update an existing post
+    public function updateBlogPost($post) {
+
+        $updateDetails = [
+            'post_title' => $post['post_title'],
+            'post_content' => $post['post_content']
+        ];
+
+        $result = DB::table('blog')
+            ->where('post_id', $post['post_id'])
+            ->update($updateDetails);
+
+        if ($result) {
+            $isValid['result'] = true;
+            $isValid['msg'] = Lang::get('admin_pages.blog_post_added');
+        } else {
+            $isValid['result'] = false;
+            $isValid['msg'] = Lang::get('admin_pages.blog_post_fail');
+        }
+
+        return $isValid;
     }
 }
