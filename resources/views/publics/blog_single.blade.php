@@ -33,7 +33,15 @@
     <div class="container-fluid light section">
         <div class="container">
 
-            <h4>Edit post: <a href="/edit_blog_post-{{$post_id}}"><img src="https://img.icons8.com/material-sharp/24/000000/edit.png"> </a></h4>
+            @php
+
+                if ($canEdit) {
+            @endphp
+                <h4>Edit post: <a href="/edit_blog_post-{{$post_id}}"><img src="https://img.icons8.com/material-sharp/24/000000/edit.png"> </a></h4>
+
+
+            @php } @endphp
+
             <br/><br/><br/>
             <div class="row"  >
 
