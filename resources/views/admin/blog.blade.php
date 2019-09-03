@@ -6,7 +6,14 @@
     <link href="{{ asset('css/bootstrap-tagsinput.css') }}" rel="stylesheet" />
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form action="post.add" method="POST" >
+
+            @if(empty($post_content))
+                <form action="post.add" method="POST" >
+            @else
+                <form action="/admin/post.update" method="POST" >
+                    <input type="hidden" name="post_id" value="{{$post_id}}">
+            @endif
+
                 {{ csrf_field() }}
                 <div class="card">
                     <div class="card-body">
@@ -18,14 +25,29 @@
                     <hr>
                     <div class="md-form">
                         <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                        <input type="text" name="post_title" value="" id="publishForm-quantity" class="form-control">
+
+                        @if(empty($post_title))
+                            <input type="text" name="post_title" value="" id="publishForm-quantity" class="form-control">
+                        @else
+                            <input type="text" name="post_title" value="{{$post_title}}" id="publishForm-quantity" class="form-control">
+
+                        @endif
+
                         <label for="publishForm-quantity">Title: </label>
                     </div>
 
                         <div class="md-form">
                             <br><br>
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <textarea class="form-control" name="post_content" rows="20" id="comment"></textarea>
+
+                            @if(empty($post_content))
+                                <textarea class="form-control" name="post_content" rows="20" id="comment"></textarea>
+                            @else
+                                <textarea class="form-control" name="post_content" rows="20" id="comment">{{$post_content}}</textarea>
+
+                            @endif
+
+
                             <label for="publishForm-quantity">Post: </label>
                         </div>
 
@@ -36,8 +58,9 @@
                     </div>
                     <div class="clones"></div>
                     <hr>
+
                     <div class="text-right">
-                        <button class="btn btn-secondary waves-effect waves-light">Add new post</button>
+                        <button class="btn btn-secondary waves-effect waves-light">Publish</button>
                     </div>
                 </div>
         </form>

@@ -32,7 +32,7 @@
                             <span class="date">{{$post->post_date}}</span>
                             <h2>{{$post->post_title}}</h2>
                         </header>
-                        {{$post->post_content}}
+                        {!! $post->post_content !!}
                     </div>
                 </div>
                 <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
