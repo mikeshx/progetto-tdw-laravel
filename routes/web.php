@@ -13,6 +13,9 @@
 
 /* Public Routes */
 
+// Our beers public routes
+Route::get('/our_beers', 'Publics\\ourBeersController@index');
+
 // Blog public routes
 Route::get('/blog', 'Publics\\BlogController@index');
 Route::get('/blog/{any}-{id}', 'Publics\\BlogController@viewSinglePost')->where('id', '[\d+]+')->where('any', '(.*)');
