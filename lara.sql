@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ago 31, 2019 alle 14:53
+-- Creato il: Set 05, 2019 alle 09:19
 -- Versione del server: 10.3.17-MariaDB
 -- Versione PHP: 7.3.8
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `blog` (
   `post_id` int(11) NOT NULL,
   `post_title` varchar(255) NOT NULL,
-  `post_content` varchar(800) NOT NULL,
+  `post_content` text NOT NULL,
   `post_user_id` varchar(60) NOT NULL,
   `post_date` varchar(255) NOT NULL,
   `post_url` varchar(255) NOT NULL
@@ -53,7 +53,7 @@ INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`, `po
 (9, 'yoyoyo', 'testing', '3', '', ''),
 (10, 'testing123', 'testing123', '3', '2019-08-29 11:52:53', ''),
 (11, 'yoyoyoyo', 'sfsdfsfsdf', '3', '2019-08-29', ''),
-(12, 'testing vaffanculo', 'asd', '3', '2019-08-31', 'testing-vaffanculo');
+(12, 'Uscita la nuova birra DI MERDA', '<h2> questo è un titolo </h2>\r\n\r\n<p> test dio cane </p>', '3', '2019-08-31', 'testing-vaffanculo');
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,8 @@ CREATE TABLE `coupon` (
 --
 
 INSERT INTO `coupon` (`id`, `percentage_value`, `coupon_string`, `expire_date`) VALUES
-(1, 67, 'A3FZ6Q1YYX', '2019-09-20 12:45:59');
+(1, 67, 'A3FZ6Q1YYX', '2019-09-20 12:45:59'),
+(2, 78, 'PVY7O3ROV0', '2019-09-09 16:22:02');
 
 -- --------------------------------------------------------
 
@@ -311,6 +312,39 @@ CREATE TABLE `orders_clients` (
   `post_code` varchar(10) NOT NULL,
   `notes` text NOT NULL,
   `total_price` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `our_beer`
+--
+
+CREATE TABLE `our_beer` (
+  `beer_id` int(11) NOT NULL,
+  `beer_name` varchar(80) NOT NULL,
+  `beer_type` varchar(80) NOT NULL,
+  `beer_description` text NOT NULL,
+  `beer_alcohol_content` double NOT NULL,
+  `beer_img_path` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `our_beer_carousel`
+--
+
+CREATE TABLE `our_beer_carousel` (
+  `text_container_1` varchar(100) NOT NULL,
+  `text_container_2` varchar(100) NOT NULL,
+  `text_container_3` varchar(100) NOT NULL,
+  `text_container_4` varchar(100) NOT NULL,
+  `slider_1` varchar(600) NOT NULL,
+  `counter_1` int(100) NOT NULL,
+  `counter_2` int(100) NOT NULL,
+  `counter_3` int(100) NOT NULL,
+  `counter_4` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -456,6 +490,13 @@ CREATE TABLE `story` (
   `locale` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dump dei dati per la tabella `story`
+--
+
+INSERT INTO `story` (`id`, `date`, `title`, `text`, `locale`) VALUES
+(1, '2019-09-04', 'qweqeqweqwe', 'qeqweeqweqweqwe', 'en');
+
 -- --------------------------------------------------------
 
 --
@@ -467,6 +508,13 @@ CREATE TABLE `story_carousel` (
   `link` varchar(100) NOT NULL,
   `position` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `story_carousel`
+--
+
+INSERT INTO `story_carousel` (`id`, `link`, `position`) VALUES
+(1, 'asd.com', 1);
 
 -- --------------------------------------------------------
 
@@ -483,6 +531,13 @@ CREATE TABLE `story_carousel_translations` (
   `title2` varchar(30) NOT NULL,
   `text` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `story_carousel_translations`
+--
+
+INSERT INTO `story_carousel_translations` (`id`, `for_id`, `locale`, `image`, `title1`, `title2`, `text`) VALUES
+(1, 1, 'en', 'carousel_story/HcjDwKuaBpJCP3ELQeOveYz8ALwK099F3WUjld4E.jpeg', 'asdasd', 'asdasd', 'asdasd');
 
 -- --------------------------------------------------------
 
@@ -524,7 +579,9 @@ CREATE TABLE `support_message` (
 --
 
 INSERT INTO `support_message` (`id`, `id_ticket`, `id_user`, `text`, `time`) VALUES
-(1, 1, 1, 'in una forte epistassi', '2019-07-20 10:36:17');
+(1, 1, 1, 'in una forte epistassi', '2019-07-20 10:36:17'),
+(2, 1, 3, 'assurdo', '2019-09-04 14:22:31'),
+(3, 1, 3, 'comuqnue in quanto admin, non me ne frega un cazzo', '2019-09-04 14:22:48');
 
 -- --------------------------------------------------------
 
@@ -583,7 +640,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
 (1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'rnRcPEiCHfrrSRE0TmhQsYQsimzwW5vkMT6apoCFLFcisLpZE5L6JiiicmGA', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
-(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'RRpAZYrZBs2A4eBuV5NBaNNubZpOXaJFG2OI4nLbRVsLIYMwtuPEcX74Nf3r', 1);
+(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', '54AuO1BpgqFtTbMfJYEmODgWyCr4yVORso5782GUnhlziWjjo2LOvHTr6jZa', 1);
 
 -- --------------------------------------------------------
 
@@ -713,6 +770,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `orders_clients`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `our_beer`
+--
+ALTER TABLE `our_beer`
+  ADD PRIMARY KEY (`beer_id`);
 
 --
 -- Indici per le tabelle `producers`
@@ -860,7 +923,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT per la tabella `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `expeditions`
@@ -878,7 +941,7 @@ ALTER TABLE `fast_orders`
 -- AUTO_INCREMENT per la tabella `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `img_product`
@@ -909,6 +972,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `orders_clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `our_beer`
+--
+ALTER TABLE `our_beer`
+  MODIFY `beer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `producers`
@@ -950,19 +1019,19 @@ ALTER TABLE `social_contacts`
 -- AUTO_INCREMENT per la tabella `story`
 --
 ALTER TABLE `story`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `story_carousel`
 --
 ALTER TABLE `story_carousel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `story_carousel_translations`
 --
 ALTER TABLE `story_carousel_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `story_info`
@@ -974,7 +1043,7 @@ ALTER TABLE `story_info`
 -- AUTO_INCREMENT per la tabella `support_message`
 --
 ALTER TABLE `support_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `support_request`
