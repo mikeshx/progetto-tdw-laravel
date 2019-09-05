@@ -45,7 +45,7 @@
                         @php
                             } else {
                         @endphp
-                        <a href="{{url('addFavorite/'.$product->id)}}" class="btn btn-primary" >Add/remove favorite</a>
+                        <a href="{{url('addFavorite/'.$product->id)}}" class="btn btn-default btn-block">  Add/remove favorite</a>
                         <a href="javascript:void(0);" data-product-id="{{$product->id}}" class="buy-now to-cart">{{__('public_pages.buy')}}</a>
                         @php
                             }
