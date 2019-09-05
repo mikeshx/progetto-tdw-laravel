@@ -26,9 +26,10 @@ class SupportModel extends Model
 
     public function getTicketMessage($number_ticket)
     {
-        $req = DB::table('support_message')->select(DB::raw('support_message.*, users.name'))
+        $req = DB::table('support_message')->select(DB::raw('support_message.*, users.name, img_user.directory'))
             ->where('support_message.id_ticket', '=', $number_ticket)
             ->join('users', 'users.id', '=', 'support_message.id_user')
+            ->join('img_user', 'users.id', '=','img_user.id_user')
             ->paginate(20);
         return $req;
     }
@@ -96,4 +97,5 @@ class SupportModel extends Model
         $req = DB::table('support_message')->where('id', $id)->first();
         return $req;
     }
+
 }

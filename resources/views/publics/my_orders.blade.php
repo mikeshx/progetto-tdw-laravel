@@ -102,7 +102,7 @@
                             </tr>
                         @empty
                             <td>
-                                <p>{{ __('public_pages.no_orders') }}</p>
+                                <p><h2>{{ __('public_pages.no_orders') }}</h2></p>
                             </td>
                         @endforelse
                         </tbody>
