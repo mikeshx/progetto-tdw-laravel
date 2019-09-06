@@ -36,6 +36,25 @@ class CheckoutController extends Controller
         ]);
     }
 
+    public function indexCheckoutOrder(Request $request)
+    {
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
+        return view('publics.checkout_order', [
+            'cartProducts' => $this->products,
+            'head_title' => Lang::get('seo.title_checkout'),
+            'social' => $social,
+            'head_description' => Lang::get('seo.descr_checkout'),
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'city' => $request->city,
+            'post_code' => $request->post_code,
+            'notes' =>$request->notes
+        ]);
+    }
+
     public function setOrder(Request $request)
     {
         $post = $request->all();

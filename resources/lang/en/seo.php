@@ -8,7 +8,7 @@ return [
     'title_contacts' => 'Contacts',
     'descr_contacts' => 'Write us message or call us',
     'title_checkout' => 'Checkout',
-    'descr_checkout' => 'Online store with paypal support, bank payments and cash on delivery',
+    'descr_checkout' => 'Checkout',
     'descr_products_category' => 'Supplements of category - ',
     'title_myOrders' => 'My orders',
     'descr_myOrders' => 'My orders page',

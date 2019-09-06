@@ -96,14 +96,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('checkout', 'Publics\\CheckoutController@index');
     Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
                 ->where('locale', implode('|', Config::get('app.locales')));
+    // checkout order get & post
+    Route::post('checkout_order', 'Publics\\CheckoutController@indexCheckoutOrder');
+    Route::post('{locale}/checkout_order', 'Publics\\CheckoutController@indexCheckoutOrder')
+        ->where('locale', implode('|', Config::get('app.locales')));
+
     // add favorite
     Route::get('addFavorite/{id}', ['as' => 'addFavorite', 'uses' => 'Publics\\FavoritesController@addFavorite']);
     Route::get('my_favorites', 'Publics\\FavoritesController@index');
-
-    // checkout post req
-    Route::post('checkout', 'Publics\\CheckoutController@setOrder');
-    Route::post('{locale}/checkout', 'Publics\\CheckoutController@setOrder')
-                ->where('locale', implode('|', Config::get('app.locales')));
 
     //my_account
     Route::get('my_account', 'Publics\\myaccountController@index');
