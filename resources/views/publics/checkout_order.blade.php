@@ -6,8 +6,8 @@
             <div class="row">
                 <ul class="horz-menu center-menu">
                     <li><span><a href="checkout">Billing & Shipping</a></span></li>
-                    <li class="active"><span><a href="">Order info</a></span></li>
-                    <li><span><a href="">Payment info</a></span></li>
+                    <li class="active"><span><a>Order info</a></span></li>
+                    <li><span><a>Payment info</a></span></li>
                 </ul>
             </div>
         </div>
@@ -24,8 +24,16 @@
                     </header>
                     <hr class="space-40" />
 
-                    <form method="POST" action="{{lang_url('checkout')}}" id="set-order">
+                    <form method="POST" action="{{lang_url('checkout_payment')}}" id="set-order">
                         {{ csrf_field() }}
+                        <input type="hidden" name="first_name" value="{{$first_name}}">
+                        <input type="hidden" name="last_name" value="{{$last_name}}">
+                        <input type="hidden" name="email" value="{{$email}}">
+                        <input type="hidden" name="phone" value="{{$phone}}">
+                        <input type="hidden" name="address" value="{{$address}}">
+                        <input name="city" value="" type="hidden" value="{{$city}}">
+                        <input name="post_code" value="" type="hidden" value="{{$post_code}}">
+                        <textarea type="hidden" name="notes" value="{{$notes}}" ></textarea>
                         @php
                             $sum = $sum_total = 0;
                             if(!empty($cartProducts)) {
@@ -63,39 +71,37 @@
                         }
                         @endphp
 
+                        <div class="row">
+                            @if(session()->has('discount_value'))
+                                @php
+                                    $percentage_value = (session('discount_value') / 100) * $sum_total
+                                @endphp
+                                <div class="col-sm-6 total final-total">
+                                    <p>Coupon applied, discount value: - {{session('discount_value')}}%</p>
+                                    <p>{{__('public_pages.sum_for_pay_discount')}} <span>{{$sum_total - $percentage_value }}</span></p>
+                                </div>
+                                <input type="hidden" name="total_price" value="{{$sum_total - $percentage_value}}">
+                            @else
+                                <div class="col-sm-6 total final-total">
+                                    <p>{{__('public_pages.sum_for_pay')}} <span>{{ $sum_total }}</span></p>
+                                </div>
+                                <input type="hidden" name="total_price" value="{{$sum_total}}">
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 promo">
+                                <form action = "coupon.apply" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="text" placeholder="Coupon" name="coupon_string"> <button class="btn btn-default">Apply</button>
+                                </form>
+                            </div>
+
+                            <div class="col-sm-12 btn-wrap">
+                                <a href="checkout" class="btn btn-grey"><span>Back</span></a> <button class="btn btn-default" type="submit">Next</button>
+                            </div>
+                        </div>
                     </form>
-
-
-                    <div class="row">
-                        @if(session()->has('discount_value'))
-                            @php
-                                $percentage_value = (session('discount_value') / 100) * $sum_total
-                            @endphp
-                            <div class="col-sm-6 total final-total">
-                                <p>Coupon applied, discount value: - {{session('discount_value')}}%</p>
-                                <p>{{__('public_pages.sum_for_pay_discount')}} <span>{{$sum_total - $percentage_value }}</span></p>
-                            </div>
-                            <input type="hidden" name="total_price" value="{{$sum_total - $percentage_value}}">
-                        @else
-                            <div class="col-sm-6 total final-total">
-                                <p>{{__('public_pages.sum_for_pay')}} <span>{{ $sum_total }}</span></p>
-                            </div>
-                            <input type="hidden" name="total_price" value="{{$sum_total}}">
-                        @endif
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6 promo">
-                            <form action = "coupon.apply" method="POST">
-                                {{ csrf_field() }}
-                                <input type="text" placeholder="Coupon" name="coupon_string"> <button class="btn btn-default">Apply</button>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-12 btn-wrap">
-                            <a href="checkout" class="btn btn-grey"><span>Back</span></a> <a href="checkout-5.html" class="btn btn-default"><span>Next</span></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

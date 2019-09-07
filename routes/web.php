@@ -92,7 +92,7 @@ Route::get('{locale}/cart', 'Publics\\CheckoutController@indexCart')
 /* Logged user routes */
 Route::middleware(['auth'])->group(function () {
 
-    // checkout please
+     // checkout please
     Route::get('checkout', 'Publics\\CheckoutController@index');
     Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
                 ->where('locale', implode('|', Config::get('app.locales')));
@@ -100,6 +100,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('checkout_order', 'Publics\\CheckoutController@indexCheckoutOrder');
     Route::post('{locale}/checkout_order', 'Publics\\CheckoutController@indexCheckoutOrder')
         ->where('locale', implode('|', Config::get('app.locales')));
+    // checkout checkout_payment get & post
+    Route::post('checkout_payment', 'Publics\\CheckoutController@indexCheckoutPayment');
+    Route::post('{locale}/checkout_payment', 'Publics\\CheckoutController@indexCheckoutPayment')
+        ->where('locale', implode('|', Config::get('app.locales')));
+    // checkout post req
+    Route::post('checkout_ord', 'Publics\\CheckoutController@setOrder');
+    Route::post('{locale}/checkout_ord', 'Publics\\CheckoutController@setOrder')
+        ->where('locale', implode('|', Config::get('app.locales')));
+
 
     // add favorite
     Route::get('addFavorite/{id}', ['as' => 'addFavorite', 'uses' => 'Publics\\FavoritesController@addFavorite']);

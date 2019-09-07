@@ -45,15 +45,39 @@ class CheckoutController extends Controller
             'head_title' => Lang::get('seo.title_checkout'),
             'social' => $social,
             'head_description' => Lang::get('seo.descr_checkout'),
+            'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
             'city' => $request->city,
             'post_code' => $request->post_code,
-            'notes' =>$request->notes
+            'notes' => $request->notes
         ]);
     }
+
+    public function indexCheckoutPayment(Request $request)
+    {
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
+        return view('publics.checkout_payment', [
+            'cartProducts' => $this->products,
+            'head_title' => Lang::get('seo.title_checkout'),
+            'social' => $social,
+            'head_description' => Lang::get('seo.descr_checkout'),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'city' => $request->city,
+            'post_code' => $request->post_code,
+            'notes' => $request->notes,
+            'total_price' => $request->total_price
+        ]);
+    }
+
+
 
     public function setOrder(Request $request)
     {
