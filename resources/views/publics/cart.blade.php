@@ -95,14 +95,14 @@
                     </div>
                 </div>
             </form>
-           <!-- <div class="row">
+            <div class="row">
                 <div class="col-sm-6 promo">
                     <form action = "coupon.apply" method="POST">
                         {{ csrf_field() }}
                         <input type="text" placeholder="Coupon" name="coupon_string"> <button class="btn btn-default">Apply</button>
                     </form>
                 </div>
-            </div>-->
+            </div>
         </div>
     </div>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Publics\CheckoutModel;
 use App\Models\Publics\HomeModel;
 use Lang;
+use Session;
 use App\Cart;
 
 class CheckoutController extends Controller
@@ -95,6 +96,7 @@ class CheckoutController extends Controller
         $checkoutModel->setOrder($post);
         $cart = new Cart();
         $cart->clearCart();
+        Session::forget('discount_value');
         return redirect(lang_url('/checkout_completed'))->with(['msg' => Lang::get('public_pages.order_accepted'), 'result' => true]);
     }
 
