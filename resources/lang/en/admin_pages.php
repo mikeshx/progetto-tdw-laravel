@@ -173,5 +173,8 @@ return [
     'update_ok' => 'Updated',
     'blog' => 'New Blog Post',
     'blog_post_added' => 'Blog post added correctly',
-    'blog_post_fail' => 'Error while adding the blog post'
+    'blog_post_fail' => 'Error while adding the blog post',
+    'our_beers' => 'Our Beers',
+    'our_beers_info_added' => 'Added successfully',
+    'our_beers_info_error' => 'Error while adding data',
 ];

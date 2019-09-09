@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Publics\BlogModel;
 use App\Models\Admin\UsersModel;
 use Auth;
-
 use Lang;
 
 class BlogController extends Controller

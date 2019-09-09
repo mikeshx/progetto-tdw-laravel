@@ -22,7 +22,7 @@
                 <div class="card-footer">
                     <div class="text-center price">{{$product->price}}</div>
                     <span class="right">
-                        <a href="{{ lang_url('admin/edit/pruduct/'.$product->id) }}" class="btn btn-secondary btn-sm">
+                        <a href="{{ lang_url('admin/edit/product/'.$product->id) }}" class="btn btn-secondary btn-sm">
                             {{__('admin_pages.edit')}}
                         </a>
                         <a href="{{ lang_url('admin/delete/product/'.$product->id) }}" data-my-message="{{__('admin_pages.are_u_sure_delete')}}" class="btn btn-secondary btn-sm confirm">

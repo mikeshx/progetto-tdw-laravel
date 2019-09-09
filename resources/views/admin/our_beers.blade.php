@@ -1,243 +1,128 @@
 @extends('layouts.app_admin')
 
 @section('content')
-    <h2>{{__('admin_pages.slider')}}</h2>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <div class="add-slider">
-                <button class="btn btn-sm btn-secondary waves-effect waves-light pull-right" data-toggle="modal" data-target="#modalAddSlide">
-                    {{__('admin_pages.add_new_slide')}}
-                </button>
-                <div class="clearfix"></div>
+
+    <h3>Add a new product (our beers)</h3> </br>
+
+    <form action="/admin/our_beers/product.add" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+    <div class="locale-container locale-container-en"  style="display:block;" >
+        <div class="md-form">
+            <i class="fa fa-font prefix grey-text"></i>
+            <input type="text" name="beer_name" value="" id="publishForm-name-en_0" class="form-control">
+            <label for="publishForm-name-en_0">Name of product: </label>
+        </div>
+
+        <div class="md-form">
+            <i class="fa fa-beer prefix grey-text"></i>
+            <input type="text" name="beer_type" value="" id="publishForm-name-en_1" class="form-control">
+            <label for="publishForm-name-en_1">Beer type: </label>
+        </div>
+
+        <div class="md-form clone-file-upload">
+            <label class="alone">Cover image</label>
+            <div class="element-label-text">
+                <div class="upload-wrap">
+                    <button type="button" class="btn btn-secondary">Choose image</button>
+                    <input type="file" name="beer_image" id="cover-upload" class="upload-btn">
+                    <div class="file-name"></div>
+                </div>
             </div>
+        </div>
+
+        <div class="md-form">
+            <i class="fa fa-pencil prefix grey-text"></i>
+            <textarea name="beer_description" id="productDescr-en_2" class="md-textarea"></textarea>
+            <label for="productDescr-en_2">Description: </label>
+        </div>
+        <div class="md-form">
+            <i class="fa fa-beer prefix grey-text"></i>
+            <textarea name="beer_alcohol_content" id="productDescr-en_3" class="md-textarea"></textarea>
+            <label for="productDescr-en_3">Alcohol content %: </label>
+        </div>
+        <div class="md-form">
+            <i class="fa fa-eur prefix grey-text"></i>
+            <input type="text" name="beer_price" value="" id="publishForm-price-en_4" class="form-control">
+            <label for="publishForm-price-en_4">Price: </label>
         </div>
     </div>
 
-    <div class="row carousel-sliders">
-        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            @foreach ($sliders as $slider)
-                <div class="slide">
-                    <img src="{{asset('../storage/app/public/'.$slider->image)}}" class="img-fluid z-depth-1" alt="1">
-                    <span class="link">
-                <a href="{{$slider->link}}" target="_blank">{{$slider->link}}</a>
-            </span>
-                    <span class="position z-depth-2">{{$slider->position}}</span>
-                    <a href="{{lang_url('admin/delete/story/'.$slider->id)}}" class="btn btn-sm btn-secondary waves-effect waves-light confirm delete" data-my-message="{{__('admin_pages.are_u_sure_delete_s')}}">
-                        <i class="fa fa-trash mt-0"></i>
-                    </a>
-                </div>
-            @endforeach
-            {{ $sliders->links() }}
-        </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="submit">Add product </button>
     </div>
-    <div class="modal fade" id="modalAddSlide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">{{__('admin_pages.add_new_slide')}}</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" id="formAdd" action="" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <div class="md-form available-translations">
-                            <span>{{__('admin_pages.choose_locale')}}</span>
-                            @foreach ($locales as $locale)
-                                <button type="button" data-locale-change="{{$locale}}" class="btn btn-outline-secondary waves-effect locale-change @if ($currentLocale == $locale) active @endif">{{$locale}}</button>
-                            @endforeach
-                        </div>
-                        <hr>
-                        @foreach ($locales as $locale)
-                            <input type="hidden" name="translation[]" value="{{$locale}}">
-                            <div class="locale-container locale-container-{{$locale}}" @if ($currentLocale == $locale) style="display:block;" @endif>
-                                <div class="md-form">
-                                    <label class="alone">{{__('admin_pages.image_slide')}}</label>
-                                    <div class="element-label-text">
-                                        <div class="upload-wrap">
-                                            <button type="button" class="btn btn-secondary">{{ __('admin_pages.choose_cover_img')}}</button>
-                                            <input type="file" name="image_{{$locale}}[]" class="upload-btn">
-                                            <div class="file-name"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="md-form">
-                                    <label class="alone">{{__('admin_pages.title1')}}</label>
-                                    <div class="element-label-text">
-                                        <input type="text" value="" name="title1"  class="form-control">
-                                    </div>
-                                </div>
-                                <div class="md-form">
-                                    <label class="alone">{{__('admin_pages.title2')}}</label>
-                                    <div class="element-label-text">
-                                        <input type="text" value="" name="title2"  class="form-control">
-                                    </div>
-                                </div>
-                                <div class="md-form">
-                                    <label class="alone">{{__('admin_pages.text')}}</label>
-                                    <div class="element-label-text">
-                                        <input type="text" value="" name="text"  class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <div class="md-form">
-                            <label class="alone">{{__('admin_pages.position')}}</label>
-                            <div class="element-label-text">
-                                <input type="text" value="" placeholder="1" name="position"  class="form-control">
-                            </div>
-                        </div>
-                        <div class="md-form">
-                            <label class="alone">{{__('admin_pages.link')}}</label>
-                            <div class="element-label-text">
-                                <input type="text" value="" placeholder="http://yoursite.com/link-1" name="link"  class="form-control">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin_pages.close')}}</button>
-                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('formAdd').submit();">{{__('admin_pages.add')}}</button>
-                </div>
-            </div>
-        </div>
+    </form>
+
+    </br><h3>Text Containers</h3> </br></br>
+
+    <form action="/admin/our_beers/info.add" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+    <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea name="text_container_1" id="productDescription1" class="md-textarea">@isset($data) {{$data->text_container_1}} @endisset</textarea>
+        <label for="productDescription1">Text Container 1</label>
     </div>
+
+    <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea name="text_container_2" id="productDescription2" class="md-textarea">@isset($data) {{$data->text_container_2}} @endisset</textarea>
+        <label for="productDescription2">Text Container 2</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea name="text_container_3" id="productDescription3" class="md-textarea">@isset($data) {{$data->text_container_3}} @endisset</textarea>
+        <label for="productDescription3">Text Container 3</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-pencil prefix grey-text"></i>
+        <textarea name="text_container_4" id="productDescription4" class="md-textarea">@isset($data) {{$data->text_container_4}} @endisset</textarea>
+        <label for="productDescription4">Text Container 4</label>
+    </div>
+
+        <div class="md-form">
+            <i class="fa fa-pencil prefix grey-text"></i>
+            <textarea name="slider_1" type="text" id="productDescription4" class="md-textarea">@isset($data) {{$data->slider_1}} @endisset</textarea>
+            <label for="productDescription5">Slider 1</label>
+        </div>
+
+
 
     <div class="fast-orders">
         <div class="row">
             <div class="col-sm-8">
-                <h2>{{__('admin_pages.important_date')}}</h2>
-                <div class="card card-cascade narrower">
-                    <div class="table-responsive-xs">
-                        <table class="table">
-                            <thead class="blue-grey lighten-4">
-                            <tr>
-                                <th>{{__('admin_pages.date')}}</th>
-                                <th>{{__('admin_pages.title')}}</th>
-                                <th>{{__('admin_pages.lang')}}</th>
-                                <th class="text-right">
-                                    <button class="btn btn-sm btn-secondary waves-effect waves-light pull-right" data-toggle="modal" data-target="#modalAddYear">
-                                        {{__('admin_pages.add_date')}}
-                                    </button>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @forelse ($story as $s)
-                                <tr>
-                                    <td>{{ $s->date }}</td>
-                                    <td>{{ $s->title }}</td>
-                                    <td>{{ $s->locale }}</td>
-                                    <td>
-                                        <a href="{{lang_url('admin/delete/storyDate/'.$s->id)}}" class="btn btn-sm btn-secondary waves-effect waves-light confirm delete" data-my-message="{{__('admin_pages.are_u_sure_delete_date')}}">
-                                            <i class="fa fa-trash mt-0"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                            @empty
-                                <tr>
-                                    <td colspan="4">{{__('admin_pages.empty')}}</td>
-                                </tr>
-                            @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal fade" id="modalAddYear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">{{__('admin_pages.add_new_date')}}</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="story/setDate" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <div class="md-form available-translations">
-                            <span>{{__('admin_pages.choose_locale')}}</span>
-                            @foreach ($locales as $locale)
-                                <button type="button" data-locale-change="{{$locale}}" class="btn btn-outline-secondary waves-effect locale-change @if ($currentLocale == $locale) active @endif">{{$locale}}</button>
-                            @endforeach
-                        </div>
-                        <hr>
-                        @foreach ($locales as $locale)
-                            <input type="hidden" name="translation[]" value="{{$locale}}">
-                            <div class="locale-container locale-container-{{$locale}}" @if ($currentLocale == $locale) style="display:block;" @endif>
-                                <div class="md-form">
-                                    <label class="alone">{{__('admin_pages.date')}}</label>
-                                    <div class="element-label-text">
-                                        <input type="date" value="" name="date"  class="form-control">
-                                    </div>
-                                </div>
-                                <div class="md-form">
-                                    <label class="alone">{{__('admin_pages.title')}}</label>
-                                    <div class="element-label-text">
-                                        <input type="text" value="" name="title"  class="form-control">
-                                    </div>
-                                </div>
-                                <div class="md-form">
-                                    <label class="alone">{{__('admin_pages.text')}}</label>
-                                    <div class="element-label-text">
-                                        <input type="text" value="" name="text"  class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{{__('admin_pages.close')}}</button>
-                            <button type="submit" class="btn btn-secondary" >{{__('admin_pages.add')}}</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="fast-orders">
-        <div class="row">
-            <div class="col-sm-8">
-                <h2>{{__('admin_pages.info_story')}}</h2>
-
-                <form action="story/update" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                <h3>Informations</h3></br></br>
                     <div class="md-form">
                         <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                        <input type="text" name="flavours" value="{{ $story_info->flavours }}" id="publishForm-quantity" class="form-control">
-                        <label for="publishForm-quantity">{{__('admin_pages.flavours')}} </label>
+                        <input type="text" name="counter_1" id="publishForm-quantity_1" class="form-control" value="@isset($data) {{$data->counter_1}} @endisset">
+                        <label for="publishForm-quantity_1">Flavours: </label>
                     </div>
                     <div class="md-form">
                         <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                        <input type="text" name="outlets" value="{{ $story_info->outlets }}" id="publishForm-quantity" class="form-control">
-                        <label for="publishForm-quantity">{{__('admin_pages.outlets')}} </label>
+                        <input type="text" name="counter_2" id="publishForm-quantity_2" class="form-control" value="@isset($data) {{$data->counter_2}} @endisset">
+                        <label for="publishForm-quantity_2">Outlets: </label>
                     </div>
                     <div class="md-form">
                         <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                        <input type="text" name="years" value="{{ $story_info->years }}" id="publishForm-quantity" class="form-control">
-                        <label for="publishForm-quantity">{{__('admin_pages.years')}} </label>
+                        <input type="text" name="counter_3" id="publishForm-quantity_3" class="form-control" value="@isset($data) {{$data->counter_3}} @endisset">
+                        <label for="publishForm-quantity_3">Years; </label>
                     </div>
                     <div class="md-form">
                         <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                        <input type="text" name="day" value="{{ $story_info->day }}" id="publishForm-quantity" class="form-control">
-                        <label for="publishForm-quantity">{{__('admin_pages.day')}} </label>
+                        <input type="text" name="counter_4" id="publishForm-quantity_4" class="form-control" value="@isset($data) {{$data->counter_4}} @endisset">
+                        <label for="publishForm-quantity_4">Day: </label>
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-default" type="submit">{{__('admin_pages.save')}} </button>
+                        <button class="btn btn-default" type="submit">Save </button>
                     </div>
-                </form>
+
             </div>
         </div>
     </div>
+    </form>
 
 
-    <script>
-        $('.upload-btn').change(function () {
-            $(this).next('.file-name').show().append($(this).val());
-        });
-    </script>
 @endsection

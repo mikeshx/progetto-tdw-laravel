@@ -135,6 +135,11 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['Admin'])->group(function () { // check for admin auth
     Route::get('admin', 'Admin\\DashboardController@index');
 
+    // Our beers routes
+    Route::get('admin/our_beers', 'Admin\\ourBeersController@index');
+    Route::post('admin/our_beers/info.add', 'Admin\\ourBeersController@addOurBeersCarousel');
+    Route::post('admin/our_beers/product.add', 'Admin\\ourBeersController@addOurProduct');
+
     // Blog routes
     Route::get('admin/blog', 'Admin\\BlogController@index');
     Route::post('admin/post.add', 'Admin\\BlogController@addBlogPost');
