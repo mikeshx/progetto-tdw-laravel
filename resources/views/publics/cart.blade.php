@@ -39,6 +39,7 @@
                         <div class="row item">
 
                             <input name="id[]" value="{{$cartProduct->id}}" type="hidden">
+                            <input name="quantity[]" value="{{$cartProduct->num_added}}" type="hidden">
 
                             <div class="col-sm-2 matchHeight">
                                 <img src="{{asset('../storage/app/public/'.$cartProduct->image)}}" alt="No IMG" />
@@ -90,7 +91,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 btn-wrap">
-                        <a href="checkout-1.html" class="btn btn-default"><span>{{__('public_pages.continue_to_checkout')}}</span></a>
+                        <a href="checkout" class="btn btn-default"><span>{{__('public_pages.continue_to_checkout')}}</span></a>
                     </div>
                 </div>
             </form>
