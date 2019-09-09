@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Set 05, 2019 alle 09:19
+-- Creato il: Set 09, 2019 alle 20:15
 -- Versione del server: 10.3.17-MariaDB
--- Versione PHP: 7.3.8
+-- Versione PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -175,7 +175,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `address`, `position`, `telephone`, `email`) VALUES
-(1, '', 'a', 'a', 'a');
+(1, 'asdad', 'a', 'a', 'a');
 
 -- --------------------------------------------------------
 
@@ -326,7 +326,8 @@ CREATE TABLE `our_beer` (
   `beer_type` varchar(80) NOT NULL,
   `beer_description` text NOT NULL,
   `beer_alcohol_content` double NOT NULL,
-  `beer_img_path` varchar(500) NOT NULL
+  `beer_img_path` varchar(500) NOT NULL,
+  `beer_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -336,16 +337,24 @@ CREATE TABLE `our_beer` (
 --
 
 CREATE TABLE `our_beer_carousel` (
-  `text_container_1` varchar(100) NOT NULL,
-  `text_container_2` varchar(100) NOT NULL,
-  `text_container_3` varchar(100) NOT NULL,
-  `text_container_4` varchar(100) NOT NULL,
-  `slider_1` varchar(600) NOT NULL,
-  `counter_1` int(100) NOT NULL,
-  `counter_2` int(100) NOT NULL,
-  `counter_3` int(100) NOT NULL,
-  `counter_4` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `text_container_1` varchar(100) DEFAULT NULL,
+  `text_container_2` varchar(100) DEFAULT NULL,
+  `text_container_3` varchar(100) DEFAULT NULL,
+  `text_container_4` varchar(100) DEFAULT NULL,
+  `slider_1` varchar(600) DEFAULT NULL,
+  `counter_1` int(100) DEFAULT NULL,
+  `counter_2` int(100) DEFAULT NULL,
+  `counter_3` int(100) DEFAULT NULL,
+  `counter_4` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `our_beer_carousel`
+--
+
+INSERT INTO `our_beer_carousel` (`id`, `text_container_1`, `text_container_2`, `text_container_3`, `text_container_4`, `slider_1`, `counter_1`, `counter_2`, `counter_3`, `counter_4`) VALUES
+(1, 'asd', 'ad', 'asd', 'asd', 'asd', 4, 8, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -474,7 +483,7 @@ CREATE TABLE `social_contacts` (
 --
 
 INSERT INTO `social_contacts` (`id`, `instagram_desc`, `instagram_link`, `facebook_desc`, `facebook_link`, `twitter_desc`, `twitter_link`) VALUES
-(1, 'a', 'a', 'a', 'a', 'a', 'a');
+(1, 'asdadsdadsadasdasdasd', 'a', 'a', 'diocan', 'a', 'a');
 
 -- --------------------------------------------------------
 
@@ -558,7 +567,7 @@ CREATE TABLE `story_info` (
 --
 
 INSERT INTO `story_info` (`id`, `flavours`, `outlets`, `years`, `day`) VALUES
-(1, 206, 140, 60, 21);
+(1, 206, 140, 90, 21);
 
 -- --------------------------------------------------------
 
@@ -640,7 +649,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
 (1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'rnRcPEiCHfrrSRE0TmhQsYQsimzwW5vkMT6apoCFLFcisLpZE5L6JiiicmGA', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
-(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', '54AuO1BpgqFtTbMfJYEmODgWyCr4yVORso5782GUnhlziWjjo2LOvHTr6jZa', 1);
+(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'cskjgxYOSI8ZlS9VISLmy3FLBzGcKqJq86tmvbBJ3yIn2KUjXKkHwYeGxuNi', 1);
 
 -- --------------------------------------------------------
 
