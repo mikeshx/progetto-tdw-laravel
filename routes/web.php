@@ -108,6 +108,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('checkout_ord', 'Publics\\CheckoutController@setOrder');
     Route::post('{locale}/checkout_ord', 'Publics\\CheckoutController@setOrder')
         ->where('locale', implode('|', Config::get('app.locales')));
+    // checkout please
+    Route::get('checkout_completed', 'Publics\\CheckoutController@indexCompleted');
+    Route::get('{locale}/checkout_completed', 'Publics\\CheckoutController@indexCompleted')
+        ->where('locale', implode('|', Config::get('app.locales')));
+
 
 
     // add favorite

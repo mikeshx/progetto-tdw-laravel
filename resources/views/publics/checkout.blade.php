@@ -8,6 +8,7 @@
                     <li class="active"><span><a href="checkout">Billing & Shipping</a></span></li>
                     <li><span><a>Order info</a></span></li>
                     <li><span><a>Payment info</a></span></li>
+                    <li><span><a>Order completed</a></span></li>
                 </ul>
             </div>
         </div>

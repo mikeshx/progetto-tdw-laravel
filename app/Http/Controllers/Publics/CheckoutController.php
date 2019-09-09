@@ -77,6 +77,15 @@ class CheckoutController extends Controller
         ]);
     }
 
+    public function indexCompleted(){
+        $homeModel = new HomeModel();
+        $social = $homeModel->getSocial();
+        return view('publics.checkout_completed', [
+            'head_title' => Lang::get('seo.title_checkout'),
+            'social' => $social,
+            'head_description' => Lang::get('seo.descr_checkout')
+        ]);
+    }
 
 
     public function setOrder(Request $request)
@@ -86,7 +95,7 @@ class CheckoutController extends Controller
         $checkoutModel->setOrder($post);
         $cart = new Cart();
         $cart->clearCart();
-        return redirect(lang_url('/'))->with(['msg' => Lang::get('public_pages.order_accepted'), 'result' => true]);
+        return redirect(lang_url('/checkout_completed'))->with(['msg' => Lang::get('public_pages.order_accepted'), 'result' => true]);
     }
 
     public function setFastOrder(Request $request)

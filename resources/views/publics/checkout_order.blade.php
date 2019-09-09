@@ -8,6 +8,7 @@
                     <li><span><a href="checkout">Billing & Shipping</a></span></li>
                     <li class="active"><span><a>Order info</a></span></li>
                     <li><span><a>Payment info</a></span></li>
+                    <li><span><a>Order completed</a></span></li>
                 </ul>
             </div>
         </div>
@@ -90,18 +91,17 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-6 promo">
-                                <form action = "coupon.apply" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="text" placeholder="Coupon" name="coupon_string"> <button class="btn btn-default">Apply</button>
-                                </form>
-                            </div>
-
                             <div class="col-sm-12 btn-wrap">
                                 <a href="checkout" class="btn btn-grey"><span>Back</span></a> <button class="btn btn-default" type="submit">Next</button>
                             </div>
                         </div>
                     </form>
+                    <div class="col-sm-6 promo">
+                        <form action = "coupon.apply" method="POST">
+                            {{ csrf_field() }}
+                            <input type="text" placeholder="Coupon" name="coupon_string"> <button class="btn btn-default">Apply</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
