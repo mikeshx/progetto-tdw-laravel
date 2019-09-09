@@ -33,9 +33,6 @@ Route::get('story', 'Publics\\StoryController@index');
 // review routes
 Route::post('review.submit', 'Publics\\ReviewsController@submitReview');
 
-// apply coupon
-Route::post('coupon.apply', 'Admin\\CouponsController@testCoupon');
-
 // home page
 Route::get('/home', 'Publics\\HomeController@index');
 Route::get('/', 'Publics\\HomeController@index');
@@ -92,6 +89,8 @@ Route::get('{locale}/cart', 'Publics\\CheckoutController@indexCart')
 /* Logged user routes */
 Route::middleware(['auth'])->group(function () {
 
+    // apply coupon
+    Route::post('coupon.apply', 'Admin\\CouponsController@testCoupon');
      // checkout please
     Route::get('checkout', 'Publics\\CheckoutController@index');
     Route::get('{locale}/checkout', 'Publics\\CheckoutController@index')
