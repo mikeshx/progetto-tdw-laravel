@@ -27,9 +27,11 @@ class BlogController extends Controller
         // We get everytime the id = 1 because that's the only one we need
         $result = $contactsModel->getContacts(1);
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
         return view('publics.blog', [
             'posts' => $posts,
+            'contact' => $contact,
             'social' => $social
         ]);
     }
@@ -54,11 +56,13 @@ class BlogController extends Controller
         // We get everytime the id = 1 because that's the only one we need
         $result = $contactsModel->getContacts(1);
         $social = $homeModel->getSocial();
+        $contac = $homeModel->getContacts();
 
         return view('publics.blog_single', [
             'post_title' => $post->post_title,
             'post_content' => $post->post_content,
             'post_date' => $post->post_date,
+            'contact' => $contac,
             'posted_by' => $user->name,
             'post_id' => $post->post_id,
             'social' => $social,

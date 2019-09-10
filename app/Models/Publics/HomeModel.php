@@ -41,4 +41,10 @@ class HomeModel extends Model
             ->get();
         return $social;
     }
+    public function  getContacts()
+    {
+        $contacts = DB::table('contacts')
+            ->get();
+        return $contacts;
+    }
 }

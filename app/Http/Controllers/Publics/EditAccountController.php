@@ -28,11 +28,13 @@ class EditAccountController extends Controller
         $userInfo = $editModel->getUserInfo();
         $userAddress = $editModel->getAddress();
         $userImg = $editModel->getImage();
+        $contact = $homeModel->getContacts();
 
 
         return view('publics.edit_account', [
             'head_title' => Lang::get('seo.title_EditAccount'),
             'social' => $social,
+            'contact' => $contact,
             'img' => $userImg,
             'locales' => Config::get('app.locales'),
             'head_description' => Lang::get('seo.descr_EditAccount'),
@@ -48,10 +50,12 @@ class EditAccountController extends Controller
 
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
         return view('auth.passwords.changePassword', [
             'head_title' => Lang::get('seo.title_EditPassword'),
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_EditPassword')
         ]);
     }

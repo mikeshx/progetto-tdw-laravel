@@ -21,12 +21,14 @@ class myordersController extends Controller
         $myordersModel = new myordersModel();
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
         $orders = $myordersModel->getOrders($currentid);
         $expedtion = $myordersModel->getExpedition($currentid);
         return view('publics.my_orders',[
             'head_title' => Lang::get('seo.title_myOrders'),
             'orders' => $orders,
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_myOrders'),
             'expedition' => $expedtion,
             'controller' => $this

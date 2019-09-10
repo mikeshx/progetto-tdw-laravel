@@ -20,6 +20,7 @@ class SupportController extends Controller
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
         $ticket = $supportModel->getSupportRequest($currentid);
+        $contact = $homeModel->getContacts();
 
         $edit = $request->input('edit');
         if ($edit != null) {
@@ -33,6 +34,7 @@ class SupportController extends Controller
             'ticket' => $ticket,
             'ticketInfo' => $ticketInfo,
             'social' => $social,
+            'contact' => $contact,
             'head_title' => Lang::get('seo.title_support'),
             'head_description' => Lang::get('seo.descr_support')
         ]);
@@ -47,6 +49,7 @@ class SupportController extends Controller
         $social = $homeModel->getSocial();
         $currentid = Auth::user()->id;
         $id_user = $supportModel->getIdUser($ticket_number);
+        $contact = $homeModel->getContacts();
 
         foreach ($id_user as $id)
         {
@@ -56,6 +59,7 @@ class SupportController extends Controller
                     'ticket_number'=> $ticket_number,
                     'ticket_message' => $ticket_message,
                     'social' => $social,
+                    'contact' => $contact,
                     'head_title' => Lang::get('seo.title_support'),
                     'head_description' => Lang::get('seo.descr_support')
                 ]);

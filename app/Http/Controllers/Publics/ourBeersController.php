@@ -20,8 +20,10 @@ class ourBeersController extends Controller
         // Get the social links
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
         return view('publics.our_beers', [
+            'contact' => $contact,
             'social' => $social
         ]);
     }
