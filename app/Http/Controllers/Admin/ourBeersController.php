@@ -12,9 +12,6 @@ use Storage;
 
 class ourBeersController extends Controller
 {
-    /** 'our_beer' functions  */
-
-
     /** 'our_beer_carousel' functions  */
 
     // Display (if exists) data on page

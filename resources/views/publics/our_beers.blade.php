@@ -9,22 +9,22 @@
             <div class="col-sm-3 col-xs-6 icon-grid">
                 <img src="images/Hops.svg" class="svg" alt="Quality Ingredients" />
                 <h4>All natural</h4>
-                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                <p>@isset($carousel) {{$carousel->text_container_1}} @endisset</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
                 <img src="images/Mill.svg" class="svg" alt="Quality Ingredients" />
                 <h4>MAde in the UK</h4>
-                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                <p>@isset($carousel) {{$carousel->text_container_2}} @endisset</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
                 <img src="images/3DSixPack.svg" class="svg" alt="Quality Ingredients" />
                 <h4>Huge variety</h4>
-                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                <p>@isset($carousel) {{$carousel->text_container_3}} @endisset</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
                 <img src="images/Pint.svg" class="svg" alt="Quality Ingredients" />
                 <h4>Stocked locally</h4>
-                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
+                <p>@isset($carousel) {{$carousel->text_container_4}} @endisset</p>
             </div>
         </div>
     </div>
@@ -36,49 +36,48 @@
 
                 <div class="carousel-inner" role="listbox">
 
-                    <!-- Slide 1 -->
-                    <div class="item active">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-5 matchHeight">
-                                    <img src="http://placehold.it/475x550" alt="About our Brewery" class="alignMiddle" />
-                                </div>
-                                <div class="col-sm-6 col-sm-push-1 matchHeight">
-                                    <section class="alignMiddle mobile-center">
-                                        <header>
-                                            <h1>Pale ale</h1>
-                                            <h2>Sugar Skull</h2>
-                                        </header>
-                                        <p>Body is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that's touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.</p>
-                                        <p>There's very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.</p>
-                                        <a href="#" class="btn btn-default"><span>Go to shop</span></a>
-                                    </section>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @php
+                    if(!$products->isEmpty()) {
+                    $active = 1;
+                @endphp
 
+                    @foreach ($products as $product)
                     <!-- Slide 2 -->
-                    <div class="item">
+
+                        @php if ($active == 1) { @endphp
+                            <div class="item-active">
+                        @php $active--; } else { @endphp
+                                <div class="item">
+                                    @php } @endphp
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-5 matchHeight">
-                                    <img src="http://placehold.it/475x550" alt="About our Brewery" class="alignMiddle" />
+                                    <img src="{{$product->image}}" alt="About our Brewery" class="alignMiddle" />
                                 </div>
                                 <div class="col-sm-6 col-sm-push-1 matchHeight">
                                     <section class="alignMiddle mobile-center">
                                         <header>
-                                            <h1>Pale ale</h1>
-                                            <h2>Zombie</h2>
+                                            <h1>beer_type</h1>
+                                            <h2>{{$product->name}}</h2>
                                         </header>
-                                        <p>There's very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.</p>
-                                        <p>Body is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that's touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.</p>
-                                        <a href="#" class="btn btn-default"><span>Go to shop</span></a>
+                                        <p>{{$product->description}}</p>
+                                        <a href="{{$product->url}}" class="btn btn-default"><span>Go to shop</span></a>
                                     </section>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
+
+                    @php
+                    } else {
+                    @endphp
+
+                    <div class="col-xs-12">
+                        <div class="alert alert-danger">{{__('public_pages.no_products')}}</div>
+                    </div>
+                    @php } @endphp
+
 
                 </div>
 
@@ -102,87 +101,65 @@
                             <h1>Check out more of our</h1>
                             <h2>Our stock</h2>
                         </header>
-                        <p>Malt character and sweetness is pretty bland, with a weak toasty note as the highlight. Finish is drying, with a lingering hop character and sourness that just doesn't seem right.</p>
+                        <p>@isset($carousel) {{$carousel->slider_1}} @endisset</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-sm-push-1 matchHeight">
                     <div class="owl-carousel">
+
+                    @php
+                        if(!$products->isEmpty()) {
+                    @endphp
+
+                        @foreach ($products as $product)
                         <!-- Products -->
                         <div class="product item">
-                            <a href="our-beer.html">
+                            <a href="{{$product->url}}">
                                 <span>Buy it</span>
-                                <img src="http://placehold.it/169x299" alt="Beer can mockup">
+                                <img src="{{$product->image}}" alt="Beer can mockup">
                             </a>
-                            <h3>Pale ale</h3>
-                            <h4>4.5%</h4>
+                            <h3>{{$product->name}}</h3>
+                            <h4>{{$product->alchool}}%</h4>
                         </div>
-                        <div class="product item">
-                            <a href="our-beer.html">
-                                <span>Buy it</span>
-                                <img src="http://placehold.it/169x299" alt="Beer can mockup">
-                            </a>
-                            <h3>Golden ale</h3>
-                            <h4>4.2%</h4>
+                        @endforeach
+
+                    @php
+                        } else {
+                    @endphp
+
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger">{{__('public_pages.no_products')}}</div>
                         </div>
-                        <div class="product item">
-                            <a href="our-beer.html">
-                                <span>Buy it</span>
-                                <img src="http://placehold.it/169x299" alt="Beer can mockup">
-                            </a>
-                            <h3>IPA</h3>
-                            <h4>7%</h4>
-                        </div>
-                        <div class="product item">
-                            <a href="our-beer.html">
-                                <span>Buy it</span>
-                                <img src="http://placehold.it/169x299" alt="Beer can mockup">
-                            </a>
-                            <h3>Zombie</h3>
-                            <h4>8.2%</h4>
-                        </div>
+
+                    @php } @endphp
+
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Section -->
-    <div class="container-fluid light section no-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 latest-post odd matchHeight">
-                    <a href="#"></a>
-                    <div class="row">
-                        <div class="col-sm-10 col-sm-push-1">
+        <!-- Section -->
+        <div class="container-fluid light section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 matchHeight">
+                        <section class="alignMiddle mobile-center">
                             <header>
-                                <span class="date">21 December</span>
-                                <h2>Oktoberfest</h2>
+                                <h1>Take a look at our</h1>
+                                <h2>Numbers</h2>
                             </header>
-                            <p>Brewed with licorice; a proprietary, hand-smoked malt; and almost a pound of East Kent Goldings hops per barrel.</p>
-                            <p>Opaque brown in color, with muddy brown edges and a cola-colored head that drops quickly to a ringed lace. Strong and dominating licorice aroma with an underlying robust molasses-ness and highly roasted malts. Thick-ish, deep blackstrap molasses character (sweet, tangy nectar), quite robust.</p>
-                            <p><a href="#" class="underline">Read more</a></p>
+                        </section>
+                    </div>
+                    <div class="col-sm-9 matchHeight">
+                        <div class="owl-carousel" id="partners">
                         </div>
                     </div>
-                    <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
-                </div>
-                <div class="col-sm-6 latest-post even matchHeight">
-                    <a href="#"></a>
-                    <div class="row">
-                        <div class="col-sm-10 col-sm-push-1">
-                            <header>
-                                <span class="date">14 December</span>
-                                <h2>Now stocked in NYC</h2>
-                            </header>
-                            <p>Brewed with licorice; a proprietary, hand-smoked malt; and almost a pound of East Kent Goldings hops per barrel.</p>
-                            <p>Opaque brown in color, with muddy brown edges and a cola-colored head that drops quickly to a ringed lace. Strong and dominating licorice aroma with an underlying robust molasses-ness and highly roasted malts. Thick-ish, deep blackstrap molasses character (sweet, tangy nectar), quite robust.</p>
-                            <p><a href="#" class="underline">Read more</a></p>
-                        </div>
-                    </div>
-                    <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Section -->
     <div class="container-fluid super-dark section">
@@ -191,28 +168,28 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
                         <img src="images/Can.svg" class="svg" alt="" />
-                        <span>207</span>
+                        <span>@isset($carousel) {{$carousel->counter_1}} @endisset</span>
                         Flavours
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
                         <img src="images/Sign.svg" class="svg" alt="" />
-                        <span class="one">396</span>
+                        <span class="one">@isset($carousel) {{$carousel->counter_2}} @endisset</span>
                         Outlets
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
                         <img src="images/Badge.svg" class="svg" alt="" />
-                        <span>60</span>
+                        <span>@isset($carousel) {{$carousel->counter_3}} @endisset</span>
                         Years brewing
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
                         <img src="images/BarrelSide.svg" class="svg" alt="" />
-                        <span>21</span>
+                        <span>@isset($carousel) {{$carousel->counter_4}} @endisset</span>
                         Days til ready
                     </div>
                 </div>

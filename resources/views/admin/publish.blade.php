@@ -90,6 +90,14 @@
                             <input type="checkbox" class="switch-me" {{isset($product['product']->hidden) && $product['product']->hidden == 1 ? 'checked="checked"' : ''}} data-on-color="secondary" name="hidden"> 
                         </div>
                     </div>
+
+                    <div class="md-form">
+                        <label class="alone">{{__('admin_pages.our_beer')}}</label>
+                        <div class="element-label-text bordered-div">
+                            <input type="checkbox" class="switch-me" {{isset($product['product']->our_beer) && $product['product']->our_beer == 1 ? 'checked="checked"' : ''}} data-on-color="secondary" name="our_beer">
+                        </div>
+                    </div>
+
                     <div class="md-form">
                         <label class="alone">{{__('admin_pages.tags_product')}}</label>
                         <div class="element-label-text bordered-div">

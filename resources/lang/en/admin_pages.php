@@ -177,4 +177,5 @@ return [
     'our_beers' => 'Our Beers',
     'our_beers_info_added' => 'Added successfully',
     'our_beers_info_error' => 'Error while adding data',
+    'our_beer' => 'Our beer'
 ];

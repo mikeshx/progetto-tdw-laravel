@@ -26,11 +26,18 @@ class PublishModel extends Model
     {
         $this->post = $post;
         $isValid = $this->validateProduct();
+
+        // Our beers validity check
+        $our_beers = 0;
+        if (isset($this->post['our_beer'])) {
+            if ($this->post['our_beer'] == 'on') $our_beers = 1;
+        }
+
         if ($isValid['result'] === true) {
             $this->filesUpload();
             $maxId = DB::table('products')->max('id');
             $this->setId = $maxId + 1;
-            DB::transaction(function () {
+            DB::transaction(function () use ($our_beers) {
                 $id = DB::table('products')->insertGetId([
                     'image' => $this->post['image'],
                     'folder' => $this->post['folder'],
@@ -40,7 +47,8 @@ class PublishModel extends Model
                     'link_to' => $this->post['link_to'],
                     'tags' => trim($this->post['tags']),
                     'hidden' => isset($this->post['hidden']) ? 1 : 0,
-                    'url' => stringToUrl($this->nameOfProduct) . '-' . $this->setId
+                    'url' => stringToUrl($this->nameOfProduct) . '-' . $this->setId,
+                    'our_beer' => $our_beers
                 ]);
                 $i = 0;
                 foreach ($this->post['translation_order'] as $translate) {

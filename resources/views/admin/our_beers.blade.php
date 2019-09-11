@@ -4,7 +4,7 @@
 
     <h3>Add a new product (our beers)</h3> </br>
 
-    <form action="/admin/our_beers/product.add" method="POST">
+    <form action="/admin/our_beers/product.add" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="locale-container locale-container-en"  style="display:block;" >
@@ -25,7 +25,7 @@
             <div class="element-label-text">
                 <div class="upload-wrap">
                     <button type="button" class="btn btn-secondary">Choose image</button>
-                    <input type="file" name="beer_image" id="cover-upload" class="upload-btn">
+                    <input type="file" name="cover_image" id="cover-upload" class="upload-btn">
                     <div class="file-name"></div>
                 </div>
             </div>

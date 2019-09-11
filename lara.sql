@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Set 05, 2019 alle 09:19
+-- Creato il: Set 11, 2019 alle 09:13
 -- Versione del server: 10.3.17-MariaDB
--- Versione PHP: 7.3.8
+-- Versione PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -53,7 +53,8 @@ INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`, `po
 (9, 'yoyoyo', 'testing', '3', '', ''),
 (10, 'testing123', 'testing123', '3', '2019-08-29 11:52:53', ''),
 (11, 'yoyoyoyo', 'sfsdfsfsdf', '3', '2019-08-29', ''),
-(12, 'Uscita la nuova birra DI MERDA', '<h2> questo è un titolo </h2>\r\n\r\n<p> test dio cane </p>', '3', '2019-08-31', 'testing-vaffanculo');
+(12, 'Uscita la nuova birra DI MERDA', '<h2> questo è un titolo </h2>\r\n\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>', '3', '2019-08-31', 'testing-vaffanculo'),
+(13, 'dio', 'ca', '3', '2019-09-10', 'dio');
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `address`, `position`, `telephone`, `email`) VALUES
-(1, '', 'a', 'a', 'a');
+(1, 'asdad', 'a', 'a', 'a');
 
 -- --------------------------------------------------------
 
@@ -317,35 +318,28 @@ CREATE TABLE `orders_clients` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `our_beer`
---
-
-CREATE TABLE `our_beer` (
-  `beer_id` int(11) NOT NULL,
-  `beer_name` varchar(80) NOT NULL,
-  `beer_type` varchar(80) NOT NULL,
-  `beer_description` text NOT NULL,
-  `beer_alcohol_content` double NOT NULL,
-  `beer_img_path` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `our_beer_carousel`
 --
 
 CREATE TABLE `our_beer_carousel` (
-  `text_container_1` varchar(100) NOT NULL,
-  `text_container_2` varchar(100) NOT NULL,
-  `text_container_3` varchar(100) NOT NULL,
-  `text_container_4` varchar(100) NOT NULL,
-  `slider_1` varchar(600) NOT NULL,
-  `counter_1` int(100) NOT NULL,
-  `counter_2` int(100) NOT NULL,
-  `counter_3` int(100) NOT NULL,
-  `counter_4` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `text_container_1` varchar(100) DEFAULT NULL,
+  `text_container_2` varchar(100) DEFAULT NULL,
+  `text_container_3` varchar(100) DEFAULT NULL,
+  `text_container_4` varchar(100) DEFAULT NULL,
+  `slider_1` varchar(600) DEFAULT NULL,
+  `counter_1` int(100) DEFAULT NULL,
+  `counter_2` int(100) DEFAULT NULL,
+  `counter_3` int(100) DEFAULT NULL,
+  `counter_4` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `our_beer_carousel`
+--
+
+INSERT INTO `our_beer_carousel` (`id`, `text_container_1`, `text_container_2`, `text_container_3`, `text_container_4`, `slider_1`, `counter_1`, `counter_2`, `counter_3`, `counter_4`) VALUES
+(1, 'asd', 'ad', 'asd', 'asd', 'asd', 4, 8, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -379,26 +373,31 @@ CREATE TABLE `products` (
   `order_position` int(10) UNSIGNED NOT NULL,
   `procurements` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `tags` varchar(255) NOT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT 0
+  `hidden` tinyint(1) NOT NULL DEFAULT 0,
+  `our_beer` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `products`
 --
 
-INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `category_id`, `quantity`, `url`, `link_to`, `order_position`, `procurements`, `tags`, `hidden`) VALUES
-(1, 'images/r6PlNR3FLk3pwe3LyjFnBJ9ZJ5VdNMJJYkcTNY9f.jpeg', 1561800926, '2019-06-29 09:35:27', NULL, 1, 5, 'Birra-1', 'Birra1', 1, 0, 'Birra', 0),
-(11, '', 1563782387, '2019-07-22 07:59:47', NULL, 1, 10, 'birra-2', NULL, 0, 0, '', 0),
-(12, '', 1563782468, '2019-07-22 08:01:08', NULL, 1, 10, 'birra-12', NULL, 0, 0, '', 0),
-(13, '', 1563782521, '2019-07-22 08:02:01', NULL, 1, 10, 'birra-13', NULL, 0, 0, '', 0),
-(14, '', 1563782588, '2019-07-22 08:03:08', NULL, 1, 10, 'birra-14', NULL, 0, 0, '', 0),
-(15, '', 1563782603, '2019-07-22 08:03:23', NULL, 1, 10, 'birra-15', NULL, 0, 0, '', 0),
-(16, '', 1563782702, '2019-07-22 08:05:02', NULL, 1, 10, 'birra-16', NULL, 0, 0, '', 0),
-(17, '', 1563782750, '2019-07-22 08:05:50', NULL, 1, 55, 'birra-17', NULL, 0, 0, '', 0),
-(18, '', 1563782826, '2019-07-22 08:07:06', NULL, 1, 55, 'birra-18', NULL, 0, 0, '', 0),
-(19, '', 1563783935, '2019-07-22 08:25:35', NULL, 2, 10, 'Duff-Beer-19', NULL, 0, 0, '', 0),
-(20, '', 1563783974, '2019-07-22 08:26:14', NULL, 5, 51, 'Orzata-20', NULL, 0, 0, '', 0),
-(21, '', 1563784005, '2019-07-22 08:26:45', NULL, 4, 22, 'Espana-21', NULL, 0, 0, '', 0);
+INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `category_id`, `quantity`, `url`, `link_to`, `order_position`, `procurements`, `tags`, `hidden`, `our_beer`) VALUES
+(1, 'images/r6PlNR3FLk3pwe3LyjFnBJ9ZJ5VdNMJJYkcTNY9f.jpeg', 1561800926, '2019-06-29 09:35:27', NULL, 1, 5, 'Birra-1', 'Birra1', 1, 0, 'Birra', 0, 0),
+(11, '', 1563782387, '2019-07-22 07:59:47', NULL, 1, 10, 'birra-2', NULL, 0, 0, '', 0, 0),
+(12, '', 1563782468, '2019-07-22 08:01:08', NULL, 1, 10, 'birra-12', NULL, 0, 0, '', 0, 0),
+(13, '', 1563782521, '2019-07-22 08:02:01', NULL, 1, 10, 'birra-13', NULL, 0, 0, '', 0, 0),
+(14, '', 1563782588, '2019-07-22 08:03:08', NULL, 1, 10, 'birra-14', NULL, 0, 0, '', 0, 0),
+(15, '', 1563782603, '2019-07-22 08:03:23', NULL, 1, 10, 'birra-15', NULL, 0, 0, '', 0, 0),
+(16, '', 1563782702, '2019-07-22 08:05:02', NULL, 1, 10, 'birra-16', NULL, 0, 0, '', 0, 0),
+(17, '', 1563782750, '2019-07-22 08:05:50', NULL, 1, 55, 'birra-17', NULL, 0, 0, '', 0, 0),
+(18, '', 1563782826, '2019-07-22 08:07:06', NULL, 1, 55, 'birra-18', NULL, 0, 0, '', 0, 0),
+(19, '', 1563783935, '2019-07-22 08:25:35', NULL, 2, 10, 'Duff-Beer-19', NULL, 0, 0, '', 0, 0),
+(20, '', 1563783974, '2019-07-22 08:26:14', NULL, 5, 51, 'Orzata-20', NULL, 0, 0, '', 0, 0),
+(21, '', 1563784005, '2019-07-22 08:26:45', NULL, 4, 22, 'Espana-21', NULL, 0, 0, '', 0, 0),
+(22, 'images/dtyvoXi0cgaPMYzpOg4JaJmNRnt2KEqh9PIhfv4F.png', 1568123638, '2019-09-10 13:53:58', NULL, 2, 5, 'Test-22', 'beer_xxx', 1, 0, 'asd,lol', 0, 0),
+(23, '', 1568126400, '2019-09-10 14:40:00', NULL, 2, 3, 'SSA-23', 'SSA', 1, 0, 'asd', 0, 1),
+(24, '', 1568126722, '2019-09-10 14:45:22', NULL, 2, 33, 'bbb-24', 'bbb', 12, 0, '', 0, 0),
+(25, '', 1568126769, '2019-09-10 14:46:09', NULL, 2, 55, 'ccc-25', NULL, 22, 0, '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -425,7 +424,11 @@ CREATE TABLE `products_translations` (
 INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `price`, `ml`, `alchool`, `quickdescription`, `locale`) VALUES
 (10, 19, 'Duff Beer', 'Descrizione molto lunga', '4.5', '330', '4.5', 'Descrizione molto breve', 'en'),
 (11, 20, 'Orzata', 's è come il caffe d\' orzo', '3', '500', '2', 'orzo', 'en'),
-(12, 21, 'Espana', 'La birra spagnoleggiante', '5', '660', '6', 'spagna', 'en');
+(12, 21, 'Espana', 'La birra spagnoleggiante', '5', '660', '6', 'spagna', 'en'),
+(13, 22, 'Test', 'asdsadadasd', '67', '33cl', '7', 'asdasda', 'en'),
+(14, 23, 'SSA', 'AS', '89', '66cl', '13', 'AS', 'en'),
+(15, 24, 'bbb', 'bbb', '89', '33cl', '45', 'bbbb', 'en'),
+(16, 25, 'ccc', 'ccc', '78', '33cl', '12', 'ccc', 'en');
 
 -- --------------------------------------------------------
 
@@ -474,7 +477,7 @@ CREATE TABLE `social_contacts` (
 --
 
 INSERT INTO `social_contacts` (`id`, `instagram_desc`, `instagram_link`, `facebook_desc`, `facebook_link`, `twitter_desc`, `twitter_link`) VALUES
-(1, 'a', 'a', 'a', 'a', 'a', 'a');
+(1, 'asdadsdadsadasdasdasd', 'a', 'a', 'diocan', 'a', 'a');
 
 -- --------------------------------------------------------
 
@@ -558,7 +561,7 @@ CREATE TABLE `story_info` (
 --
 
 INSERT INTO `story_info` (`id`, `flavours`, `outlets`, `years`, `day`) VALUES
-(1, 206, 140, 60, 21);
+(1, 206, 140, 90, 21);
 
 -- --------------------------------------------------------
 
@@ -640,7 +643,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
 (1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'rnRcPEiCHfrrSRE0TmhQsYQsimzwW5vkMT6apoCFLFcisLpZE5L6JiiicmGA', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
-(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', '54AuO1BpgqFtTbMfJYEmODgWyCr4yVORso5782GUnhlziWjjo2LOvHTr6jZa', 1);
+(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'cskjgxYOSI8ZlS9VISLmy3FLBzGcKqJq86tmvbBJ3yIn2KUjXKkHwYeGxuNi', 1);
 
 -- --------------------------------------------------------
 
@@ -772,12 +775,6 @@ ALTER TABLE `orders_clients`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `our_beer`
---
-ALTER TABLE `our_beer`
-  ADD PRIMARY KEY (`beer_id`);
-
---
 -- Indici per le tabelle `producers`
 --
 ALTER TABLE `producers`
@@ -875,7 +872,7 @@ ALTER TABLE `user_address`
 -- AUTO_INCREMENT per la tabella `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel`
@@ -974,12 +971,6 @@ ALTER TABLE `orders_clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `our_beer`
---
-ALTER TABLE `our_beer`
-  MODIFY `beer_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT per la tabella `producers`
 --
 ALTER TABLE `producers`
@@ -989,13 +980,13 @@ ALTER TABLE `producers`
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT per la tabella `products_translations`
 --
 ALTER TABLE `products_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT per la tabella `refunds`

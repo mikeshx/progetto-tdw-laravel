@@ -6,6 +6,7 @@ use Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Storage;
 
 class ourBeersModel extends Model
 {
@@ -15,20 +16,6 @@ class ourBeersModel extends Model
     public function __construct()
     {
         $this->defaultLang = Config::get('app.defaultLocale');
-    }
-
-    /** 'our_beer' related functions (products)  */
-
-    public function addOurProduct($post) {
-        return DB::table('our_beer')->insert(
-            [
-                'beer_type' => $post['beer_type'],
-                'beer_description' => $post['beer_description'],
-                'beer_alcohol_content' => $post['beer_alcohol_content'],
-                'beer_img_path' => $post['beer_img_path'],
-                'beer_price' => $post['beer_price']
-            ]
-        );
     }
 
     /** 'our_beers_carousel' insert/update methods */
