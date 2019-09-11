@@ -24,6 +24,13 @@
                 <h4>Twitter</h4>
                 <p>{{$contacts->twitter_desc}}</p>
             </div>
+
+            <div class="col-sm-3 col-xs-6 icon-grid">
+                <a href="{{$contacts->google_plus_desc}}"></a>
+                <i class="fa fa-google-plus"></i>
+                <h4>Google Plus</h4>
+                <p>{{$contacts->google_plus_link}}</p>
+            </div>
         </div>
     </div>
 
