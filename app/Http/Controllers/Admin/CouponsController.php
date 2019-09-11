@@ -27,7 +27,7 @@ class CouponsController extends Controller
         $couponsModel = new CouponsModel();
         $result = $couponsModel->addCoupon($request->all());
 
-        return redirect()->back()->with(['msg' => $result['msg'], 'result' => $result['result']]);
+        return redirect()->back();
     }
 
     /* Check if a coupon is valid and usable */

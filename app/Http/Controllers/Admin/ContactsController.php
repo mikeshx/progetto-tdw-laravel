@@ -35,5 +35,10 @@ class ContactsController extends Controller
     public function addContacts(Request $request) {
         $contactsModel = new ContactsModel();
         $result = $contactsModel->addContacts($request->all());
+
+
+
+        return redirect()->back()->with(['msg' => $result['msg'], 'result' => $result['result']]);
+
     }
 }

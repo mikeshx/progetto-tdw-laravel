@@ -32,7 +32,8 @@ class ourBeersController extends Controller
         return view('publics.our_beers', [
             'social' => $social,
             'products' => $products,
-            'carousel' => $carousel_info
+            'carousel' => $carousel_info,
+            'contact' => $contact
         ]);
     }
 

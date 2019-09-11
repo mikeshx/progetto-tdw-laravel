@@ -43,11 +43,13 @@ class LoginController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
 
         return view('auth.login', [
             'social' => $social,
-            'head_title' => Lang::get('seo.title_login')
+            'head_title' => Lang::get('seo.title_login'),
+            'contact' => $contact
         ]);
     }
 }
