@@ -76,10 +76,12 @@ class RegisterController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
 
         return view('auth.register', [
             'social' => $social,
+            'contact' => $contact,
             'head_title' => Lang::get('seo.title_login')
         ]);
     }

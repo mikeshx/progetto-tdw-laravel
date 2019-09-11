@@ -36,10 +36,12 @@ class ForgotPasswordController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
 
         return view('auth.passwords.email', [
             'social' => $social,
+            'contact' => $contact,
             'head_title' => Lang::get('seo.title_reset')
         ]);
     }
