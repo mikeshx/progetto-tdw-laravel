@@ -8,7 +8,7 @@
 			<div class="row">
 				<div class="col-sm-5 matchHeight">
 					<div class="product-img-wrap">
-						<img src="http://placehold.it/475x550" alt="About our Brewery" />
+						<img src="{{asset('../storage/app/public/'.$product->image)}}" alt="About our Brewery" />
 					</div>
 				</div>
 				<div class="col-sm-6 col-sm-push-1 matchHeight">

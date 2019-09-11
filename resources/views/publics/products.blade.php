@@ -33,7 +33,7 @@
                     <div class="product">
                         <a href="{{ lang_url($product->url) }}">
                             <span>More info</span>
-                            <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->name}}" alt="Beer can mockup">
+                            <img src="{{asset('../storage/app/public/'.$product->image)}}" alt="{{$product->name}}" alt="Beer can mockup">
                         </a>
                         <h3>{{$product->name}}</h3>
                         <h4>&euro;{{$product->price}}</h4>
