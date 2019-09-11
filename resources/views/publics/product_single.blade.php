@@ -16,10 +16,12 @@
 						<header>
 							<h1><i>{{$product->ml}} ml   </i>    {{$product->alchool}} %</h1>
 							<h2>{{$product->name}}</h2>
+							<h4><a href="{{lang_url('addFavorite/'.$product->id)}}" class="btn btn-block btn-success", style="width:290px";>  Add/remove favorite</a></h4>
 						</header>
 						{{$product->quickdescription}}
 						<h4>&euro;{{$product->price}}</h4>
 						<h4>{{$product->quantity}} left in stock</h4> <a href="javascript:void(0);" class="buy-now to-cart"><span>Add to cart</span></a>
+
 					</section>
 				</div>
 			</div>
