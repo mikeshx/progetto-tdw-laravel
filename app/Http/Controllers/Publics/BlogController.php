@@ -128,4 +128,16 @@ class BlogController extends Controller
             return false;
         } else return true;
     }
+
+    // Delete a single post
+    public function deleteBlogPost(Request $request) {
+
+        // Check if the user has the right permissions to delete the post
+        // The function checkIfPostEditable does just that
+        if ($this->checkIfPostEditable($request)) {
+            $blogModel = new BlogModel();
+            $blogModel->deleteBlogPost($request['id']);
+            return redirect('/blog');
+        }
+    }
 }

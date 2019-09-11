@@ -38,7 +38,7 @@
                 if ($canEdit) {
             @endphp
                 <h4>Edit post: <a href="/edit_blog_post-{{$post_id}}"><img src="https://img.icons8.com/material-sharp/24/000000/edit.png"> </a></h4>
-
+                <h4>Delete post: <a href="/delete_blog_post-{{$post_id}}"><img src="https://img.icons8.com/material-sharp/24/000000/delete-sign.png"> </a></h4>
 
             @php } @endphp
 

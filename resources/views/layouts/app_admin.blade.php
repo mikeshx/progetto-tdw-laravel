@@ -119,7 +119,7 @@
 
                                 <li>
                                     <a href="{{ lang_url('admin/our_beers') }}" class="btn waves-effect waves-light">
-                                        <i class="material-icons">Our Beers</i>
+                                        <i class="material-icons">OurBeers</i>
                                         <p>{{__('admin_pages.our_beers')}}</p>
                                     </a>
                                 </li>

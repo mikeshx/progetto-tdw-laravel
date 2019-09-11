@@ -33,7 +33,4 @@ class BlogController extends Controller
 
         return redirect()->back()->with(['msg' => $result['msg'], 'result' => $result['result']]);
     }
-
-
-
 }

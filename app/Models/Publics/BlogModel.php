@@ -29,4 +29,11 @@ class BlogModel extends Model
             ->first();
     }
 
+    // Delete a blog post by id
+    public function deleteBlogPost($id) {
+        return DB::table('blog')
+            ->where('post_id', '=', $id)
+            ->delete();
+    }
+
 }

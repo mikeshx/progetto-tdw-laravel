@@ -13,7 +13,6 @@
         @endphp
 
         @foreach($posts as $post)
-
                 @php
                     if ($odd_count == 0) {
                     echo '<div class="col-sm-6 latest-post odd matchHeight">';
@@ -22,7 +21,6 @@
                     echo '<div class="col-sm-6 latest-post even matchHeight">';
                     $odd_count--;
                     }
-
                 @endphp
 
                 <a href="{{ lang_url('blog') }}{{'/' . $post->post_url . '-' . $post->post_id}}"></a>
@@ -35,7 +33,7 @@
                         {!! $post->post_content !!}
                     </div>
                 </div>
-                <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
+                <div class="background" style="background-image: url(https://w.wallhaven.cc/full/76/wallhaven-76zd5v.jpg);"></div>
             </div>
 
         @endforeach

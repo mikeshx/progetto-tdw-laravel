@@ -20,9 +20,9 @@ Route::get('/our_beers', 'Publics\\ourBeersController@index');
 Route::get('/blog', 'Publics\\BlogController@index');
 Route::get('/blog/{any}-{id}', 'Publics\\BlogController@viewSinglePost')->where('id', '[\d+]+')->where('any', '(.*)');
 
-// Route to edit the content of a blog post
+// Routes to edit and delete the content of a blog post
 Route::get('edit_blog_post-{id}', 'Publics\\BlogController@editBlogPost')->where('id', '[\d+]+');
-
+Route::get('delete_blog_post-{id}', 'Publics\\BlogController@deleteBlogPost')->where('id', '[\d+]+');
 
 // contacts routes (public)
 Route::post('/contacts', 'Admin\\ContactsController@index');
