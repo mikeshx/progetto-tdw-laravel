@@ -116,6 +116,13 @@
                                         <p>{{__('admin_pages.blog')}}</p>
                                     </a>
                                 </li>
+
+                                <li>
+                                    <a href="{{ lang_url('admin/our_beers') }}" class="btn waves-effect waves-light">
+                                        <i class="material-icons">Our Beers</i>
+                                        <p>{{__('admin_pages.our_beers')}}</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10 col-sm-offset-3 col-md-offset-3 col-lg-offset-2 right-side">
