@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Set 11, 2019 alle 09:13
+-- Creato il: Set 09, 2019 alle 20:15
 -- Versione del server: 10.3.17-MariaDB
 -- Versione PHP: 7.3.9
 
@@ -319,6 +319,20 @@ CREATE TABLE `orders_clients` (
 
 --
 -- Struttura della tabella `our_beer_carousel`
+--
+
+CREATE TABLE `our_beer` (
+  `beer_id` int(11) NOT NULL,
+  `beer_name` varchar(80) NOT NULL,
+  `beer_type` varchar(80) NOT NULL,
+  `beer_description` text NOT NULL,
+  `beer_alcohol_content` double NOT NULL,
+  `beer_img_path` varchar(500) NOT NULL,
+  `beer_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `our_beer_carousel`
 --
 
 CREATE TABLE `our_beer_carousel` (

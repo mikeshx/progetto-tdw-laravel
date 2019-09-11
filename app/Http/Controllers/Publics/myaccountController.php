@@ -13,10 +13,12 @@ class myaccountController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
         return view('publics.myaccount',[
             'head_title' => Lang::get('seo.title_myAccount'),
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_myAccount')
         ]);
     }

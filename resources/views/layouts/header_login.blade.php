@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>Beerify</title>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="icon" type="image/png" href="../public/img/wheat.png" />
     <link href="{{ asset('new_template/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('new_template/css/fakeLoader.css')}}" rel="stylesheet">
     <link href="{{ asset('new_template/css/owl-carousel.min.css')}}" rel="stylesheet">
@@ -84,8 +84,8 @@
 
         <div class="container">
             <div class="navbar-header">
-                <a href="index.html" class="logo" title="Craft beer landing page">
-                    <img src="images/logo.png" alt="Craft Beer HTML Template">
+                <a href="{{ lang_url('/home') }}" class="logo" title="">
+                    <img src="../public/img/logo.png" alt="Craft Beer HTML Template">
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -106,9 +106,9 @@
 									<a href="{{ lang_url('products') }}">Shop</a>
 								</span>
                     </li>
-                    <li class="dropdown">
+                    <li class="{{ request()->is('our_beers') ? 'active' : '' }}">
 								<span>
-									<a href="our-beer.html">Our beer</a>
+									<a href="{{ lang_url('our_beers') }}">Our beer</a>
 								</span>
                     </li>
                     <li class="{{ request()->is('story') ? 'active' : '' }}">
@@ -121,9 +121,9 @@
 									<a href="{{ lang_url('contacts') }}">Contact</a>
 								</span>
                     </li>
-                    <li class="dropdown">
+                    <li class="{{ request()->is('blog') ? 'active' : '' }}">
 								<span>
-									<a href="blog.html">Blog</a>
+									<a href="{{ lang_url('/blog') }}">Blog</a>
 								</span>
                     </li>
                 </ul>
@@ -156,20 +156,20 @@
             <div class="col-sm-2">
                 <h6>Useful</h6>
                 <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/products">Shop</a></li>
-                    <li><a href="our-story.html">Our story</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="{{ lang_url('/home') }}">Home</a></li>
+                    <li><a href="{{ lang_url('/products') }}">Shop</a></li>
+                    <li><a href="{{ lang_url('/story') }}">Our story</a></li>
+                    <li><a href="{{ lang_url('/blog') }}">Blog</a></li>
+                    <li><a href="{{ lang_url('/login') }}">Login</a></li>
                 </ul>
             </div>
             <div class="col-sm-2">
                 <h6>Help</h6>
                 <ul>
-                    <li><a href="#">Customer service</a></li>
-                    <li><a href="#">Find our beer</a></li>
-                    <li><a href="#">Recent orders</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ lang_url('/support') }}">Customer service</a></li>
+                    <li><a href="{{ lang_url('/our_beers') }}">Find our beer</a></li>
+                    <li><a href="{{ lang_url('/my_orders') }}">Recent orders</a></li>
+                    <li><a href="{{ lang_url('/contacts') }}">Contact</a></li>
                     <li><a href="#">Terms &amp; Privacy</a></li>
                 </ul>
             </div>
@@ -184,13 +184,17 @@
             </div>
             <div class="col-sm-5 col-sm-push-1">
                 <h6>Our information</h6>
-                <p><i class="fa fa-map-marker"></i> 94 River Road, London, United Kingdom</p>
-                <p><i class="fa fa-envelope-o"></i> sales@craftbeer-nation.com</p>
-                <p><i class="fa fa-phone"></i> (0)203 123 4567</p>
+                @foreach($contact as $contact)
+                    <p><i class="fa fa-map-marker"></i> {{$contact->address}} </p>
+                    <p><i class="fa fa-envelope-o"></i> {{$contact->email}} </p>
+                    <p><i class="fa fa-phone"></i> {{$contact->telephone}} </p>
+                @endforeach
                 <ul class="social">
-                    <li><a href="#" class="fa fa-instagram"></a></li>
-                    <li><a href="#" class="fa fa-facebook-square"></a></li>
-                    <li><a href="#" class="fa fa-twitter-square"></a></li>
+                    @foreach($social as $soc)
+                        <li><a href="{{ $soc->instagram_link }}" class="fa fa-instagram"></a></li>
+                        <li><a href="{{ $soc->facebook_link }}" class="fa fa-facebook-square"></a></li>
+                        <li><a href="{{ $soc->twitter_link }}" class="fa fa-twitter-square"></a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

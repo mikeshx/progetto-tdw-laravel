@@ -25,7 +25,7 @@
 
                 @endphp
 
-                <a href="{{'/blog/' . $post->post_url . '-' . $post->post_id}}"></a>
+                <a href="{{ lang_url('blog') }}{{'/' . $post->post_url . '-' . $post->post_id}}"></a>
                 <div class="row">
                     <div class="col-sm-10 col-sm-push-1">
                         <header>
@@ -43,20 +43,5 @@
     </div>
 </div>
 
-<!-- Section -->
-<div class="container-fluid super-dark section no-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <ul class="horz-menu center-menu pages">
-                    <li class="active"><span><a href="#">1</a></span></li>
-                    <li><span><a href="#">2</a></span></li>
-                    <li><span><a href="#">3</a></span></li>
-                    <li><span><a href="#">4</a></span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
 
 @endsection

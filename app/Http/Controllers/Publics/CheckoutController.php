@@ -17,10 +17,12 @@ class CheckoutController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
         return view('publics.checkout', [
             'cartProducts' => $this->products,
             'head_title' => Lang::get('seo.title_checkout'),
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_checkout')
         ]);
     }
@@ -29,10 +31,12 @@ class CheckoutController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
         return view('publics.cart', [
             'cartProducts' => $this->products,
             'head_title' => Lang::get('seo.title_checkout'),
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_cart')
         ]);
     }
@@ -41,10 +45,12 @@ class CheckoutController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
         return view('publics.checkout_order', [
             'cartProducts' => $this->products,
             'head_title' => Lang::get('seo.title_checkout'),
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_checkout'),
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -61,10 +67,12 @@ class CheckoutController extends Controller
     {
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
         return view('publics.checkout_payment', [
             'cartProducts' => $this->products,
             'head_title' => Lang::get('seo.title_checkout'),
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_checkout'),
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -80,10 +88,12 @@ class CheckoutController extends Controller
 
     public function indexCompleted(){
         $homeModel = new HomeModel();
+        $contact = $homeModel->getContacts();
         $social = $homeModel->getSocial();
         return view('publics.checkout_completed', [
             'head_title' => Lang::get('seo.title_checkout'),
             'social' => $social,
+            'contact' => $contact,
             'head_description' => Lang::get('seo.descr_checkout')
         ]);
     }

@@ -21,10 +21,13 @@ class HomeController extends Controller
         $info = $homeModel->getInfo();
         $carouselInfo = $homeModel->getCarouselSlidersInfo();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
+
         return view('publics.home', [
             'promoProducts' => $promoProducts,
             'mostSelledProducts' => $mostSelledProducts,
             'carousel' => $carousel,
+            'contact' => $contact,
             'carouselInfo' => $carouselInfo,
             'cartProducts' => $this->products,
             'info' => $info,

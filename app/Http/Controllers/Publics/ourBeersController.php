@@ -24,6 +24,7 @@ class ourBeersController extends Controller
         // Get the social links
         $homeModel = new HomeModel();
         $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
 
         // Get the our_beers_carousel info
         $carousel_info = $ourBeersModel->getCarouselInfo();

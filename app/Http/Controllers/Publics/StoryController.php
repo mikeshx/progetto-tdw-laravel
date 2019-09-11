@@ -18,12 +18,14 @@ class StoryController extends Controller
         $year = $storyModel->getYears();
         $story = $storyModel->getStory();
         $info = $storyModel->getInfo();
+        $contact = $homeModel->getContacts();
 
         return view('publics.story', [
             'social' => $social,
             'producers' => $producers,
             'years' => $year,
             'slider' => $slider,
+            'contact' => $contact,
             'story' => $story,
             'info' => $info,
             'head_title' => Lang::get('seo.title_story'),
