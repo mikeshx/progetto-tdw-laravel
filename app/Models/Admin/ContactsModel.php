@@ -24,8 +24,8 @@ class ContactsModel extends Model
             [
                 'position' => $post['position'],
                 'address' => $post['address_1'],
-                'telephone' => $post['address_2'],
-                'email' => $post['address_3']
+                'telephone' => $post['address_3'],
+                'email' => $post['address_2']
             ]
         );
 
@@ -37,7 +37,10 @@ class ContactsModel extends Model
                     'twitter_desc' => $post['twitter_desc'],
                     'twitter_link' => $post['twitter_link'],
                     'instagram_desc' => $post['instagram_desc'],
-                    'instagram_link' => $post['instagram_link']
+                    'instagram_link' => $post['instagram_link'],
+                    'google_plus_desc' => $post['google_plus_desc'],
+                    'google_plus_link' => $post['google_plus_link'],
+
                 ]
             );
     }

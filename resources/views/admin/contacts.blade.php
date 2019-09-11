@@ -20,62 +20,74 @@
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="facebook_desc" value="{{$contacts->facebook_desc}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Facebook description: </label>
+                            <input type="text" name="facebook_desc" value="@isset($contacts){{$contacts->facebook_desc}}@endisset" id="publishForm-quantity1" class="form-control">
+                            <label for="publishForm-quantity1">Facebook description: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="facebook_link" value="{{$contacts->facebook_link}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Facebook link: </label>
+                            <input type="text" name="facebook_link" value="@isset($contacts){{$contacts->facebook_link}}@endisset" id="publishForm-quantity2" class="form-control">
+                            <label for="publishForm-quantity2">Facebook link: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="instagram_desc" value="{{$contacts->instagram_desc}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Instagram description:: </label>
+                            <input type="text" name="instagram_desc" value="@isset($contacts){{$contacts->instagram_desc}}@endisset" id="publishForm-quantity3" class="form-control">
+                            <label for="publishForm-quantity3">Instagram description:: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="instagram_link" value="{{$contacts->instagram_link}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Instagram link: </label>
+                            <input type="text" name="instagram_link" value="@isset($contacts){{$contacts->instagram_link}}@endisset" id="publishForm-quantity4" class="form-control">
+                            <label for="publishForm-quantity4">Instagram link: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="twitter_desc" value="{{$contacts->twitter_desc}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Twitter description: </label>
+                            <input type="text" name="twitter_desc" value="@isset($contacts){{$contacts->twitter_desc}}@endisset" id="publishForm-quantity5" class="form-control">
+                            <label for="publishForm-quantity5">Twitter description: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="twitter_link" value="{{$contacts->twitter_link}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Twitter link: </label>
+                            <input type="text" name="twitter_link" value="@isset($contacts){{$contacts->twitter_link}}@endisset" id="publishForm-quantity6" class="form-control">
+                            <label for="publishForm-quantity6">Twitter link: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="position" value="{{$contacts->position}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Google maps api link: </label>
+                            <input type="text" name="google_plus_desc" value="@isset($contacts){{$contacts->google_plus_desc}}@endisset" id="publishForm-quantity7" class="form-control">
+                            <label for="publishForm-quantity7">Google plus description: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="address_1" value="{{$contacts->address}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Address: </label>
+                            <input type="text" name="google_plus_link" value="@isset($contacts){{$contacts->google_plus_link}}@endisset" id="publishForm-quantity8" class="form-control">
+                            <label for="publishForm-quantity8">Google plus link: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="address_2" value="{{$contacts->email}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Email: </label>
+                            <input type="text" name="position" value="@isset($contacts){{$contacts->position}}@endisset" id="publishForm-quantity9" class="form-control">
+                            <label for="publishForm-quantity9">Google maps api link: </label>
                         </div>
 
                         <div class="md-form">
                             <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
-                            <input type="text" name="address_3" value="{{$contacts->telephone}}" id="publishForm-quantity" class="form-control">
-                            <label for="publishForm-quantity">Telephone: </label>
+                            <input type="text" name="address_1" value="@isset($contacts){{$contacts->address}}@endisset" id="publishForm-quantity10" class="form-control">
+                            <label for="publishForm-quantity10">Address: </label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                            <input type="text" name="address_2" value="@isset($contacts){{$contacts->email}}@endisset" id="publishForm-quantity11" class="form-control">
+                            <label for="publishForm-quantity11">Email: </label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-sort-numeric-desc prefix grey-text"></i>
+                            <input type="text" name="address_3" value="@isset($contacts){{$contacts->telephone}}@endisset" id="publishForm-quantity12" class="form-control">
+                            <label for="publishForm-quantity12">Telephone: </label>
                         </div>
 
                         </br>
