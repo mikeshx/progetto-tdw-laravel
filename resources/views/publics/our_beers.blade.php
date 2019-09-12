@@ -13,7 +13,7 @@
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
                 <img src="images/Mill.svg" class="svg" alt="Quality Ingredients" />
-                <h4>MAde in the UK</h4>
+                <h4>MAde in Italy</h4>
                 <p>@isset($carousel) {{$carousel->text_container_2}} @endisset</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
@@ -57,8 +57,8 @@
                                 <div class="col-sm-6 col-sm-push-1 matchHeight">
                                     <section class="alignMiddle mobile-center">
                                         <header>
-                                            <h1>beer_type</h1>
-                                            <h2>{{$product->name}}</h2>
+                                            <h1>{{$product->namee}}</h1>
+                                            <h2>{{$product->name_x}}</h2>
                                         </header>
                                         <p>{{$product->description}}</p>
                                         <a href="{{$product->url}}" class="btn btn-default"><span>Go to shop</span></a>
@@ -118,7 +118,7 @@
                                 <span>Buy it</span>
                                 <img src="{{$product->image}}" alt="Beer can mockup">
                             </a>
-                            <h3>{{$product->name}}</h3>
+                            <h3>{{$product->name_x}}</h3>
                             <h4>{{$product->alchool}}%</h4>
                         </div>
                         @endforeach
