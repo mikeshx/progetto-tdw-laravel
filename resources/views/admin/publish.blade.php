@@ -124,26 +124,26 @@
                             </div>
                         </div>
                     </div>
-                    @php 
+                    @php
                     if(isset($product['product']->folder)) {
                     @endphp
-                    <div class="md-form"> 
+                    <div class="md-form">
                         <div class="gallery-images">
-                            @php 
+                            @php
                             $dir = '../storage/app/public/moreImagesFolders/'.$product['product']->folder.'/';
                             if (is_dir($dir)) {
-                            if ($dh = opendir($dir)) { 
+                            if ($dh = opendir($dir)) {
                             $i = 0;
-                            while (($file = readdir($dh)) !== false) { 
+                            while (($file = readdir($dh)) !== false) {
                             if (is_file($dir . $file)) {
                             @endphp
                             <div id="image-container-{{$i}}">
                                 <img src="{{asset('storage/moreImagesFolders/'.$product['product']->folder.'/'.$file)}}" alt="{{__('admin_pages.no_choosed_image')}}" style="max-height: 300px;" class="img-thumbnail">
                                 <a href="javascript:void(0);" onclick="removeGalleryImage('{{$product['product']->folder.'/'.$file}}', {{$i}})"><i class="material-icons">delete</i></a>
                             </div>
-                            @php 
+                            @php
                             $i++;
-                            } 
+                            }
                             }
                             closedir($dh);
                             }

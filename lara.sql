@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Set 12, 2019 alle 09:27
+-- Creato il: Set 12, 2019 alle 15:36
 -- Versione del server: 10.3.17-MariaDB
 -- Versione PHP: 7.3.9
 
@@ -243,7 +243,8 @@ CREATE TABLE `favorites` (
 --
 
 INSERT INTO `favorites` (`id`, `id_product`, `id_user`) VALUES
-(1, 12, 1);
+(1, 12, 1),
+(3, 19, 3);
 
 -- --------------------------------------------------------
 
@@ -340,7 +341,7 @@ CREATE TABLE `our_beer_carousel` (
 --
 
 INSERT INTO `our_beer_carousel` (`id`, `text_container_1`, `text_container_2`, `text_container_3`, `text_container_4`, `slider_1`, `counter_1`, `counter_2`, `counter_3`, `counter_4`) VALUES
-(1, 'asd', 'ad', 'asd', 'asd', 'asd', 4, 8, 4, 4);
+(1, 'We only use natural ingredients to make the best beer ever!', 'Every ingredient comes from our country', 'The variety of our beer is almost infinite! You can find everything you need!', 'Everything is done locally, even the stocking!', 'Malt character and sweetness is pretty bland, with a weak toasty note as the highlight. Finish is drying, with a lingering hop character and sourness that just doesn\'t seem right.', 12, 3, 7, 30);
 
 -- --------------------------------------------------------
 
@@ -364,14 +365,14 @@ CREATE TABLE `producers` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `folder` int(10) UNSIGNED NOT NULL COMMENT 'product_id is name of folder',
+  `folder` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `category_id` int(10) UNSIGNED NOT NULL COMMENT 'category id',
   `quantity` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `url` varchar(255) NOT NULL,
   `link_to` varchar(255) DEFAULT NULL,
-  `order_position` int(10) UNSIGNED NOT NULL,
+  `order_position` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `procurements` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `tags` varchar(255) NOT NULL,
   `hidden` tinyint(1) NOT NULL DEFAULT 0,
@@ -383,22 +384,20 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `category_id`, `quantity`, `url`, `link_to`, `order_position`, `procurements`, `tags`, `hidden`, `our_beer`) VALUES
-(1, 'images/r6PlNR3FLk3pwe3LyjFnBJ9ZJ5VdNMJJYkcTNY9f.jpeg', 1561800926, '2019-06-29 09:35:27', NULL, 1, 5, 'Birra-1', 'Birra1', 1, 0, 'Birra', 0, 0),
-(11, '', 1563782387, '2019-07-22 07:59:47', NULL, 1, 10, 'birra-2', NULL, 0, 0, '', 0, 0),
-(12, '', 1563782468, '2019-07-22 08:01:08', NULL, 1, 10, 'birra-12', NULL, 0, 0, '', 0, 0),
-(13, '', 1563782521, '2019-07-22 08:02:01', NULL, 1, 10, 'birra-13', NULL, 0, 0, '', 0, 0),
-(14, '', 1563782588, '2019-07-22 08:03:08', NULL, 1, 10, 'birra-14', NULL, 0, 0, '', 0, 0),
-(15, '', 1563782603, '2019-07-22 08:03:23', NULL, 1, 10, 'birra-15', NULL, 0, 0, '', 0, 0),
-(16, '', 1563782702, '2019-07-22 08:05:02', NULL, 1, 10, 'birra-16', NULL, 0, 0, '', 0, 0),
-(17, '', 1563782750, '2019-07-22 08:05:50', NULL, 1, 55, 'birra-17', NULL, 0, 0, '', 0, 0),
-(18, '', 1563782826, '2019-07-22 08:07:06', NULL, 1, 55, 'birra-18', NULL, 0, 0, '', 0, 0),
-(19, '', 1563783935, '2019-07-22 08:25:35', NULL, 2, 10, 'Duff-Beer-19', NULL, 0, 0, '', 0, 0),
-(20, '', 1563783974, '2019-07-22 08:26:14', NULL, 5, 51, 'Orzata-20', NULL, 0, 0, '', 0, 0),
-(21, '', 1563784005, '2019-07-22 08:26:45', NULL, 4, 22, 'Espana-21', NULL, 0, 0, '', 0, 0),
-(22, 'images/dtyvoXi0cgaPMYzpOg4JaJmNRnt2KEqh9PIhfv4F.png', 1568123638, '2019-09-10 13:53:58', NULL, 2, 5, 'Test-22', 'beer_xxx', 1, 0, 'asd,lol', 0, 0),
-(23, '', 1568126400, '2019-09-10 14:40:00', NULL, 2, 3, 'SSA-23', 'SSA', 1, 0, 'asd', 0, 1),
-(24, '', 1568126722, '2019-09-10 14:45:22', NULL, 2, 33, 'bbb-24', 'bbb', 12, 0, '', 0, 0),
-(25, '', 1568126769, '2019-09-10 14:46:09', NULL, 2, 55, 'ccc-25', NULL, 22, 0, '', 0, 1);
+(1, 'images/r6PlNR3FLk3pwe3LyjFnBJ9ZJ5VdNMJJYkcTNY9f.jpeg', 0, '2019-06-29 09:35:27', NULL, 1, 5, 'Birra-1', NULL, 0, 0, 'Birra', 0, 0),
+(11, '', 0, '2019-07-22 07:59:47', NULL, 1, 10, 'birra-2', NULL, 0, 0, '', 0, 0),
+(12, '', 0, '2019-07-22 08:01:08', NULL, 1, 10, 'birra-12', NULL, 0, 0, '', 0, 0),
+(13, '', 0, '2019-07-22 08:02:01', NULL, 1, 10, 'birra-13', NULL, 0, 0, '', 0, 0),
+(14, '', 0, '2019-07-22 08:03:08', NULL, 1, 10, 'birra-14', NULL, 0, 0, '', 0, 0),
+(15, '', 0, '2019-07-22 08:03:23', NULL, 1, 10, 'birra-15', NULL, 0, 0, '', 0, 0),
+(16, '', 0, '2019-07-22 08:05:02', NULL, 1, 10, 'birra-16', NULL, 0, 0, '', 0, 0),
+(17, '', 0, '2019-07-22 08:05:50', NULL, 1, 55, 'birra-17', NULL, 0, 0, '', 0, 0),
+(18, '', 0, '2019-07-22 08:07:06', NULL, 1, 55, 'birra-18', NULL, 0, 0, '', 0, 0),
+(19, '', 0, '2019-07-22 08:25:35', NULL, 2, 10, 'Duff-Beer-19', NULL, 0, 0, '', 0, 0),
+(20, '', 0, '2019-07-22 08:26:14', NULL, 5, 51, 'Orzata-20', NULL, 0, 0, '', 0, 0),
+(21, '', 0, '2019-07-22 08:26:45', NULL, 4, 22, 'Espana-21', NULL, 0, 0, '', 0, 0),
+(26, 'images/Oa0kSx2mWNrQMmZT7rqcs316duZSkJ4FmUwNIKQB.png', 0, '2019-09-12 14:43:06', NULL, 2, 30, 'Zombie-22', NULL, 0, 0, 'zombie,beer', 0, 1),
+(27, '', 0, '2019-09-12 15:04:45', NULL, 2, 5, 'asdsd-27', NULL, 0, 0, 'asdasd', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -426,10 +425,8 @@ INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `pri
 (10, 19, 'Duff Beer', 'Descrizione molto lunga', '4.5', '330', '4.5', 'Descrizione molto breve', 'en'),
 (11, 20, 'Orzata', 's è come il caffe d\' orzo', '3', '500', '2', 'orzo', 'en'),
 (12, 21, 'Espana', 'La birra spagnoleggiante', '5', '660', '6', 'spagna', 'en'),
-(13, 22, 'Test', 'asdsadadasd', '67', '33cl', '7', 'asdasda', 'en'),
-(14, 23, 'SSA', 'AS', '89', '66cl', '13', 'AS', 'en'),
-(15, 24, 'bbb', 'bbb', '89', '33cl', '45', 'bbbb', 'en'),
-(16, 25, 'ccc', 'ccc', '78', '33cl', '12', 'ccc', 'en');
+(17, 26, 'Zombie', 'There\'s very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.\r\n\r\nBody is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that\'s touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.', '7.50', '33cl', '10.2', 'There\'s very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.\r\n\r\nBody is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that\'s touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.', 'en'),
+(18, 27, 'asdsd', 'asdasd', '5', '33cl', '7.2', 'asdasd', 'en');
 
 -- --------------------------------------------------------
 
@@ -650,7 +647,19 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
 (1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'rnRcPEiCHfrrSRE0TmhQsYQsimzwW5vkMT6apoCFLFcisLpZE5L6JiiicmGA', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
-(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'cskjgxYOSI8ZlS9VISLmy3FLBzGcKqJq86tmvbBJ3yIn2KUjXKkHwYeGxuNi', 1);
+(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'LnD1WMgGxY7KXEd7ZvjqZGU99SEDWAWmRcCHKbBs5bcmhx3IjNI7MztzO0Zq', 1);
+
+--
+-- Trigger `users`
+--
+DELIMITER $$
+CREATE TRIGGER `id` AFTER INSERT ON `users` FOR EACH ROW BEGIN
+
+INSERT INTO img_user SET img_user.id_user = NEW.id, img_user.directory = "profile.png";
+
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -945,7 +954,7 @@ ALTER TABLE `fast_orders`
 -- AUTO_INCREMENT per la tabella `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `img_product`
@@ -987,13 +996,13 @@ ALTER TABLE `producers`
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT per la tabella `products_translations`
 --
 ALTER TABLE `products_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT per la tabella `refunds`
