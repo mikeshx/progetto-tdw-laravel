@@ -138,4 +138,13 @@ class ProductsModel extends Model
             ->get()->toArray();
     }
 
+    public function getFavoriteProducts($user_id) {
+        return DB::table('favorites')
+            ->join('products', 'favorites.id_product', '=', 'products.id')
+            ->join('products_translations', 'products.id', '=', 'products_translations.for_id')
+            ->select('products.*', 'products_translations.*')
+            ->where('favorites.id_user', '=', $user_id)
+            ->get();
+    }
+
 }

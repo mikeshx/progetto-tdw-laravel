@@ -13,6 +13,9 @@
 
 /* Public Routes */
 
+Route::get('get_user_favorites-{id}', 'Publics\\ProductsController@getFavoriteProducts')->where('id', '[\d+]+');
+
+
 // Our beers public routes
 Route::get('/our_beers', 'Publics\\ourBeersController@index');
 

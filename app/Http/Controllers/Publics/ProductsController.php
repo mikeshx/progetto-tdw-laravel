@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Publics;
 
+use App\Models\Admin\BlogModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Publics\ProductsModel;
@@ -126,6 +127,21 @@ class ProductsController extends Controller
         }
 
         return false;
+    }
+
+    public function getFavoriteProducts(Request $request) {
+        $productsModel = new productsModel();
+        $products = $productsModel->getFavoriteProducts($request['id']);
+
+        $homeModel = new homeModel();
+        $social = $homeModel->getSocial();
+        $contact = $homeModel->getContacts();
+
+        return view('publics.products', [
+            'products' => $products,
+            'social' => $social,
+            'contact' => $contact
+        ]);
     }
 
 }
