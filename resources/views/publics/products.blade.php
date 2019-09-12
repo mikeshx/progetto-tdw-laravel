@@ -9,9 +9,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="horz-menu">
-                        <li class="active"><span><a href="#">All</a></span></li>
+                        <li class="active"><span><a href="{{ lang_url('products') }}">All</a></span></li>
                         @if (Auth::check())
-                            <li><span><a href="/get_user_favorites-{{ Auth::user()->id }}">My Favorites</a></span></li>
+                            <li><span><a href="{{ lang_url('my_favorites') }}">My Favorites</a></span></li>
                         @endif
 						<li><span><a href="{{ lang_url('category') }}">Categories</a></span></li>
                     </ul>

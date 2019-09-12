@@ -10,15 +10,17 @@
                 <div class="col-sm-12">
                     <ul class="horz-menu">
                         <li><span><a href="{{ lang_url('products') }}">All</a></span></li>
-                        <li><span><a href="#">My Favorites</a></span></li>
-                        <li class="active"><span><a>Categories</a></span></li>
+                        @if (Auth::check())
+                            <li><span><a href="{{ lang_url('my_favorites') }}">My Favorites</a></span></li>
+                        @endif
+                        <li class="active"><span><a href="{{ lang_url('category') }}">Categories</a></span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Products Section -->
+    <!-- Category Section -->
     <div class="container-fluid light section no-padding">
         <div class="row">
             @forelse ($category as $category)
@@ -26,7 +28,8 @@
                     <div class="product">
                         <a href="{{ lang_url('category/'.$category->url) }}">
                             <span>Select category</span>
-                            <img src="" alt="{{$category->name}}" alt="Beer can mockup">
+                            <img src="" alt="{{$category->name}}">
+                            <img src="" alt="{{$category->name}}">
                         </a>
                     </div>
                 </div>
