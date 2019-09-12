@@ -13,7 +13,7 @@
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
                 <img src="images/Mill.svg" class="svg" alt="Quality Ingredients" />
-                <h4>MAde in Italy</h4>
+                <h4>MAde in the UK</h4>
                 <p>@isset($carousel) {{$carousel->text_container_2}} @endisset</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
@@ -52,13 +52,13 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-5 matchHeight">
-                                    <img src="{{$product->image}}" alt="About our Brewery" class="alignMiddle" />
+                                    <img src="../public/img/copertina_4.jpg" alt="About our Brewery" class="alignMiddle" />
                                 </div>
                                 <div class="col-sm-6 col-sm-push-1 matchHeight">
                                     <section class="alignMiddle mobile-center">
                                         <header>
-                                            <h1>{{$product->namee}}</h1>
-                                            <h2>{{$product->name_x}}</h2>
+                                            <h1>beer_type</h1>
+                                            <h2>{{$product->name}}</h2>
                                         </header>
                                         <p>{{$product->description}}</p>
                                         <a href="{{$product->url}}" class="btn btn-default"><span>Go to shop</span></a>
@@ -92,7 +92,7 @@
     </div>
 
     <!-- Section -->
-    <div class="container-fluid dark section" style="background-image: url(http://placehold.it/880x650);">
+    <div class="container-fluid dark section" style="background-image: url(../public/img/block-bg-3.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 matchHeight scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatex="-75">
@@ -116,9 +116,9 @@
                         <div class="product item">
                             <a href="{{$product->url}}">
                                 <span>Buy it</span>
-                                <img src="{{$product->image}}" alt="Beer can mockup">
+                                <img src="{{asset('../storage/app/public/'.$product->image)}}" alt="Beer can mockup">
                             </a>
-                            <h3>{{$product->name_x}}</h3>
+                            <h3>{{$product->name}}</h3>
                             <h4>{{$product->alchool}}%</h4>
                         </div>
                         @endforeach

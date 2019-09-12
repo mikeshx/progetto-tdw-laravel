@@ -43,7 +43,7 @@
                         <h2>{{__('home_new.how_create2')}}</h2>
                     </header>
                     <p>{{__('home_new.how_create_text')}}</p>
-                    <a href="#" class="btn btn-default"><span>{{__('home_new.show_more')}}</span></a>
+                    <a href="our_beers" class="btn btn-default"><span>{{__('home_new.show_more')}}</span></a>
                 </section>
             </div>
             <div class="col-sm-6 matchHeight" style="background-image: url(../public/img/block-bg.jpg);">
@@ -131,7 +131,7 @@
                             <h2>Beer aisle</h2>
                         </header>
                         <p>Smoky characters emerge as the beer warms, as do subtle drops of caramel. The overall dryness of the beer carries through to the finish, with a semi-burnt linger and bitter end.</p>
-                        <a href="#" class="btn btn-default"><span>Show me more</span></a>
+                        <a href="products" class="btn btn-default"><span>Show me more</span></a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-sm-push-1 matchHeight">

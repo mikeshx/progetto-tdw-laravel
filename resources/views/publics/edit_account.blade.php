@@ -115,7 +115,7 @@
                         {{ csrf_field() }}
                         <div class="upload-wrap">
                             <input type="file" class="form-control-file" name="image">
-                            <input type="submit" name="upload" class="btn btn-secondary" value="Upload"></td>
+                            <input type="submit" name="upload" class="btn btn-default" value="Upload"></td>
                         </div>
                     </form>
                 </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Set 12, 2019 alle 15:36
--- Versione del server: 10.3.17-MariaDB
--- Versione PHP: 7.3.9
+-- Host: 127.0.0.1
+-- Creato il: Set 12, 2019 alle 19:45
+-- Versione del server: 10.1.38-MariaDB
+-- Versione PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `lara`
 --
+CREATE DATABASE IF NOT EXISTS `lara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `lara`;
 
 -- --------------------------------------------------------
 
@@ -42,19 +44,8 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`, `post_date`, `post_url`) VALUES
-(1, 'merda', 'asd', 'id', '', ''),
-(2, 'yoyo', 'yoyo', '3', '', ''),
-(3, 'asdasd', 'asdasd', '3', '', ''),
-(4, 'asd', 'asd', '3', '', ''),
-(5, 'asdasd', 'adasdasd', '3', '', ''),
-(6, 'asdasd', 'adasdasd', '3', '', ''),
-(7, 'asdasd', 'adasdasd', '3', '', ''),
-(8, 'asdad', 'asdasdasd', '3', '', ''),
-(9, 'yoyoyo', 'testing', '3', '', ''),
-(10, 'testing123', 'testing123', '3', '2019-08-29 11:52:53', ''),
-(11, 'yoyoyoyo', 'sfsdfsfsdf', '3', '2019-08-29', ''),
-(12, 'Uscita la nuova birra DI MERDA', '<h2> questo è un titolo </h2>\r\n\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>', '3', '2019-08-31', 'testing-vaffanculo'),
-(15, 'vaffabculo', 'sadadasd', '3', '2019-09-11', 'vaffabculo');
+(16, 'The new site', 'The new site is online!', '1', '2019-09-12', 'The-new-site'),
+(17, 'Oktoberfest', 'Oktoberfest is coming, stay updated on our site!', '1', '2019-09-12', 'Oktoberfest');
 
 -- --------------------------------------------------------
 
@@ -64,9 +55,17 @@ INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`, `po
 
 CREATE TABLE `carousel` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
+  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `carousel`
+--
+
+INSERT INTO `carousel` (`id`, `position`, `link`) VALUES
+(1, 1, ''),
+(2, 1, '');
 
 -- --------------------------------------------------------
 
@@ -76,9 +75,17 @@ CREATE TABLE `carousel` (
 
 CREATE TABLE `carousel_info` (
   `id` int(11) NOT NULL,
-  `position` int(10) UNSIGNED NOT NULL DEFAULT 1,
+  `position` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `carousel_info`
+--
+
+INSERT INTO `carousel_info` (`id`, `position`, `link`) VALUES
+(1, 1, ''),
+(3, 1, '');
 
 -- --------------------------------------------------------
 
@@ -95,6 +102,14 @@ CREATE TABLE `carousel_translations` (
   `title2` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dump dei dati per la tabella `carousel_translations`
+--
+
+INSERT INTO `carousel_translations` (`id`, `for_id`, `image`, `locale`, `title1`, `title2`) VALUES
+(1, 1, 'carousel/yLlBTxNv1uEl7x9agHCnD7lqiTTJC2v06e22KCfm.jpeg', 'en', 'Over one hundred flavours of', 'Specially Crafted Beer'),
+(2, 2, 'carousel/elWB5NEJNrxFSm0nmNT78J1NHj9minhGo98peCGX.jpeg', 'en', 'We use only the finest ingredients to create the', 'The Perfect Craft Beer');
+
 -- --------------------------------------------------------
 
 --
@@ -110,6 +125,14 @@ CREATE TABLE `carousel_translations_info` (
   `title2` varchar(150) NOT NULL,
   `text` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `carousel_translations_info`
+--
+
+INSERT INTO `carousel_translations_info` (`id`, `for_id`, `image`, `locale`, `title1`, `title2`, `text`) VALUES
+(1, 1, 'carousel_info/a6Ippr3j2eNOpKkEaIzHncn6EuUb3Ho2VGpLJzxx.jpeg', 'en', 'About our', 'Brewery', 'The 12-ounce bottle pours a pitch-black, topped with a creamy tan-colored head that leaves a healthy ringed lace as it settles, with a bit of stick on the glass.'),
+(2, 3, 'carousel_info/au00prI6MvOD5LbPj9wiMKcbU0bw2DjHBb1ahKyS.jpeg', 'en', 'Made to share with', 'Friends', 'A blend of lambic beers brewed at 3 Fonteinen, with an addition of 30% whole fresh raspberries from the fabled Payottenland and 5% sour cherries. This unfiltered beer will enjoy a spontaneous refermentation in the bottle. No artificial colors or flavor enhancers are added. Lambic is brewed only from 60% barley malt, 40% unmalted wheat, hops and water.');
 
 -- --------------------------------------------------------
 
@@ -222,8 +245,8 @@ CREATE TABLE `fast_orders` (
   `id` int(11) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `names` varchar(100) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` tinyint(4) NOT NULL DEFAULT 0
+  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -244,7 +267,8 @@ CREATE TABLE `favorites` (
 
 INSERT INTO `favorites` (`id`, `id_product`, `id_user`) VALUES
 (1, 12, 1),
-(3, 19, 3);
+(3, 19, 3),
+(4, 32, 1);
 
 -- --------------------------------------------------------
 
@@ -270,6 +294,14 @@ CREATE TABLE `img_user` (
   `directory` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dump dei dati per la tabella `img_user`
+--
+
+INSERT INTO `img_user` (`id_img_user`, `id_user`, `directory`) VALUES
+(1, 1, 'img_user/XqlJuB5WXp8UEfW8686rWFlRhuVrlt33BN00YYDa.png'),
+(2, 4, 'img_user/GqgHptF1aPszFlYbxWln1E6SNRhlSgiy8JD0RKbR.png');
+
 -- --------------------------------------------------------
 
 --
@@ -291,11 +323,18 @@ CREATE TABLE `newsletters` (
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `type` varchar(30) NOT NULL,
   `products` varchar(255) NOT NULL COMMENT 'serialized array',
-  `status` tinyint(4) NOT NULL DEFAULT 0
+  `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_id`, `time_created`, `type`, `products`, `status`) VALUES
+(1, 1, '2019-09-12 17:44:15', 'cash_on_delivery', 'a:1:{i:0;a:2:{s:2:\"id\";s:2:\"33\";s:8:\"quantity\";s:1:\"1\";}}', 0);
 
 -- --------------------------------------------------------
 
@@ -316,6 +355,13 @@ CREATE TABLE `orders_clients` (
   `notes` text NOT NULL,
   `total_price` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `orders_clients`
+--
+
+INSERT INTO `orders_clients` (`id`, `for_order`, `first_name`, `last_name`, `email`, `phone`, `address`, `city`, `post_code`, `notes`, `total_price`) VALUES
+(1, 1, 'Pippo', 'CIao', 'utente@utente.it', '412', 'asdds', '', '', '', 4);
 
 -- --------------------------------------------------------
 
@@ -366,17 +412,17 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `folder` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `category_id` int(10) UNSIGNED NOT NULL COMMENT 'category id',
-  `quantity` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `url` varchar(255) NOT NULL,
   `link_to` varchar(255) DEFAULT NULL,
-  `order_position` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `procurements` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `order_position` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `procurements` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `tags` varchar(255) NOT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT 0,
-  `our_beer` tinyint(1) NOT NULL DEFAULT 0
+  `hidden` tinyint(1) NOT NULL DEFAULT '0',
+  `our_beer` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -393,11 +439,10 @@ INSERT INTO `products` (`id`, `image`, `folder`, `created_at`, `updated_at`, `ca
 (16, '', 0, '2019-07-22 08:05:02', NULL, 1, 10, 'birra-16', NULL, 0, 0, '', 0, 0),
 (17, '', 0, '2019-07-22 08:05:50', NULL, 1, 55, 'birra-17', NULL, 0, 0, '', 0, 0),
 (18, '', 0, '2019-07-22 08:07:06', NULL, 1, 55, 'birra-18', NULL, 0, 0, '', 0, 0),
-(19, '', 0, '2019-07-22 08:25:35', NULL, 2, 10, 'Duff-Beer-19', NULL, 0, 0, '', 0, 0),
-(20, '', 0, '2019-07-22 08:26:14', NULL, 5, 51, 'Orzata-20', NULL, 0, 0, '', 0, 0),
-(21, '', 0, '2019-07-22 08:26:45', NULL, 4, 22, 'Espana-21', NULL, 0, 0, '', 0, 0),
-(26, 'images/Oa0kSx2mWNrQMmZT7rqcs316duZSkJ4FmUwNIKQB.png', 0, '2019-09-12 14:43:06', NULL, 2, 30, 'Zombie-22', NULL, 0, 0, 'zombie,beer', 0, 1),
-(27, '', 0, '2019-09-12 15:04:45', NULL, 2, 5, 'asdsd-27', NULL, 0, 0, 'asdasd', 0, 1);
+(31, 'images/pcuNBYIALEmvd1pKla1a130bzROi0nGHbHld0F3Q.png', 1568307343, '2019-09-12 16:55:43', NULL, 2, 20, 'Zombie-19', NULL, 1, 0, '', 0, 0),
+(32, 'images/iseRQXidpWO8kBzTwXWSp6pv27veADMqW4N1bmm8.png', 1568307524, '2019-09-12 16:58:44', NULL, 2, 50, 'Brave-Heart-32', NULL, 0, 0, '', 0, 1),
+(33, 'images/kx07dUYBqEVZ5unA7vJZ2ZORBV3mOlLgMKv3AXYU.png', 1568307677, '2019-09-12 17:01:17', NULL, 5, 60, 'Craft-beer-33', NULL, 0, 0, '', 0, 1),
+(34, 'images/2vpkjp12RnOyZ3SBZYw3R0sSd3jVWwGEk3iHvNtN.png', 1568307923, '2019-09-12 17:05:23', NULL, 3, 300, 'Paddys-brew-34', NULL, 0, 0, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -422,11 +467,10 @@ CREATE TABLE `products_translations` (
 --
 
 INSERT INTO `products_translations` (`id`, `for_id`, `name`, `description`, `price`, `ml`, `alchool`, `quickdescription`, `locale`) VALUES
-(10, 19, 'Duff Beer', 'Descrizione molto lunga', '4.5', '330', '4.5', 'Descrizione molto breve', 'en'),
-(11, 20, 'Orzata', 's è come il caffe d\' orzo', '3', '500', '2', 'orzo', 'en'),
-(12, 21, 'Espana', 'La birra spagnoleggiante', '5', '660', '6', 'spagna', 'en'),
-(17, 26, 'Zombie', 'There\'s very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.\r\n\r\nBody is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that\'s touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.', '7.50', '33cl', '10.2', 'There\'s very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.\r\n\r\nBody is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that\'s touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.', 'en'),
-(18, 27, 'asdsd', 'asdasd', '5', '33cl', '7.2', 'asdasd', 'en');
+(22, 31, 'Zombie', 'Vicious and viscous, this menacing brew pours opaque black with a creamy maduro-colored head. Its aroma offers seductive whiskey, chewy red wine, dark fruit and lavish tobacco. Berserker Imperial Stout invades your taste buds with in-your-face flavor. Weighing in at almost 13% alcohol by volume, Berserker is completely out-of-control.', '4', '33', '7', 'Vicious and viscous, this menacing brew pours opaque black with a creamy maduro-colored head. Its aroma offers seductive whiskey, chewy red wine, dark fruit and lavish tobacco. Berserker Imperial Stout invades your taste buds with in-your-face flavor. Weighing in at almost 13% alcohol by volume, Berserker is completely out-of-control.', 'en'),
+(23, 32, 'Brave Heart', 'Poured into a goblet, the beer offers some amazing head retention and rings of white lace sticking to the glass after each sip. Good clarity, with a dull golden color. The nose contains apricots and pear, faint ground white pepper, chalky yeast and an aroma of shortbread biscuits. It’s very crisp and lively with a smooth back and moderate body. Spicy phenols wrap around its dry maltiness, which is similar to crusty bread, highlighted by some pithy notes of green banana. Spicy hops, with a flare from the alcohol, provide a nice bite along with a moderate grassy bitterness. Earthy on the palate with a flash of honey-like sweetness. Yeasty and fruity undertones layer middle to end. Finishes dry.', '4,25', '33', '5', 'Vicious and viscous, this menacing brew pours opaque black with a creamy maduro-colored head. Its aroma offers seductive whiskey, chewy red wine, dark fruit and lavish tobacco. Berserker Imperial Stout invades your taste buds with in-your-face flavor. Weighing in at almost 13% alcohol by volume, Berserker is completely out-of-control.', 'en'),
+(24, 33, 'Craft beer', 'Poured into a goblet, the beer offers some amazing head retention and rings of white lace sticking to the glass after each sip. Good clarity, with a dull golden color. The nose contains apricots and pear, faint ground white pepper, chalky yeast and an aroma of shortbread biscuits. It’s very crisp and lively with a smooth back and moderate body. Spicy phenols wrap around its dry maltiness, which is similar to crusty bread, highlighted by some pithy notes of green banana. Spicy hops, with a flare from the alcohol, provide a nice bite along with a moderate grassy bitterness. Earthy on the palate with a flash of honey-like sweetness. Yeasty and fruity undertones layer middle to end. Finishes dry.', '4,75', '33', '12', 'Vicious and viscous, this menacing brew pours opaque black with a creamy maduro-colored head. Its aroma offers seductive whiskey, chewy red wine, dark fruit and lavish tobacco. Berserker Imperial Stout invades your taste buds with in-your-face flavor. Weighing in at almost 13% alcohol by volume, Berserker is completely out-of-control.', 'en'),
+(25, 34, 'Paddys brew', 'Poured into a goblet, the beer offers some amazing head retention and rings of white lace sticking to the glass after each sip. Good clarity, with a dull golden color. The nose contains apricots and pear, faint ground white pepper, chalky yeast and an aroma of shortbread biscuits. It’s very crisp and lively with a smooth back and moderate body. Spicy phenols wrap around its dry maltiness, which is similar to crusty bread, highlighted by some pithy notes of green banana. Spicy hops, with a flare from the alcohol, provide a nice bite along with a moderate grassy bitterness. Earthy on the palate with a flash of honey-like sweetness. Yeasty and fruity undertones layer middle to end. Finishes dry.', '4,80', '33', '8', 'Vicious and viscous, this menacing brew pours opaque black with a creamy maduro-colored head. Its aroma offers seductive whiskey, chewy red wine, dark fruit and lavish tobacco. Berserker Imperial Stout invades your taste buds with in-your-face flavor. Weighing in at almost 13% alcohol by volume, Berserker is completely out-of-control.', 'en');
 
 -- --------------------------------------------------------
 
@@ -498,7 +542,10 @@ CREATE TABLE `story` (
 --
 
 INSERT INTO `story` (`id`, `date`, `title`, `text`, `locale`) VALUES
-(1, '2019-09-04', 'qweqeqweqwe', 'qeqweeqweqweqwe', 'en');
+(2, '2014-02-11', 'The Project Start', 'The idea begins', 'en'),
+(3, '2016-09-14', 'The expansion', 'The project has grown', 'en'),
+(4, '2019-01-17', 'The beginning of site design', 'Project development', 'en'),
+(5, '2019-09-12', 'Perhaps the end', 'Perhaps the end of the site', 'en');
 
 -- --------------------------------------------------------
 
@@ -517,7 +564,8 @@ CREATE TABLE `story_carousel` (
 --
 
 INSERT INTO `story_carousel` (`id`, `link`, `position`) VALUES
-(1, 'asd.com', 1);
+(2, '', 1),
+(3, '', 1);
 
 -- --------------------------------------------------------
 
@@ -540,7 +588,8 @@ CREATE TABLE `story_carousel_translations` (
 --
 
 INSERT INTO `story_carousel_translations` (`id`, `for_id`, `locale`, `image`, `title1`, `title2`, `text`) VALUES
-(1, 1, 'en', 'carousel_story/HcjDwKuaBpJCP3ELQeOveYz8ALwK099F3WUjld4E.jpeg', 'asdasd', 'asdasd', 'asdasd');
+(2, 2, 'en', 'carousel_story/ObViV3LGqOQF7U5bXajjEm3qt9T3bncSEBlCfMwb.jpeg', 'Our very', 'First beer', 'The 12-ounce bottle pours a pitch-black, topped with a creamy tan-colored head that leaves a healthy ringed lace as it settles, with a bit of stick on the glass.'),
+(3, 3, 'en', 'carousel_story/F3qodutXoVOvsMv0QgQThq8sYWQ25ctYh1ZYcTez.jpeg', 'Made to share with', 'Friends', 'The 12-ounce bottle pours a pitch-black, topped with a creamy tan-colored head that leaves a healthy ringed lace as it settles, with a bit of stick on the glass.');
 
 -- --------------------------------------------------------
 
@@ -561,7 +610,7 @@ CREATE TABLE `story_info` (
 --
 
 INSERT INTO `story_info` (`id`, `flavours`, `outlets`, `years`, `day`) VALUES
-(1, 206, 140, 90, 21);
+(1, 12, 3, 7, 30);
 
 -- --------------------------------------------------------
 
@@ -574,7 +623,7 @@ CREATE TABLE `support_message` (
   `id_ticket` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `text` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp()
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -599,7 +648,7 @@ CREATE TABLE `support_request` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `obj` varchar(150) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -634,10 +683,10 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `remember_token` varchar(255) DEFAULT NULL,
-  `isAdmin` tinyint(1) DEFAULT 0
+  `isAdmin` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -645,9 +694,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`, `remember_token`, `isAdmin`) VALUES
-(1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'rnRcPEiCHfrrSRE0TmhQsYQsimzwW5vkMT6apoCFLFcisLpZE5L6JiiicmGA', 1),
+(1, 'Admin', 'admin@admin.admin', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'IJrK0yrEce8DIBjKM44OqaycpTNd5gbIntCguHjkWwAz3QoQY45hDQxfIDqv', 1),
 (2, 'asd', 'dio@ca.ne', '$2y$10$yhB2C6NNn2yRuLXS39B8a.qBYyZ4Pcbfo5iOcJnNyy7923lSCmLhO', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'wqSGiiCPWijGFZzh7ldRv6HhglrErOQvsIpCsJzN3UUO9j3mxn8FghacrqYp', 0),
-(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'LnD1WMgGxY7KXEd7ZvjqZGU99SEDWAWmRcCHKbBs5bcmhx3IjNI7MztzO0Zq', 1);
+(3, 'User4u', 'kiro@dev.bg', '$2y$10$lKcdQgqvk40/iQ3wIkH9ou/p30fhueK/WQmKuEAXYbU0yzRAONoX6', '2019-06-24 19:30:35', '2019-06-24 19:30:35', 'LnD1WMgGxY7KXEd7ZvjqZGU99SEDWAWmRcCHKbBs5bcmhx3IjNI7MztzO0Zq', 1),
+(4, 'utente', 'utente@utente.it', '$2y$10$0gkTAWG9pl2u/1UaI9xW0uyFa.ZnyESlweQkz.2O1OHEqY5GDjsAe', '2019-09-12 15:42:52', '2019-09-12 15:42:52', NULL, 0);
 
 --
 -- Trigger `users`
@@ -888,31 +938,31 @@ ALTER TABLE `user_address`
 -- AUTO_INCREMENT per la tabella `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel_info`
 --
 ALTER TABLE `carousel_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel_translations`
 --
 ALTER TABLE `carousel_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel_translations_info`
 --
 ALTER TABLE `carousel_translations_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `categories`
@@ -954,7 +1004,7 @@ ALTER TABLE `fast_orders`
 -- AUTO_INCREMENT per la tabella `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `img_product`
@@ -966,7 +1016,7 @@ ALTER TABLE `img_product`
 -- AUTO_INCREMENT per la tabella `img_user`
 --
 ALTER TABLE `img_user`
-  MODIFY `id_img_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_img_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `newsletters`
@@ -978,13 +1028,13 @@ ALTER TABLE `newsletters`
 -- AUTO_INCREMENT per la tabella `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `orders_clients`
 --
 ALTER TABLE `orders_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `producers`
@@ -996,13 +1046,13 @@ ALTER TABLE `producers`
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT per la tabella `products_translations`
 --
 ALTER TABLE `products_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT per la tabella `refunds`
@@ -1026,19 +1076,19 @@ ALTER TABLE `social_contacts`
 -- AUTO_INCREMENT per la tabella `story`
 --
 ALTER TABLE `story`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `story_carousel`
 --
 ALTER TABLE `story_carousel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `story_carousel_translations`
 --
 ALTER TABLE `story_carousel_translations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `story_info`
@@ -1068,7 +1118,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `user_address`
