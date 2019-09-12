@@ -32,9 +32,9 @@
                         <input type="hidden" name="email" value="{{$email}}">
                         <input type="hidden" name="phone" value="{{$phone}}">
                         <input type="hidden" name="address" value="{{$address}}">
-                        <input name="city" value="" type="hidden" value="{{$city}}">
-                        <input name="post_code" value="" type="hidden" value="{{$post_code}}">
-                        <textarea type="hidden" name="notes" value="{{$notes}}" ></textarea>
+                        <input name="city" type="hidden" value="{{$city}}">
+                        <input name="post_code" type="hidden" value="{{$post_code}}">
+                        <input type="hidden" name="notes" value="{{$notes}}" >
                         @php
                             $sum = $sum_total = 0;
                             if(!empty($cartProducts)) {
