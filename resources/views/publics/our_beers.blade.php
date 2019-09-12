@@ -167,28 +167,28 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
-                        <img src="images/Can.svg" class="svg" alt="" />
+                        <img src="../public/new_template/images/Can.svg" class="svg" alt="" />
                         <span>@isset($carousel) {{$carousel->counter_1}} @endisset</span>
                         Flavours
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
-                        <img src="images/Sign.svg" class="svg" alt="" />
+                        <img src="../public/new_template/images/Sign.svg" class="svg" alt="" />
                         <span class="one">@isset($carousel) {{$carousel->counter_2}} @endisset</span>
                         Outlets
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
-                        <img src="images/Badge.svg" class="svg" alt="" />
+                        <img src="../public/new_template/images/Badge.svg" class="svg" alt="" />
                         <span>@isset($carousel) {{$carousel->counter_3}} @endisset</span>
                         Years brewing
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
-                        <img src="images/BarrelSide.svg" class="svg" alt="" />
+                        <img src="../public/new_template/images/BarrelSide.svg" class="svg" alt="" />
                         <span>@isset($carousel) {{$carousel->counter_4}} @endisset</span>
                         Days til ready
                     </div>
