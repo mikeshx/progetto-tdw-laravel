@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Set 09, 2019 alle 20:15
+-- Creato il: Set 12, 2019 alle 09:27
 -- Versione del server: 10.3.17-MariaDB
 -- Versione PHP: 7.3.9
 
@@ -54,7 +54,7 @@ INSERT INTO `blog` (`post_id`, `post_title`, `post_content`, `post_user_id`, `po
 (10, 'testing123', 'testing123', '3', '2019-08-29 11:52:53', ''),
 (11, 'yoyoyoyo', 'sfsdfsfsdf', '3', '2019-08-29', ''),
 (12, 'Uscita la nuova birra DI MERDA', '<h2> questo è un titolo </h2>\r\n\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>\r\n<p>non ce ne frega un cazzo di niente</p>', '3', '2019-08-31', 'testing-vaffanculo'),
-(13, 'dio', 'ca', '3', '2019-09-10', 'dio');
+(15, 'vaffabculo', 'sadadasd', '3', '2019-09-11', 'vaffabculo');
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `address`, `position`, `telephone`, `email`) VALUES
-(1, 'asdad', 'a', 'a', 'a');
+(1, 'Via x, 13', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCzbEe1YItOGVa3h_gT66MTFP056M0xQyo', '333 3333333', 'beerify@test.com');
 
 -- --------------------------------------------------------
 
@@ -197,7 +197,8 @@ CREATE TABLE `coupon` (
 
 INSERT INTO `coupon` (`id`, `percentage_value`, `coupon_string`, `expire_date`) VALUES
 (1, 67, 'A3FZ6Q1YYX', '2019-09-20 12:45:59'),
-(2, 78, 'PVY7O3ROV0', '2019-09-09 16:22:02');
+(2, 78, 'PVY7O3ROV0', '2019-09-09 16:22:02'),
+(3, 45, 'DKRHDFLIEI', '2019-09-16 13:48:11');
 
 -- --------------------------------------------------------
 
@@ -319,20 +320,6 @@ CREATE TABLE `orders_clients` (
 
 --
 -- Struttura della tabella `our_beer_carousel`
---
-
-CREATE TABLE `our_beer` (
-  `beer_id` int(11) NOT NULL,
-  `beer_name` varchar(80) NOT NULL,
-  `beer_type` varchar(80) NOT NULL,
-  `beer_description` text NOT NULL,
-  `beer_alcohol_content` double NOT NULL,
-  `beer_img_path` varchar(500) NOT NULL,
-  `beer_price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dump dei dati per la tabella `our_beer_carousel`
 --
 
 CREATE TABLE `our_beer_carousel` (
@@ -483,15 +470,17 @@ CREATE TABLE `social_contacts` (
   `facebook_desc` varchar(255) NOT NULL,
   `facebook_link` varchar(255) NOT NULL,
   `twitter_desc` varchar(255) NOT NULL,
-  `twitter_link` varchar(255) NOT NULL
+  `twitter_link` varchar(255) NOT NULL,
+  `google_plus_desc` varchar(255) NOT NULL,
+  `google_plus_link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `social_contacts`
 --
 
-INSERT INTO `social_contacts` (`id`, `instagram_desc`, `instagram_link`, `facebook_desc`, `facebook_link`, `twitter_desc`, `twitter_link`) VALUES
-(1, 'asdadsdadsadasdasdasd', 'a', 'a', 'diocan', 'a', 'a');
+INSERT INTO `social_contacts` (`id`, `instagram_desc`, `instagram_link`, `facebook_desc`, `facebook_link`, `twitter_desc`, `twitter_link`, `google_plus_desc`, `google_plus_link`) VALUES
+(1, 'Use the hashtag #beerify to see all of our content on Instagram!', 'https://instagram.com', 'Like our Facebook Page for special offers', 'https://facebook.com', 'Use the hashtag #beerify to see all of our content on Twitter!', 'https://twitter.com', ':(', 'google.com');
 
 -- --------------------------------------------------------
 
@@ -598,7 +587,10 @@ CREATE TABLE `support_message` (
 INSERT INTO `support_message` (`id`, `id_ticket`, `id_user`, `text`, `time`) VALUES
 (1, 1, 1, 'in una forte epistassi', '2019-07-20 10:36:17'),
 (2, 1, 3, 'assurdo', '2019-09-04 14:22:31'),
-(3, 1, 3, 'comuqnue in quanto admin, non me ne frega un cazzo', '2019-09-04 14:22:48');
+(3, 1, 3, 'comuqnue in quanto admin, non me ne frega un cazzo', '2019-09-04 14:22:48'),
+(4, 1, 3, 'asdsad', '2019-09-11 11:49:35'),
+(5, 2, 3, 'fdfdfdfdffd', '2019-09-11 17:42:36'),
+(6, 2, 3, 'vaffanculo', '2019-09-11 17:42:59');
 
 -- --------------------------------------------------------
 
@@ -619,7 +611,8 @@ CREATE TABLE `support_request` (
 --
 
 INSERT INTO `support_request` (`id`, `id_user`, `obj`, `time`, `status`) VALUES
-(1, 1, 'ho perso il mio nome', '2019-07-20 10:36:17', 0);
+(1, 1, 'ho perso il mio nome', '2019-07-20 10:36:17', 0),
+(2, 3, 'fgfgfggfgf', '2019-09-11 17:42:36', 0);
 
 -- --------------------------------------------------------
 
@@ -886,7 +879,7 @@ ALTER TABLE `user_address`
 -- AUTO_INCREMENT per la tabella `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT per la tabella `carousel`
@@ -934,7 +927,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT per la tabella `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `expeditions`
@@ -1048,13 +1041,13 @@ ALTER TABLE `story_info`
 -- AUTO_INCREMENT per la tabella `support_message`
 --
 ALTER TABLE `support_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `support_request`
 --
 ALTER TABLE `support_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `tag`

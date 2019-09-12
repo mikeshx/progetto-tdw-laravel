@@ -7,29 +7,29 @@
     <div class="container-fluid dark section no-padding">
         <div class="row">
             <div class="col-sm-3 col-xs-6 icon-grid">
-                <a href="{{$contacts->facebook_link}}"></a>
+                <a href="@isset($contacts) {{$contacts->facebook_link}}@endisset"></a>
                 <i class="fa fa-facebook"></i>
                 <h4>Facebook</h4>
-                <p>{{$contacts->facebook_desc}}</p>
+                <p>@isset($contacts){{$contacts->facebook_desc}}@endisset</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
-                <a href="{{$contacts->instagram_link}}"></a>
+                <a href="@isset($contacts){{$contacts->instagram_link}}@endisset"></a>
                 <i class="fa fa-instagram"></i>
                 <h4>Instagram</h4>
-                <p>{{$contacts->instagram_desc}}</p>
+                <p>@isset($contacts){{$contacts->instagram_desc}}@endisset</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
-                <a href="{{$contacts->twitter_link}}"></a>
+                <a href="@isset($contacts){{$contacts->twitter_link}}@endisset"></a>
                 <i class="fa fa-twitter"></i>
                 <h4>Twitter</h4>
-                <p>{{$contacts->twitter_desc}}</p>
+                <p>@isset($contacts){{$contacts->twitter_desc}}@endisset</p>
             </div>
 
             <div class="col-sm-3 col-xs-6 icon-grid">
-                <a href="{{$contacts->google_plus_desc}}"></a>
+                <a href="@isset($contacts){{$contacts->google_plus_desc}}@endisset"></a>
                 <i class="fa fa-google-plus"></i>
                 <h4>Google Plus</h4>
-                <p>{{$contacts->google_plus_link}}</p>
+                <p>@isset($contacts){{$contacts->google_plus_link}}@endisset</p>
             </div>
         </div>
     </div>
@@ -63,21 +63,21 @@
                             <i class="fa fa-location-arrow"></i>
                             <div>
                                 Address
-                                <span>{{$contacts->address}}</span>
+                                <span>@isset($contacts){{$contacts->address}}@endisset</span>
                             </div>
                         </li>
                         <li>
                             <i class="fa fa-envelope"></i>
                             <div>
                                 Email
-                                <span>{{$contacts->email}}</span>
+                                <span>@isset($contacts){{$contacts->email}}@endisset</span>
                             </div>
                         </li>
                         <li>
                             <i class="fa fa-phone"></i>
                             <div>
                                 Telephone
-                                <span>{{$contacts->telephone}}</span>
+                                <span>@isset($contacts){{$contacts->telephone}}@endisset</span>
                             </div>
                         </li>
                     </ul>
