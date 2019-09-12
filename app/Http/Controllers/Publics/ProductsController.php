@@ -6,10 +6,11 @@ use App\Models\Admin\BlogModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Publics\ProductsModel;
+use App\Models\Publics\ReviewModel;
 use App\Models\Publics\HomeModel;
 use Lang;
 use Auth;
-use App\Models\Publics\ReviewModel;
+
 
 class ProductsController extends Controller
 {
@@ -61,10 +62,12 @@ class ProductsController extends Controller
         $enableComments = false;
         $productsModel = new ProductsModel();
         $homeModel = new HomeModel();
+        $reviewModel = new ReviewModel();
         $product = $productsModel->getProduct($request->id);
         $producers = $productsModel->getProducers($request->id);
         $social = $homeModel->getSocial();
         $contact = $homeModel->getContacts();
+        $review = $reviewModel->getReview($request->id);
         if ($product == null) {
             abort(404);
         }
@@ -94,6 +97,7 @@ class ProductsController extends Controller
         return view('publics.product_single', [
             'product' => $product,
             'social' => $social,
+            'review' => $review,
             'contact' => $contact,
             'cartProducts' => $this->products,
             'head_title' => mb_strlen($product->name) > 70 ? str_limit($product->name, 70) : $product->name,

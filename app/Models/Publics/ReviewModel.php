@@ -36,6 +36,18 @@ class ReviewModel extends Model
 
     }
 
+    public function getReview($id)
+    {
+        $review = DB::table('reviews')
+            ->select(DB::raw('reviews.text, users.name, img_user.directory'))
+            ->join('users', 'users.id', '=', 'reviews.id_user')
+            ->join('img_user', 'users.id', '=', 'img_user.id_user')
+            ->where('reviews.id_product', '=', $id)
+            ->paginate(10);
+
+        return $review;
+    }
+
     // Check if a specified review exists in the database
     public function checkReviewExists($product_id, $user_id) {
 

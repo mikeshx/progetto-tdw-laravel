@@ -35,9 +35,6 @@ Route::post('/contacts', 'Admin\\ContactsController@index');
 //Story
 Route::get('story', 'Publics\\StoryController@index');
 
-// review routes
-Route::post('review.submit', 'Publics\\ReviewsController@submitReview');
-
 // apply coupon
 Route::post('coupon.apply', 'Admin\\CouponsController@testCoupon');
 
@@ -96,6 +93,11 @@ Route::get('{locale}/cart', 'Publics\\CheckoutController@indexCart')
 		
 /* Logged user routes */
 Route::middleware(['auth'])->group(function () {
+
+
+	// review routes
+	Route::post('review.submit', 'Publics\\ReviewsController@submitReview');
+
 
      // checkout please
     Route::get('checkout', 'Publics\\CheckoutController@index');
