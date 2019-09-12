@@ -174,13 +174,6 @@
                 </ul>
             </div>
             <div class="col-sm-2">
-                <h6>Shop</h6>
-                <ul>
-                    <li><a href="#">Pale ale</a></li>
-                    <li><a href="#">Golden ale</a></li>
-                    <li><a href="#">Dark ale</a></li>
-                    <li><a href="#">IPA</a></li>
-                </ul>
             </div>
             <div class="col-sm-5 col-sm-push-1">
                 <h6>Our information</h6>
